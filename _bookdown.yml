@@ -1,0 +1,18 @@
+book_filename: "PIPmanual"
+repo: https://github.com/PIP-Technical-Team/PIPmanual/
+output_dir: "docs"
+delete_merged_file: true
+language:
+  label:
+    fig: "Figure "
+    tab: "Table "
+  ui:
+    edit: "Edit"
+    chapter_name: "Chapter "
+
+rmd_files: [
+  "index.Rmd",
+  "intro.Rmd",
+
+  "references.Rmd",
+]
