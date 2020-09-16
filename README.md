@@ -33,5 +33,5 @@ bookdown::render_book("index.Rmd",
                       "bookdown::gitbook")
 
 ```
-You can also use the helper file `render_book.R` in the root of the project to execute the code above.
+You can also use the helper file `render_book.R` in the `R/` folder of project to execute the code above.
 
