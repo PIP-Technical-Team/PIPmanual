@@ -21,3 +21,18 @@ rmd_files: [
 ]
 
 ```
+5. Render your your chapter and/or the whole book. 
+```r
+#preview just one chapter
+
+file <- "intro.Rmd"  # Chapter to preview
+bookdown::render_book(file, "bookdown::gitbook",
+                      preview = TRUE)
+
+# render the whole book
+bookdown::render_book("index.Rmd", 
+                      "bookdown::gitbook")
+
+```
+You can also use the hel
+
