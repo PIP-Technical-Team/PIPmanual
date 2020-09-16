@@ -34,5 +34,5 @@ bookdown::render_book("index.Rmd",
                       "bookdown::gitbook")
 
 ```
-You can also use the hel
+You can also use the helper file `render_book.R` in the root of the directory to execute the code above.
 
