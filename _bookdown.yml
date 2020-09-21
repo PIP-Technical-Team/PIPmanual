@@ -13,6 +13,7 @@ language:
 rmd_files: [
   "index.Rmd",
   "intro.Rmd",
+  "load_md_aux.Rmd",
 
   "references.Rmd",
 ]
