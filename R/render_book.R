@@ -3,6 +3,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 file <- "intro.Rmd"
+file <- "load_md_aux.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 
