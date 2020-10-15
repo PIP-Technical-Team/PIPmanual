@@ -13,7 +13,12 @@ language:
 rmd_files: [
   "index.Rmd",
   "intro.Rmd",
+  "1.Interpolation.Rmd",
+  "2.National_Accounts.Rmd"
+  "3.Poverty",
+  "4.Deciles",
+  "5.Gini",
+  "6.Mean_log_deviation",
   "load_md_aux.Rmd",
-
   "references.Rmd",
 ]
