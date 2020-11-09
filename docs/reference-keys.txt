@@ -1,0 +1,15 @@
+intro
+interpolation
+national-accounts
+poverty
+deciles
+gini
+mean-log-deviation
+load
+auxiilary-data
+udpate-data
+load-data
+microdata
+inventory-file
+finding-data
+loading-data
