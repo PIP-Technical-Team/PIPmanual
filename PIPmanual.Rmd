@@ -1,0 +1,293 @@
+--- 
+title: "PIP Manual"
+author: "DECIS, Poverty GP"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a manual to document all the technical and methodological decisions taken during the creation of packages for the PIP workflow."
+---
+
+# Prerequisites {-}
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown' ), 'packages.bib')
+```
+
+
+You need to make sure the `bookdown` package is installed in your computer
+```{r eval=FALSE}
+install.packages("bookdown")
+
+# or the development version
+ devtools::install_github("rstudio/bookdown")
+```
+
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction {#intro}
+
+PIP workflow is ...
+
+<!--chapter:end:intro.Rmd-->
+
+# Interpolation
+
+
+
+<!--chapter:end:1.Interpolation.Rmd-->
+
+# National Accounts
+
+
+<!--chapter:end:2.National_Accounts.Rmd-->
+
+# Poverty
+
+Poverty measures for the developing world
+In assessing poverty in a given economy, and how best to reduce poverty, one naturally focuses on a poverty line that is considered appropriate for that economy. But how do we talk meaningfully about "global poverty"? Poverty lines across economies vary in terms of their purchasing power, and they have a strong economic gradient, such that richer economies tend to adopt higher standards of living in defining poverty (Ravallion, et al., 2009). But to consistently measure global absolute poverty in terms of consumption we need to treat two people with the same purchasing power over commodities the same way—both are either poor or not poor—even if they live in different economies
+This note summarizes the methods used by the World Bank in measuring global poverty, and by PovcalNet in implementing those methods. Chen and Ravallion (2010a), Ferreira et al. (2016) and World Bank (2015) provide more details.
+
+Methods used for international poverty measurement
+To measure poverty in the developing world as a whole, the World Bank’s “$1 a day” measures apply a common standard, anchored to what “poverty” means in the world’s poorest economies. The original “$1-a-day” line was based on a compilation of national lines for only 22 developing economies, mostly from academic studies in the 1980s (Ravallion et al., 1991). While this was the best that could be done at the time, the sample was hardly representative of developing economies even in the 1980s. Since then, national poverty lines have been developed for many other economies. Based on a new compilation of national lines for 75 developing economies, Ravallion, Chen and Sangraula (RCS) (2009) proposed a new international poverty line of $1.25 a day. This was the average poverty line for the poorest 15 economies in their data set. Since October 2015, the World Bank uses a poverty line of $1.90 a day at 2011 PPP to estimate global poverty. This new poverty line (referred to as the International Poverty Line) is the average of the same 15 national poverty lines that yielded the $1.25 line at 2005 PPPs (Ferreira et al., 2016).
+
+Multiple poverty lines should be used to test the robustness of global poverty comparisons. Chen and Ravallion (2010a) used five lines (in 2005 PPP): $1.00, $1.25, $1.45, $2.00 and $2.50 a day. Since October 2017, PovcalNet also reports global poverty at two higher poverty lines of $3.20 and $5.50 per day, in addition the International Poverty Line of $1.90. These additional lines are based on the national poverty lines typically found in lower- and upper-middle income economies, respectively (see Jolliffe and Prydz, 2016). Also note that global poverty rates at global lines cannot be directly compared with poverty measured at national poverty lines in local currency, which reflect economy-specific definitions of poverty.
+
+The poverty lines at PPP are converted to local currencies in 2011 prices and are then converted to the prices prevailing at the time of the relevant household survey using the best available Consumer Price Index (CPI) (see details about CPIs in the "What is new" section). (Equivalently, the survey data on household consumption or income for the survey year are expressed in the prices of the ICP base year, and then converted to PPP $’s.) Then the poverty rate is calculated from that survey. All inter-temporal comparisons are real, as assessed using the economy-specific CPI.
+
+To compare the number of poor people across economies and compute regional aggregates, economy-level estimates must be "lined up" first to a common reference year, interpolating and extrapolating for economies in which survey data are not available in the reference year but are available either before, after, or both (see World Bank, 2015, Chapter 6). The reference years range from 1981 to 2018. The more survey data are available (that is, the more data for different years), the more accurate the interpolation.
+
+The process requires adjusting the mean income or expenditure observed in the survey year by a growth factor to infer the unobserved level in the reference year. Thus, two assumptions are required to implement this process: distribution-neutral growth and a real rate of growth between the survey and reference year.
+
+Distribution-neutral growth implies that income or expenditure levels are adjusted for growth assuming that the underlying relative distribution of income or expenditure observed in survey years remains unchanged. In other words, the growth rate is the same along the distribution. Under this assumption, it is straightforward to interpolate the poverty estimate in a given reference year implied by a given rate of growth in income or expenditure. Rates of change in real consumption per capita should be based on the change in real consumption measured by comparing survey data across different years. In practice, however, survey data in most economies are not available on an annual basis. Therefore, the change in private consumption per capita as measured from the national accounts is used instead.
+
+When the reference year falls between two survey years, an estimate of mean consumption at the reference year is constructed by extrapolating the means obtained from the surveys forward and backward to the reference year. The second step is to compute the headcount poverty rate at the reference year after normalizing the distributions observed in the two survey years by the reference year mean. This yields two estimates of the headcount poverty rates in the reference year. The final reported poverty headcount rate for the reference years is the linear interpolation of the two. When data from only one survey year are available, the reference year mean is based on the survey mean by applying the growth rate in private consumption per capita from the national accounts. The reference year poverty estimate is then based on this mean and on the distribution observed in the one survey year.
+
+The aggregate headcount index for a region is the population-weighted mean of the headcount indices across the economies in that region. The number of poor in each region is the product of the region’s headcount index and total regional population. (See point 5 in the next section.) This assumes that the poverty rate for an economy without a household survey is the regional average.
+
+The underlying data
+Data sources: The distributional data used here are drawn from nationally representative household surveys, which are conducted by national statistical offices or by private agencies under the supervision of government or international agencies and obtained from government statistical offices and World Bank Group operational departments.
+Price indices: The CPIs are primarily taken from the IMF’s International Financial Statistics. Lakner et al. (2018) provide an overview of the CPI series used, while the precise source for every country-year is given in the "What is new" note released with every PovcalNet update. The CPI data used in the poverty estimates is available here.
+Micro data (household level data) vs. grouped data: recently access to micro data has improved dramatically. When available, micro data are used directly to estimate poverty. In a few economies (more common in earlier years), estimates are based on grouped tabulations from economy’s statistical offices in combination with a parametric Lorenz curve.
+The same PPPs are used to convert the international lines to local currency units (LCUs). Three economies were treated differently, China, India and Indonesia. For these three economies, national PPPs from the ICP are disaggregated into rural and urban PPPs that are constructed to reflect cost-of-living differences between rural and urban areas. Following Chen and Ravallion (2010a, 2010b) and Ravallion (2008), this adjustment requires rural and urban poverty lines (which are used to capture differences in the cost of living) as well as information on the rural and urban shares of the ICP price collection. Further details are given in Ferreira et al. (2016).
+In several other economies, the welfare aggregate has also been adjusted for within-economy spatial price differences. Ferreira et al. (2016) describe the adjustment for economies in the Latin America and the Caribbean and Europe and Central Asia regions. Beginning in October 2017, we have also incorporated a spatial price adjustment in several economies in East Asia and the Pacific (see the "What is new" entry for October 2017).
+Observations with negative incomes have been dropped from those surveys where income is the welfare measure (and where we have access to micro data). From October 2017, this has been applied to all income surveys. Previously, this approach was only followed in Latin America and the Caribbean. For more details, see the October 2017 entry in "What is new".
+The regional and global population may differ from the aggregates given in the World Development Indicators, because PovcalNet uses the classification of economies based on whether they are IBRD eligible or recently graduated. The regional total population only includes economies that are IBRD eligible or recently graduated. The remaining economies are included in the group "Other high income" (see World Bank, 2016, p. 49 for a list of economies). Furthermore, the regional total in PovcalNet also includes economies without a household survey or other missing data. Hence, the sum of the populations of the economies that are included in PovcalNet is less than the regional total.
+PovcalNet uses per capita household income or consumption expenditure. In other words, every household member is assigned an equal share of household income or consumption, regardless of their age, and ignoring economies of scale.
+Data availability
+PovcalNet has income or consumption distributional data from more than 1500 household surveys spanning 1967-2018 and 166 economies. Not all these surveys are comparable in design and sampling methods. Non-representative surveys, though useful for some purposes, are excluded from the calculation of international poverty rates.
+
+The World Bank produced its first global poverty estimates for developing economies for the World Development Report 1990 using household survey data for 22 economies. Since 1979 there has been a considerable expansion in the number of economies that field such surveys, from 30 between 1979 and 1984 to 451 surveys between 2013 and 2018.
+
+Data coverage is improving in all regions, but the Middle East and North Africa, South Asia and Sub-Saharan Africa continue to lag behind. Poverty rates for a region are only reported when the available surveys cover at least 50 percent of the population in that region (within a window of three years either side of the reference year). Global poverty estimates are reported only if data is representative of at least 50 percent of the population in low-income and lower-middle income countries (LIC/LMIC countries), where most of the poor live. This requirement is only applied to the global poverty estimate, not at the regional level. The World Bank classification of countries according to income groups in the line-up year is used.
+
+The database, maintained by the PovcalNet team in the World Bank’s Development Research Group, is updated several times a year as new survey data become available, and a major reassessment of progress against poverty is made about every three years until 2008, from 2010 onwards such major updates were made annually until 2013. We now release new estimates of global poverty every two years. A complete overview of data availability by year and economy is available here. The lag between the reference year and when the estimates become available depends on the availability and reliability of household surveys for each economy. The lag is between two and three years, i.e. regional poverty estimates for reference year 2018 and global estimates for 2017 were released in 2020.
+
+Poverty measures are available for 166 economies.
+
+In the global aggregation, we had previously assumed that the "other high income economies" have no people living in extreme poverty. This group includes the rich economies that are not eligible to borrow form the World Bank (see World Bank, 2016 for a list of economies that are included in this group). At the recommendation of Prof. Atkinson’s Commission on Global Poverty (World Bank, 2017), we now adopt a truly global approach to poverty measurement and no longer impose this assumption. Therefore, as of October 2017, the global poverty estimate includes the people who live in the "other high income economies" and whose income falls below the poverty line.
+
+Data limitations
+No data are ideal. International comparisons of poverty estimates entail both conceptual and practical problems that should be understood by users.
+
+An important step in the process of compiling global poverty estimates is the conversion of the $1.90 a day International Poverty Line into respective national currency units. PPP exchange rates, such as those from the International Comparison Program or the Penn World Tables, are used because they take into account the local prices of goods and services not traded internationally. Since PPP rates were designed for comparing national accounts aggregates, they were not intended for making international poverty comparisons. PPPs are based on prices of goods and services that may not be representative of the consumption baskets of the poor, so they may not fully reflect the relative price level faced by very poor consumers. As a result, there is no certainty that an international poverty line measures exactly the same degree of deprivation across economies. Similarly, the poverty line may need to be adjusted for different locations (such as urban and rural areas) within the economy, if prices or access to goods and services differs. However, for most of economies, this information is not available.
+
+Discrepancies between national accounts and household surveys also make the estimation of poverty difficult. There is no reason why these sources would agree exactly on consumption, as they are not strictly measuring the same thing. But large discrepancies are still of concern, as they may reflect measurement errors in either number.
+
+There are also problems with comparability of surveys, both over time and across economies. The surveys underlying the welfare distributions used in PovcalNet are carried out by national statistical offices, central banks, or other national agencies, so they are designed to serve the specific needs and interests of each particular economy. Household survey questionnaires can differ widely, and similar surveys may not be strictly comparable because of differences in quality. Since September 2019, we publish a comparability dataset aimed at informing the user about the comparability of different surveys used in Povcalnet. These problems are diminishing as survey methods improve and become more standardized, but achieving strict comparability is still impossible. Under-reporting of income and selective compliances are other sources of measurement errors, and these problems are unlikely to be distribution-neutral.
+
+References
+Chen, Shaohua and Martin Ravallion, "The developing world is poorer than we thought, but no less successful in the fight against poverty", The Quarterly Journal of Economics, Vol. 125, Issue 4, pp. 1577-1625, 2010a.
+
+Chen, Shaohua and Martin Ravallion, "China is poorer than we thought, but no less successful in the fight against poverty", Chapter 13 of Sudhir Anand, Paul Segal, and Joseph Stiglitz (ed.), Debates on the Measurement of Poverty, Oxford University Press, Oxford: 2010b.
+
+Ferreira, Francisco H. G., Shaohua. Chen, Andrew. L. Dabalen, Yuri. M. Dikhanov, Nada Hamadeh, Dean M. Jolliffe, Ambar Narayan, Espen B. Prydz, Ana L. Revenga, Prem Sangraula, Umar Serajuddin and Nobuo Yoshida, "A global count of the extreme poor in 2012: data issues, methodology and initial results", The Journal of Economic Inequality, Vol. 14(2), 141-172, 2016.
+
+Jolliffe, Dean and Espen B. Prydz, "Estimating international poverty lines from comparable national thresholds: a robust approach for estimating relevant thresholds", The Journal of Economic Inequality, Vol. 14(2), 185-198, 2016.
+
+Lakner, Christoph, Daniel G. Mahler, Minh C. Nguyen, Joao Pedro Azevedo, Shaohua Chen, Dean M. Jolliffe, Espen B. Prydz and Prem Sangraula, "Consumer Price Indices used in Global Poverty Measurement", Global Poverty Monitoring Technical Note, No. 4. September 2018. World Bank.
+
+Ravallion, Martin, "A Global Perspective on Poverty in India", Economic and Political Weekly, October 25, Vol.43, No. 43, pp.31-37, 2008.
+
+Ravallion, Martin, Shaohua Chen and Prem Sangraula, "Dollar a day revisited", World Bank Economic Review, Vol. 23, No. 2, pp. 163-184, 2009
+
+Ravallion, Martin, Gaurav Datt and Dominique van de Walle, "Quantifying Absolute Poverty in the Developing World", Review of Income and Wealth, Vol. 37, pp. 345-361, 1991.
+
+World Bank, "A Measured Approach to Ending Poverty and Boosting Shared Prosperity: Concepts, Data, and the Twin Goals", Policy Research Report. Washington, DC: World Bank, 2015.
+
+World Bank, "Poverty and Shared Prosperity 2016: Taking on Inequality", Washington, DC: World Bank, 2016.
+
+World Bank, "Monitoring Global Poverty: Report of the Commission on Global Poverty", Washington, DC: World Bank, 2017.
+
+<!--chapter:end:3.Poverty.Rmd-->
+
+# Deciles
+
+
+<!--chapter:end:4.Deciles.Rmd-->
+
+# Gini
+
+<!--chapter:end:5.Gini.Rmd-->
+
+#  Mean log deviation
+
+<!--chapter:end:6.Mean_log_deviation.Rmd-->
+
+# Load microdata and Auxiliary data {#load}
+
+Make sure you have all the packages installed and loaded into memory. Given that they are hosted in Github, the code below makes sure that any package in the PIP workflow can be installed correctly. 
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+last_item <- function(x, word = "and") {
+  if (!(is.character(x))) {
+    warning("`x` must be character. coercing to character")
+    x <- as.character(x)
+  }
+
+  lx <- length(x)
+  if (lx == 1) {
+    y <- x
+  }
+  else if (lx == 2) {
+    y <- paste(x[1], word, x[2])
+  }
+  else {
+    y <- c(x[1:lx-1], paste(word, x[lx]))
+    y <- paste(y, collapse = ", ")
+  }
+  return(y)
+}
+
+
+```
+
+```{r load}
+## First specify the packages of interest
+packages = c("pipaux", "pipload")
+
+## Now load or install&load all
+package.check <- lapply(
+  packages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      pck_name <- paste0("PIP-Technical-Team/", x)
+      devtools::install_github(pck_name)
+      library(x, character.only = TRUE)
+    }
+  }
+)
+
+```
+
+## Auxiilary data
+
+```{r numb-func, include = FALSE}
+lf <- lsf.str("package:pipaux", pattern = "^pip_")
+  lf <- as.character(lf)
+  num_functions <- length(lf)
+```
+Even though `pipaux` has more than `r num_functions` functions, most of its features 
+can be executed by using only the `pipaux::load_aux` and `pipaux::update_aux` functions. 
+
+
+### udpate data
+```{r functions-av, include = FALSE}
+  lf <- lsf.str("package:pipaux", pattern = "^pip_[a-z]{3}$")
+  lf <- as.character(lf)
+  lf <- gsub("pip_", "", lf)
+```
+
+the main function of the `pipaux` package is `udpate_aux`. The first argument of this function is `measure` and it refers to the measure data to be loaded. The measures available are **`r last_item(lf)`**.
+```{r update-aux}
+pipaux::update_aux(measure = "cpi")
+```
+
+### Load data
+Loading auxiliary data is the job of the package `pipload` through the function `pipload::pip_load_aux()`, though `pipaux` also provides `pipaux::load_aux()` for the same purpose. Notice that, though both function do exactly the same, the loading function from `pipload` has the prefix `pip_` to distinguish it from the one in `pipaux`. However, we are going to limit the work of `pipaux` to update auxiliary data and the work of `pipload` to load data. Thus, all the examples below use `pipload` for loading either microdata or auxiliary data. 
+
+```{r load-aux}
+df <- pipload::pip_load_aux(measure = "cpi")
+head(df)
+```
+
+
+## Microdata 
+
+Loading PIP microdata is the most practical action in the `pipload` package. However, it is important to understand the logic of microdata. 
+
+PIP microdata has several characteristics, 
+
+* There could be more than once survey for each Country/Year. This happens when there are more than one welfare variable available such as income and consumption. 
+* Some countries, like Mexico, have the two different welfare types in the same survey for the same country/year. This add a layer of complexity when the objective is to known which is default one. 
+* There are multiple version of the same harmonized survey. These version are organized in a two-type vintage control. It is possible to have a new version of the data because the Raw data--the one provided by the official NSO--has been updated, or because there has been un update in the harmonization process.
+* Each survey could be use for more than one analytic tool in PIP (e.g., Poverty Calculator, Table Maker, or SOL). Thus, the data to be loaded depends on the tool in which it is going to be used. 
+
+Thus, in order to make the process of finding and loading data efficiently, `pipload` is a three-step process.
+
+### Inventory file
+The inventory file resides in `y:/PIP-Data/_inventory/inventory.fst`. This file is a data frame with all the microdata available in the PIP structure. It has two main variables, `orig` and `filename`. The former refers to the full directory path of the database, whereas the latter is only the file name. the other variables in this data frame are derived from these two. 
+
+The inventory file is used to speed up the file searching process in `pipload`. In previous packages, each time the user wanted to find a particular data base, it was necessary to look into the folder structure and extract the name of all the file that meet a particular criteria. This is time-consuming and inefficient. The advantage of this method though, is that, by construction, it finds all the the data available. By contrast, the inventory file method is much faster than the "searching" method, as it only requires to load a light file with all the data available, filter the data, and return the required information. The drawback, however, is that it needs to be kept up to date as data changes constantly. 
+
+To update the inventory file, you need to use the function `pip_update_inventory`. If you don't provide any argument, it will update the whole inventory, which may take around 10 to 15 min--the function will warn you about it. By provide the country/ies you want to update, the process is way faster. 
+
+```{r update-inventory}
+# update one country
+pip_update_inventory("MEX")
+
+# Load inventory file
+df <- pip_load_inventory()
+head(df[, "filename"])
+
+```
+
+
+### Finding data 
+
+Every dataset in the PIP microdata repository is identified by seven variables! Country code, survey year, survey acronym, master version, alternative version, tool, and source. So giving the user the responsibility to know all the different combinations of each file is a heavy burden. Thus, the data finder, `pip_find_data()`, will provide the names of all the files available that meet the criteria in the arguments provided by the user. For instance, if the use wants to know the all the file available for Paraguay, we could type, 
+
+```{r inventory-pry}
+pip_find_data(country = "PRY")[["filename"]]
+```
+
+Yet, if the user need to be more precise in its request, she can add information to the different arguments of the function. For example, this is data available in 2012, 
+
+```{r inventory-pry2012}
+pip_find_data(country = "PRY", 
+              year = 2012)[["filename"]]
+```
+
+### Loading data
+
+Function `pip_load_data` takes care of loading the data. The very first instruction within `pip_load_data` is to find the data avialable in the repository by using `pip_load_inventory()`. The difference however is two-fold. First, `pip_load_data` will load the default and/or most recent version of the country/year combination available. Second, it gives the user the possibility to load different datasets in either list or dataframe form. For instance, if the user wants to load the Paraguay data in 2014 and 2015 used in the Poverty Calculator tool, she may type, 
+
+```{r load-data}
+
+df <- pip_load_data(country = "PRY",
+                    year    = c(2014, 2015), 
+                    tool    = "PC")
+
+janitor::tabyl(df, survey_id)
+```
+
+
+
+
+<!--chapter:end:load_md_aux.Rmd-->
+
+`r if (knitr:::is_html_output()) '# References {-}'`
+
+<!--chapter:end:references.Rmd-->
+

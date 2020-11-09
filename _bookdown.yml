@@ -14,11 +14,11 @@ rmd_files: [
   "index.Rmd",
   "intro.Rmd",
   "1.Interpolation.Rmd",
-  "2.National_Accounts.Rmd"
-  "3.Poverty",
-  "4.Deciles",
-  "5.Gini",
-  "6.Mean_log_deviation",
+  "2.National_Accounts.Rmd",
+  "3.Poverty.Rmd",
+  "4.Deciles.Rmd",
+  "5.Gini.Rmd",
+  "6.Mean_log_deviation.Rmd",
   "load_md_aux.Rmd",
   "references.Rmd",
 ]
