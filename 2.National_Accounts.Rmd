@@ -1,2 +1,12 @@
 # National Accounts
 
+The World Bank offers poverty estimates for the world and geographic regions (i.e Sub-Saharan Africa, etc.) for selected years, commonly referred as **"reference years"**. Such reference years are produced in order to create aggregates for country groupings for specific years. Therefore, to analyze country-level poverty trends, it is advisable to rely on estimates from survey-years instead. 
+
+Since for most economies, poverty estimates from household surveys are not available every single year, adjustments to household survey data are needed to align ("line-up") estimates to common reference years in order to address these data gaps. Thus, **national accounts (per capita GDP and per capita personal consumption expenditure)** are used in lining up survey estimates to the reference years that are used for reporting regional and global poverty estimates.
+
+References:
+Prydz, Espen Beer, Dean M. Jolliffe, Christoph Lakner, Daniel Gerszon Mahler, and Prem Sangraula. “National
+Accounts Data used in Global Poverty Measurement.” Global Poverty Monitoring Technical Note 8. Washington,
+DC: World Bank. 2019. https://ideas.repec.org/p/wbk/wbgpmt/8.html. 
+
+http://documents1.worldbank.org/curated/en/664751553100573765/pdf/135460-WP-PUBLIC-Disclosed-3-21-2019.pdf
