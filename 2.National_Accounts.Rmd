@@ -4,9 +4,31 @@ The World Bank offers poverty estimates for the world and for geographic regions
 
 Since for most economies, poverty estimates from household surveys are not available every single year, adjustments to household survey data are needed to align ("line-up") estimates to common reference years in order to address these data gaps. Thus, **national accounts (per capita GDP and per capita personal consumption expenditure)** are used in lining up survey estimates to the reference years that are used for reporting regional and global poverty estimates.
 
-References:
+## Sources of National Accounts Data
+
+There are two main indicators used for national accounts, (1) the *Household final consumption expenditure* (HFCE), -also referred to as personal consumption expenditure (PCE)-, and (2) *Gross Domestic Product* (GDP). The former is the preferred series for interpolating and extrapolating survey data, given that it is conceptually closest to the economic activity typically captured by household surveys. However, for some countries, particularly in Sub-Saharan Africa, HFCE estimates at constant prices are more sparse. Additionally, the empirical correlation between growth in HFCE and survey mean is weaker in this region than elsewhere (Ravallion, 2003). Therefore, for that particular region, GDP is the preferred source for lining up poverty estimates (and for other economies whenever HFCE is not available).
+
+PovcalNet uses the series in per capita terms and in constant prices (typically constant USD).
+
+1. **World Development Indicators (WDI)**: 
+The WDI database is the primary source of National Accounts indicators in the PovcalNet project. Specifically, we use the series “Households Final Consumption Expenditure per capita (constant 2010 US$) and "GDP per capita (constant 2010 US$)". 
+
+2. **Maddison Project Database (MPD)**: 
+For country-years where WDI does not have national accounts data (prior to year 2000), PovcalNet relies on GDP per capita in constant prices from MPD, managed by The Groningen Growth and Development Centre (GGDC). MPD offers the broadest coverage of comparative historical national income data in the world.
+
+3. **Country-specific series**
+Country-specific series from other sources are used in cases where national account data may not be available in either WDI or MPD (or the available data may be deemed inappropriate or erroneous). These can come from national statistical sources, research papers, or other versions of the data. 
+
+
+## References
+Paper
 Prydz, Espen Beer, Dean M. Jolliffe, Christoph Lakner, Daniel Gerszon Mahler, and Prem Sangraula. “National
 Accounts Data used in Global Poverty Measurement.” Global Poverty Monitoring Technical Note 8. Washington,
 DC: World Bank. 2019. https://ideas.repec.org/p/wbk/wbgpmt/8.html. 
-
 http://documents1.worldbank.org/curated/en/664751553100573765/pdf/135460-WP-PUBLIC-Disclosed-3-21-2019.pdf
+
+MPD
+https://www.rug.nl/ggdc/historicaldevelopment/maddison/
+
+WDI
+https://datacatalog.worldbank.org/dataset/world-development-indicators
