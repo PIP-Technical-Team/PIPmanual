@@ -2,11 +2,13 @@
 
 The World Bank offers poverty estimates for the world and for geographic regions (i.e Sub-Saharan Africa, etc.) for selected years, commonly referred as **"reference years"**. Such reference years are produced in order to create aggregates for country groupings for specific years. Therefore, to analyze country-level poverty trends, it is advisable to rely on estimates from survey-years instead. 
 
-Since for most economies, poverty estimates from household surveys are not available every single year, adjustments to household survey data are needed to align ("line-up") estimates to common reference years in order to address these data gaps. Thus, **national accounts (per capita GDP and per capita personal consumption expenditure)** are used in lining up survey estimates to the reference years that are used for reporting regional and global poverty estimates.
+Since for most economies, poverty estimates from household surveys are not available every single year, adjustments to household survey data are needed to align ("line-up") estimates to common reference years in order to address these data gaps. Thus, national accounts indicators are used in lining up survey estimates to the reference years that are used for reporting regional and global poverty estimates (see line-up methods in chapter on Interpolation).
 
-## Sources of National Accounts Data
+## Sources of National Accounts
 
-There are two main indicators used for national accounts, (1) the *Household final consumption expenditure* (HFCE), -also referred to as personal consumption expenditure (PCE)-, and (2) *Gross Domestic Product* (GDP). The former is the preferred series for interpolating and extrapolating survey data, given that it is conceptually closest to the economic activity typically captured by household surveys. However, for some countries, particularly in Sub-Saharan Africa, HFCE estimates at constant prices are more sparse. Additionally, the empirical correlation between growth in HFCE and survey mean is weaker in this region than elsewhere (Ravallion, 2003). Therefore, for that particular region, GDP is the preferred source for lining up poverty estimates (and for other economies whenever HFCE is not available).
+There are two main indicators used as national accounts. The preferred indicator to interpolating and extrapolating survey data is the *Household final consumption expenditure* (HFCE), -also referred to as personal consumption expenditure (PCE). That is because HFCE is conceptually closest to the economic activity typically captured by household surveys. 
+
+However, for some countries, particularly in Sub-Saharan Africa (SSA), HFCE estimates at constant prices are more sparse. Additionally, the empirical correlation between growth in HFCE and survey mean is weaker in this region than elsewhere (Ravallion, 2003). Therefore, for SSA in particular, *Gross Domestic Product* (GDP) is the preferred source for lining up poverty estimates (and for other economies whenever HFCE is not available).
 
 PovcalNet uses the series in per capita terms and in constant prices (typically constant USD).
 
