@@ -1,4 +1,4 @@
-# Interpolation
+  # Interpolation
 
 To compare the number of poor people across economies and compute regional aggregates, economy-level estimates must be "lined up" first to a common reference year, interpolating and extrapolating for economies in which survey data are not available in the reference year but are available either before, after, or both ([see World Bank, 2015, Chapter 6](https://openknowledge.worldbank.org/bitstream/handle/10986/20384/9781464803611.pdf)). The reference years range from 1981 to 2018. The more survey data are available (that is, the more data for different years), the more accurate the interpolation.
 
@@ -8,6 +8,15 @@ Distribution-neutral growth implies that income or expenditure levels are adjust
 
 When the reference year falls between two survey years, an estimate of mean consumption at the reference year is constructed by extrapolating the means obtained from the surveys forward and backward to the reference year. The second step is to compute the headcount poverty rate at the reference year after normalizing the distributions observed in the two survey years by the reference year mean. This yields two estimates of the headcount poverty rates in the reference year. The final reported poverty headcount rate for the reference years is the *linear interpolation* of the two. When data from only one survey year are available, the reference year mean is based on the survey mean by applying the growth rate in private consumption per capita from the national accounts. The reference year poverty estimate is then based on this mean and on the distribution observed in the one survey year.
 
-The aggregate headcount index for a region is the population-weighted mean of the headcount indices across the economies in that region. The number of poor in each region is the product of the region’s headcount index and total regional population. (See point 5 in the [underlying data](#ud) section.) This assumes that the poverty rate for an economy without a household survey is the regional average.
+The extrapolation of the survey mean from year $t_0$ to reference year $𝑡_𝑟$ can be summarized as
+follows
+$$m_{t_r} = {n_{t_r} \choose n_{t_0}}* m_{t_0} $$
+where 𝑚 denotes the survey mean and 𝑛 the national accounts mean. Poverty for the reference
+year is then estimated using this extrapolated distribution. Using such an extrapolation assumes
+distribution neutral growth with relative inequality held constant, growing the entire distribution
+by the same rate. 
+
+
+Finally, the aggregate headcount index for a region is the population-weighted mean of the headcount indices across the economies in that region. The number of poor in each region is the product of the region’s headcount index and total regional population. (See point 5 in the [underlying data](#ud) section.) This assumes that the poverty rate for an economy without a household survey is the regional average.
 
 
