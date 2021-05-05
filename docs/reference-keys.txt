@@ -1,0 +1,16 @@
+intro
+load
+auxiilary-data
+udpate-data
+load-data
+microdata
+inventory-file
+finding-data
+loading-data
+pcpipeline
+folder-structure
+prerequisites-1
+structure-of-the-_targets.r-file
+step-3-the-actual-pipeline
+executing-the-_targets.r-file
+debugging
