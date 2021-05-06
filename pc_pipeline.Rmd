@@ -124,12 +124,13 @@ keep in mind that the `'R/_common.R'` was used in a previous version of the
 pipeline before `{targets}` was implemented. Now, most of the function in
 `'R/_common.R'` are included in the `{pipdm}` package.
 
-### Step 2: prepare data {.unnumbered}
+### Step 2: prepare data {#pipe-prepare-data .unnumbered}
 
 This section used to longer in previous versions of the pipeline because
 identified the auxiliary data, loaded he PIP microdata inventory, and created
-the cache files. Now, it only identifies the auxiliary data. Not much to be said
-here.
+the cache files. Now, it only identifies the auxiliary data and creates the data
+frame `aux_tb`, which is used inside the pipeline to create targets for each
+auxiliary file. Not much more to say here.
 
 ### Step 3: The actual pipeline
 
@@ -173,9 +174,52 @@ branching](https://books.ropensci.org/targets/dynamic.html#dynamic) of the
 targets manual). We will see the use of this type of targets when we talk about
 the use of cache files.
 
+### Stem targets {.unnumbered}
+
 There are two ways to create **stem** targets: either using `tar_target()` or
 using `tar_map()` from the `{tarchetypes}` package. The `tar_map()` function
-allows to create **stem** targets iteratively.
+allows to create **stem** targets iteratively. See for instance the creation of
+targets for each auxiliary data,
+
+```{r, eval=FALSE}
+tar_map(
+  values = aux_tb, 
+  names  = "auxname", 
+  
+  # create dynamic name
+  tar_target(
+    aux_dir,
+    auxfiles, 
+    format = "file"
+  ), 
+  tar_target(
+    aux,
+    pipload::pip_load_aux(file_to_load = aux_dir,
+                          apply_label = FALSE)
+  )
+  
+)
+```
+
+`tar_map()` takes the values in the data frame `aux_tb` created in [Step 2:
+prepare data] and creates two type of targets. First, it create the target
+`aux_dir`, using the file paths in column `auxfiles` of `aux_tb` to let
+`{targets}` know that we will have objects that are loaded from a file and are
+not created inside the pipeline. This is why we use the option
+`format = "file"`. Then, it uses the the column `auxname` of `aux_tb` as the
+names of the targets for each auxiliary data frame (prefixed by the word "aux").
+This is why we had to add the argument `file_to_load` to
+`pipload::pip_load_aux`, so we can let `{targets}` know that the file paths
+defined in target `aux_dir` are used to create the targets prefixed with `aux`,
+which are the actual targets. For example, if I need to use the population data
+frame inside the pipeline, I'd use the target `aux_pop`, which had a
+corresponding file path in `aux_dir`. In this way, if the original file
+referenced in `aux_dir` changes, all the targets that depend on `aux_pop` will
+be run again.
+
+### Branches targets {.unnumbered}
+
+The core of this pipeline
 
 ## Executing the `_targets.R` file
 
