@@ -172,7 +172,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>3.5</b> Understanding <code>pipdm</code> functions</a></li>
+<li class="chapter" data-level="3.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>3.5</b> Understanding <code>{pipdm}</code> functions</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>3.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
+<li class="chapter" data-level="3.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>3.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
+</ul></li>
 <li class="chapter" data-level="3.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>3.6</b> Executing the <code>_targets.R</code> file</a></li>
 <li class="chapter" data-level="3.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>3.7</b> Debugging</a></li>
 </ul></li>
@@ -213,9 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-11"><a href="load.html#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb2-12"><a href="load.html#cb2-12" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb2-13"><a href="load.html#cb2-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-14"><a href="load.html#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-15"><a href="load.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: pipaux</span></span>
-<span id="cb2-16"><a href="load.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: pipload</span></span></code></pre></div>
+<span id="cb2-14"><a href="load.html#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div id="auxiilary-data" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Auxiilary data</h2>
 <p>Even though <code>pipaux</code> has more than 25 functions, most of its features

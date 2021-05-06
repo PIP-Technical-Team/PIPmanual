@@ -340,7 +340,64 @@ Now, it has not only been integrated in the pc pipeline, but it is also possible
 to execute the creation of cache files independently from the rest of the
 pipeline, by following the instructions in [Executing the \_targets.R file].
 
-## Understanding `pipdm` functions
+The first target, `pipeline_inventory` is the pip inventory dataset filtered to
+match only the data available in the price framework file. This data set also
+contains a lot information useful for creating the cache files. Notice that the
+commented line in this target would filter the pipeline inventory to have only
+the information for IDN, 2015. [In case you need to update specific cache files,
+you have to do add the proper filtering condition in there]{style="color:red"}.
+
+In the second target, `status_cache_files_creation`, you will create the cache
+files, but the returning value of the function `pipdm::create_cache_file()` is
+not the cache file per-se but a list with the status of the process of creation.
+If the creation of a particular file fails, it does not precludes the creation
+of other files, but returns metadata of where in the process if failed. Notice
+that function `pipdm::create_cache_file()` requires the the CPI and PPP
+auxiliary data. This is so because the cache file has an additional variable,
+`welfare_ppp`, for deflated welfare aggregate to daily 2011 PPP values. FInally,
+and more importantly, argument `force = TRUE` ensures that even if the cache
+file exists already, it should be modified. This is important when you require
+additional features in the cache file from the then ones it has now. If set to
+`TRUE`, it will replace any file in the network drive that is listed in
+`pipeline_inventory`. If set to `FALSE`, only the files that are in
+`pipeline_inventory` but not in the cache folder will be created. Use this
+option only when you get need to add new features to all cache data or when you
+are testing, and only need a few surveys with the new features.
+
+## Understanding `{pipdm}` functions
+
+The `{pipdm}` package is the backbone of the pc pipeline. It is in charge of
+executing the functions in `{wbpip}` and consolidate the new DataBases. This is
+why, many of the functions in `{pipdm}` are prefixed with "db\_".
+
+### Internal structure of `{pipdm}` functions
+
+The main objective of `{pipdm}` is to execute the functions in `{wbpip}` to do
+the calculations and then build the data frames. As of today, `r Sys.Date()`,
+the process is a little intricate.
+
+Let's take the example of estimating distributive measures in the pipeline. The
+image [below](#pipdm-structure) shows that there are at least three intermediate
+function levels between the `db_compute_dist_stats()` function, which executed
+directly in the pc pipeline, and the `wbpip::md_compute_dist_stats()`, which
+makes the calculations. Also, notice that the functions are very general in
+regards to the output. No higher level function is specific enough to retrieve
+only one measure such as the Gini coefficient, or the median, or the quantiles
+of the distribution. If we need to add or modify one particular distributive
+measure, it must be done an even lower level than
+`wbpip::md_compute_dist_stats()` and make sure the new output does not mess up
+the execution of any of the intermediate functions before the results get to
+`db_compute_dist_stats()`.
+
+![](img/pipdm_structure.png){#pipdm-structure}
+
+This long chain of functions is inflexible and makes debugging very difficult.
+So, if you need to make any modification, identify first the chain of execution
+in each `pipdm` function you modify and then make sure your changes do not
+affect the output format as it may break the chain of execution. Also, this is a
+good example why, this structure might need be improved.
+
+### Updating `{pipdm}` (or any other PIP package)
 
 ## Executing the `_targets.R` file
 

@@ -172,7 +172,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>3.5</b> Understanding <code>pipdm</code> functions</a></li>
+<li class="chapter" data-level="3.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>3.5</b> Understanding <code>{pipdm}</code> functions</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>3.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
+<li class="chapter" data-level="3.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>3.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
+</ul></li>
 <li class="chapter" data-level="3.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>3.6</b> Executing the <code>_targets.R</code> file</a></li>
 <li class="chapter" data-level="3.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>3.7</b> Debugging</a></li>
 </ul></li>
@@ -503,10 +507,62 @@ the cache files used to be created in <a href="pcpipeline.html#pipe-prepare-data
 Now, it has not only been integrated in the pc pipeline, but it is also possible
 to execute the creation of cache files independently from the rest of the
 pipeline, by following the instructions in [Executing the _targets.R file].</p>
+<p>The first target, <code>pipeline_inventory</code> is the pip inventory dataset filtered to
+match only the data available in the price framework file. This data set also
+contains a lot information useful for creating the cache files. Notice that the
+commented line in this target would filter the pipeline inventory to have only
+the information for IDN, 2015. <span style="color:red">In case you need to update specific cache files,
+you have to do add the proper filtering condition in there</span>.</p>
+<p>In the second target, <code>status_cache_files_creation</code>, you will create the cache
+files, but the returning value of the function <code>pipdm::create_cache_file()</code> is
+not the cache file per-se but a list with the status of the process of creation.
+If the creation of a particular file fails, it does not precludes the creation
+of other files, but returns metadata of where in the process if failed. Notice
+that function <code>pipdm::create_cache_file()</code> requires the the CPI and PPP
+auxiliary data. This is so because the cache file has an additional variable,
+<code>welfare_ppp</code>, for deflated welfare aggregate to daily 2011 PPP values. FInally,
+and more importantly, argument <code>force = TRUE</code> ensures that even if the cache
+file exists already, it should be modified. This is important when you require
+additional features in the cache file from the then ones it has now. If set to
+<code>TRUE</code>, it will replace any file in the network drive that is listed in
+<code>pipeline_inventory</code>. If set to <code>FALSE</code>, only the files that are in
+<code>pipeline_inventory</code> but not in the cache folder will be created. Use this
+option only when you get need to add new features to all cache data or when you
+are testing, and only need a few surveys with the new features.</p>
 </div>
 </div>
 <div id="understanding-pipdm-functions" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Understanding <code>pipdm</code> functions</h2>
+<h2><span class="header-section-number">3.5</span> Understanding <code>{pipdm}</code> functions</h2>
+<p>The <code>{pipdm}</code> package is the backbone of the pc pipeline. It is in charge of
+executing the functions in <code>{wbpip}</code> and consolidate the new DataBases. This is
+why, many of the functions in <code>{pipdm}</code> are prefixed with “db_.”</p>
+<div id="internal-structure-of-pipdm-functions" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Internal structure of <code>{pipdm}</code> functions</h3>
+<p>The main objective of <code>{pipdm}</code> is to execute the functions in <code>{wbpip}</code> to do
+the calculations and then build the data frames. As of today, 2021-05-06,
+the process is a little intricate.</p>
+<p>Let’s take the example of estimating distributive measures in the pipeline. The
+image <a href="pcpipeline.html#pipdm-structure">below</a> shows that there are at least three intermediate
+function levels between the <code>db_compute_dist_stats()</code> function, which executed
+directly in the pc pipeline, and the <code>wbpip::md_compute_dist_stats()</code>, which
+makes the calculations. Also, notice that the functions are very general in
+regards to the output. No higher level function is specific enough to retrieve
+only one measure such as the Gini coefficient, or the median, or the quantiles
+of the distribution. If we need to add or modify one particular distributive
+measure, it must be done an even lower level than
+<code>wbpip::md_compute_dist_stats()</code> and make sure the new output does not mess up
+the execution of any of the intermediate functions before the results get to
+<code>db_compute_dist_stats()</code>.</p>
+<p><img src="img/pipdm_structure.png" id="pipdm-structure" /></p>
+<p>This long chain of functions is inflexible and makes debugging very difficult.
+So, if you need to make any modification, identify first the chain of execution
+in each <code>pipdm</code> function you modify and then make sure your changes do not
+affect the output format as it may break the chain of execution. Also, this is a
+good example why, this structure might need be improved.</p>
+</div>
+<div id="updating-pipdm-or-any-other-pip-package" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Updating <code>{pipdm}</code> (or any other PIP package)</h3>
+</div>
 </div>
 <div id="executing-the-_targets.r-file" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Executing the <code>_targets.R</code> file</h2>
