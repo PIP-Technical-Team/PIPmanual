@@ -1,8 +1,9 @@
 # Poverty Calculator Pipeline (pre-computed estimations) {#pcpipeline}
 
 The Poverty Calculator Pipeline--hereafter, and only for the rest of this
-chapter, pipeline--is the technical procedure to calculate the pre-computed
-estimations of the PIP project. These estimations have two main purposes:
+chapter, **pc pipeline**--is the technical procedure to calculate the
+pre-computed estimations of the PIP project. These estimations have two main
+purposes:
 
 1.  Provide the user with instantaneous information about distributive measures
     of all the household surveys in the PIP repository that do not depend on the
@@ -16,7 +17,7 @@ Also, it provides some tips for debugging.
 
 ## Folder structure
 
-The pipeline is hosted in the Github repository
+The pc pipeline is hosted in the Github repository
 [PIP-Technical-Team/pip_ingestion_pipeline](https://github.com/PIP-Technical-Team/pip_ingestion_pipeline).
 At the root of the repo you will find a series of files and folders.
 
@@ -53,7 +54,7 @@ At the root of the repo you will find a series of files and folders.
 
 ## Prerequisites
 
-Before you start working on the pipeline, you need to make sure to have the
+Before you start working on the pc pipeline, you need to make sure to have the
 following PIP packages.
 
 [Note:]{style="color:red"} Notice that directives below have suffixes like
@@ -80,8 +81,8 @@ to install the most recent version of `targets` and `tarchetypes` packages.
 
 ## Structure of the `_targets.R` file
 
-Even thought the pipeline script looks like a regular R Script, it is structured
-in a specific way in order to make it work with
+Even thought the pc pipeline script looks like a regular R Script, it is
+structured in a specific way in order to make it work with
 `{[targets](https://docs.ropensci.org/targets/)}` package, starting by the fact
 that it must be called `_targets.R` in the root of the project. It highly
 recommended you read the entire [targets
@@ -95,9 +96,8 @@ The first part of the pipeline sets up the environment. It,
 
 1.  loads the `{targets}` and `{tarchetypes}` packages,
 
-```{=html}
 <!-- -->
-```
+
 2.  creates default values like directories, time stamps, survey and reference
     years boundaries, compression level of .fst files, among other things.
 3.  executes `tar_option_set()` to set up some option in `{targets}`. Two
@@ -118,24 +118,24 @@ pipelines](https://books.ropensci.org/targets/functions.html#functions-in-pipeli
 of the targets manual, it is recommend to only use functions rather than
 expressions during the executions. Presumably, the reason for this is that
 targets track changes in functions but not in expressions. Thus, this section of
-the scripts defines small functions that are executed along the pipeline. In the
-section above, the scripts `source('R/_common.R')` loads longer functions. Yet,
-keep in mind that the `'R/_common.R'` was used in a previous version of the
-pipeline before `{targets}` was implemented. Now, most of the function in
+the scripts defines small functions that are executed along the pc pipeline. In
+the section above, the scripts `source('R/_common.R')` loads longer functions.
+Yet, keep in mind that the `'R/_common.R'` was used in a previous version of the
+pc pipeline before `{targets}` was implemented. Now, most of the function in
 `'R/_common.R'` are included in the `{pipdm}` package.
 
 ### Step 2: prepare data {#pipe-prepare-data .unnumbered}
 
-This section used to longer in previous versions of the pipeline because
+This section used to longer in previous versions of the pc pipeline because
 identified the auxiliary data, loaded he PIP microdata inventory, and created
 the cache files. Now, it only identifies the auxiliary data and creates the data
-frame `aux_tb`, which is used inside the pipeline to create targets for each
+frame `aux_tb`, which is used inside the pc pipeline to create targets for each
 auxiliary file. Not much more to say here.
 
 ### Step 3: The actual pipeline
 
-This part of the pipeline is long and it is explained in detail in the next
-section. Suffice is to say that the order of the pipeline is the following,
+This part of the pc pipeline is long and it is explained in detail in the next
+section. Suffice is to say that the order of the pc pipeline is the following,
 
 1.  Load all necessary data. That is, auxiliary data and inventories, and then
     create any cache fie that has not been created yet.
@@ -161,7 +161,7 @@ section. Suffice is to say that the order of the pipeline is the following,
 ## Understanding the pipeline
 
 One thing is to understand the how the `{targets}` package works and something
-else is to understand how the targets of the Poverty Calculator Pipeline are
+else is to understand how the targets of the Poverty Calculator pc pipeline are
 created. For the former, you can read the targets manual. For the latter, we
 should start by making a distinction between the different types of targets.
 
@@ -202,24 +202,130 @@ tar_map(
 ```
 
 `tar_map()` takes the values in the data frame `aux_tb` created in [Step 2:
-prepare data] and creates two type of targets. First, it create the target
-`aux_dir`, using the file paths in column `auxfiles` of `aux_tb` to let
-`{targets}` know that we will have objects that are loaded from a file and are
-not created inside the pipeline. This is why we use the option
+prepare data](#pipe-prepare-data) and creates two type of targets. First, it
+create the target `aux_dir`, using the file paths in column `auxfiles` of
+`aux_tb` to let `{targets}` know that we will have objects that are loaded from
+a file and are not created inside the pc pipeline. This is why we use the option
 `format = "file"`. Then, it uses the the column `auxname` of `aux_tb` as the
 names of the targets for each auxiliary data frame (prefixed by the word "aux").
 This is why we had to add the argument `file_to_load` to
 `pipload::pip_load_aux`, so we can let `{targets}` know that the file paths
 defined in target `aux_dir` are used to create the targets prefixed with `aux`,
 which are the actual targets. For example, if I need to use the population data
-frame inside the pipeline, I'd use the target `aux_pop`, which had a
+frame inside the pc pipeline, I'd use the target `aux_pop`, which had a
 corresponding file path in `aux_dir`. In this way, if the original file
 referenced in `aux_dir` changes, all the targets that depend on `aux_pop` will
 be run again.
 
 ### Branches targets {.unnumbered}
 
-The core of this pipeline
+Most of the targets created in the pc pipeline are **branch** targets. This is
+so because, instead of loading all the datasets at once (drying out the
+computer's memory), we load each data independently, perform the calculations in
+each data set, store all the results in a list, and then create a data frame
+from that list, compiling all the results in one single object. Thus, if every
+single data set or result were a **stem** target, it would be not only
+impossible to visualize, but also more difficult to code. The following example
+illustrates how it works,
+
+```{r, eval=FALSE}
+
+# step A
+tar_target(
+  cache_inventory_dir, 
+  cache_inventory_path(),
+  format = "file"
+),
+
+# step B
+tar_target(
+  cache_inventory, 
+  {
+    x <- fst::read_fst(cache_inventory_dir, 
+                       as.data.table = TRUE)
+  },
+),
+
+# step C
+tar_target(cache_files,
+           get_cache_files(cache_inventory)),
+
+# step D
+tar_files(cache_dir, cache_files),
+
+# step E
+tar_target(cache, 
+           fst::read_fst(path = cache_dir, 
+                         as.data.table = TRUE), 
+           pattern = map(cache_dir), 
+           iteration = "list")
+```
+
+The code above illustrates several things. It is divided in steps, being the
+last step-- step E--the part of the code in which we create the **branch**
+target. Yet, it is important to understand the steps before.
+
+In step A we create target `cache_inventory_dir`, which is merely the path of
+the file than contains the cache inventory. Notice that it returned by function
+and not entered directly into the target. Since it is a file path, we need to
+add the argument `format = "file"` to let `{targets}` know that it is input
+data. In step B we load the cache inventory file into target `cache_inventory`
+by providing the target "path" that we created in step A. This file has several
+column. One of them contains the file path of every single cache file in the PIP
+network drive. That single column is extracted from the cache inventory in step
+C. Now, in step D, each file path is declared as input, using the convenient
+function `tar_files()`, creating thus a new target, `cache_dir`. FInally, we
+create **branch** target `cache` with all the cache files by loading each file.
+To do this iteratively, we parse the `cache_dir` target to the `path` argument
+of the function `fst::read_fst()` and to the `pattern = map()` argument of the
+`tar_target()` function. Finally, we need to specify that the output of the
+iteration is stored as a list, using the argument `iteration = "list"`.
+
+The basic logic of **branch** targets is that the vector or list to iterate
+though should be added in the argument of the function and the `pattern = map()`
+argument of the `tar_target()` function. it is very similar to `purrr::map()`
+
+[Note:]{style="color:red"} If we are iterating through *more than one* vector or
+list, you need to (1) separate each of them by commas in the `map()` part of the
+argument (See example code below). (2) make sure all the vectors or lists **have
+the same length**. This is why we cannot remove NULL or NA values from any
+target. (3) make sure you do **NOT** sort any of the output targets as it will
+loose its correspondence with other targets.
+
+```{r, eval=FALSE}
+
+# Example of creating branch target using several lists to iterate through.
+tar_target(
+  name      = dl_dist_stats,
+  command   = db_compute_dist_stats(dt       = cache, 
+                                    mean     = dl_mean, 
+                                    pop      = aux_pop, 
+                                    cache_id = cache_ids), 
+  pattern   =  map(cache, dl_mean, cache_ids), 
+  iteration = "list"
+)
+```
+
+### Creating the cache files {.unnumbered}
+
+The creation of the cache files is done in the following code,
+
+```{r, eval=FALSE}
+tar_target(status_cache_files_creation, 
+           pipdm::create_cache_file(
+             pipeline_inventory = pipeline_inventory,
+             pip_data_dir       = PIP_DATA_DIR,
+             tool               = "PC",
+             cache_svy_dir      = CACHE_SVY_DIR,
+             compress           = FST_COMP_LVL,
+             force              = TRUE,
+             verbose            = FALSE,
+             cpi_dt             = aux_cpi,
+             ppp_dt             = aux_ppp)
+)
+```
+
+## Understanding `pipdm` functions
 
 ## Executing the `_targets.R` file
 
