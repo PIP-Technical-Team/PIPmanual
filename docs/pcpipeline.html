@@ -259,11 +259,6 @@ following PIP packages.</p>
 <code>@development</code>, which specify the branch of the particular package that you need
 to use. Ideally, the master branch of all packages should be used, but that will
 only happen until the end of the development process.</p>
-<p><span style="color:red">Note2:</span> If you update any of the packages developed by the
-PIP team, make sure you always increased the version of the package using the
-function <code>usethis::use_version()</code>. Even if the change in the package is small,
-you need on increased the version of the package. Otherwise, <code>{targets}</code> won’t
-execute the sections of the pipeline that run the functions you changed.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="pcpipeline.html#cb10-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipdm@development&quot;</span>)</span>
 <span id="cb10-2"><a href="pcpipeline.html#cb10-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipload@development&quot;</span>)</span>
 <span id="cb10-3"><a href="pcpipeline.html#cb10-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/wbpip@halfmedian_spl&quot;</span>)</span>
@@ -287,9 +282,6 @@ in any particular targets’ concept.</p>
 <p>The first part of the pipeline sets up the environment. It,</p>
 <ol style="list-style-type: decimal">
 <li>loads the <code>{targets}</code> and <code>{tarchetypes}</code> packages,</li>
-</ol>
-<!-- -->
-<ol start="2" style="list-style-type: decimal">
 <li>creates default values like directories, time stamps, survey and reference
 years boundaries, compression level of .fst files, among other things.</li>
 <li>executes <code>tar_option_set()</code> to set up some option in <code>{targets}</code>. Two
@@ -562,15 +554,41 @@ good example why, this structure might need be improved.</p>
 </div>
 <div id="updating-pipdm-or-any-other-pip-package" class="section level3" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Updating <code>{pipdm}</code> (or any other PIP package)</h3>
+<p>As explained above, if you need to modify any function in <code>pipdm</code> or in <code>wbpip</code>
+you need to make sure that the output does not conflict with the chain of
+execution. Additionally, If you update any of the packages developed by the PIP
+team, make sure you always increased the version of the package using the
+function <code>usethis::use_version()</code>. Even if the change in the package is small,
+you need to increase the version of the package. Otherwise, <code>{targets}</code> won’t
+execute the sections of the pipeline that run the functions you changed. Finally
+as explained in the <a href="pcpipeline.html#prerequisites-1">Prerequisites</a>, if you are working on a branch different
+than master, make sure you install that version of the package before running
+the targets.</p>
 </div>
 </div>
 <div id="executing-the-_targets.r-file" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Executing the <code>_targets.R</code> file</h2>
-<p>awfawef</p>
+<p>The <code>.Rprofile</code> in the root of the directory makes sure that both <code>{targets}</code>
+and <code>{tarchetypes}</code> are loaded when the project is started. The execution of the
+whole pipeline might very time consuming because it is still needs to load all
+the data in the network drive. If you use a desktop remote connection the
+execution might be faster than running locally, but it is still very time
+consuming. So, my advise is that you only execute the targets that are directly
+affect by your changes and manually check that everything looks ok. After that,
+you can execute the whole thing confidently.</p>
+<p>In order to execute the whole pipeline, you only need to type directive
+<code>tar_make()</code> in the console. If you want to execute only one target, then type
+the name of the target in the same directive, e.g., <code>tar_make(dl_dist_stats)</code>.
+Keep in mind that if the inputs of prior targets to the objective target have
+changed, those targets will be executed first.</p>
 </div>
 <div id="debugging" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Debugging</h2>
-<p>sdfsdf</p>
+<p>Debugging in targets is not easy. Yet, there are two ways to do it. On the one
+hand, you can take a look at the chapter
+<a href="https://books.ropensci.org/targets/debugging.html">Debugging</a> in the Targets
+Manual. It provides clear instruction on how to do it. On the other hand, you
+can see if the following ideas work.</p>
 
 </div>
 </div>
