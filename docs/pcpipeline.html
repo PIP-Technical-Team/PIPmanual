@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-05-06" />
+<meta name="date" content="2021-05-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -178,7 +178,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>3.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>3.6</b> Executing the <code>_targets.R</code> file</a></li>
-<li class="chapter" data-level="3.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>3.7</b> Debugging</a></li>
+<li class="chapter" data-level="3.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>3.7</b> Debugging</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-stem-targets"><i class="fa fa-check"></i>Debugging stem targets</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-branch-targets"><i class="fa fa-check"></i>Debugging branch targets</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -203,14 +207,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="pcpipeline" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Poverty Calculator Pipeline (pre-computed estimations)</h1>
-<p>The Poverty Calculator Pipeline–hereafter, and only for the rest of this
-chapter, <strong>pc pipeline</strong>–is the technical procedure to calculate the
-pre-computed estimations of the PIP project. These estimations have two main
-purposes:</p>
+<p>The Poverty Calculator Pipeline–hereafter, <strong>pc pipeline</strong>–is the technical
+procedure to calculate the pre-computed estimations of the PIP project. These
+estimations have two main purposes:</p>
 <ol style="list-style-type: decimal">
 <li>Provide the user with instantaneous information about distributive measures
 of all the household surveys in the PIP repository that do not depend on the
-value of the poverty line. Avoiding thus the need for re-computation as it
+value of the poverty line, avoiding thus the need for re-computation as it
 was the case in PovcalNet for some of these measures.</li>
 <li>Provide the necessary inputs to the PIP API.</li>
 </ol>
@@ -236,17 +239,18 @@ At the root of the repo you will find a series of files and folders.</p>
 <h3>Folders</h3>
 <ul>
 <li><p><code>R</code> Contains long R functions used during the pipeline</p></li>
-<li><p><code>batch</code> Script for timing the execution of the pipeline. This folder should
-probably be removed</p></li>
-<li><p><code>_targets</code> Folder for all objects created during the pipeline. You don’t
-need to look inside as it content is managed by the <code>targets</code> package.</p></li>
-<li><p><code>renv</code> Folder for reproducible environment.</p></li>
+<li><p><code>batch</code> contains a script for timing the execution of the pipeline. This
+folder should probably be removed</p></li>
+<li><p><code>_targets</code> contains a folder for all objects created during the pipeline.
+You don’t need to look inside as its content is managed by the <code>{targets}</code>
+package.</p></li>
+<li><p><code>renv</code> contains reproducible environment.</p></li>
 </ul>
 </div>
 <div id="files" class="section level3 unnumbered">
 <h3>Files</h3>
 <ul>
-<li><p><code>_packages.R</code> Created by <code>targets::tar_renv()</code>. Do not modify manually.</p></li>
+<li><p><code>_packages.R</code> Created by <code>targets::tar_renv()</code>. Do not modify it manually.</p></li>
 <li><p><code>_targets.R</code> Contains the pipeline. This is the most important file.</p></li>
 </ul>
 </div>
@@ -259,24 +263,24 @@ following PIP packages.</p>
 <code>@development</code>, which specify the branch of the particular package that you need
 to use. Ideally, the master branch of all packages should be used, but that will
 only happen until the end of the development process.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="pcpipeline.html#cb10-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipdm@development&quot;</span>)</span>
-<span id="cb10-2"><a href="pcpipeline.html#cb10-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipload@development&quot;</span>)</span>
-<span id="cb10-3"><a href="pcpipeline.html#cb10-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/wbpip@halfmedian_spl&quot;</span>)</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="pcpipeline.html#cb10-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipload&quot;</span>)</span>
+<span id="cb10-2"><a href="pcpipeline.html#cb10-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/wbpip@get_synth_vector&quot;</span>)</span>
+<span id="cb10-3"><a href="pcpipeline.html#cb10-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipdm&quot;</span>)</span>
 <span id="cb10-4"><a href="pcpipeline.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;joyn&quot;</span>)</span></code></pre></div>
 <p>In case <code>renv</code> is not working for you, you may need to install all the packages
-mentioned in the <code>_packages.R</code> script at the root of the folder. Also, make sure
-to install the most recent version of <code>targets</code> and <code>tarchetypes</code> packages.</p>
+listed in the <code>_packages.R</code> script, located at the root of the folder. Also,
+make sure to install the most recent version of the <code>{targets}</code> and
+<code>{tarchetypes}</code> packages.</p>
 </div>
 <div id="structure-of-the-_targets.r-file" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Structure of the <code>_targets.R</code> file</h2>
 <p>Even thought the pc pipeline script looks like a regular R Script, it is
-structured in a specific way in order to make it work with
-<code>{[targets](https://docs.ropensci.org/targets/)}</code> package, starting by the fact
-that it must be called <code>_targets.R</code> in the root of the project. It highly
-recommended you read the entire <a href="https://books.ropensci.org/targets/">targets
+structured in a specific way in order to make it work with the <code>{targets}</code>
+package, starting by the fact that it must be called <code>_targets.R</code> in the root of
+the project. It is highly recommended that you read the entire <a href="https://books.ropensci.org/targets/">targets
 manual</a> to fully understand how it works.
 Also, during this chapter, we will referring to the manual constantly to expand
-in any particular targets’ concept.</p>
+in any particular concept.</p>
 <div id="start-up" class="section level3 unnumbered">
 <h3>Start up</h3>
 <p>The first part of the pipeline sets up the environment. It,</p>
@@ -284,7 +288,7 @@ in any particular targets’ concept.</p>
 <li>loads the <code>{targets}</code> and <code>{tarchetypes}</code> packages,</li>
 <li>creates default values like directories, time stamps, survey and reference
 years boundaries, compression level of .fst files, among other things.</li>
-<li>executes <code>tar_option_set()</code> to set up some option in <code>{targets}</code>. Two
+<li>executes <code>tar_option_set()</code> to set up some options in <code>{targets}</code>. Two
 particular options are important, <code>packages</code> and <code>imports</code> for tracking
 changes in package dependencies. You can read more about it in sections
 <a href="https://books.ropensci.org/targets/practices.html#loading-and-configuring-r-packages">Loading and configuring R
@@ -301,18 +305,18 @@ of the targets manual.</li>
 <p>According to the section <a href="https://books.ropensci.org/targets/functions.html#functions-in-pipelines">Functions in
 pipelines</a>
 of the targets manual, it is recommend to only use functions rather than
-expressions during the executions. Presumably, the reason for this is that
-targets track changes in functions but not in expressions. Thus, this section of
-the scripts defines small functions that are executed along the pc pipeline. In
-the section above, the scripts <code>source('R/_common.R')</code> loads longer functions.
-Yet, keep in mind that the <code>'R/_common.R'</code> was used in a previous version of the
-pc pipeline before <code>{targets}</code> was implemented. Now, most of the function in
+expressions during the executions. Presumably, the reason is that <code>{targets}</code>
+track changes in functions but not in expressions. Thus, this section of the
+scripts defines small functions that are executed along the pc pipeline. In the
+section above, the line <code>source('R/_common.R')</code> loads longer functions. Yet,
+keep in mind that the <code>'R/_common.R'</code> was used in a previous version of the pc
+pipeline before <code>{targets}</code> was implemented. Now, most of the function in
 <code>'R/_common.R'</code> are included in the <code>{pipdm}</code> package.</p>
 </div>
 <div id="pipe-prepare-data" class="section level3 unnumbered">
 <h3>Step 2: prepare data</h3>
-<p>This section used to longer in previous versions of the pc pipeline because
-identified the auxiliary data, loaded he PIP microdata inventory, and created
+<p>This section used to be longer in previous versions of the pc pipeline because
+it identified the auxiliary data, loaded he PIP microdata inventory, and created
 the cache files. Now, it only identifies the auxiliary data and creates the data
 frame <code>aux_tb</code>, which is used inside the pc pipeline to create targets for each
 auxiliary file. Not much more to say here.</p>
@@ -325,7 +329,7 @@ section. Suffice is to say that the order of the pc pipeline is the following,</
 <li><p>Load all necessary data. That is, auxiliary data and inventories, and then
 create any cache fie that has not been created yet.</p></li>
 <li><p>Calculate means in LCU</p></li>
-<li><p>Crate deflated survey mean (DSM) table</p></li>
+<li><p>Create deflated survey mean (DSM) table</p></li>
 <li><p>Calculate reference year table (aka., interpolated means table)</p></li>
 <li><p>Calculate distributional stats</p></li>
 <li><p>Create output tables</p>
@@ -340,8 +344,8 @@ create any cache fie that has not been created yet.</p></li>
 </div>
 <div id="understanding-the-pipeline" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Understanding the pipeline</h2>
-<p>One thing is to understand the how the <code>{targets}</code> package works and something
-else is to understand how the targets of the Poverty Calculator pc pipeline are
+<p>One thing is to understand how the <code>{targets}</code> package works and something else
+is to understand how the targets of the Poverty Calculator pc pipeline are
 created. For the former, you can read the targets manual. For the latter, we
 should start by making a distinction between the different types of targets.</p>
 <p>In <code>{targets}</code> terminology, there are two kinds of targets, <strong>stems</strong> and
@@ -377,14 +381,16 @@ targets for each auxiliary data,</p>
 <span id="cb11-17"><a href="pcpipeline.html#cb11-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><code>tar_map()</code> takes the values in the data frame <code>aux_tb</code> created in <a href="pcpipeline.html#pipe-prepare-data">Step 2:
 prepare data</a> and creates two type of targets. First, it
-create the target <code>aux_dir</code>, using the file paths in column <code>auxfiles</code> of
-<code>aux_tb</code> to let <code>{targets}</code> know that we will have objects that are loaded from
-a file and are not created inside the pc pipeline. This is why we use the option
-<code>format = "file"</code>. Then, it uses the the column <code>auxname</code> of <code>aux_tb</code> as the
-names of the targets for each auxiliary data frame (prefixed by the word “aux”).
-This is why we had to add the argument <code>file_to_load</code> to
+creates the target <code>aux_dir</code> that contains the paths of the auxiliary files,
+which are available in the column <code>auxfiles</code> of <code>aux_tb</code>. This is done by
+creating an internal target within <code>tar_map()</code> and using the argument
+<code>format = "file"</code>. This process lets <code>{targets}</code> know that we will have objects
+that are loaded from a file and are not created inside the pc pipeline.</p>
+<p>Then, <code>tar_map()</code> uses the the column <code>auxname</code> of <code>aux_tb</code> to name the targets
+that contain the auxiliary files. Each target will be prefixed by the word
+“aux.” This is why we had to add the argument <code>file_to_load</code> to
 <code>pipload::pip_load_aux</code>, so we can let <code>{targets}</code> know that the file paths
-defined in target <code>aux_dir</code> are used to create the targets prefixed with <code>aux</code>,
+defined in target <code>aux_dir</code> are used to create the targets prefixed with “aux,”
 which are the actual targets. For example, if I need to use the population data
 frame inside the pc pipeline, I’d use the target <code>aux_pop</code>, which had a
 corresponding file path in <code>aux_dir</code>. In this way, if the original file
@@ -393,14 +399,16 @@ be run again.</p>
 </div>
 <div id="branches-targets" class="section level3 unnumbered">
 <h3>Branches targets</h3>
-<p>Most of the targets created in the pc pipeline are <strong>branch</strong> targets. This is
-so because, instead of loading all the datasets at once (drying out the
-computer’s memory), we load each data independently, perform the calculations in
-each data set, store all the results in a list, and then create a data frame
-from that list, compiling all the results in one single object. Thus, if every
-single data set or result were a <strong>stem</strong> target, it would be not only
-impossible to visualize, but also more difficult to code. The following example
-illustrates how it works,</p>
+<p>Let’s think of a branch target like</p>
+<p>As explained above, branch targets are targets made of many “subtargets” that
+follow a particular pattern. the Most of the targets created in the pc pipeline
+are <strong>branch</strong> targets because we need to execute the same procedure in every
+cache file. This could have been done internally in one single, but then we
+would lose the tracking features of <code>{targets}</code>. Also, we could have created a
+<strong>stem</strong> target for every cache file, result, and output file, but that would
+have been not only impossible to visualize, but also more difficult to code.
+Thus branch targets is the best option.</p>
+<p>The following example illustrates how it works,</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="pcpipeline.html#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-2"><a href="pcpipeline.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># step A</span></span>
 <span id="cb12-3"><a href="pcpipeline.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
@@ -435,23 +443,25 @@ illustrates how it works,</p>
 last step– step E–the part of the code in which we create the <strong>branch</strong>
 target. Yet, it is important to understand the steps before.</p>
 <p>In step A we create target <code>cache_inventory_dir</code>, which is merely the path of
-the file than contains the cache inventory. Notice that it returned by function
-and not entered directly into the target. Since it is a file path, we need to
-add the argument <code>format = "file"</code> to let <code>{targets}</code> know that it is input
-data. In step B we load the cache inventory file into target <code>cache_inventory</code>
-by providing the target “path” that we created in step A. This file has several
-column. One of them contains the file path of every single cache file in the PIP
-network drive. That single column is extracted from the cache inventory in step
-C. Now, in step D, each file path is declared as input, using the convenient
-function <code>tar_files()</code>, creating thus a new target, <code>cache_dir</code>. FInally, we
-create <strong>branch</strong> target <code>cache</code> with all the cache files by loading each file.
-To do this iteratively, we parse the <code>cache_dir</code> target to the <code>path</code> argument
-of the function <code>fst::read_fst()</code> and to the <code>pattern = map()</code> argument of the
-<code>tar_target()</code> function. Finally, we need to specify that the output of the
-iteration is stored as a list, using the argument <code>iteration = "list"</code>.</p>
+the file than contains the cache inventory. Notice that it is returned by a
+function and not entered directly into the target. Since it is a file path, we
+need to add the argument <code>format = "file"</code> to let <code>{targets}</code> know that it is
+input data. In step B we load the cache inventory file into target
+<code>cache_inventory</code> by providing the target “path” that we created in step A. This
+file has several column. One of them contains the file path of every single
+cache file in the PIP network drive. That single column is extracted from the
+cache inventory in step C. Now, in step D, each file path is declared as input,
+using the convenient function <code>tar_files()</code>, creating thus a new target,
+<code>cache_dir</code>. FInally, we create <strong>branch</strong> target <code>cache</code> with all the cache
+files by loading each file. To do this iteratively, we parse the <code>cache_dir</code>
+target to the <code>path</code> argument of the function <code>fst::read_fst()</code> and to the
+<code>pattern = map()</code> argument of the <code>tar_target()</code> function. Finally, we need to
+specify that the output of the iteration is stored as a list, using the argument
+<code>iteration = "list"</code>.</p>
 <p>The basic logic of <strong>branch</strong> targets is that the vector or list to iterate
-though should be added in the argument of the function and the <code>pattern = map()</code>
-argument of the <code>tar_target()</code> function. it is very similar to <code>purrr::map()</code></p>
+through should be parsed to the argument of the function and to the
+<code>pattern = map()</code> argument of the <code>tar_target()</code> function. it is very similar to
+<code>purrr::map()</code></p>
 <p><span style="color:red">Note:</span> If we are iterating through <em>more than one</em> vector or
 list, you need to (1) separate each of them by commas in the <code>map()</code> part of the
 argument (See example code below). (2) make sure all the vectors or lists <strong>have
@@ -499,28 +509,30 @@ the cache files used to be created in <a href="pcpipeline.html#pipe-prepare-data
 Now, it has not only been integrated in the pc pipeline, but it is also possible
 to execute the creation of cache files independently from the rest of the
 pipeline, by following the instructions in [Executing the _targets.R file].</p>
-<p>The first target, <code>pipeline_inventory</code> is the pip inventory dataset filtered to
-match only the data available in the price framework file. This data set also
-contains a lot information useful for creating the cache files. Notice that the
-commented line in this target would filter the pipeline inventory to have only
-the information for IDN, 2015. <span style="color:red">In case you need to update specific cache files,
-you have to do add the proper filtering condition in there</span>.</p>
+<p>The first target, <code>pipeline_inventory</code> is just the inner join of the pip
+inventory dataset and the price framework (pfw ) file to make sure we only
+include what the <strong>pfw</strong> says. This data set also contains a lot of information
+useful for creating the cache files. Notice that the commented line in this
+target would filter the pipeline inventory to have only the information for IDN,
+2015. <span style="color:red">In case you need to update specific cache files, you have to do add the
+proper filtering condition in there</span>.</p>
 <p>In the second target, <code>status_cache_files_creation</code>, you will create the cache
-files, but the returning value of the function <code>pipdm::create_cache_file()</code> is
-not the cache file per-se but a list with the status of the process of creation.
-If the creation of a particular file fails, it does not precludes the creation
-of other files, but returns metadata of where in the process if failed. Notice
-that function <code>pipdm::create_cache_file()</code> requires the the CPI and PPP
-auxiliary data. This is so because the cache file has an additional variable,
-<code>welfare_ppp</code>, for deflated welfare aggregate to daily 2011 PPP values. FInally,
-and more importantly, argument <code>force = TRUE</code> ensures that even if the cache
-file exists already, it should be modified. This is important when you require
+files but notice that the returning value of the function
+<code>pipdm::create_cache_file()</code> is not the cache file per-se but a list with the
+status of the process of creation. If the creation of a particular file fails,
+it does not stop the iteration that creates the all cache files. At the end of
+the process, it returns a list with the creation status of each cache file.
+Notice that function <code>pipdm::create_cache_file()</code> requires the CPI and the PPP
+auxiliary data. This is so because the variable <code>welfare_ppp</code>, which is the
+welfare aggregate in 2011 PPP values, is added to the cache files. FInally, and
+more importantly, argument <code>force = TRUE</code> ensures that even if the cache file
+exists already, it should be modified. This is important when you require
 additional features in the cache file from the then ones it has now. If set to
 <code>TRUE</code>, it will replace any file in the network drive that is listed in
 <code>pipeline_inventory</code>. If set to <code>FALSE</code>, only the files that are in
 <code>pipeline_inventory</code> but not in the cache folder will be created. Use this
-option only when you get need to add new features to all cache data or when you
-are testing, and only need a few surveys with the new features.</p>
+option only when you need to add new features to all cache data or when you are
+testing and only need a few surveys with the new features.</p>
 </div>
 </div>
 <div id="understanding-pipdm-functions" class="section level2" number="3.5">
@@ -531,7 +543,7 @@ why, many of the functions in <code>{pipdm}</code> are prefixed with “db_.”<
 <div id="internal-structure-of-pipdm-functions" class="section level3" number="3.5.1">
 <h3><span class="header-section-number">3.5.1</span> Internal structure of <code>{pipdm}</code> functions</h3>
 <p>The main objective of <code>{pipdm}</code> is to execute the functions in <code>{wbpip}</code> to do
-the calculations and then build the data frames. As of today, 2021-05-06,
+the calculations and then build the data frames. As of today, 2021-05-07,
 the process is a little intricate.</p>
 <p>Let’s take the example of estimating distributive measures in the pipeline. The
 image <a href="pcpipeline.html#pipdm-structure">below</a> shows that there are at least three intermediate
@@ -540,17 +552,16 @@ directly in the pc pipeline, and the <code>wbpip::md_compute_dist_stats()</code>
 makes the calculations. Also, notice that the functions are very general in
 regards to the output. No higher level function is specific enough to retrieve
 only one measure such as the Gini coefficient, or the median, or the quantiles
-of the distribution. If we need to add or modify one particular distributive
-measure, it must be done an even lower level than
-<code>wbpip::md_compute_dist_stats()</code> and make sure the new output does not mess up
-the execution of any of the intermediate functions before the results get to
-<code>db_compute_dist_stats()</code>.</p>
+of the distribution. If you need to add or modify one particular distributive
+measure, you must do it in functions inside <code>wbpip::md_compute_dist_stats()</code>,
+making sure the new output does not mess up the execution of any of the
+intermediate functions before the results get to <code>db_compute_dist_stats()</code>.</p>
 <p><img src="img/pipdm_structure.png" id="pipdm-structure" /></p>
 <p>This long chain of functions is inflexible and makes debugging very difficult.
 So, if you need to make any modification, identify first the chain of execution
 in each <code>pipdm</code> function you modify and then make sure your changes do not
 affect the output format as it may break the chain of execution. Also, this is a
-good example why, this structure might need be improved.</p>
+good example to show why this structure needs to be improved.</p>
 </div>
 <div id="updating-pipdm-or-any-other-pip-package" class="section level3" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Updating <code>{pipdm}</code> (or any other PIP package)</h3>
@@ -563,20 +574,21 @@ you need to increase the version of the package. Otherwise, <code>{targets}</cod
 execute the sections of the pipeline that run the functions you changed. Finally
 as explained in the <a href="pcpipeline.html#prerequisites-1">Prerequisites</a>, if you are working on a branch different
 than master, make sure you install that version of the package before running
-the targets.</p>
+the pipeline.</p>
 </div>
 </div>
 <div id="executing-the-_targets.r-file" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Executing the <code>_targets.R</code> file</h2>
 <p>The <code>.Rprofile</code> in the root of the directory makes sure that both <code>{targets}</code>
 and <code>{tarchetypes}</code> are loaded when the project is started. The execution of the
-whole pipeline might very time consuming because it is still needs to load all
+whole pipeline might be very time consuming because it still needs to load all
 the data in the network drive. If you use a desktop remote connection the
 execution might be faster than running locally, but it is still very time
 consuming. So, my advise is that you only execute the targets that are directly
-affect by your changes and manually check that everything looks ok. After that,
-you can execute the whole thing confidently.</p>
-<p>In order to execute the whole pipeline, you only need to type directive
+affected by your changes and manually check that everything looks ok. After
+that, you can execute the whole thing confidently and leave it running
+overnight.</p>
+<p>In order to execute the whole pipeline, you only need to type the directive
 <code>tar_make()</code> in the console. If you want to execute only one target, then type
 the name of the target in the same directive, e.g., <code>tar_make(dl_dist_stats)</code>.
 Keep in mind that if the inputs of prior targets to the objective target have
@@ -584,12 +596,97 @@ changed, those targets will be executed first.</p>
 </div>
 <div id="debugging" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Debugging</h2>
-<p>Debugging in targets is not easy. Yet, there are two ways to do it. On the one
-hand, you can take a look at the chapter
-<a href="https://books.ropensci.org/targets/debugging.html">Debugging</a> in the Targets
-Manual. It provides clear instruction on how to do it. On the other hand, you
-can see if the following ideas work.</p>
+<p>Debugging in targets is not easy. Yet, there are two ways to do it. The first
+way is provided in the chapter
+<a href="https://books.ropensci.org/targets/debugging.html">Debugging</a> of the Targets
+Manual. It provides clear instruction on how to debug <em>while still being in the
+pipeline</em>, but it could be the case, as it happened to me, that you don’t find
+this method flexible enough to dig deep enough into the problem. Alternatively,
+you could debug by stepping out of the pipeline a little bit and gain more
+flexibility. This is how I do it.</p>
+<p>You need to debug in one of two case. One, because you got an error when running
+the pipeline with <code>tar_make()</code> or, two, because your results are weird. In
+either case, you should probably have an idea–though not always–of where the
+problem is. If the problem is an error in the execution of the pipeline,
+<code>{targets}</code> printed messages are usually informative.</p>
+<div id="debugging-stem-targets" class="section level3 unnumbered">
+<h3>Debugging stem targets</h3>
+<p>Let’s see a simple example. Assume the problem is in the target <code>dt_dist_stats</code>,
+which is created by executing the function <code>db_create_dist_table</code> of the
+<code>{pipdm}</code> package. Since the problem is in there, all the targets and inputs
+necessary to create <code>dt_dist_stats</code> should be available in the <code>_targets/</code> data
+store. So, you can load them using <code>tar_load()</code> and execute the function in
+debugging mode. Like this,</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="pcpipeline.html#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="pcpipeline.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dl_dist_stats)</span>
+<span id="cb15-3"><a href="pcpipeline.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(svy_mean_ppp_table)</span>
+<span id="cb15-4"><a href="pcpipeline.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(cache_inventory)</span>
+<span id="cb15-5"><a href="pcpipeline.html#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="pcpipeline.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(pipdm<span class="sc">::</span>db_create_dist_table)</span>
+<span id="cb15-7"><a href="pcpipeline.html#cb15-7" aria-hidden="true" tabindex="-1"></a>pipdm<span class="sc">::</span><span class="fu">db_create_dist_table</span>(</span>
+<span id="cb15-8"><a href="pcpipeline.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dl        =</span> dl_dist_stats,</span>
+<span id="cb15-9"><a href="pcpipeline.html#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">dsm_table =</span> svy_mean_ppp_table, </span>
+<span id="cb15-10"><a href="pcpipeline.html#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">crr_inv   =</span> cache_inventory</span>
+<span id="cb15-11"><a href="pcpipeline.html#cb15-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Notice that you need to use the <code>::</code> because the environment in which
+<code>{targets}</code> runs is different from your Global environment in which you might
+not have attached all the libraries.</p>
+</div>
+<div id="debugging-branch-targets" class="section level3 unnumbered">
+<h3>Debugging branch targets</h3>
+<p>The problem debugging branch targets is that if the problem is in a specific
+survey, you can’t access the “subtarget” using the survey ID, or something like
+that, because the name of the subtarget is created by <code>{targets}</code> using a random
+number. This requires a little more of work.</p>
+<p>Imagine now that the distributive measures of IDN 2015 are wrong. You see the
+pipeline and notice that these calculation are executed in target
+<code>dl_dist_stats</code>, which is branch target created over <strong>all the cache files!</strong> It
+looks something like this,</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="pcpipeline.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
+<span id="cb16-2"><a href="pcpipeline.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name      =</span> dl_dist_stats,</span>
+<span id="cb16-3"><a href="pcpipeline.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">command   =</span> <span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> cache, </span>
+<span id="cb16-4"><a href="pcpipeline.html#cb16-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">mean     =</span> dl_mean, </span>
+<span id="cb16-5"><a href="pcpipeline.html#cb16-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">pop      =</span> aux_pop, </span>
+<span id="cb16-6"><a href="pcpipeline.html#cb16-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">cache_id =</span> cache_ids), </span>
+<span id="cb16-7"><a href="pcpipeline.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern   =</span>  <span class="fu">map</span>(cache, dl_mean, cache_ids), </span>
+<span id="cb16-8"><a href="pcpipeline.html#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iteration =</span> <span class="st">&quot;list&quot;</span></span>
+<span id="cb16-9"><a href="pcpipeline.html#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>In order to find the problem in IDN 2015, this what you could do,</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="pcpipeline.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb17-2"><a href="pcpipeline.html#cb17-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_cache</span>(<span class="st">&quot;IDN&quot;</span>, <span class="dv">2015</span>, <span class="st">&quot;PC&quot;</span>)</span>
+<span id="cb17-3"><a href="pcpipeline.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dl_mean)</span>
+<span id="cb17-4"><a href="pcpipeline.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(cache_ids)</span>
+<span id="cb17-5"><a href="pcpipeline.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(aux_pop)</span>
+<span id="cb17-6"><a href="pcpipeline.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="pcpipeline.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract corresponding mean and cache ID</span></span>
+<span id="cb17-8"><a href="pcpipeline.html#cb17-8" aria-hidden="true" tabindex="-1"></a>idt      <span class="ot">&lt;-</span> <span class="fu">which</span>(cache_ids <span class="sc">==</span> <span class="fu">unique</span>(dt<span class="sc">$</span>cache_id))</span>
+<span id="cb17-9"><a href="pcpipeline.html#cb17-9" aria-hidden="true" tabindex="-1"></a>cache_id <span class="ot">&lt;-</span> cache_ids[idt]</span>
+<span id="cb17-10"><a href="pcpipeline.html#cb17-10" aria-hidden="true" tabindex="-1"></a>mean_i   <span class="ot">&lt;-</span> dl_mean[[idt]]</span>
+<span id="cb17-11"><a href="pcpipeline.html#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="pcpipeline.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Esecute the function of interest</span></span>
+<span id="cb17-13"><a href="pcpipeline.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(pipdm<span class="sc">:::</span>compute_dist_stats)</span>
+<span id="cb17-14"><a href="pcpipeline.html#cb17-14" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> pipdm<span class="sc">::</span><span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> dt, </span>
+<span id="cb17-15"><a href="pcpipeline.html#cb17-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">mean     =</span> mean_i, </span>
+<span id="cb17-16"><a href="pcpipeline.html#cb17-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">pop      =</span> aux_pop, </span>
+<span id="cb17-17"><a href="pcpipeline.html#cb17-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">cache_id =</span> cache_id)</span></code></pre></div>
+<p>First, you load all the inputs. Since target <code>dl_mean</code> is a relatively light
+object, we load it directly from the <code>_targets/</code> data store. Targets <code>cache_ids</code>
+and <code>aux_pop</code> are data frames, not lists, so we also load them from memory. The
+microdata, however, is problematic because target <code>cache</code>, which is the one that
+is parsed to create the <strong>actual</strong> <code>dl_dist_stata</code> target, is a huge list with
+all the micro, grouped, and imputed data. The solution is then to load the data
+frame of interest, using either <code>pipload</code> or <code>fst</code>.</p>
+<p>Secondly, we need to filter the list <code>dl_mean</code> and the data frame <code>cache_ids</code> to
+parse only the information accepted by <code>pipdm::db_compute_dist_stats()</code>
+function. This has to be done when debugging because in the actual target this
+is done iteratively in <code>pattern   =  map(cache, dl_mean, cache_ids)</code>.</p>
+<p>Finally, you execute the function of interest. Notice something else. The target
+<code>aux_pop</code> is parsed as a single data frame because
+<code>pipdm::db_compute_dist_stats()</code> requires it that way.
+<span style="color:red">Note:</span> This is also one of the reasons these functions in
+<code>{pipdm}</code> need some fixing and consistency in the format of the their inputs.</p>
 
+</div>
 </div>
 </div>
             </section>
