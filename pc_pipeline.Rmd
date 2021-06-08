@@ -335,10 +335,11 @@ tar_target(status_cache_files_creation,
 ```
 
 It is important to understand this part of the pc pipeline thoroughly because
-the cache files used to be created in [Step 2: prepare data] rather than here.
-Now, it has not only been integrated in the pc pipeline, but it is also possible
-to execute the creation of cache files independently from the rest of the
-pipeline, by following the instructions in [Executing the \_targets.R file].
+the cache files used to be created in [Step 2: prepare data](#pipe-prepare-data)
+rather than here. Now, it has not only been integrated in the pc pipeline, but
+it is also possible to execute the creation of cache files independently from
+the rest of the pipeline, by following the instructions in [Executing the
+\_targets.R file].
 
 The first target, `pipeline_inventory` is just the inner join of the pip
 inventory dataset and the price framework (pfw ) file to make sure we only
