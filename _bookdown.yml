@@ -13,6 +13,12 @@ language:
 rmd_files: [
   "index.Rmd",
   "intro.Rmd",
+  "internal_workflow.Rmd",
+
+  "welfare_data.Rmd",
+  "auxiliary_data.Rmd",
+  "PRIMUS.Rmd",
+
   "load_md_aux.Rmd",
   "pc_pipeline.Rmd",
 

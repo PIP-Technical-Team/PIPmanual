@@ -1,0 +1,46 @@
+# Internal Workflow
+
+This chapter explains the internal technical workflow of the PIP project. Many
+of the different steps of the workflow are explained in more detail in other
+chapters of this book. This chapter, however, presents an overview of the
+workflow and its components.
+
+## The Github group
+
+The technical code of the PIP project is organized in Git repositories in the
+Github group [/PIP-Technical-Team](https://github.com/PIP-Technical-Team). You
+need to be granted collaborator status in order to contribute to any of the
+repositories in the group. Also, many of the repositories do not play a direct
+role in the PIP technical workflow. Some of them are intended for documenting
+parts of the workflow or for testing purposes. For example, the repository of
+this book--[/PIPmanual](https://github.com/PIP-Technical-Team/PIPmanual)--is not
+part of the workflow of PIP, since it is not necessary for any estimation. Yet,
+you need get familiar with all the repositories in case you need to make a
+contribution in any of them. In this chapter, however, we will focus on
+understanding the repositories that affect directly the PIP workflow.
+
+First, we will see the overview of the workflow. It is an overview because each
+bucket of its buckets is a workflow in itself. Yet, it is important to have the
+overview clear in order to understand how and where all the pieces fall
+together. Then, we will unpack each of the workflow buckets to understand them
+in more detail.
+
+## Overview
+
+The workflow overview is mainly composed of four steps.
+
+1.  Data acquisition
+2.  Data preparation
+3.  pre-calculated indicators
+4.  API feeding
+
+![](img/PIP_workflow_overview.png "PIP workflow overview")
+
+Each of the steps (or buckets) is prerequisite of the next one, so if something
+changes in one of the them, it is necessary to execute the subsequent steps.
+
+## Data acquisition
+
+Before understanding how the input data of PIP is acquired, we need to
+understand PIP data itself. The PIP is fed by two kind of data: welfare data and
+auxiliary data.

@@ -1,4 +1,15 @@
 intro
+internal-workflow
+the-github-group
+overview
+data-acquisition
+welfare-data
+auxiliary-data
+primus
+interacting-with-primus
+understand-primus
+checking-primus-estimates
+approve-primus
 load
 auxiilary-data
 udpate-data
@@ -13,8 +24,5 @@ prerequisites-1
 structure-of-the-_targets.r-file
 step-3-the-actual-pipeline
 understanding-the-pipeline
-understanding-pipdm-functions
-internal-structure-of-pipdm-functions
-updating-pipdm-or-any-other-pip-package
 executing-the-_targets.r-file
 debugging

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Poverty Calculator Pipeline (pre-computed estimations) | PIP Manual</title>
+  <title>Chapter 3 Welfare data | PIP Manual</title>
   <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Poverty Calculator Pipeline (pre-computed estimations) | PIP Manual" />
+  <meta property="og:title" content="Chapter 3 Welfare data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Poverty Calculator Pipeline (pre-computed estimations) | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 3 Welfare data | PIP Manual" />
   
   <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="load.html"/>
-<link rel="next" href="references.html"/>
+<link rel="prev" href="internal-workflow.html"/>
+<link rel="next" href="auxiliary-data.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -214,184 +214,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pcpipeline" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Poverty Calculator Pipeline (pre-computed estimations)</h1>
-<p>The Poverty Calculator Pipeline–hereafter, and only for the rest of this
-chapter, pipeline–is the technical procedure to calculate the pre-computed
-estimations of the PIP project. These estimations have two main purposes:</p>
-<ol style="list-style-type: decimal">
-<li>Provide the user with instantaneous information about distributive measures
-of all the household surveys in the PIP repository that do not depend on the
-value of the poverty line. Avoiding thus the need for re-computation as it
-was the case in PovcalNet for some of these measures.</li>
-<li>Provide the necessary inputs to the PIP API.</li>
-</ol>
-<p>This chapter walks you through the folder structure of the folder, the main R
-script, <code>_targets.R</code>, and the complete and partial execution of the script.
-Also, it provides some tips for debugging.</p>
-<div id="folder-structure" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Folder structure</h2>
-<p>The pipeline is hosted in the Github repository
-<a href="https://github.com/PIP-Technical-Team/pip_ingestion_pipeline">PIP-Technical-Team/pip_ingestion_pipeline</a>.
-At the root of the repo you will find a series of files and folders.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="pcpipeline.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- batch</span></span>
-<span id="cb16-2"><a href="pcpipeline.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- pip_ingestion_pipeline.Rproj</span></span>
-<span id="cb16-3"><a href="pcpipeline.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- R</span></span>
-<span id="cb16-4"><a href="pcpipeline.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- README.md</span></span>
-<span id="cb16-5"><a href="pcpipeline.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- renv</span></span>
-<span id="cb16-6"><a href="pcpipeline.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- renv.lock</span></span>
-<span id="cb16-7"><a href="pcpipeline.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- run.R</span></span>
-<span id="cb16-8"><a href="pcpipeline.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- _packages.R</span></span>
-<span id="cb16-9"><a href="pcpipeline.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \-- _targets</span></span>
-<span id="cb16-10"><a href="pcpipeline.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \-- _targets.R</span></span></code></pre></div>
-<div id="folders" class="section level3 unnumbered">
-<h3>Folders</h3>
-<ul>
-<li><p><code>R</code> Contains long R functions used during the pipeline</p></li>
-<li><p><code>batch</code> Script for timing the execution of the pipeline. This folder should
-probably be removed</p></li>
-<li><p><code>_targets</code> Folder for all objects created during the pipeline. You don’t
-need to look inside as it content is managed by the <code>targets</code> package.</p></li>
-<li><p><code>renv</code> Folder for reproducible environment.</p></li>
-</ul>
-</div>
-<div id="files" class="section level3 unnumbered">
-<h3>Files</h3>
-<ul>
-<li><p><code>_packages.R</code> Created by <code>targets::tar_renv()</code>. Do not modify manually.</p></li>
-<li><p><code>_targets.R</code> Contains the pipeline. This is the most important file.</p></li>
-</ul>
-</div>
-</div>
-<div id="prerequisites-1" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Prerequisites</h2>
-<p>Before you start working on the pipeline, you need to make sure to have the
-following PIP packages.</p>
-<p><span style="color:red">Note:</span> Notice that directives below have suffixes like
-<code>@development</code>, which specify the branch of the particular package that you need
-to use. Ideally, the master branch of all packages should be used, but that will
-only happen until the end of the development process.</p>
-<p><span style="color:red">Note2:</span> If you update any of the packages developed by the
-PIP team, make sure you always increased the version of the package using the
-function <code>usethis::use_version()</code>. Even if the change in the package is small,
-you need on increased the version of the package. Otherwise, <code>{targets}</code> won’t
-execute the sections of the pipeline that run the functions you changed.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="pcpipeline.html#cb17-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipdm@development&quot;</span>)</span>
-<span id="cb17-2"><a href="pcpipeline.html#cb17-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipload@development&quot;</span>)</span>
-<span id="cb17-3"><a href="pcpipeline.html#cb17-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/wbpip@halfmedian_spl&quot;</span>)</span>
-<span id="cb17-4"><a href="pcpipeline.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;joyn&quot;</span>)</span></code></pre></div>
-<p>In case <code>renv</code> is not working for you, you may need to install all the packages
-mentioned in the <code>_packages.R</code> script at the root of the folder. Also, make sure
-to install the most recent version of <code>targets</code> and <code>tarchetypes</code> packages.</p>
-</div>
-<div id="structure-of-the-_targets.r-file" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Structure of the <code>_targets.R</code> file</h2>
-<p>Even thought the pipeline script looks like a regular R Script, it is structured
-in a specific way in order to make it work with
-<code>{[targets](https://docs.ropensci.org/targets/)}</code> package, starting by the fact
-that it must be called <code>_targets.R</code> in the root of the project. It highly
-recommended you read the entire <a href="https://books.ropensci.org/targets/">targets
-manual</a> to fully understand how it works.
-Also, during this chapter, we will referring to the manual constantly to expand
-in any particular targets’ concept.</p>
-<div id="start-up" class="section level3 unnumbered">
-<h3>Start up</h3>
-<p>The first part of the pipeline sets up the environment. It,</p>
-<ol style="list-style-type: decimal">
-<li>loads the <code>{targets}</code> and <code>{tarchetypes}</code> packages,</li>
-</ol>
-<!-- -->
-<ol start="2" style="list-style-type: decimal">
-<li>creates default values like directories, time stamps, survey and reference
-years boundaries, compression level of .fst files, among other things.</li>
-<li>executes <code>tar_option_set()</code> to set up some option in <code>{targets}</code>. Two
-particular options are important, <code>packages</code> and <code>imports</code> for tracking
-changes in package dependencies. You can read more about it in sections
-<a href="https://books.ropensci.org/targets/practices.html#loading-and-configuring-r-packages">Loading and configuring R
-packages</a>
-and <a href="https://books.ropensci.org/targets/practices.html#packages-based-invalidation">Packages-based
-invalidation</a>
-of the targets manual.</li>
-<li>Attach all the packages and functions of the project by running
-<code>source('_packages.R')</code> and <code>source('R/_common.R')</code></li>
-</ol>
-</div>
-<div id="step-1-small-functions" class="section level3 unnumbered">
-<h3>Step 1: small functions</h3>
-<p>According to the section <a href="https://books.ropensci.org/targets/functions.html#functions-in-pipelines">Functions in
-pipelines</a>
-of the targets manual, it is recommend to only use functions rather than
-expressions during the executions. Presumably, the reason for this is that
-targets track changes in functions but not in expressions. Thus, this section of
-the scripts defines small functions that are executed along the pipeline. In the
-section above, the scripts <code>source('R/_common.R')</code> loads longer functions. Yet,
-keep in mind that the <code>'R/_common.R'</code> was used in a previous version of the
-pipeline before <code>{targets}</code> was implemented. Now, most of the function in
-<code>'R/_common.R'</code> are included in the <code>{pipdm}</code> package.</p>
-</div>
-<div id="step-2-prepare-data" class="section level3 unnumbered">
-<h3>Step 2: prepare data</h3>
-<p>This section used to longer in previous versions of the pipeline because
-identified the auxiliary data, loaded he PIP microdata inventory, and created
-the cache files. Now, it only identifies the auxiliary data. Not much to be said
-here.</p>
-</div>
-<div id="step-3-the-actual-pipeline" class="section level3" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Step 3: The actual pipeline</h3>
-<p>This part of the pipeline is long and it is explained in detail in the next
-section. Suffice is to say that the order of the pipeline is the following,</p>
-<ol style="list-style-type: decimal">
-<li><p>Load all necessary data. That is, auxiliary data and inventories, and then
-create any cache fie that has not been created yet.</p></li>
-<li><p>Calculate means in LCU</p></li>
-<li><p>Crate deflated survey mean (DSM) table</p></li>
-<li><p>Calculate reference year table (aka., interpolated means table)</p></li>
-<li><p>Calculate distributional stats</p></li>
-<li><p>Create output tables</p>
-<ol style="list-style-type: decimal">
-<li><p>join survey mean table with dist table</p></li>
-<li><p>join reference year table with dist table</p></li>
-<li><p>coverage table aggregate population at the regional level table</p></li>
-</ol></li>
-<li><p>Clean and save.</p></li>
-</ol>
-</div>
-</div>
-<div id="understanding-the-pipeline" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Understanding the pipeline</h2>
-<p>One thing is to understand the how the <code>{targets}</code> package works and something
-else is to understand how the targets of the Poverty Calculator Pipeline are
-created. For the former, you can read the targets manual. For the latter, we
-should start by making a distinction between the different types of targets.</p>
-<p>In <code>{targets}</code> terminology, there are two kinds of targets, <strong>stems</strong> and
-<strong>branches</strong>. <strong>Stems</strong> are unitary targets. That is, for each target there is
-only one single R object. <strong>Branches</strong>, on the other hand, are targets that
-contain several objects or <em>subtargets</em> inside (You can learn more about them in
-the chapter <a href="https://books.ropensci.org/targets/dynamic.html#dynamic">Dynamic
-branching</a> of the
-targets manual). We will see the use of this type of targets when we talk about
-the use of cache files.</p>
-<p>There are two ways to create <strong>stem</strong> targets: either using <code>tar_target()</code> or
-using <code>tar_map()</code> from the <code>{tarchetypes}</code> package. The <code>tar_map()</code> function
-allows to create <strong>stem</strong> targets iteratively.</p>
-</div>
-<div id="executing-the-_targets.r-file" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> Executing the <code>_targets.R</code> file</h2>
-<p>awfawef</p>
-</div>
-<div id="debugging" class="section level2" number="7.6">
-<h2><span class="header-section-number">7.6</span> Debugging</h2>
-<p>sdfsdf</p>
+<div id="welfare-data" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Welfare data</h1>
+<p>blah blah blah</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="load.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="internal-workflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="auxiliary-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
