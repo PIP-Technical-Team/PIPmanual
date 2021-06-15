@@ -42,5 +42,84 @@ changes in one of the them, it is necessary to execute the subsequent steps.
 ## Data acquisition
 
 Before understanding how the input data of PIP is acquired, we need to
-understand PIP data itself. The PIP is fed by two kind of data: welfare data and
-auxiliary data.
+understand PIP data itself. The PIP is fed by two kinds of data: welfare data
+and auxiliary data.
+
+**Welfare data** refers to the data files that contain at least one welfare
+vector and one population expansion factor (i.e., weights) vector. These two
+variables are the minimum data necessary to estimate poverty and inequality
+measures.[^internal_workflow-1] These files come in four varieties; microdata,
+group data, bin data, and synthetic data. The details of welfare can be found in
+Section \@ref(welfare-data). Regardless of the variety of the data, all welfare
+data in PIP are gathered from the Global Monitoring Database, GMD.
+
+[^internal_workflow-1]: Population data is also necessary when working with
+    group data.
+
+*Microdata* is uploaded into the PRIMUS system by the regional teams of the
+Poverty Global Practice. To do so, each regional team has to follow the GMD
+guidelines, which are verified by the Stata command `{primus}`. Rarely. the
+`{primus}` command does NOT capture some potential errors in the data. More
+details in Section \@ref(primus)
+
+As of now (`r format(Sys.Date(), "%B %d, %Y")`), *Group data* is divided two:
+historical group data and new group data. Historical group data is organized and
+provided by the PovcalNet team, who sends it to the Poverty GP to be included in
+the datalibweb system. New group data is collected by the poverty economist of
+the corresponding country, who shares it with her regional focal team, who
+shares it with PovcalNet team. This new group data is organized and tested by
+the PovcalNet team and then send back to the poverty GP to be included in the
+datalibweb system.
+
+*Bin data* refers to welfare data from countries for which there is no poverty
+economist. Most of these countries are developed countries such as Canada or
+Japan. The main characteristic of this data is that it is only available through
+the [LISSY system](https://www.lisdatacenter.org/data-access/lissy/) of the [LIS
+data center](https://www.lisdatacenter.org/), which does not allow access to the
+entire microdata. Thus, we need to contract the microdata into 400 bins or
+quantiles. The code that gathers LIS data is available in the Github repository
+[PovcalNet-Team/LIS_data](https://github.com/PovcalNet-Team/LIS_data).
+
+Finally, *synthetic data*, refers to simulated microdata from an statistical
+procedure. As of now (`r format(Sys.Date(), "%B %d, %Y")`), the these data are
+estimated using multiple imputation techniques, so that any calculation must
+take into account the imputation-id variable. The data is calculated by the
+poverty economist of the country and the organizes by the global team in the
+Poverty GP.
+
+**Auxiliary data** refers to all data necessary to temporally deflate and line
+up welfare data, with the objective of getting poverty estimates comparable over
+time, across countries, and, more importantly, being able to estimate regional
+and global estimates. Some of these data are national population, GDP, consumer
+price index, purchasing parity power, etc. Auxiliary data also include metadata
+such as time comparability or type of welfare aggregate. Since each measure of
+auxiliary data is acquired differently, all the details are explain in Section
+\@ref(auxiliary-data).
+
+## Data preparation
+
+This step assumes that all welfare data is properly organized in the datalibweb
+system and vetted in PRIMUS. In contrast to the previous global-poverty
+calculator system, PovcalNet, the PIP system only gathers welfare from the
+datalibweb server.
+
+The welfare data preparation is done using the repository
+[/pipdp](https://github.com/PIP-Technical-Team/pipdp). As of now
+(`r format(Sys.Date(), "%B %d, %Y")`), this part of the process has been coded
+in Stata, given that the there is no an R version of `{dataliweb}`. As for the
+auxiliary data preparation, it is done with package `{pipaux}`, available in the
+repository [/pipaux](https://github.com/PIP-Technical-Team/pipaux). Right now
+the automation of updating the auxiliary has not been implemented. Thus, it has
+to be done manually by typing `pipaux::pip_update_all_aux()` to update all
+measures, or use function `pipaux::update_aux()` to update a particular measure.
+
+## Pre-calculated indicators
+
+All measures in PIP that do not depend on the value of the poverty line are
+pre-calculated in order to make the API more efficient and responsive. Some
+other indicators that not depend on the poverty lines but do depend on other
+parameters, like the societal poverty, are not included as part of the
+pre-calculated indicators.
+
+The process to estimate the pre-calculated indicators is explained in detail in
+Chapter \@ref(pre-calculated-indicators).

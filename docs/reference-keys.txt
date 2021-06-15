@@ -3,6 +3,8 @@ internal-workflow
 the-github-group
 overview
 data-acquisition
+data-preparation
+pre-calculated-indicators
 welfare-data
 auxiliary-data
 primus

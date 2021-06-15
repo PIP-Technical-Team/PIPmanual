@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-14" />
+<meta name="date" content="2021-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,6 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="internal-workflow.html"><a href="internal-workflow.html#the-github-group"><i class="fa fa-check"></i><b>2.1</b> The Github group</a></li>
 <li class="chapter" data-level="2.2" data-path="internal-workflow.html"><a href="internal-workflow.html#overview"><i class="fa fa-check"></i><b>2.2</b> Overview</a></li>
 <li class="chapter" data-level="2.3" data-path="internal-workflow.html"><a href="internal-workflow.html#data-acquisition"><i class="fa fa-check"></i><b>2.3</b> Data acquisition</a></li>
+<li class="chapter" data-level="2.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> Data preparation</a></li>
+<li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-calculated-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-calculated indicators</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
 <li class="chapter" data-level="3" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>3</b> Welfare data</a></li>
@@ -255,14 +257,89 @@ changes in one of the them, it is necessary to execute the subsequent steps.</p>
 <div id="data-acquisition" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Data acquisition</h2>
 <p>Before understanding how the input data of PIP is acquired, we need to
-understand PIP data itself. The PIP is fed by two kind of data: welfare data and
-auxiliary data.</p>
+understand PIP data itself. The PIP is fed by two kinds of data: welfare data
+and auxiliary data.</p>
+<p><strong>Welfare data</strong> refers to the data files that contain at least one welfare
+vector and one population expansion factor (i.e., weights) vector. These two
+variables are the minimum data necessary to estimate poverty and inequality
+measures.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> These files come in four varieties; microdata,
+group data, bin data, and synthetic data. The details of welfare can be found in
+Section <a href="welfare-data.html#welfare-data">3</a>. Regardless of the variety of the data, all welfare
+data in PIP are gathered from the Global Monitoring Database, GMD.</p>
+<p><em>Microdata</em> is uploaded into the PRIMUS system by the regional teams of the
+Poverty Global Practice. To do so, each regional team has to follow the GMD
+guidelines, which are verified by the Stata command <code>{primus}</code>. Rarely. the
+<code>{primus}</code> command does NOT capture some potential errors in the data. More
+details in Section <a href="primus.html#primus">5</a></p>
+<p>As of now (June 15, 2021), <em>Group data</em> is divided two:
+historical group data and new group data. Historical group data is organized and
+provided by the PovcalNet team, who sends it to the Poverty GP to be included in
+the datalibweb system. New group data is collected by the poverty economist of
+the corresponding country, who shares it with her regional focal team, who
+shares it with PovcalNet team. This new group data is organized and tested by
+the PovcalNet team and then send back to the poverty GP to be included in the
+datalibweb system.</p>
+<p><em>Bin data</em> refers to welfare data from countries for which there is no poverty
+economist. Most of these countries are developed countries such as Canada or
+Japan. The main characteristic of this data is that it is only available through
+the <a href="https://www.lisdatacenter.org/data-access/lissy/">LISSY system</a> of the <a href="https://www.lisdatacenter.org/">LIS
+data center</a>, which does not allow access to the
+entire microdata. Thus, we need to contract the microdata into 400 bins or
+quantiles. The code that gathers LIS data is available in the Github repository
+<a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>.</p>
+<p>Finally, <em>synthetic data</em>, refers to simulated microdata from an statistical
+procedure. As of now (June 15, 2021), the these data are
+estimated using multiple imputation techniques, so that any calculation must
+take into account the imputation-id variable. The data is calculated by the
+poverty economist of the country and the organizes by the global team in the
+Poverty GP.</p>
+<p><strong>Auxiliary data</strong> refers to all data necessary to temporally deflate and line
+up welfare data, with the objective of getting poverty estimates comparable over
+time, across countries, and, more importantly, being able to estimate regional
+and global estimates. Some of these data are national population, GDP, consumer
+price index, purchasing parity power, etc. Auxiliary data also include metadata
+such as time comparability or type of welfare aggregate. Since each measure of
+auxiliary data is acquired differently, all the details are explain in Section
+<a href="auxiliary-data.html#auxiliary-data">4</a>.</p>
+</div>
+<div id="data-preparation" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Data preparation</h2>
+<p>This step assumes that all welfare data is properly organized in the datalibweb
+system and vetted in PRIMUS. In contrast to the previous global-poverty
+calculator system, PovcalNet, the PIP system only gathers welfare from the
+datalibweb server.</p>
+<p>The welfare data preparation is done using the repository
+<a href="https://github.com/PIP-Technical-Team/pipdp">/pipdp</a>. As of now
+(June 15, 2021), this part of the process has been coded
+in Stata, given that the there is no an R version of <code>{dataliweb}</code>. As for the
+auxiliary data preparation, it is done with package <code>{pipaux}</code>, available in the
+repository <a href="https://github.com/PIP-Technical-Team/pipaux">/pipaux</a>. Right now
+the automation of updating the auxiliary has not been implemented. Thus, it has
+to be done manually by typing <code>pipaux::pip_update_all_aux()</code> to update all
+measures, or use function <code>pipaux::update_aux()</code> to update a particular measure.</p>
+</div>
+<div id="pre-calculated-indicators" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Pre-calculated indicators</h2>
+<p>All measures in PIP that do not depend on the value of the poverty line are
+pre-calculated in order to make the API more efficient and responsive. Some
+other indicators that not depend on the poverty lines but do depend on other
+parameters, like the societal poverty, are not included as part of the
+pre-calculated indicators.</p>
+<p>The process to estimate the pre-calculated indicators is explained in detail in
+Chapter <a href="internal-workflow.html#pre-calculated-indicators">2.5</a>.</p>
 
 </div>
 </div>
 
 
 
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Population data is also necessary when working with
+group data.<a href="internal-workflow.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
