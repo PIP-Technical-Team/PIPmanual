@@ -144,7 +144,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="internal-workflow.html"><a href="internal-workflow.html#overview"><i class="fa fa-check"></i><b>2.2</b> Overview</a></li>
 <li class="chapter" data-level="2.3" data-path="internal-workflow.html"><a href="internal-workflow.html#data-acquisition"><i class="fa fa-check"></i><b>2.3</b> Data acquisition</a></li>
 <li class="chapter" data-level="2.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> Data preparation</a></li>
-<li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-calculated-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-calculated indicators</a></li>
+<li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-computed-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-computed indicators</a></li>
+<li class="chapter" data-level="2.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>2.6</b> API feeding</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
 <li class="chapter" data-level="3" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>3</b> Welfare data</a></li>
@@ -261,7 +262,7 @@ in more detail.</p>
 <ol style="list-style-type: decimal">
 <li>Data acquisition</li>
 <li>Data preparation</li>
-<li>pre-calculated indicators</li>
+<li>pre-computed indicators</li>
 <li>API feeding</li>
 </ol>
 <p><img src="img/PIP_workflow_overview.png" title="PIP workflow overview" /></p>
@@ -332,15 +333,26 @@ the automation of updating the auxiliary has not been implemented. Thus, it has
 to be done manually by typing <code>pipaux::pip_update_all_aux()</code> to update all
 measures, or use function <code>pipaux::update_aux()</code> to update a particular measure.</p>
 </div>
-<div id="pre-calculated-indicators" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Pre-calculated indicators</h2>
+<div id="pre-computed-indicators" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Pre-computed indicators</h2>
 <p>All measures in PIP that do not depend on the value of the poverty line are
-pre-calculated in order to make the API more efficient and responsive. Some
-other indicators that not depend on the poverty lines but do depend on other
+pre-computed in order to make the API more efficient and responsive. Some other
+indicators that not depend on the poverty lines but do depend on other
 parameters, like the societal poverty, are not included as part of the
-pre-calculated indicators.</p>
-<p>The process to estimate the pre-calculated indicators is explained in detail in
-Chapter <a href="internal-workflow.html#pre-calculated-indicators">2.5</a>.</p>
+pre-computed indicators.</p>
+<p>This step is executed in the repository
+<a href="https://github.com/PIP-Technical-Team/pip_ingestion_pipeline">/pip_ingestion_pipeline</a>,
+which is a pipeline powered by the <code>{targets}</code> package. The process to estimate
+the pre-computed indicators is explained in detail in Chapter <a href="pcpipeline.html#pcpipeline">7</a>.
+The pipeline makes use of two R packages, <code>{wbpip}</code> and <code>{pipdm}</code>. The former is
+publicly available and contains all the technical and methodological procedures
+to estimate poverty and inequality measures at the country, regional, and global
+level. The latter, makes use of <code>{wbpip}</code> to execute the calculations and put
+the resulting data in order, ready to be ingested by the PIP API.</p>
+</div>
+<div id="api-feeding" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> API feeding</h2>
+<p>We need to finish this part.</p>
 
 </div>
 </div>
