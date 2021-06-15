@@ -31,7 +31,7 @@ The workflow overview is mainly composed of four steps.
 
 1.  Data acquisition
 2.  Data preparation
-3.  pre-calculated indicators
+3.  pre-computed indicators
 4.  API feeding
 
 ![](img/PIP_workflow_overview.png "PIP workflow overview")
@@ -113,13 +113,24 @@ the automation of updating the auxiliary has not been implemented. Thus, it has
 to be done manually by typing `pipaux::pip_update_all_aux()` to update all
 measures, or use function `pipaux::update_aux()` to update a particular measure.
 
-## Pre-calculated indicators
+## Pre-computed indicators
 
 All measures in PIP that do not depend on the value of the poverty line are
-pre-calculated in order to make the API more efficient and responsive. Some
-other indicators that not depend on the poverty lines but do depend on other
+pre-computed in order to make the API more efficient and responsive. Some other
+indicators that not depend on the poverty lines but do depend on other
 parameters, like the societal poverty, are not included as part of the
-pre-calculated indicators.
+pre-computed indicators.
 
-The process to estimate the pre-calculated indicators is explained in detail in
-Chapter \@ref(pre-calculated-indicators).
+This step is executed in the repository
+[/pip_ingestion_pipeline](https://github.com/PIP-Technical-Team/pip_ingestion_pipeline),
+which is a pipeline powered by the `{targets}` package. The process to estimate
+the pre-computed indicators is explained in detail in Chapter \@ref(pcpipeline).
+The pipeline makes use of two R packages, `{wbpip}` and `{pipdm}`. The former is
+publicly available and contains all the technical and methodological procedures
+to estimate poverty and inequality measures at the country, regional, and global
+level. The latter, makes use of `{wbpip}` to execute the calculations and put
+the resulting data in order, ready to be ingested by the PIP API.
+
+## API feeding
+
+We need to finish this part.

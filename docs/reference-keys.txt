@@ -26,5 +26,8 @@ prerequisites-1
 structure-of-the-_targets.r-file
 step-3-the-actual-pipeline
 understanding-the-pipeline
+understanding-pipdm-functions
+internal-structure-of-pipdm-functions
+updating-pipdm-or-any-other-pip-package
 executing-the-_targets.r-file
 debugging
