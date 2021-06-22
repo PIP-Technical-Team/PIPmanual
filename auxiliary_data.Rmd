@@ -1,1 +1,26 @@
 # Auxiliary data
+
+As it was said in Section \@ref(data-acquisition), auxiliary data is the data
+used to temporally deflate and line up welfare data, with the objective of
+getting poverty estimates comparable over time, across countries, and, more
+importantly, being able to estimate regional and global estimates. Yet,
+auxiliary data also refers to metadata with functional and qualitative
+information. Functional information is such that is used in internal
+calculations such as time comparability or surveys availability. Qualitative
+information is just useful information that does not affect, neither depend on,
+quantitative data. It is primary collected and made available for the end user.
+
+As explain in Chapter \@ref(folder-structure), all auxiliary data is stored in
+`"y:/PIP-Data/_aux/"`.
+
+```{r aux-dir, echo=FALSE}
+fs::dir_tree("y:/PIP-Data/_aux/", 
+             recurse = FALSE, 
+             regex = ".*(?<!\\.txt)$", 
+             perl = TRUE)
+```
+
+The naming convention of subfolders inside the \_aux directory is useful because
+auxiliary data is commonly referred to in all technical processes by its
+convention rather than by it actual name. For instance Gross Domestic Product or
+Purshacing
