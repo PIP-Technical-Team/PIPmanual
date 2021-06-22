@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Internal Workflow | PIP Manual</title>
   <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
-  <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Internal Workflow | PIP Manual" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-15" />
+<meta name="date" content="2021-06-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
   
 <link rel="prev" href="intro.html"/>
 <link rel="next" href="welfare-data.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,6 +52,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -118,6 +120,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -280,13 +283,18 @@ variables are the minimum data necessary to estimate poverty and inequality
 measures.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> These files come in four varieties; microdata,
 group data, bin data, and synthetic data. The details of welfare can be found in
 Section <a href="welfare-data.html#welfare-data">3</a>. Regardless of the variety of the data, all welfare
-data in PIP are gathered from the Global Monitoring Database, GMD.</p>
+data in PIP are gathered from the Global Monitoring Database, GMD. For a
+comprehensive explanation of how the household data are selected and obtained,
+you may check chapter <a href="https://povcalnet-team.github.io/Methodology/acquiring.html"><em>Acquiring household survey
+data</em></a>of the
+<a href="https://povcalnet-team.github.io/Methodology/index.html">methodological PIP
+manual</a>.</p>
 <p><em>Microdata</em> is uploaded into the PRIMUS system by the regional teams of the
 Poverty Global Practice. To do so, each regional team has to follow the GMD
 guidelines, which are verified by the Stata command <code>{primus}</code>. Rarely. the
 <code>{primus}</code> command does NOT capture some potential errors in the data. More
 details in Section <a href="primus.html#primus">5</a></p>
-<p>As of now (June 15, 2021), <em>Group data</em> is divided two:
+<p>As of now (June 21, 2021), <em>Group data</em> is divided two:
 historical group data and new group data. Historical group data is organized and
 provided by the PovcalNet team, who sends it to the Poverty GP to be included in
 the datalibweb system. New group data is collected by the poverty economist of
@@ -303,7 +311,7 @@ entire microdata. Thus, we need to contract the microdata into 400 bins or
 quantiles. The code that gathers LIS data is available in the Github repository
 <a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>.</p>
 <p>Finally, <em>synthetic data</em>, refers to simulated microdata from an statistical
-procedure. As of now (June 15, 2021), the these data are
+procedure. As of now (June 21, 2021), the these data are
 estimated using multiple imputation techniques, so that any calculation must
 take into account the imputation-id variable. The data is calculated by the
 poverty economist of the country and the organizes by the global team in the
@@ -325,7 +333,7 @@ calculator system, PovcalNet, the PIP system only gathers welfare from the
 datalibweb server.</p>
 <p>The welfare data preparation is done using the repository
 <a href="https://github.com/PIP-Technical-Team/pipdp">/pipdp</a>. As of now
-(June 15, 2021), this part of the process has been coded
+(June 21, 2021), this part of the process has been coded
 in Stata, given that the there is no an R version of <code>{dataliweb}</code>. As for the
 auxiliary data preparation, it is done with package <code>{pipaux}</code>, available in the
 repository <a href="https://github.com/PIP-Technical-Team/pipaux">/pipaux</a>. Right now
@@ -352,7 +360,7 @@ the resulting data in order, ready to be ingested by the PIP API.</p>
 </div>
 <div id="api-feeding" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> API feeding</h2>
-<p>We need to finish this part.</p>
+<p><span style="color:red">We need to finish this part</span>.</p>
 
 </div>
 </div>
@@ -395,6 +403,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

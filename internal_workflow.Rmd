@@ -51,7 +51,12 @@ variables are the minimum data necessary to estimate poverty and inequality
 measures.[^internal_workflow-1] These files come in four varieties; microdata,
 group data, bin data, and synthetic data. The details of welfare can be found in
 Section \@ref(welfare-data). Regardless of the variety of the data, all welfare
-data in PIP are gathered from the Global Monitoring Database, GMD.
+data in PIP are gathered from the Global Monitoring Database, GMD. For a
+comprehensive explanation of how the household data are selected and obtained,
+you may check chapter [*Acquiring household survey
+data*](https://povcalnet-team.github.io/Methodology/acquiring.html)of the
+[methodological PIP
+manual](https://povcalnet-team.github.io/Methodology/index.html).
 
 [^internal_workflow-1]: Population data is also necessary when working with
     group data.
