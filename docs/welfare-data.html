@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Welfare data | PIP Manual</title>
+  <title>Chapter 5 Welfare data | PIP Manual</title>
   <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Welfare data | PIP Manual" />
+  <meta property="og:title" content="Chapter 5 Welfare data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Welfare data | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 5 Welfare data | PIP Manual" />
   
   <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
@@ -25,14 +25,14 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-22" />
+<meta name="date" content="2021-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="internal-workflow.html"/>
+<link rel="prev" href="joining-data.html"/>
 <link rel="next" href="auxiliary-data.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -149,65 +149,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> Data preparation</a></li>
 <li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-computed-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-computed indicators</a></li>
 <li class="chapter" data-level="2.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>2.6</b> API feeding</a></li>
+<li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="3" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>3</b> Welfare data</a></li>
-<li class="chapter" data-level="4" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>4</b> Auxiliary data</a></li>
-<li class="chapter" data-level="5" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>5</b> PRIMUS</a>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
+<li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>5.1</b> Interacting with PRIMUS</a>
+<li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>7.1</b> Interacting with PRIMUS</a>
 <ul>
 <li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
 <li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
 <li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>5.2</b> Understanding PRIMUS</a></li>
-<li class="chapter" data-level="5.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>5.3</b> Checking PRIMUS estimates</a></li>
-<li class="chapter" data-level="5.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>5.4</b> Confirming and approving data in PRIMUS</a></li>
+<li class="chapter" data-level="7.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>7.2</b> Understanding PRIMUS</a></li>
+<li class="chapter" data-level="7.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>7.3</b> Checking PRIMUS estimates</a></li>
+<li class="chapter" data-level="7.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>7.4</b> Confirming and approving data in PRIMUS</a></li>
 </ul></li>
 <li class="part"><span><b>III Technical Considerations</b></span></li>
-<li class="chapter" data-level="6" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>6</b> Load microdata and Auxiliary data</a>
+<li class="chapter" data-level="8" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>8</b> Load microdata and Auxiliary data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>6.1</b> Auxiilary data</a>
+<li class="chapter" data-level="8.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>8.1</b> Auxiilary data</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>6.1.1</b> udpate data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>6.1.2</b> Load data</a></li>
+<li class="chapter" data-level="8.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>8.1.1</b> udpate data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>8.1.2</b> Load data</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>6.2</b> Microdata</a>
+<li class="chapter" data-level="8.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>8.2</b> Microdata</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>6.2.1</b> Inventory file</a></li>
-<li class="chapter" data-level="6.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>6.2.2</b> Finding data</a></li>
-<li class="chapter" data-level="6.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>6.2.3</b> Loading data</a></li>
+<li class="chapter" data-level="8.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>8.2.1</b> Inventory file</a></li>
+<li class="chapter" data-level="8.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>8.2.2</b> Finding data</a></li>
+<li class="chapter" data-level="8.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>8.2.3</b> Loading data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>7</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
+<li class="chapter" data-level="9" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>9</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure"><i class="fa fa-check"></i><b>7.1</b> Folder structure</a>
+<li class="chapter" data-level="9.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure-1"><i class="fa fa-check"></i><b>9.1</b> Folder structure</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#folders"><i class="fa fa-check"></i>Folders</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#files"><i class="fa fa-check"></i>Files</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites-1"><i class="fa fa-check"></i><b>7.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="7.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>7.3</b> Structure of the <code>_targets.R</code> file</a>
+<li class="chapter" data-level="9.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites-1"><i class="fa fa-check"></i><b>9.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="9.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>9.3</b> Structure of the <code>_targets.R</code> file</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#start-up"><i class="fa fa-check"></i>Start up</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-1-small-functions"><i class="fa fa-check"></i>Step 1: small functions</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-2-prepare-data"><i class="fa fa-check"></i>Step 2: prepare data</a></li>
-<li class="chapter" data-level="7.3.1" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i><b>7.3.1</b> Step 3: The actual pipeline</a></li>
+<li class="chapter" data-level="9.3.1" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i><b>9.3.1</b> Step 3: The actual pipeline</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>7.4</b> Understanding the pipeline</a>
+<li class="chapter" data-level="9.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>9.4</b> Understanding the pipeline</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#stem-targets"><i class="fa fa-check"></i>Stem targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>7.5</b> Understanding <code>{pipdm}</code> functions</a>
+<li class="chapter" data-level="9.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>9.5</b> Understanding <code>{pipdm}</code> functions</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>7.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
-<li class="chapter" data-level="7.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>7.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
+<li class="chapter" data-level="9.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>9.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
+<li class="chapter" data-level="9.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>9.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>7.6</b> Executing the <code>_targets.R</code> file</a></li>
-<li class="chapter" data-level="7.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>7.7</b> Debugging</a>
+<li class="chapter" data-level="9.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>9.6</b> Executing the <code>_targets.R</code> file</a></li>
+<li class="chapter" data-level="9.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>9.7</b> Debugging</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-stem-targets"><i class="fa fa-check"></i>Debugging stem targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-branch-targets"><i class="fa fa-check"></i>Debugging branch targets</a></li>
@@ -234,8 +244,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="welfare-data" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Welfare data</h1>
+<div id="welfare-data" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Welfare data</h1>
 <p>blah blah blah</p>
 
 </div>
@@ -244,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="internal-workflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="joining-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="auxiliary-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -15,6 +15,7 @@ rmd_files: [
   "intro.Rmd",
   "internal_workflow.Rmd",
   "Folder_structure.Rmd",
+  "joining_data.Rmd",
 
   "welfare_data.Rmd",
   "auxiliary_data.Rmd",

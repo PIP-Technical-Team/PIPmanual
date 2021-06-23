@@ -23,4 +23,67 @@ fs::dir_tree("y:/PIP-Data/_aux/",
 The naming convention of subfolders inside the \_aux directory is useful because
 auxiliary data is commonly referred to in all technical processes by its
 convention rather than by it actual name. For instance Gross Domestic Product or
-Purshacing
+Purchasing Power Parity are better known as gdp and ppp, respectively. Yet,
+other measures such as national population or consumption also make use of
+conventions.
+
+In this chapter you will learn everything related to each of the files that
+store auxiliary data. Notice that the chapter is structured by files rather than
+by measures or types of auxiliary data because you may find more than one
+measure in one file.
+
+The R package that manages auxiliary data is `{pipaux}`.
+
+As explained in Chapter \@ref(folder-structure), within the folder of each
+auxiliary file, you will find, at a minimum, a `_vintage` folder, one `xxx.fst`,
+one `xxx.dta` file, and one `xxx_datasignature.txt` , where `xxx` stands for the
+name of the file.
+
+## Population
+
+### Original data
+
+Everything related to population data should be placed in the folder
+`y:\PIP-Data\_aux\pop\`. hereafter (`./`).
+
+The population data come from one of two different sources. WDI or an internal
+file provided by a member of the DECDG team. Ideally, population data should be
+downloaded from WDI, but sometimes the most recent data available has not been
+uploaded yet, so it needs to be collected internally in DECDG. As of now
+(`r format(Sys.time(), "%B %d, %Y")`), the DECDG focal point to provide the
+population data is [Emi Suzuki](mailto:esuzuki1@worldbank.org). You just need to
+send her an email, and she will provide the data to you.
+
+If the data is provided by DECDG, it should be stored in the folder
+`./raw_data`. The original excel file must be placed without modification in the
+folder `./raw_data/original`. Then, the file is copied again one level up into
+the folder `./raw_data` with the name `population_country_yyyy-mm-dd.xlsx` where
+`yyyy-mm-dd` refers to the official release date of the population data. Notice
+that for countries PSE, KWT and SXM, some years of population data are missing
+in the DECDG main file and hence in WDI. Here we complement the main file with
+an additional file shared by Emi to assure complete coverage. This file contains
+historical data and will not need to be updated every year. This additional file
+has the name convention `population_missing_yyyy-mm-dd.xlsx` and should follow
+the same process as the `population_country` file. Once all the files and their
+corresponding place, you can update the `./pop.fst` file by typing
+`pipaux::pip_pop_update(src = "decdg")`.
+
+If the data comes directly from WDI, you just need to update the file
+`./pop.fst` by typing `pipaux::pip_pop_update(src = "wdi")`. It is worth
+mentioning that the population codes used in WDI are "SP.POP.TOTL",
+"SP.RUR.TOTL", and "SP.URB.TOTL", which are total population, rural population,
+and urban population, respectively. If it is the case that PIP begins using
+subnational population, a new set of WDI codes should be added to the R script
+in
+[pipaux::pip_pop_update()](https://github.com/PIP-Technical-Team/pipaux/blob/cd7738f98ec5373db8333c3573700b4991776c8d/R/pip_pop_update.R#L17).
+
+### Data structure
+
+Population data is loaded by typing either `pipload::pip_load_aux("pop")` or
+`pipaux::pip_pop("load")`. We highly recommend the former, as `{pipload}` is the
+intended R package for loading any PIP data.
+
+```{r}
+pop <- pipload::pip_load_aux("pop")
+head(pop)
+```

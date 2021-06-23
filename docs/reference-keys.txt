@@ -6,8 +6,14 @@ data-acquisition
 data-preparation
 pre-computed-indicators
 api-feeding
+packages-interaction
+folder-structure
+joining-data
 welfare-data
 auxiliary-data
+population
+original-data
+data-structure
 primus
 interacting-with-primus
 understand-primus
@@ -22,7 +28,7 @@ inventory-file
 finding-data
 loading-data
 pcpipeline
-folder-structure
+folder-structure-1
 prerequisites-1
 structure-of-the-_targets.r-file
 step-3-the-actual-pipeline
@@ -32,4 +38,3 @@ internal-structure-of-pipdm-functions
 updating-pipdm-or-any-other-pip-package
 executing-the-_targets.r-file
 debugging
-folder-structure-1

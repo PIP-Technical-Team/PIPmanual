@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Internal Workflow | PIP Manual</title>
+  <title>Chapter 4 Joining Data | PIP Manual</title>
   <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Internal Workflow | PIP Manual" />
+  <meta property="og:title" content="Chapter 4 Joining Data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Internal Workflow | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 4 Joining Data | PIP Manual" />
   
   <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="folder-structure.html"/>
+<link rel="prev" href="folder-structure.html"/>
+<link rel="next" href="welfare-data.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -244,154 +244,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="internal-workflow" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Internal Workflow</h1>
-<p>This chapter explains the internal technical workflow of the PIP project. Many
-of the different steps of the workflow are explained in more detail in other
-chapters of this book. This chapter, however, presents an overview of the
-workflow and its components.</p>
-<div id="the-github-group" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> The Github group</h2>
-<p>The technical code of the PIP project is organized in Git repositories in the
-Github group <a href="https://github.com/PIP-Technical-Team">/PIP-Technical-Team</a>. You
-need to be granted collaborator status in order to contribute to any of the
-repositories in the group. Also, many of the repositories do not play a direct
-role in the PIP technical workflow. Some of them are intended for documenting
-parts of the workflow or for testing purposes. For example, the repository of
-this book–<a href="https://github.com/PIP-Technical-Team/PIPmanual">/PIPmanual</a>–is not
-part of the workflow of PIP, since it is not necessary for any estimation. Yet,
-you need get familiar with all the repositories in case you need to make a
-contribution in any of them. In this chapter, however, we will focus on
-understanding the repositories that affect directly the PIP workflow.</p>
-<p>First, we will see the overview of the workflow. It is an overview because each
-bucket of its buckets is a workflow in itself. Yet, it is important to have the
-overview clear in order to understand how and where all the pieces fall
-together. Then, we will unpack each of the workflow buckets to understand them
-in more detail.</p>
-</div>
-<div id="overview" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Overview</h2>
-<p>The workflow overview is mainly composed of four steps.</p>
-<ol style="list-style-type: decimal">
-<li>Data acquisition</li>
-<li>Data preparation</li>
-<li>pre-computed indicators</li>
-<li>API feeding</li>
-</ol>
-<p><img src="img/PIP_workflow_overview.png" title="PIP workflow overview" /></p>
-<p>Each of the steps (or buckets) is prerequisite of the next one, so if something
-changes in one of the them, it is necessary to execute the subsequent steps.</p>
-</div>
-<div id="data-acquisition" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Data acquisition</h2>
-<p>Before understanding how the input data of PIP is acquired, we need to
-understand PIP data itself. The PIP is fed by two kinds of data: welfare data
-and auxiliary data.</p>
-<p><strong>Welfare data</strong> refers to the data files that contain at least one welfare
-vector and one population expansion factor (i.e., weights) vector. These two
-variables are the minimum data necessary to estimate poverty and inequality
-measures.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> These files come in four varieties; microdata,
-group data, bin data, and synthetic data. The details of welfare can be found in
-Section <a href="welfare-data.html#welfare-data">5</a>. Regardless of the variety of the data, all welfare
-data in PIP are gathered from the Global Monitoring Database, GMD. For a
-comprehensive explanation of how the household data are selected and obtained,
-you may check chapter <a href="https://povcalnet-team.github.io/Methodology/acquiring.html"><em>Acquiring household survey
-data</em></a>of the
-<a href="https://povcalnet-team.github.io/Methodology/index.html">methodological PIP
-manual</a>.</p>
-<p><em>Microdata</em> is uploaded into the PRIMUS system by the regional teams of the
-Poverty Global Practice. To do so, each regional team has to follow the GMD
-guidelines, which are verified by the Stata command <code>{primus}</code>. Rarely. the
-<code>{primus}</code> command does NOT capture some potential errors in the data. More
-details in Section <a href="primus.html#primus">7</a></p>
-<p>As of now (June 23, 2021), <em>Group data</em> is divided two:
-historical group data and new group data. Historical group data is organized and
-provided by the PovcalNet team, who sends it to the Poverty GP to be included in
-the datalibweb system. New group data is collected by the poverty economist of
-the corresponding country, who shares it with her regional focal team, who
-shares it with PovcalNet team. This new group data is organized and tested by
-the PovcalNet team and then send back to the poverty GP to be included in the
-datalibweb system.</p>
-<p><em>Bin data</em> refers to welfare data from countries for which there is no poverty
-economist. Most of these countries are developed countries such as Canada or
-Japan. The main characteristic of this data is that it is only available through
-the <a href="https://www.lisdatacenter.org/data-access/lissy/">LISSY system</a> of the <a href="https://www.lisdatacenter.org/">LIS
-data center</a>, which does not allow access to the
-entire microdata. Thus, we need to contract the microdata into 400 bins or
-quantiles. The code that gathers LIS data is available in the Github repository
-<a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>.</p>
-<p>Finally, <em>synthetic data</em>, refers to simulated microdata from an statistical
-procedure. As of now (June 23, 2021), the these data are
-estimated using multiple imputation techniques, so that any calculation must
-take into account the imputation-id variable. The data is calculated by the
-poverty economist of the country and the organizes by the global team in the
-Poverty GP.</p>
-<p><strong>Auxiliary data</strong> refers to all data necessary to temporally deflate and line
-up welfare data, with the objective of getting poverty estimates comparable over
-time, across countries, and, more importantly, being able to estimate regional
-and global estimates. Some of these data are national population, GDP, consumer
-price index, purchasing parity power, etc. Auxiliary data also include metadata
-such as time comparability or type of welfare aggregate. Since each measure of
-auxiliary data is acquired differently, all the details are explain in Section
-<a href="auxiliary-data.html#auxiliary-data">6</a>.</p>
-</div>
-<div id="data-preparation" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Data preparation</h2>
-<p>This step assumes that all welfare data is properly organized in the datalibweb
-system and vetted in PRIMUS. In contrast to the previous global-poverty
-calculator system, PovcalNet, the PIP system only gathers welfare from the
-datalibweb server.</p>
-<p>The welfare data preparation is done using the repository
-<a href="https://github.com/PIP-Technical-Team/pipdp">/pipdp</a>. As of now
-(June 23, 2021), this part of the process has been coded
-in Stata, given that the there is no an R version of <code>{dataliweb}</code>. As for the
-auxiliary data preparation, it is done with package <code>{pipaux}</code>, available in the
-repository <a href="https://github.com/PIP-Technical-Team/pipaux">/pipaux</a>. Right now
-the automation of updating the auxiliary has not been implemented. Thus, it has
-to be done manually by typing <code>pipaux::pip_update_all_aux()</code> to update all
-measures, or use function <code>pipaux::update_aux()</code> to update a particular measure.</p>
-</div>
-<div id="pre-computed-indicators" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Pre-computed indicators</h2>
-<p>All measures in PIP that do not depend on the value of the poverty line are
-pre-computed in order to make the API more efficient and responsive. Some other
-indicators that not depend on the poverty lines but do depend on other
-parameters, like the societal poverty, are not included as part of the
-pre-computed indicators.</p>
-<p>This step is executed in the repository
-<a href="https://github.com/PIP-Technical-Team/pip_ingestion_pipeline">/pip_ingestion_pipeline</a>,
-which is a pipeline powered by the <code>{targets}</code> package. The process to estimate
-the pre-computed indicators is explained in detail in Chapter <a href="pcpipeline.html#pcpipeline">9</a>.
-The pipeline makes use of two R packages, <code>{wbpip}</code> and <code>{pipdm}</code>. The former is
-publicly available and contains all the technical and methodological procedures
-to estimate poverty and inequality measures at the country, regional, and global
-level. The latter, makes use of <code>{wbpip}</code> to execute the calculations and put
-the resulting data in order, ready to be ingested by the PIP API.</p>
-</div>
-<div id="api-feeding" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> API feeding</h2>
-<p><span style="color:red">We need to finish this part (Tony?)</span> .</p>
-</div>
-<div id="packages-interaction" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Packages interaction</h2>
-<p><span style="color:red">We need to finish this part</span>.</p>
+<div id="joining-data" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Joining Data</h1>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Population data is also necessary when working with
-group data.<a href="internal-workflow.html#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="folder-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="folder-structure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="welfare-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Auxiliary data | PIP Manual</title>
+  <title>Chapter 6 Auxiliary data | PIP Manual</title>
   <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Auxiliary data | PIP Manual" />
+  <meta property="og:title" content="Chapter 6 Auxiliary data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Auxiliary data | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 6 Auxiliary data | PIP Manual" />
   
   <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-22" />
+<meta name="date" content="2021-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -149,65 +149,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> Data preparation</a></li>
 <li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-computed-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-computed indicators</a></li>
 <li class="chapter" data-level="2.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>2.6</b> API feeding</a></li>
+<li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="3" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>3</b> Welfare data</a></li>
-<li class="chapter" data-level="4" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>4</b> Auxiliary data</a></li>
-<li class="chapter" data-level="5" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>5</b> PRIMUS</a>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
+<li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>5.1</b> Interacting with PRIMUS</a>
+<li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>7.1</b> Interacting with PRIMUS</a>
 <ul>
 <li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
 <li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
 <li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>5.2</b> Understanding PRIMUS</a></li>
-<li class="chapter" data-level="5.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>5.3</b> Checking PRIMUS estimates</a></li>
-<li class="chapter" data-level="5.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>5.4</b> Confirming and approving data in PRIMUS</a></li>
+<li class="chapter" data-level="7.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>7.2</b> Understanding PRIMUS</a></li>
+<li class="chapter" data-level="7.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>7.3</b> Checking PRIMUS estimates</a></li>
+<li class="chapter" data-level="7.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>7.4</b> Confirming and approving data in PRIMUS</a></li>
 </ul></li>
 <li class="part"><span><b>III Technical Considerations</b></span></li>
-<li class="chapter" data-level="6" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>6</b> Load microdata and Auxiliary data</a>
+<li class="chapter" data-level="8" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>8</b> Load microdata and Auxiliary data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>6.1</b> Auxiilary data</a>
+<li class="chapter" data-level="8.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>8.1</b> Auxiilary data</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>6.1.1</b> udpate data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>6.1.2</b> Load data</a></li>
+<li class="chapter" data-level="8.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>8.1.1</b> udpate data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>8.1.2</b> Load data</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>6.2</b> Microdata</a>
+<li class="chapter" data-level="8.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>8.2</b> Microdata</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>6.2.1</b> Inventory file</a></li>
-<li class="chapter" data-level="6.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>6.2.2</b> Finding data</a></li>
-<li class="chapter" data-level="6.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>6.2.3</b> Loading data</a></li>
+<li class="chapter" data-level="8.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>8.2.1</b> Inventory file</a></li>
+<li class="chapter" data-level="8.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>8.2.2</b> Finding data</a></li>
+<li class="chapter" data-level="8.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>8.2.3</b> Loading data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>7</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
+<li class="chapter" data-level="9" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>9</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure"><i class="fa fa-check"></i><b>7.1</b> Folder structure</a>
+<li class="chapter" data-level="9.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure-1"><i class="fa fa-check"></i><b>9.1</b> Folder structure</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#folders"><i class="fa fa-check"></i>Folders</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#files"><i class="fa fa-check"></i>Files</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites-1"><i class="fa fa-check"></i><b>7.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="7.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>7.3</b> Structure of the <code>_targets.R</code> file</a>
+<li class="chapter" data-level="9.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites-1"><i class="fa fa-check"></i><b>9.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="9.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>9.3</b> Structure of the <code>_targets.R</code> file</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#start-up"><i class="fa fa-check"></i>Start up</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-1-small-functions"><i class="fa fa-check"></i>Step 1: small functions</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-2-prepare-data"><i class="fa fa-check"></i>Step 2: prepare data</a></li>
-<li class="chapter" data-level="7.3.1" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i><b>7.3.1</b> Step 3: The actual pipeline</a></li>
+<li class="chapter" data-level="9.3.1" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i><b>9.3.1</b> Step 3: The actual pipeline</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>7.4</b> Understanding the pipeline</a>
+<li class="chapter" data-level="9.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>9.4</b> Understanding the pipeline</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#stem-targets"><i class="fa fa-check"></i>Stem targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>7.5</b> Understanding <code>{pipdm}</code> functions</a>
+<li class="chapter" data-level="9.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>9.5</b> Understanding <code>{pipdm}</code> functions</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>7.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
-<li class="chapter" data-level="7.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>7.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
+<li class="chapter" data-level="9.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>9.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
+<li class="chapter" data-level="9.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>9.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>7.6</b> Executing the <code>_targets.R</code> file</a></li>
-<li class="chapter" data-level="7.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>7.7</b> Debugging</a>
+<li class="chapter" data-level="9.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>9.6</b> Executing the <code>_targets.R</code> file</a></li>
+<li class="chapter" data-level="9.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>9.7</b> Debugging</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-stem-targets"><i class="fa fa-check"></i>Debugging stem targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-branch-targets"><i class="fa fa-check"></i>Debugging branch targets</a></li>
@@ -234,9 +244,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="auxiliary-data" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Auxiliary data</h1>
+<div id="auxiliary-data" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Auxiliary data</h1>
+<p>As it was said in Section <a href="internal-workflow.html#data-acquisition">2.3</a>, auxiliary data is the data
+used to temporally deflate and line up welfare data, with the objective of
+getting poverty estimates comparable over time, across countries, and, more
+importantly, being able to estimate regional and global estimates. Yet,
+auxiliary data also refers to metadata with functional and qualitative
+information. Functional information is such that is used in internal
+calculations such as time comparability or surveys availability. Qualitative
+information is just useful information that does not affect, neither depend on,
+quantitative data. It is primary collected and made available for the end user.</p>
+<p>As explain in Chapter <a href="folder-structure.html#folder-structure">3</a>, all auxiliary data is stored in
+<code>"y:/PIP-Data/_aux/"</code>.</p>
+<pre><code>## y:/PIP-Data/_aux/
+## +-- country_list
+## +-- cpi
+## +-- dlw
+## +-- gdm
+## +-- gdp
+## +-- maddison
+## +-- pce
+## +-- pfw
+## +-- pop
+## +-- ppp
+## +-- sna
+## \-- weo</code></pre>
+<p>The naming convention of subfolders inside the _aux directory is useful because
+auxiliary data is commonly referred to in all technical processes by its
+convention rather than by it actual name. For instance Gross Domestic Product or
+Purchasing Power Parity are better known as gdp and ppp, respectively. Yet,
+other measures such as national population or consumption also make use of
+conventions.</p>
+<p>In this chapter you will learn everything related to each of the files that
+store auxiliary data. Notice that the chapter is structured by files rather than
+by measures or types of auxiliary data because you may find more than one
+measure in one file.</p>
+<p>The R package that manages auxiliary data is <code>{pipaux}</code>.</p>
+<p>As explained in Chapter <a href="folder-structure.html#folder-structure">3</a>, within the folder of each
+auxiliary file, you will find, at a minimum, a <code>_vintage</code> folder, one <code>xxx.fst</code>,
+one <code>xxx.dta</code> file, and one <code>xxx_datasignature.txt</code> , where <code>xxx</code> stands for the
+name of the file.</p>
+<div id="population" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Population</h2>
+<div id="original-data" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Original data</h3>
+<p>Everything related to population data should be placed in the folder
+<code>y:\PIP-Data\_aux\pop\</code>. hereafter (<code>./</code>).</p>
+<p>The population data come from one of two different sources. WDI or an internal
+file provided by a member of the DECDG team. Ideally, population data should be
+downloaded from WDI, but sometimes the most recent data available has not been
+uploaded yet, so it needs to be collected internally in DECDG. As of now
+(June 23, 2021), the DECDG focal point to provide the
+population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to
+send her an email, and she will provide the data to you.</p>
+<p>If the data is provided by DECDG, it should be stored in the folder
+<code>./raw_data</code>. The original excel file must be placed without modification in the
+folder <code>./raw_data/original</code>. Then, the file is copied again one level up into
+the folder <code>./raw_data</code> with the name <code>population_country_yyyy-mm-dd.xlsx</code> where
+<code>yyyy-mm-dd</code> refers to the official release date of the population data. Notice
+that for countries PSE, KWT and SXM, some years of population data are missing
+in the DECDG main file and hence in WDI. Here we complement the main file with
+an additional file shared by Emi to assure complete coverage. This file contains
+historical data and will not need to be updated every year. This additional file
+has the name convention <code>population_missing_yyyy-mm-dd.xlsx</code> and should follow
+the same process as the <code>population_country</code> file. Once all the files and their
+corresponding place, you can update the <code>./pop.fst</code> file by typing
+<code>pipaux::pip_pop_update(src = "decdg")</code>.</p>
+<p>If the data comes directly from WDI, you just need to update the file
+<code>./pop.fst</code> by typing <code>pipaux::pip_pop_update(src = "wdi")</code>. It is worth
+mentioning that the population codes used in WDI are “SP.POP.TOTL,”
+“SP.RUR.TOTL,” and “SP.URB.TOTL,” which are total population, rural population,
+and urban population, respectively. If it is the case that PIP begins using
+subnational population, a new set of WDI codes should be added to the R script
+in
+<a href="https://github.com/PIP-Technical-Team/pipaux/blob/cd7738f98ec5373db8333c3573700b4991776c8d/R/pip_pop_update.R#L17">pipaux::pip_pop_update()</a>.</p>
+</div>
+<div id="data-structure" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Data structure</h3>
+<p>Population data is loaded by typing either <code>pipload::pip_load_aux("pop")</code> or
+<code>pipaux::pip_pop("load")</code>. We highly recommend the former, as <code>{pipload}</code> is the
+intended R package for loading any PIP data.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="auxiliary-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pop&quot;</span>)</span></code></pre></div>
+<pre><code>## v Most recent version of data loaded
+## &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pop/pop.fst&#39;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="auxiliary-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span></code></pre></div>
+<pre><code>##    country_code year pop_data_level     pop  pop_domain
+## 1:          ABW 1960       national   54211    national
+## 2:          ABW 1960          rural   26685 urban/rural
+## 3:          ABW 1960          urban   27526 urban/rural
+## 4:          AFG 1960       national 8996973    national
+## 5:          AFG 1960          rural 8241137 urban/rural
+## 6:          AFG 1960          urban  755836 urban/rural</code></pre>
 
+</div>
+</div>
 </div>
             </section>
 
