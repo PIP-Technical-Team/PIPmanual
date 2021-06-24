@@ -1,1 +1,61 @@
 # Joining Data
+
+Since the PIP project is comprised of several databases at very different domain
+levels, this chapter provides all the guidelines to join data frames correctly.
+The first to understand is that the reporting measures in PIP (e.g., poverty and
+inequality) are uniquely identified by four variables: *Country*, *year*,
+*domain*, and *welfare type*. *Country* refers to independent economies that
+conduct independent household surveys. For instance, China and Taiwan are
+treated as **two different economies** by the World Bank, and hence by PIP, even
+though under some criteria some people think that Taiwan is part of China.
+*Year* refers to reporting year rather than the actual calendar years over which
+the survey was conducted. Some household surveys like India 2011/2012 are
+conducted over the of two calendar year, but the welfare aggregate is deflated
+to the reporting year, 2011. *Domain* refers to the smallest geographical
+disaggregation for which it is possible to deflate and line up to PPP values the
+welfare aggregate of a household survey. The criteria to determine the reporting
+domain of a household survey is still under consideration, but ideally it such
+for which there is CPI, PPP, and population auxiliary data, as well as a
+household survey representative at that level. There are some exceptions to this
+criterion like China or the Philippines, but this cases explained in detailed in
+Section \@ref(special-data-cases). As of today
+(`r format(Sys.Date(), "%B %d, %Y")`), most country/years are reported at the
+national domain and few are reported at the urban/rural domain. However, the PIP
+technical infrastructure has been designed to incorporate other domain levels
+if, at some point in time, it is the case. Finally, the *welfare type* specifies
+whether the welfare aggregate is based on income or in consumption. For the
+latter case, though some households surveys capture expenditure instead, they
+are still considered consumption-based surveys.
+
+The challenge to join different data frames in PIP is that these four variables
+that uniquely identify the reporting measures **are not** available to uniquely
+identify any of the PIP data files---with the exception of the cache files that
+we discuss below. This challenge is easily addressed by having a clear
+understanding of the Price FrameWork (pfw) data frame. This file does not only
+contain valuable metadata, but it could also be considered as the anchor among
+all PIP data.
+
+## The Price FrameWork (pfw) data
+
+As always, this file can be loaded by typing,
+
+```{r}
+pfw <- pipload::pip_load_aux("pfw")
+joyn::is_id(pfw, by = c("country_code", "surveyid_year", "survey_acronym"))
+```
+
+First of all, notice that `pfw` is uniquely identified by country code, survey
+year, and survey acronym. The reason for this is that pfw aims at providing a
+link between every single welfare data file and all the other auxiliary data.
+Since welfare data is stored following the naming convention of the
+[International Household Survey Network (IHSN)](http://ihsn.org/), data is
+stored according to country, survey year, acronym of the survey, and vintage
+control of master and alternative versions.
+
+This is important to understand because PIP estimates are reported at the
+country, year, domain, and welfare type level. the last two of these are not
+found either in the survey ID nor as unique identifier of the pfw.
+
+By default, PIP uses the most recent alternative version of th survey,
+
+## Special data cases

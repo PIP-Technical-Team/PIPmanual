@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-23" />
+<meta name="date" content="2021-06-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
-<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a></li>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#the-price-framework-pfw-data"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a></li>
+<li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
+</ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
 <li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
@@ -246,7 +250,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="joining-data" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Joining Data</h1>
+<p>Since the PIP project is comprised of several databases at very different domain
+levels, this chapter provides all the guidelines to join data frames correctly.
+The first to understand is that the reporting measures in PIP (e.g., poverty and
+inequality) are uniquely identified by four variables: <em>Country</em>, <em>year</em>,
+<em>domain</em>, and <em>welfare type</em>. <em>Country</em> refers to independent economies that
+conduct independent household surveys. For instance, China and Taiwan are
+treated as <strong>two different economies</strong> by the World Bank, and hence by PIP, even
+though under some criteria some people think that Taiwan is part of China.
+<em>Year</em> refers to reporting year rather than the actual calendar years over which
+the survey was conducted. Some household surveys like India 2011/2012 are
+conducted over the of two calendar year, but the welfare aggregate is deflated
+to the reporting year, 2011. <em>Domain</em> refers to the smallest geographical
+disaggregation for which it is possible to deflate and line up to PPP values the
+welfare aggregate of a household survey. The criteria to determine the reporting
+domain of a household survey is still under consideration, but ideally it such
+for which there is CPI, PPP, and population auxiliary data, as well as a
+household survey representative at that level. There are some exceptions to this
+criterion like China or the Philippines, but this cases explained in detailed in
+Section <a href="joining-data.html#special-data-cases">4.2</a>. As of today
+(June 24, 2021), most country/years are reported at the
+national domain and few are reported at the urban/rural domain. However, the PIP
+technical infrastructure has been designed to incorporate other domain levels
+if, at some point in time, it is the case. Finally, the <em>welfare type</em> specifies
+whether the welfare aggregate is based on income or in consumption. For the
+latter case, though some households surveys capture expenditure instead, they
+are still considered consumption-based surveys.</p>
+<p>The challenge to join different data frames in PIP is that these four variables
+that uniquely identify the reporting measures <strong>are not</strong> available to uniquely
+identify any of the PIP data files—with the exception of the cache files that
+we discuss below. This challenge is easily addressed by having a clear
+understanding of the Price FrameWork (pfw) data frame. This file does not only
+contain valuable metadata, but it could also be considered as the anchor among
+all PIP data.</p>
+<div id="the-price-framework-pfw-data" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> The Price FrameWork (pfw) data</h2>
+<p>As always, this file can be loaded by typing,</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="joining-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
+<pre><code>## v Most recent version of data loaded
+## &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pfw/pfw.fst&#39;</code></pre>
+<pre><code>## no labels available for measure `pfw`</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="joining-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a>joyn<span class="sc">::</span><span class="fu">is_id</span>(pfw, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;surveyid_year&quot;</span>, <span class="st">&quot;survey_acronym&quot;</span>))</span></code></pre></div>
+<pre><code>## </code></pre>
+<pre><code>## -- Duplicates in terms of `country_code`, `surveyid_year`, and `survey_acronym`</code></pre>
+<pre><code>##    copies    n percent
+## 1:      1 1968    100%
+## 2:  total 1968    100%</code></pre>
+<pre><code>## ------------------------------------------- End of is_id() report --</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>First of all, notice that <code>pfw</code> is uniquely identified by country code, survey
+year, and survey acronym. The reason for this is that pfw aims at providing a
+link between every single welfare data file and all the other auxiliary data.
+Since welfare data is stored following the naming convention of the
+<a href="http://ihsn.org/">International Household Survey Network (IHSN)</a>, data is
+stored according to country, survey year, acronym of the survey, and vintage
+control of master and alternative versions.</p>
+<p>This is important to understand because PIP estimates are reported at the
+country, year, domain, and welfare type level. the last two of these are not
+found either in the survey ID nor as unique identifier of the pfw.</p>
+<p>By default, PIP uses the most recent alternative version of th survey,</p>
+</div>
+<div id="special-data-cases" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Special data cases</h2>
 
+</div>
 </div>
 
 

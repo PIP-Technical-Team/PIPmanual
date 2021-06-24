@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-23" />
+<meta name="date" content="2021-06-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
-<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a></li>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#the-price-framework-pfw-data"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a></li>
+<li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
+</ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
 <li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
@@ -295,7 +299,7 @@ name of the file.</p>
 file provided by a member of the DECDG team. Ideally, population data should be
 downloaded from WDI, but sometimes the most recent data available has not been
 uploaded yet, so it needs to be collected internally in DECDG. As of now
-(June 23, 2021), the DECDG focal point to provide the
+(June 24, 2021), the DECDG focal point to provide the
 population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to
 send her an email, and she will provide the data to you.</p>
 <p>If the data is provided by DECDG, it should be stored in the folder
@@ -325,10 +329,10 @@ in
 <p>Population data is loaded by typing either <code>pipload::pip_load_aux("pop")</code> or
 <code>pipaux::pip_pop("load")</code>. We highly recommend the former, as <code>{pipload}</code> is the
 intended R package for loading any PIP data.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="auxiliary-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="auxiliary-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pop&quot;</span>)</span></code></pre></div>
 <pre><code>## v Most recent version of data loaded
 ## &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pop/pop.fst&#39;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="auxiliary-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="auxiliary-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span></code></pre></div>
 <pre><code>##    country_code year pop_data_level     pop  pop_domain
 ## 1:          ABW 1960       national   54211    national
 ## 2:          ABW 1960          rural   26685 urban/rural

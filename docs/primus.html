@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-23" />
+<meta name="date" content="2021-06-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -152,7 +152,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
-<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a></li>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#the-price-framework-pfw-data"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a></li>
+<li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
+</ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
 <li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
@@ -289,9 +293,9 @@ use <code>primus</code>, whereas when we refer to the website, we use PRIMUS.</p
 the instruction section <a href="#stata-github"><strong>??</strong></a>. Basically, you need to install
 first the <a href="https://github.com/haghish/github">github</a> Stata command by <a href="https://github.com/haghish">E. F.
 Haghish</a></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="primus.html#cb7-1" aria-hidden="true" tabindex="-1"></a>net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="primus.html#cb16-1" aria-hidden="true" tabindex="-1"></a>net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span></code></pre></div>
 <p>Now, you can install <code>primus</code> by just typing the following in Stata</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="primus.html#cb8-1" aria-hidden="true" tabindex="-1"></a>github install worldbank/primus</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="primus.html#cb17-1" aria-hidden="true" tabindex="-1"></a>github install worldbank/primus</span></code></pre></div>
 <p>In case this does not work, follow instructions in section <a href="#stata-github"><strong>??</strong></a>
 for alternative methods.</p>
 </div>
@@ -324,34 +328,34 @@ PRIMUS system. Please check.</p>
 DECRG, or the Poverty GP) has not approved it in the system. You can click on
 the check box <em>PENDING</em> in the PRIMUS website to see which surveys have such a
 status, or you can use the <code>primus</code> command list this,</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="primus.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, overallstatus(PENDING)</span>
-<span id="cb9-2"><a href="primus.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> transaction_id country <span class="fu">year</span> date_modified <span class="kw">in</span> 1/<span class="ot">`=min(10, _N)&#39;</span></span>
-<span id="cb9-3"><a href="primus.html#cb9-3" aria-hidden="true" tabindex="-1"></a>     +----------------------------------------------+</span>
-<span id="cb9-4"><a href="primus.html#cb9-4" aria-hidden="true" tabindex="-1"></a>     |              transaction_id   country   <span class="fu">year</span> |</span>
-<span id="cb9-5"><a href="primus.html#cb9-5" aria-hidden="true" tabindex="-1"></a>     |----------------------------------------------|</span>
-<span id="cb9-6"><a href="primus.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  1. | TRN-000327173-EAP-IDN-QR48Q       IDN   2017 |</span>
-<span id="cb9-7"><a href="primus.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  2. | TRN-000327173-ECA-DEU-YJYVZ       DEU   1995 |</span>
-<span id="cb9-8"><a href="primus.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  3. | TRN-000327173-ECA-DEU-2P4DR       DEU   2002 |</span>
-<span id="cb9-9"><a href="primus.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  4. | TRN-000327173-ECA-DEU-LJN8R       DEU   2003 |</span>
-<span id="cb9-10"><a href="primus.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  5. | TRN-000327173-ECA-DEU-ZSN9J       DEU   2005 |</span>
-<span id="cb9-11"><a href="primus.html#cb9-11" aria-hidden="true" tabindex="-1"></a>     |----------------------------------------------|</span>
-<span id="cb9-12"><a href="primus.html#cb9-12" aria-hidden="true" tabindex="-1"></a>  6. | TRN-000327173-ECA-DEU-UBS7M       DEU   2008 |</span>
-<span id="cb9-13"><a href="primus.html#cb9-13" aria-hidden="true" tabindex="-1"></a>  7. | TRN-000327173-ECA-DEU-41TOU       DEU   2009 |</span>
-<span id="cb9-14"><a href="primus.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  8. | TRN-000327173-EAP-AUS-KKZ2E       AUS   2004 |</span>
-<span id="cb9-15"><a href="primus.html#cb9-15" aria-hidden="true" tabindex="-1"></a>     +----------------------------------------------+</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="primus.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, overallstatus(PENDING)</span>
+<span id="cb18-2"><a href="primus.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> transaction_id country <span class="fu">year</span> date_modified <span class="kw">in</span> 1/<span class="ot">`=min(10, _N)&#39;</span></span>
+<span id="cb18-3"><a href="primus.html#cb18-3" aria-hidden="true" tabindex="-1"></a>     +----------------------------------------------+</span>
+<span id="cb18-4"><a href="primus.html#cb18-4" aria-hidden="true" tabindex="-1"></a>     |              transaction_id   country   <span class="fu">year</span> |</span>
+<span id="cb18-5"><a href="primus.html#cb18-5" aria-hidden="true" tabindex="-1"></a>     |----------------------------------------------|</span>
+<span id="cb18-6"><a href="primus.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  1. | TRN-000327173-EAP-IDN-QR48Q       IDN   2017 |</span>
+<span id="cb18-7"><a href="primus.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  2. | TRN-000327173-ECA-DEU-YJYVZ       DEU   1995 |</span>
+<span id="cb18-8"><a href="primus.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  3. | TRN-000327173-ECA-DEU-2P4DR       DEU   2002 |</span>
+<span id="cb18-9"><a href="primus.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  4. | TRN-000327173-ECA-DEU-LJN8R       DEU   2003 |</span>
+<span id="cb18-10"><a href="primus.html#cb18-10" aria-hidden="true" tabindex="-1"></a>  5. | TRN-000327173-ECA-DEU-ZSN9J       DEU   2005 |</span>
+<span id="cb18-11"><a href="primus.html#cb18-11" aria-hidden="true" tabindex="-1"></a>     |----------------------------------------------|</span>
+<span id="cb18-12"><a href="primus.html#cb18-12" aria-hidden="true" tabindex="-1"></a>  6. | TRN-000327173-ECA-DEU-UBS7M       DEU   2008 |</span>
+<span id="cb18-13"><a href="primus.html#cb18-13" aria-hidden="true" tabindex="-1"></a>  7. | TRN-000327173-ECA-DEU-41TOU       DEU   2009 |</span>
+<span id="cb18-14"><a href="primus.html#cb18-14" aria-hidden="true" tabindex="-1"></a>  8. | TRN-000327173-EAP-AUS-KKZ2E       AUS   2004 |</span>
+<span id="cb18-15"><a href="primus.html#cb18-15" aria-hidden="true" tabindex="-1"></a>     +----------------------------------------------+</span></code></pre></div>
 <p>Notice that the overall status of a transaction is independent from survey ID.
 Thus, it is possible to find several transactions for the same country and year.
 Indonesia 2017, for instance, has three transactions, two of them rejected and
 one of them pending.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="primus.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, country(IDN) <span class="fu">year</span>(2017)</span>
-<span id="cb10-2"><a href="primus.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> transaction_id overall_status date_modified <span class="kw">in</span> 1/<span class="ot">`=min(10, _N)&#39;</span></span>
-<span id="cb10-3"><a href="primus.html#cb10-3" aria-hidden="true" tabindex="-1"></a>     +--------------------------------------------------+</span>
-<span id="cb10-4"><a href="primus.html#cb10-4" aria-hidden="true" tabindex="-1"></a>     |              transaction_id        date_modified |</span>
-<span id="cb10-5"><a href="primus.html#cb10-5" aria-hidden="true" tabindex="-1"></a>     |--------------------------------------------------|</span>
-<span id="cb10-6"><a href="primus.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  1. | TRN-000104674-EAP-IDN-8R9IF   23may2018 15:28:47 |</span>
-<span id="cb10-7"><a href="primus.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  2. | TRN-000327173-EAP-IDN-TYA1A   23may2018 23:57:27 |</span>
-<span id="cb10-8"><a href="primus.html#cb10-8" aria-hidden="true" tabindex="-1"></a>  3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 |</span>
-<span id="cb10-9"><a href="primus.html#cb10-9" aria-hidden="true" tabindex="-1"></a>     +--------------------------------------------------+</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="primus.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, country(IDN) <span class="fu">year</span>(2017)</span>
+<span id="cb19-2"><a href="primus.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> transaction_id overall_status date_modified <span class="kw">in</span> 1/<span class="ot">`=min(10, _N)&#39;</span></span>
+<span id="cb19-3"><a href="primus.html#cb19-3" aria-hidden="true" tabindex="-1"></a>     +--------------------------------------------------+</span>
+<span id="cb19-4"><a href="primus.html#cb19-4" aria-hidden="true" tabindex="-1"></a>     |              transaction_id        date_modified |</span>
+<span id="cb19-5"><a href="primus.html#cb19-5" aria-hidden="true" tabindex="-1"></a>     |--------------------------------------------------|</span>
+<span id="cb19-6"><a href="primus.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  1. | TRN-000104674-EAP-IDN-8R9IF   23may2018 15:28:47 |</span>
+<span id="cb19-7"><a href="primus.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  2. | TRN-000327173-EAP-IDN-TYA1A   23may2018 23:57:27 |</span>
+<span id="cb19-8"><a href="primus.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 |</span>
+<span id="cb19-9"><a href="primus.html#cb19-9" aria-hidden="true" tabindex="-1"></a>     +--------------------------------------------------+</span></code></pre></div>
 <p>A transaction is <em>rejected</em> when at least one of the three parties rejected the
 database. Finally, a transaction is <em>approved</em> only when all three parties have
 approved it into the system.</p>
@@ -371,7 +375,7 @@ but it has to be done one by one. Fortunately, the <code>pcn</code> command down
 the estimates of pending transactions for us and properly stores them in the
 folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code> 🎉
 🎉 . You only need to type,</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="primus.html#cb11-1" aria-hidden="true" tabindex="-1"></a>pcn primus pending, down(<span class="kw">estimates</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="primus.html#cb20-1" aria-hidden="true" tabindex="-1"></a>pcn primus pending, down(<span class="kw">estimates</span>)</span></code></pre></div>
 <p>In addition, <code>pcn</code> checks the date for which you’re downloading the estimates
 and keeps only those transactions that have been uploaded for the next spring or
 annual-meetings release. For instance, assume that today, 2020-11-20, you want
@@ -384,7 +388,7 @@ for uploading new data in November, as it usually opens around December and
 July. Thus, it is likely that you will find and error saying
 <code>There is no pending data in PRIMUS for the combination of country/years selected</code>.</p>
 <p>You can load the recently-downloaded estimates by typing,</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="primus.html#cb12-1" aria-hidden="true" tabindex="-1"></a>pcn primus pending, <span class="kw">load</span>(<span class="kw">estimates</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="primus.html#cb21-1" aria-hidden="true" tabindex="-1"></a>pcn primus pending, <span class="kw">load</span>(<span class="kw">estimates</span>)</span></code></pre></div>
 <p>Now, you have to check whether the new estimates make sense. Once way to that is
 to follow this do-file,
 <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\estimates\checks\comparisons_wrk_data.do</code>.</p>
@@ -404,62 +408,62 @@ approval on PRIMUS requires the consent of three parties. The PovcalNet team had
 the responsibility to approve on behalf or two of them, DECDG and DECRG. This
 process can easily done with the code below, which can be found in this file,
 <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\approve\primus_approve.do</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="primus.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*==================================================</span></span>
-<span id="cb13-2"><a href="primus.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">0: Program set up</span></span>
-<span id="cb13-3"><a href="primus.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
-<span id="cb13-4"><a href="primus.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 14</span>
-<span id="cb13-5"><a href="primus.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_all</span></span>
-<span id="cb13-6"><a href="primus.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="primus.html#cb13-7" aria-hidden="true" tabindex="-1"></a>*---------- Modify <span class="kw">this</span></span>
-<span id="cb13-8"><a href="primus.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> excl = <span class="st">&quot;BRA SOM SSD&quot;</span> <span class="co">// countries to exclude </span></span>
-<span id="cb13-9"><a href="primus.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> excl = <span class="st">&quot;&quot;</span> <span class="co">// countries to exclude </span></span>
-<span id="cb13-10"><a href="primus.html#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="primus.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">/*==================================================</span></span>
-<span id="cb13-12"><a href="primus.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">Load data</span></span>
-<span id="cb13-13"><a href="primus.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
-<span id="cb13-14"><a href="primus.html#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="primus.html#cb13-15" aria-hidden="true" tabindex="-1"></a>primus <span class="kw">query</span>, overalls(pending)</span>
-<span id="cb13-16"><a href="primus.html#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">//------------Cut off date</span></span>
-<span id="cb13-17"><a href="primus.html#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> filtdate = <span class="st">&quot;2019-12-01&quot;</span> <span class="co">// filter date (december last year)</span></span>
-<span id="cb13-18"><a href="primus.html#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> filtdate = <span class="st">&quot;2020-02-18&quot;</span> <span class="co">// filter date (surveys uploaded by Minh)</span></span>
-<span id="cb13-19"><a href="primus.html#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">&quot;`filtdate&#39;&quot;</span>, <span class="st">&quot;YMD&quot;</span>)</span>
-<span id="cb13-20"><a href="primus.html#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="primus.html#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">//------------Select username</span></span>
-<span id="cb13-22"><a href="primus.html#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wb424681&quot;</span>) {</span>
-<span id="cb13-23"><a href="primus.html#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> dep = <span class="st">&quot;povcalnet&quot;</span></span>
-<span id="cb13-24"><a href="primus.html#cb13-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-25"><a href="primus.html#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span> <span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wb384996&quot;</span>) {</span>
-<span id="cb13-26"><a href="primus.html#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> dep = <span class="st">&quot;decdg&quot;</span></span>
-<span id="cb13-27"><a href="primus.html#cb13-27" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-28"><a href="primus.html#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span> {</span>
-<span id="cb13-29"><a href="primus.html#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="kw">red</span> <span class="st">&quot;you don&#39;t have rights to run this code&quot;</span></span>
-<span id="cb13-30"><a href="primus.html#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="kw">break</span></span>
-<span id="cb13-31"><a href="primus.html#cb13-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-32"><a href="primus.html#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-33"><a href="primus.html#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="ot">`dep&#39;</span></span>
-<span id="cb13-34"><a href="primus.html#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="ot">`dep&#39;</span> == <span class="st">&quot;PENDING&quot;</span></span>
-<span id="cb13-35"><a href="primus.html#cb13-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-36"><a href="primus.html#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="st">&quot;`excl&#39;&quot;</span> != <span class="st">&quot;&quot;</span>) {</span>
-<span id="cb13-37"><a href="primus.html#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> excl: <span class="fu">subinstr</span> <span class="kw">local</span> excl <span class="st">&quot; &quot;</span> <span class="st">&quot;|&quot;</span>, <span class="ot">all</span></span>
-<span id="cb13-38"><a href="primus.html#cb13-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">drop</span> <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">&quot;`country&#39;&quot;</span>, <span class="st">&quot;`excl&#39;&quot;</span>) </span>
-<span id="cb13-39"><a href="primus.html#cb13-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-40"><a href="primus.html#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-41"><a href="primus.html#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="co">/*=================================================</span></span>
-<span id="cb13-42"><a href="primus.html#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="co">Approve (Do NOT modify)</span></span>
-<span id="cb13-43"><a href="primus.html#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
-<span id="cb13-44"><a href="primus.html#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-45"><a href="primus.html#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> n = _N</span>
-<span id="cb13-46"><a href="primus.html#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="kw">preserve</span> </span>
-<span id="cb13-47"><a href="primus.html#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">foreach</span> i <span class="kw">of</span> numlist 1/<span class="ot">`n&#39;</span> {</span>
-<span id="cb13-48"><a href="primus.html#cb13-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">restore</span>, <span class="kw">preserve</span></span>
-<span id="cb13-49"><a href="primus.html#cb13-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> country = country[<span class="ot">`i&#39;</span>]</span>
-<span id="cb13-50"><a href="primus.html#cb13-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> <span class="fu">year</span>    = <span class="fu">year</span>[<span class="ot">`i&#39;</span>]</span>
-<span id="cb13-51"><a href="primus.html#cb13-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> id      = transaction_id[<span class="ot">`i&#39;</span>]</span>
-<span id="cb13-52"><a href="primus.html#cb13-52" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-53"><a href="primus.html#cb13-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="fu">y</span> <span class="st">&quot;primus action, tranxid(`id&#39;) decision(approved)&quot;</span></span>
-<span id="cb13-54"><a href="primus.html#cb13-54" aria-hidden="true" tabindex="-1"></a>  cap <span class="kw">noi</span> primus action, tranxid(<span class="ot">`id&#39;</span>) decision(approved)</span>
-<span id="cb13-55"><a href="primus.html#cb13-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> (<span class="dt">_rc</span>) <span class="kw">noi</span> disp <span class="st">&quot;problem with `id&#39;&quot;</span></span>
-<span id="cb13-56"><a href="primus.html#cb13-56" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="primus.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*==================================================</span></span>
+<span id="cb22-2"><a href="primus.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">0: Program set up</span></span>
+<span id="cb22-3"><a href="primus.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
+<span id="cb22-4"><a href="primus.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 14</span>
+<span id="cb22-5"><a href="primus.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_all</span></span>
+<span id="cb22-6"><a href="primus.html#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="primus.html#cb22-7" aria-hidden="true" tabindex="-1"></a>*---------- Modify <span class="kw">this</span></span>
+<span id="cb22-8"><a href="primus.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> excl = <span class="st">&quot;BRA SOM SSD&quot;</span> <span class="co">// countries to exclude </span></span>
+<span id="cb22-9"><a href="primus.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> excl = <span class="st">&quot;&quot;</span> <span class="co">// countries to exclude </span></span>
+<span id="cb22-10"><a href="primus.html#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="primus.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">/*==================================================</span></span>
+<span id="cb22-12"><a href="primus.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">Load data</span></span>
+<span id="cb22-13"><a href="primus.html#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
+<span id="cb22-14"><a href="primus.html#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="primus.html#cb22-15" aria-hidden="true" tabindex="-1"></a>primus <span class="kw">query</span>, overalls(pending)</span>
+<span id="cb22-16"><a href="primus.html#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">//------------Cut off date</span></span>
+<span id="cb22-17"><a href="primus.html#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> filtdate = <span class="st">&quot;2019-12-01&quot;</span> <span class="co">// filter date (december last year)</span></span>
+<span id="cb22-18"><a href="primus.html#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> filtdate = <span class="st">&quot;2020-02-18&quot;</span> <span class="co">// filter date (surveys uploaded by Minh)</span></span>
+<span id="cb22-19"><a href="primus.html#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">&quot;`filtdate&#39;&quot;</span>, <span class="st">&quot;YMD&quot;</span>)</span>
+<span id="cb22-20"><a href="primus.html#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="primus.html#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co">//------------Select username</span></span>
+<span id="cb22-22"><a href="primus.html#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wb424681&quot;</span>) {</span>
+<span id="cb22-23"><a href="primus.html#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> dep = <span class="st">&quot;povcalnet&quot;</span></span>
+<span id="cb22-24"><a href="primus.html#cb22-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-25"><a href="primus.html#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span> <span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wb384996&quot;</span>) {</span>
+<span id="cb22-26"><a href="primus.html#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> dep = <span class="st">&quot;decdg&quot;</span></span>
+<span id="cb22-27"><a href="primus.html#cb22-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-28"><a href="primus.html#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span> {</span>
+<span id="cb22-29"><a href="primus.html#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="kw">red</span> <span class="st">&quot;you don&#39;t have rights to run this code&quot;</span></span>
+<span id="cb22-30"><a href="primus.html#cb22-30" aria-hidden="true" tabindex="-1"></a>  <span class="kw">break</span></span>
+<span id="cb22-31"><a href="primus.html#cb22-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-32"><a href="primus.html#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-33"><a href="primus.html#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="ot">`dep&#39;</span></span>
+<span id="cb22-34"><a href="primus.html#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="ot">`dep&#39;</span> == <span class="st">&quot;PENDING&quot;</span></span>
+<span id="cb22-35"><a href="primus.html#cb22-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-36"><a href="primus.html#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="st">&quot;`excl&#39;&quot;</span> != <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb22-37"><a href="primus.html#cb22-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> excl: <span class="fu">subinstr</span> <span class="kw">local</span> excl <span class="st">&quot; &quot;</span> <span class="st">&quot;|&quot;</span>, <span class="ot">all</span></span>
+<span id="cb22-38"><a href="primus.html#cb22-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">drop</span> <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">&quot;`country&#39;&quot;</span>, <span class="st">&quot;`excl&#39;&quot;</span>) </span>
+<span id="cb22-39"><a href="primus.html#cb22-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-40"><a href="primus.html#cb22-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-41"><a href="primus.html#cb22-41" aria-hidden="true" tabindex="-1"></a><span class="co">/*=================================================</span></span>
+<span id="cb22-42"><a href="primus.html#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="co">Approve (Do NOT modify)</span></span>
+<span id="cb22-43"><a href="primus.html#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
+<span id="cb22-44"><a href="primus.html#cb22-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-45"><a href="primus.html#cb22-45" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> n = _N</span>
+<span id="cb22-46"><a href="primus.html#cb22-46" aria-hidden="true" tabindex="-1"></a><span class="kw">preserve</span> </span>
+<span id="cb22-47"><a href="primus.html#cb22-47" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">foreach</span> i <span class="kw">of</span> numlist 1/<span class="ot">`n&#39;</span> {</span>
+<span id="cb22-48"><a href="primus.html#cb22-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">restore</span>, <span class="kw">preserve</span></span>
+<span id="cb22-49"><a href="primus.html#cb22-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> country = country[<span class="ot">`i&#39;</span>]</span>
+<span id="cb22-50"><a href="primus.html#cb22-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> <span class="fu">year</span>    = <span class="fu">year</span>[<span class="ot">`i&#39;</span>]</span>
+<span id="cb22-51"><a href="primus.html#cb22-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> id      = transaction_id[<span class="ot">`i&#39;</span>]</span>
+<span id="cb22-52"><a href="primus.html#cb22-52" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-53"><a href="primus.html#cb22-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="fu">y</span> <span class="st">&quot;primus action, tranxid(`id&#39;) decision(approved)&quot;</span></span>
+<span id="cb22-54"><a href="primus.html#cb22-54" aria-hidden="true" tabindex="-1"></a>  cap <span class="kw">noi</span> primus action, tranxid(<span class="ot">`id&#39;</span>) decision(approved)</span>
+<span id="cb22-55"><a href="primus.html#cb22-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> (<span class="dt">_rc</span>) <span class="kw">noi</span> disp <span class="st">&quot;problem with `id&#39;&quot;</span></span>
+<span id="cb22-56"><a href="primus.html#cb22-56" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Basically, this is what you need to do with this file.</p>
 <ol style="list-style-type: decimal">
 <li>Modify <code>local excl</code> in case you do <strong>not</strong> want to approve one or several
