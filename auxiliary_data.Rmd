@@ -87,3 +87,41 @@ intended R package for loading any PIP data.
 pop <- pipload::pip_load_aux("pop")
 head(pop)
 ```
+
+## GDP
+
+blah
+
+### Original data
+
+blah
+
+## Consumption (PCE)
+
+blah
+
+### Original data
+
+blah
+
+## CPI
+
+blahblah
+
+### Original data
+
+blah
+
+## PPP
+
+blah
+
+### Original data
+
+blah
+
+## Price FrameWork (PFW)
+
+blah
+
+### Original data
