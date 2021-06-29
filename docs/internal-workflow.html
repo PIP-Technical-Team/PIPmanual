@@ -5,27 +5,27 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Internal Workflow | PIP Manual</title>
-  <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Internal Workflow | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 2 Internal Workflow | PIP Manual" />
   
-  <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
 <meta name="author" content="DECIS" />
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-24" />
+<meta name="date" content="2021-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,13 +158,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.1</b> Survey ID nomenclature</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
 <li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2</b> GDP</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.3</b> Consumption (PCE)</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.3.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.4</b> CPI</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-3"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.5</b> PPP</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-4"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.6</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-5"><i class="fa fa-check"></i><b>6.6.1</b> Original data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
@@ -308,7 +331,7 @@ Poverty Global Practice. To do so, each regional team has to follow the GMD
 guidelines, which are verified by the Stata command <code>{primus}</code>. Rarely. the
 <code>{primus}</code> command does NOT capture some potential errors in the data. More
 details in Section <a href="primus.html#primus">7</a></p>
-<p>As of now (June 24, 2021), <em>Group data</em> is divided two:
+<p>As of now (June 29, 2021), <em>Group data</em> is divided two:
 historical group data and new group data. Historical group data is organized and
 provided by the PovcalNet team, who sends it to the Poverty GP to be included in
 the datalibweb system. New group data is collected by the poverty economist of
@@ -325,7 +348,7 @@ entire microdata. Thus, we need to contract the microdata into 400 bins or
 quantiles. The code that gathers LIS data is available in the Github repository
 <a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>.</p>
 <p>Finally, <em>synthetic data</em>, refers to simulated microdata from an statistical
-procedure. As of now (June 24, 2021), the these data are
+procedure. As of now (June 29, 2021), the these data are
 estimated using multiple imputation techniques, so that any calculation must
 take into account the imputation-id variable. The data is calculated by the
 poverty economist of the country and the organizes by the global team in the
@@ -347,7 +370,7 @@ calculator system, PovcalNet, the PIP system only gathers welfare from the
 datalibweb server.</p>
 <p>The welfare data preparation is done using the repository
 <a href="https://github.com/PIP-Technical-Team/pipdp">/pipdp</a>. As of now
-(June 24, 2021), this part of the process has been coded
+(June 29, 2021), this part of the process has been coded
 in Stata, given that the there is no an R version of <code>{dataliweb}</code>. As for the
 auxiliary data preparation, it is done with package <code>{pipaux}</code>, available in the
 repository <a href="https://github.com/PIP-Technical-Team/pipaux">/pipaux</a>. Right now

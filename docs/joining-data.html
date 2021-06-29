@@ -5,27 +5,27 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Joining Data | PIP Manual</title>
-  <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Joining Data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 4 Joining Data | PIP Manual" />
   
-  <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
 <meta name="author" content="DECIS" />
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-24" />
+<meta name="date" content="2021-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,13 +158,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.1</b> Survey ID nomenclature</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
 <li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2</b> GDP</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.3</b> Consumption (PCE)</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.3.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.4</b> CPI</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-3"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.5</b> PPP</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-4"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.6</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-5"><i class="fa fa-check"></i><b>6.6.1</b> Original data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
@@ -269,7 +292,7 @@ for which there is CPI, PPP, and population auxiliary data, as well as a
 household survey representative at that level. There are some exceptions to this
 criterion like China or the Philippines, but this cases explained in detailed in
 Section <a href="joining-data.html#special-data-cases">4.2</a>. As of today
-(June 24, 2021), most country/years are reported at the
+(June 29, 2021), most country/years are reported at the
 national domain and few are reported at the urban/rural domain. However, the PIP
 technical infrastructure has been designed to incorporate other domain levels
 if, at some point in time, it is the case. Finally, the <em>welfare type</em> specifies
@@ -286,29 +309,107 @@ all PIP data.</p>
 <div id="the-price-framework-pfw-data" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> The Price FrameWork (pfw) data</h2>
 <p>As always, this file can be loaded by typing,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="joining-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
-<pre><code>## v Most recent version of data loaded
-## &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pfw/pfw.fst&#39;</code></pre>
-<pre><code>## no labels available for measure `pfw`</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="joining-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb2-2"><a href="joining-data.html#cb2-2" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; v Most recent version of data loaded
+#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pfw/pfw.fst&#39;</code></pre>
+<pre><code>#&gt; no labels available for measure `pfw`</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="joining-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a>joyn<span class="sc">::</span><span class="fu">is_id</span>(pfw, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;surveyid_year&quot;</span>, <span class="st">&quot;survey_acronym&quot;</span>))</span></code></pre></div>
-<pre><code>## </code></pre>
-<pre><code>## -- Duplicates in terms of `country_code`, `surveyid_year`, and `survey_acronym`</code></pre>
-<pre><code>##    copies    n percent
-## 1:      1 1968    100%
-## 2:  total 1968    100%</code></pre>
-<pre><code>## ------------------------------------------- End of is_id() report --</code></pre>
-<pre><code>## [1] TRUE</code></pre>
+<pre><code>#&gt; </code></pre>
+<pre><code>#&gt; -- Duplicates in terms of `country_code`, `surveyid_year`, and `survey_acronym`</code></pre>
+<pre><code>#&gt;    copies    n percent
+#&gt; 1:      1 1968    100%
+#&gt; 2:  total 1968    100%</code></pre>
+<pre><code>#&gt; ------------------------------------------------------------------------------------- End of is_id() report --</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
 <p>First of all, notice that <code>pfw</code> is uniquely identified by country code, survey
 year, and survey acronym. The reason for this is that pfw aims at providing a
-link between every single welfare data file and all the other auxiliary data.
+link between every single household survey and all the other auxiliary data.
 Since welfare data is stored following the naming convention of the
 <a href="http://ihsn.org/">International Household Survey Network (IHSN)</a>, data is
 stored according to country, survey year, acronym of the survey, and vintage
-control of master and alternative versions.</p>
-<p>This is important to understand because PIP estimates are reported at the
-country, year, domain, and welfare type level. the last two of these are not
-found either in the survey ID nor as unique identifier of the pfw.</p>
-<p>By default, PIP uses the most recent alternative version of th survey,</p>
+control of master and alternative versions. The vintage control of the master
+and alternative version of the data is not relevant for joining data because PIP
+uses, by default, the most recent version.</p>
+<p>Keep in mind that PIP estimates are reported at the country, year, domain, and
+welfare type level, but the last two of these are not found either in the survey
+ID nor as unique identifiers of the pfw. To solve this problem, the pfw data
+makes use of the variables <code>welfare_type,</code> <code>aaa_domain</code>, and <code>aaa_domain_var</code>.</p>
+<p>As the name suggests, <code>welfare_type</code> indicates the <strong>main</strong> welfare aggregate
+type (i.e, income or consumption ) of the variable <code>welfare</code> in the GMD datasets
+that correspond to the survey ID formed by concatenating variables
+<code>country_code</code>, <code>surveyid_year</code>, and <code>survey_acronym</code>. For example, the
+<code>welfare_type</code> of the <code>welfare</code> variable in the datasets of
+<em><strong>COL_2018_GEIH</strong>_V01_M_V03_A_GMD</em> is income.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="joining-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code    <span class="sc">==</span> <span class="st">&quot;COL&quot;</span></span>
+<span id="cb11-2"><a href="joining-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> surveyid_year  <span class="sc">==</span> <span class="dv">2018</span></span>
+<span id="cb11-3"><a href="joining-data.html#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> survey_acronym <span class="sc">==</span> <span class="st">&quot;GEIH&quot;</span>, <span class="co"># Not necessary since it is the only one</span></span>
+<span id="cb11-4"><a href="joining-data.html#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unique</span>(welfare_type)]</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;income&quot;</code></pre>
+<p>The prefix <code>aaa</code> in variables <code>aaa_domain</code> and <code>aaa_domain_var</code> refers to the
+identification code of any of the auxiliary data. Thus, you will find a
+<code>gdp_domain</code>, <code>cpi_domain</code>, <code>ppp_domain</code> and several others. All <code>aaa_domain</code>
+variables contain the <em>lower</em> level of geographical disaggregation of the
+corresponding <code>aaa</code> auxiliary data. There are only three possible levels of
+disaagregation,</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+domain value
+</th>
+<th style="text-align:left;">
+meaning
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+national
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+urban/rural
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+subnational
+</td>
+</tr>
+</tbody>
+</table>
+<p>As of now, no survey or auxiliary data is broken down at level 3 (i.e.,
+subnational), but it is important to know that the PIP internal code takes that
+possibility into account for future cases.</p>
+<p>Depending on the country, the domain level of each auxiliary data might be
+different. In Indonesia, for instance, the CPI domain is national, whereas the
+PPP domain is “urban/rural.”</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="joining-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code <span class="sc">==</span> <span class="st">&quot;IDN&quot;</span> <span class="sc">&amp;</span> surveyid_year <span class="sc">==</span> <span class="dv">2018</span>, </span>
+<span id="cb13-2"><a href="joining-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    .(<span class="at">cpi =</span> <span class="fu">unique</span>(cpi_domain), </span>
+<span id="cb13-3"><a href="joining-data.html#cb13-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">ppp =</span> <span class="fu">unique</span>(ppp_domain))]</span></code></pre></div>
+<pre><code>#&gt;    cpi ppp
+#&gt; 1:   1   2</code></pre>
+<p>Finally, <span style="color:red">and this is really important</span>, variables
+<code>aaa_domain_var</code> contains the name of variable in the GMD dataset that uniquely
+identify the household survey <em>in the corresponding <code>aaa</code></em> <em>auxiliary data</em>. In
+other words, <code>aaa_domain_var</code> contains <em>the name</em> of the variable in GMD that
+must be used as <em>key</em> <em>to join</em> it with the <code>aaa</code> auxiliary data. You may ask,
+does the name of the variable in the <code>aaa</code> auxiliary data have the same variable
+name in the GMD data specified in <code>aaa_domain_var</code>? No, it does not. Since the
+domain level to identify observations in the <code>aaa</code> auxiliary data is unique,
+there is no</p>
 </div>
 <div id="special-data-cases" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Special data cases</h2>

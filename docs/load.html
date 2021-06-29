@@ -5,27 +5,27 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Load microdata and Auxiliary data | PIP Manual</title>
-  <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Load microdata and Auxiliary data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 8 Load microdata and Auxiliary data | PIP Manual" />
   
-  <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
 <meta name="author" content="DECIS" />
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-24" />
+<meta name="date" content="2021-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,13 +158,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.1</b> Survey ID nomenclature</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
 <li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2</b> GDP</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.3</b> Consumption (PCE)</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.3.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.4</b> CPI</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-3"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.5</b> PPP</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-4"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.6</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-5"><i class="fa fa-check"></i><b>6.6.1</b> Original data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
@@ -251,22 +274,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load" class="section level1" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Load microdata and Auxiliary data</h1>
 <p>Make sure you have all the packages installed and loaded into memory. Given that they are hosted in Github, the code below makes sure that any package in the PIP workflow can be installed correctly.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="load.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## First specify the packages of interest</span></span>
-<span id="cb23-2"><a href="load.html#cb23-2" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;pipaux&quot;</span>, <span class="st">&quot;pipload&quot;</span>)</span>
-<span id="cb23-3"><a href="load.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="load.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Now load or install&amp;load all</span></span>
-<span id="cb23-5"><a href="load.html#cb23-5" aria-hidden="true" tabindex="-1"></a>package.check <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
-<span id="cb23-6"><a href="load.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  packages,</span>
-<span id="cb23-7"><a href="load.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb23-8"><a href="load.html#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb23-9"><a href="load.html#cb23-9" aria-hidden="true" tabindex="-1"></a>      pck_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;PIP-Technical-Team/&quot;</span>, x)</span>
-<span id="cb23-10"><a href="load.html#cb23-10" aria-hidden="true" tabindex="-1"></a>      devtools<span class="sc">::</span><span class="fu">install_github</span>(pck_name)</span>
-<span id="cb23-11"><a href="load.html#cb23-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb23-12"><a href="load.html#cb23-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb23-13"><a href="load.html#cb23-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb23-14"><a href="load.html#cb23-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-15"><a href="load.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: pipaux</span></span>
-<span id="cb23-16"><a href="load.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: pipload</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="load.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## First specify the packages of interest</span></span>
+<span id="cb28-2"><a href="load.html#cb28-2" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;pipaux&quot;</span>, <span class="st">&quot;pipload&quot;</span>)</span>
+<span id="cb28-3"><a href="load.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="load.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Now load or install&amp;load all</span></span>
+<span id="cb28-5"><a href="load.html#cb28-5" aria-hidden="true" tabindex="-1"></a>package.check <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb28-6"><a href="load.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  packages,</span>
+<span id="cb28-7"><a href="load.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb28-8"><a href="load.html#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb28-9"><a href="load.html#cb28-9" aria-hidden="true" tabindex="-1"></a>      pck_name <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;PIP-Technical-Team/&quot;</span>, x)</span>
+<span id="cb28-10"><a href="load.html#cb28-10" aria-hidden="true" tabindex="-1"></a>      devtools<span class="sc">::</span><span class="fu">install_github</span>(pck_name)</span>
+<span id="cb28-11"><a href="load.html#cb28-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-12"><a href="load.html#cb28-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb28-13"><a href="load.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb28-14"><a href="load.html#cb28-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div id="auxiilary-data" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Auxiilary data</h2>
 <p>Even though <code>pipaux</code> has more than 25 functions, most of its features
@@ -274,45 +295,38 @@ can be executed by using only the <code>pipaux::load_aux</code> and <code>pipaux
 <div id="udpate-data" class="section level3" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> udpate data</h3>
 <p>the main function of the <code>pipaux</code> package is <code>udpate_aux</code>. The first argument of this function is <code>measure</code> and it refers to the measure data to be loaded. The measures available are <strong>cpi, gdm, gdp, pce, pfw, pop, and ppp</strong>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="load.html#cb24-1" aria-hidden="true" tabindex="-1"></a>pipaux<span class="sc">::</span><span class="fu">update_aux</span>(<span class="at">measure =</span> <span class="st">&quot;cpi&quot;</span>)</span>
-<span id="cb24-2"><a href="load.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; no labels available for measure `country_list`</span></span>
-<span id="cb24-3"><a href="load.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; v CPI data is up to date</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="load.html#cb29-1" aria-hidden="true" tabindex="-1"></a>pipaux<span class="sc">::</span><span class="fu">update_aux</span>(<span class="at">measure =</span> <span class="st">&quot;cpi&quot;</span>)</span>
+<span id="cb29-2"><a href="load.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; no labels available for measure `country_list`</span></span>
+<span id="cb29-3"><a href="load.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; v CPI data is up to date</span></span></code></pre></div>
 </div>
 <div id="load-data" class="section level3" number="8.1.2">
 <h3><span class="header-section-number">8.1.2</span> Load data</h3>
 <p>Loading auxiliary data is the job of the package <code>pipload</code> through the function <code>pipload::pip_load_aux()</code>, though <code>pipaux</code> also provides <code>pipaux::load_aux()</code> for the same purpose. Notice that, though both function do exactly the same, the loading function from <code>pipload</code> has the prefix <code>pip_</code> to distinguish it from the one in <code>pipaux</code>. However, we are going to limit the work of <code>pipaux</code> to update auxiliary data and the work of <code>pipload</code> to load data. Thus, all the examples below use <code>pipload</code> for loading either microdata or auxiliary data.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="load.html#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="at">measure =</span> <span class="st">&quot;cpi&quot;</span>)</span>
-<span id="cb25-2"><a href="load.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; v Most recent version of data loaded</span></span>
-<span id="cb25-3"><a href="load.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/cpi/cpi.fst&#39;</span></span>
-<span id="cb25-4"><a href="load.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb25-5"><a href="load.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    country_code cpi_year survey_year        cpi ccf survey_acronym</span></span>
-<span id="cb25-6"><a href="load.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:          AGO     2000     2000.21 0.03385145   1            HBS</span></span>
-<span id="cb25-7"><a href="load.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          AGO     2008     2008.50 0.72328920   1      IBEP-MICS</span></span>
-<span id="cb25-8"><a href="load.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:          AGO     2018     2018.17 2.93543023   1          IDREA</span></span>
-<span id="cb25-9"><a href="load.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:          ALB     1996     1996.00 0.44446184   1            EWS</span></span>
-<span id="cb25-10"><a href="load.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:          ALB     2002     2002.00 0.78033877   1           LSMS</span></span>
-<span id="cb25-11"><a href="load.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:          ALB     2005     2005.00 0.83852839   1           LSMS</span></span>
-<span id="cb25-12"><a href="load.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    change_cpi2011    cpi2011 cpi_domain cpi_domain_value</span></span>
-<span id="cb25-13"><a href="load.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:              0 0.03385145          1                1</span></span>
-<span id="cb25-14"><a href="load.html#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:              1 0.72328920          1                1</span></span>
-<span id="cb25-15"><a href="load.html#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:              1 2.93543023          1                1</span></span>
-<span id="cb25-16"><a href="load.html#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:              1 0.44446184          1                1</span></span>
-<span id="cb25-17"><a href="load.html#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:              1 0.78033877          1                1</span></span>
-<span id="cb25-18"><a href="load.html#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:              1 0.83852839          1                1</span></span>
-<span id="cb25-19"><a href="load.html#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cpi2011_unadj cpi2011_AM20 cpi2011_unadj_AM20 cpi2005_AM20</span></span>
-<span id="cb25-20"><a href="load.html#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:    0.03385145  0.033848061        0.033848061  0.071889997</span></span>
-<span id="cb25-21"><a href="load.html#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:    0.72328920  0.723337197        0.723337197  1.528669953</span></span>
-<span id="cb25-22"><a href="load.html#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:    2.93543023  3.060594983        3.060594983           NA</span></span>
-<span id="cb25-23"><a href="load.html#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:    0.44446184  0.444432734        0.444432734  0.530049980</span></span>
-<span id="cb25-24"><a href="load.html#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:    0.78033877  0.780287716        0.780287716  0.950504005</span></span>
-<span id="cb25-25"><a href="load.html#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:    0.83852839  0.838473458        0.838473458  1.000000000</span></span>
-<span id="cb25-26"><a href="load.html#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cpi_final_2019 cpi_data_level          cpi_id</span></span>
-<span id="cb25-27"><a href="load.html#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:             NA       national CPI_v05_M_v01_A</span></span>
-<span id="cb25-28"><a href="load.html#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:             NA       national CPI_v05_M_v01_A</span></span>
-<span id="cb25-29"><a href="load.html#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:             NA       national CPI_v05_M_v01_A</span></span>
-<span id="cb25-30"><a href="load.html#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:             NA       national CPI_v05_M_v01_A</span></span>
-<span id="cb25-31"><a href="load.html#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:             NA       national CPI_v05_M_v01_A</span></span>
-<span id="cb25-32"><a href="load.html#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:             NA       national CPI_v05_M_v01_A</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="load.html#cb30-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="at">measure =</span> <span class="st">&quot;cpi&quot;</span>)</span>
+<span id="cb30-2"><a href="load.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; v Most recent version of data loaded</span></span>
+<span id="cb30-3"><a href="load.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/cpi/cpi.fst&#39;</span></span>
+<span id="cb30-4"><a href="load.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb30-5"><a href="load.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    country_code cpi_year survey_year    cpi ccf survey_acronym change_cpi2011 cpi2011 cpi_domain</span></span>
+<span id="cb30-6"><a href="load.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:          AGO     2000        2000 0.0339   1            HBS              0  0.0339          1</span></span>
+<span id="cb30-7"><a href="load.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          AGO     2008        2008 0.7233   1      IBEP-MICS              1  0.7233          1</span></span>
+<span id="cb30-8"><a href="load.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:          AGO     2018        2018 2.9354   1          IDREA              1  2.9354          1</span></span>
+<span id="cb30-9"><a href="load.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:          ALB     1996        1996 0.4445   1            EWS              1  0.4445          1</span></span>
+<span id="cb30-10"><a href="load.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:          ALB     2002        2002 0.7803   1           LSMS              1  0.7803          1</span></span>
+<span id="cb30-11"><a href="load.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:          ALB     2005        2005 0.8385   1           LSMS              1  0.8385          1</span></span>
+<span id="cb30-12"><a href="load.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    cpi_domain_value cpi2011_unadj cpi2011_AM20 cpi2011_unadj_AM20 cpi2005_AM20 cpi_final_2019 cpi_data_level</span></span>
+<span id="cb30-13"><a href="load.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:                1        0.0339       0.0338             0.0338       0.0719             NA       national</span></span>
+<span id="cb30-14"><a href="load.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:                1        0.7233       0.7233             0.7233       1.5287             NA       national</span></span>
+<span id="cb30-15"><a href="load.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:                1        2.9354       3.0606             3.0606           NA             NA       national</span></span>
+<span id="cb30-16"><a href="load.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:                1        0.4445       0.4444             0.4444       0.5300             NA       national</span></span>
+<span id="cb30-17"><a href="load.html#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:                1        0.7803       0.7803             0.7803       0.9505             NA       national</span></span>
+<span id="cb30-18"><a href="load.html#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:                1        0.8385       0.8385             0.8385       1.0000             NA       national</span></span>
+<span id="cb30-19"><a href="load.html#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             cpi_id</span></span>
+<span id="cb30-20"><a href="load.html#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: CPI_v05_M_v01_A</span></span>
+<span id="cb30-21"><a href="load.html#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: CPI_v05_M_v01_A</span></span>
+<span id="cb30-22"><a href="load.html#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: CPI_v05_M_v01_A</span></span>
+<span id="cb30-23"><a href="load.html#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4: CPI_v05_M_v01_A</span></span>
+<span id="cb30-24"><a href="load.html#cb30-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5: CPI_v05_M_v01_A</span></span>
+<span id="cb30-25"><a href="load.html#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6: CPI_v05_M_v01_A</span></span></code></pre></div>
 </div>
 </div>
 <div id="microdata" class="section level2" number="8.2">
@@ -331,89 +345,67 @@ can be executed by using only the <code>pipaux::load_aux</code> and <code>pipaux
 <p>The inventory file resides in <code>y:/PIP-Data/_inventory/inventory.fst</code>. This file is a data frame with all the microdata available in the PIP structure. It has two main variables, <code>orig</code> and <code>filename</code>. The former refers to the full directory path of the database, whereas the latter is only the file name. the other variables in this data frame are derived from these two.</p>
 <p>The inventory file is used to speed up the file searching process in <code>pipload</code>. In previous packages, each time the user wanted to find a particular data base, it was necessary to look into the folder structure and extract the name of all the file that meet a particular criteria. This is time-consuming and inefficient. The advantage of this method though, is that, by construction, it finds all the the data available. By contrast, the inventory file method is much faster than the “searching” method, as it only requires to load a light file with all the data available, filter the data, and return the required information. The drawback, however, is that it needs to be kept up to date as data changes constantly.</p>
 <p>To update the inventory file, you need to use the function <code>pip_update_inventory</code>. If you don’t provide any argument, it will update the whole inventory, which may take around 10 to 15 min–the function will warn you about it. By provide the country/ies you want to update, the process is way faster.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="load.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update one country</span></span>
-<span id="cb26-2"><a href="load.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pip_update_inventory</span>(<span class="st">&quot;MEX&quot;</span>)</span>
-<span id="cb26-3"><a href="load.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i file &#39;inventory.fst&#39; is up to date.</span></span>
-<span id="cb26-4"><a href="load.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No update performed</span></span>
-<span id="cb26-5"><a href="load.html#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="load.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load inventory file</span></span>
-<span id="cb26-7"><a href="load.html#cb26-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">pip_load_inventory</span>()</span>
-<span id="cb26-8"><a href="load.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df[, <span class="st">&quot;filename&quot;</span>])</span>
-<span id="cb26-9"><a href="load.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                          filename</span></span>
-<span id="cb26-10"><a href="load.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:       AGO_2000_HBS_V01_M_V01_A_PIP_PC-GPWG.dta</span></span>
-<span id="cb26-11"><a href="load.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: AGO_2008_IBEP-MICS_V02_M_V02_A_PIP_PC-GPWG.dta</span></span>
-<span id="cb26-12"><a href="load.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:  AGO_2008_IBEP-MICS_V02_M_V02_A_PIP_TB-ALL.dta</span></span>
-<span id="cb26-13"><a href="load.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:     AGO_2018_IDREA_V01_M_V01_A_PIP_PC-GPWG.dta</span></span>
-<span id="cb26-14"><a href="load.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      AGO_2018_IDREA_V01_M_V01_A_PIP_TB-ALL.dta</span></span>
-<span id="cb26-15"><a href="load.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:       ALB_1996_EWS_V01_M_V01_A_PIP_PC-HIST.dta</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="load.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update one country</span></span>
+<span id="cb31-2"><a href="load.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pip_update_inventory</span>(<span class="st">&quot;MEX&quot;</span>)</span>
+<span id="cb31-3"><a href="load.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i file &#39;inventory.fst&#39; is up to date.</span></span>
+<span id="cb31-4"><a href="load.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No update performed</span></span>
+<span id="cb31-5"><a href="load.html#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="load.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load inventory file</span></span>
+<span id="cb31-7"><a href="load.html#cb31-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">pip_load_inventory</span>()</span>
+<span id="cb31-8"><a href="load.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df[, <span class="st">&quot;filename&quot;</span>])</span>
+<span id="cb31-9"><a href="load.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                          filename</span></span>
+<span id="cb31-10"><a href="load.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:       AGO_2000_HBS_V01_M_V01_A_PIP_PC-GPWG.dta</span></span>
+<span id="cb31-11"><a href="load.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2: AGO_2008_IBEP-MICS_V02_M_V02_A_PIP_PC-GPWG.dta</span></span>
+<span id="cb31-12"><a href="load.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:  AGO_2008_IBEP-MICS_V02_M_V02_A_PIP_TB-ALL.dta</span></span>
+<span id="cb31-13"><a href="load.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:     AGO_2018_IDREA_V01_M_V01_A_PIP_PC-GPWG.dta</span></span>
+<span id="cb31-14"><a href="load.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:      AGO_2018_IDREA_V01_M_V01_A_PIP_TB-ALL.dta</span></span>
+<span id="cb31-15"><a href="load.html#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:       ALB_1996_EWS_V01_M_V01_A_PIP_PC-HIST.dta</span></span></code></pre></div>
 </div>
 <div id="finding-data" class="section level3" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> Finding data</h3>
 <p>Every dataset in the PIP microdata repository is identified by seven variables! Country code, survey year, survey acronym, master version, alternative version, tool, and source. So giving the user the responsibility to know all the different combinations of each file is a heavy burden. Thus, the data finder, <code>pip_find_data()</code>, will provide the names of all the files available that meet the criteria in the arguments provided by the user. For instance, if the use wants to know the all the file available for Paraguay, we could type,</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="load.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pip_find_data</span>(<span class="at">country =</span> <span class="st">&quot;PRY&quot;</span>)[[<span class="st">&quot;filename&quot;</span>]]</span>
-<span id="cb27-2"><a href="load.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;PRY_1990_EH_V01_M_V02_A_PIP_PC-GPWG.dta&quot; </span></span>
-<span id="cb27-3"><a href="load.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2] &quot;PRY_1995_EH_V01_M_V02_A_PIP_PC-GPWG.dta&quot; </span></span>
-<span id="cb27-4"><a href="load.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;PRY_1997_EIH_V01_M_V03_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-5"><a href="load.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;PRY_1999_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-6"><a href="load.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;PRY_2001_EIH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-7"><a href="load.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;PRY_2001_EIH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-8"><a href="load.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;PRY_2002_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-9"><a href="load.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8] &quot;PRY_2002_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-10"><a href="load.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;PRY_2003_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-11"><a href="load.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;PRY_2003_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-12"><a href="load.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;PRY_2004_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-13"><a href="load.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [12] &quot;PRY_2004_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-14"><a href="load.html#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;PRY_2005_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-15"><a href="load.html#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [14] &quot;PRY_2005_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-16"><a href="load.html#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] &quot;PRY_2006_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-17"><a href="load.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] &quot;PRY_2006_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-18"><a href="load.html#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;PRY_2007_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-19"><a href="load.html#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [18] &quot;PRY_2007_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-20"><a href="load.html#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;PRY_2008_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-21"><a href="load.html#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [20] &quot;PRY_2008_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-22"><a href="load.html#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;PRY_2009_EPH_V01_M_V06_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-23"><a href="load.html#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [22] &quot;PRY_2009_EPH_V01_M_V06_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-24"><a href="load.html#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [23] &quot;PRY_2010_EPH_V01_M_V06_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-25"><a href="load.html#cb27-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [24] &quot;PRY_2010_EPH_V01_M_V06_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-26"><a href="load.html#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;PRY_2011_EPH_V01_M_V07_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-27"><a href="load.html#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [26] &quot;PRY_2011_EPH_V01_M_V07_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-28"><a href="load.html#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [27] &quot;PRY_2012_EPH_V01_M_V04_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-29"><a href="load.html#cb27-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [28] &quot;PRY_2012_EPH_V01_M_V04_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-30"><a href="load.html#cb27-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] &quot;PRY_2013_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-31"><a href="load.html#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [30] &quot;PRY_2013_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-32"><a href="load.html#cb27-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] &quot;PRY_2014_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-33"><a href="load.html#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [32] &quot;PRY_2014_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-34"><a href="load.html#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [33] &quot;PRY_2015_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-35"><a href="load.html#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [34] &quot;PRY_2015_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-36"><a href="load.html#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [35] &quot;PRY_2016_EPH_V01_M_V02_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-37"><a href="load.html#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [36] &quot;PRY_2016_EPH_V01_M_V02_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-38"><a href="load.html#cb27-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] &quot;PRY_2017_EPH_V01_M_V02_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-39"><a href="load.html#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [38] &quot;PRY_2017_EPH_V01_M_V02_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-40"><a href="load.html#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [39] &quot;PRY_2018_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-41"><a href="load.html#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [40] &quot;PRY_2018_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
-<span id="cb27-42"><a href="load.html#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] &quot;PRY_2019_EPH_V01_M_V01_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb27-43"><a href="load.html#cb27-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [42] &quot;PRY_2019_EPH_V01_M_V01_A_PIP_TB-ALL.dta&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="load.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pip_find_data</span>(<span class="at">country =</span> <span class="st">&quot;PRY&quot;</span>)[[<span class="st">&quot;filename&quot;</span>]]</span>
+<span id="cb32-2"><a href="load.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;PRY_1990_EH_V01_M_V02_A_PIP_PC-GPWG.dta&quot;  &quot;PRY_1995_EH_V01_M_V02_A_PIP_PC-GPWG.dta&quot; </span></span>
+<span id="cb32-3"><a href="load.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;PRY_1997_EIH_V01_M_V03_A_PIP_PC-GPWG.dta&quot; &quot;PRY_1999_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot;</span></span>
+<span id="cb32-4"><a href="load.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;PRY_2001_EIH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2001_EIH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-5"><a href="load.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;PRY_2002_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2002_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-6"><a href="load.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;PRY_2003_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2003_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-7"><a href="load.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;PRY_2004_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2004_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-8"><a href="load.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;PRY_2005_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2005_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-9"><a href="load.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [15] &quot;PRY_2006_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2006_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-10"><a href="load.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] &quot;PRY_2007_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2007_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-11"><a href="load.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;PRY_2008_EPH_V01_M_V05_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2008_EPH_V01_M_V05_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-12"><a href="load.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] &quot;PRY_2009_EPH_V01_M_V06_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2009_EPH_V01_M_V06_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-13"><a href="load.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [23] &quot;PRY_2010_EPH_V01_M_V06_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2010_EPH_V01_M_V06_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-14"><a href="load.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;PRY_2011_EPH_V01_M_V07_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2011_EPH_V01_M_V07_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-15"><a href="load.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [27] &quot;PRY_2012_EPH_V01_M_V04_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2012_EPH_V01_M_V04_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-16"><a href="load.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] &quot;PRY_2013_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2013_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-17"><a href="load.html#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] &quot;PRY_2014_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2014_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-18"><a href="load.html#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [33] &quot;PRY_2015_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2015_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-19"><a href="load.html#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [35] &quot;PRY_2016_EPH_V01_M_V02_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2016_EPH_V01_M_V02_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-20"><a href="load.html#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] &quot;PRY_2017_EPH_V01_M_V02_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2017_EPH_V01_M_V02_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-21"><a href="load.html#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [39] &quot;PRY_2018_EPH_V01_M_V03_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2018_EPH_V01_M_V03_A_PIP_TB-ALL.dta&quot; </span></span>
+<span id="cb32-22"><a href="load.html#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] &quot;PRY_2019_EPH_V01_M_V01_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2019_EPH_V01_M_V01_A_PIP_TB-ALL.dta&quot;</span></span></code></pre></div>
 <p>Yet, if the user need to be more precise in its request, she can add information to the different arguments of the function. For example, this is data available in 2012,</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="load.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pip_find_data</span>(<span class="at">country =</span> <span class="st">&quot;PRY&quot;</span>, </span>
-<span id="cb28-2"><a href="load.html#cb28-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">year =</span> <span class="dv">2012</span>)[[<span class="st">&quot;filename&quot;</span>]]</span>
-<span id="cb28-3"><a href="load.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;PRY_2012_EPH_V01_M_V04_A_PIP_PC-GPWG.dta&quot;</span></span>
-<span id="cb28-4"><a href="load.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;PRY_2012_EPH_V01_M_V04_A_PIP_TB-ALL.dta&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="load.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pip_find_data</span>(<span class="at">country =</span> <span class="st">&quot;PRY&quot;</span>, </span>
+<span id="cb33-2"><a href="load.html#cb33-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">year =</span> <span class="dv">2012</span>)[[<span class="st">&quot;filename&quot;</span>]]</span>
+<span id="cb33-3"><a href="load.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;PRY_2012_EPH_V01_M_V04_A_PIP_PC-GPWG.dta&quot; &quot;PRY_2012_EPH_V01_M_V04_A_PIP_TB-ALL.dta&quot;</span></span></code></pre></div>
 </div>
 <div id="loading-data" class="section level3" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Loading data</h3>
 <p>Function <code>pip_load_data</code> takes care of loading the data. The very first instruction within <code>pip_load_data</code> is to find the data avialable in the repository by using <code>pip_load_inventory()</code>. The difference however is two-fold. First, <code>pip_load_data</code> will load the default and/or most recent version of the country/year combination available. Second, it gives the user the possibility to load different datasets in either list or dataframe form. For instance, if the user wants to load the Paraguay data in 2014 and 2015 used in the Poverty Calculator tool, she may type,</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="load.html#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-2"><a href="load.html#cb29-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">pip_load_data</span>(<span class="at">country =</span> <span class="st">&quot;PRY&quot;</span>,</span>
-<span id="cb29-3"><a href="load.html#cb29-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">year    =</span> <span class="fu">c</span>(<span class="dv">2014</span>, <span class="dv">2015</span>), </span>
-<span id="cb29-4"><a href="load.html#cb29-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">tool    =</span> <span class="st">&quot;PC&quot;</span>)</span>
-<span id="cb29-5"><a href="load.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb29-6"><a href="load.html#cb29-6" aria-hidden="true" tabindex="-1"></a>i Loading data and creating a dataframe</span>
-<span id="cb29-7"><a href="load.html#cb29-7" aria-hidden="true" tabindex="-1"></a>v Loading data and creating a dataframe ... done</span>
-<span id="cb29-8"><a href="load.html#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="load.html#cb29-9" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">tabyl</span>(df, survey_id)</span>
-<span id="cb29-10"><a href="load.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                             survey_id     n    percent</span></span>
-<span id="cb29-11"><a href="load.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  PRY_2014_EPH_V01_M_V03_A_PIP_PC-GPWG 20109 0.39548834</span></span>
-<span id="cb29-12"><a href="load.html#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  PRY_2015_EPH_V01_M_V03_A_PIP_PC-GPWG 30737 0.60451166</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="load.html#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-2"><a href="load.html#cb34-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">pip_load_data</span>(<span class="at">country =</span> <span class="st">&quot;PRY&quot;</span>,</span>
+<span id="cb34-3"><a href="load.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">year    =</span> <span class="fu">c</span>(<span class="dv">2014</span>, <span class="dv">2015</span>), </span>
+<span id="cb34-4"><a href="load.html#cb34-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">tool    =</span> <span class="st">&quot;PC&quot;</span>)</span>
+<span id="cb34-5"><a href="load.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb34-6"><a href="load.html#cb34-6" aria-hidden="true" tabindex="-1"></a>i Loading data and creating a dataframe</span>
+<span id="cb34-7"><a href="load.html#cb34-7" aria-hidden="true" tabindex="-1"></a>v Loading data and creating a dataframe ... done</span>
+<span id="cb34-8"><a href="load.html#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="load.html#cb34-9" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">tabyl</span>(df, survey_id)</span>
+<span id="cb34-10"><a href="load.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                             survey_id     n percent</span></span>
+<span id="cb34-11"><a href="load.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  PRY_2014_EPH_V01_M_V03_A_PIP_PC-GPWG 20109   0.395</span></span>
+<span id="cb34-12"><a href="load.html#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  PRY_2015_EPH_V01_M_V03_A_PIP_PC-GPWG 30737   0.605</span></span></code></pre></div>
 
 </div>
 </div>

@@ -40,22 +40,124 @@ all PIP data.
 As always, this file can be loaded by typing,
 
 ```{r}
+library(data.table)
 pfw <- pipload::pip_load_aux("pfw")
 joyn::is_id(pfw, by = c("country_code", "surveyid_year", "survey_acronym"))
 ```
 
 First of all, notice that `pfw` is uniquely identified by country code, survey
 year, and survey acronym. The reason for this is that pfw aims at providing a
-link between every single welfare data file and all the other auxiliary data.
+link between every single household survey and all the other auxiliary data.
 Since welfare data is stored following the naming convention of the
 [International Household Survey Network (IHSN)](http://ihsn.org/), data is
 stored according to country, survey year, acronym of the survey, and vintage
-control of master and alternative versions.
+control of master and alternative versions. The vintage control of the master
+and alternative version of the data is not relevant for joining data because PIP
+uses, by default, the most recent version.
 
-This is important to understand because PIP estimates are reported at the
-country, year, domain, and welfare type level. the last two of these are not
-found either in the survey ID nor as unique identifier of the pfw.
+Keep in mind that PIP estimates are reported at the country, year, domain, and
+welfare type level, but the last two of these are not found either in the survey
+ID nor as unique identifiers of the pfw. To solve this problem, the pfw data
+makes use of the variables `welfare_type,` `aaa_domain`, and `aaa_domain_var`.
 
-By default, PIP uses the most recent alternative version of th survey,
+As the name suggests, `welfare_type` indicates the **main** welfare aggregate
+type (i.e, income or consumption ) of the variable `welfare` in the GMD datasets
+that correspond to the survey ID formed by concatenating variables
+`country_code`, `surveyid_year`, and `survey_acronym`. For example, the
+`welfare_type` of the `welfare` variable in the datasets of
+***COL_2018_GEIH**\_V01_M\_V03_A\_GMD* is income.
+
+```{r}
+pfw[ country_code    == "COL"
+    & surveyid_year  == 2018
+    & survey_acronym == "GEIH", # Not necessary since it is the only one
+    unique(welfare_type)]
+```
+
+The prefix `aaa` in variables `aaa_domain` and `aaa_domain_var` refers to the
+identification code of any of the auxiliary data. Thus, you will find a
+`gdp_domain`, `cpi_domain`, `ppp_domain` and several others. All `aaa_domain`
+variables contain the *lower* level of geographical disaggregation of the
+corresponding `aaa` auxiliary data. There are only three possible levels of
+disaagregation,
+
+```{r, echo=FALSE}
+dd <- tibble::tribble(
+        ~domain.value,      ~meaning,
+                   1L,    "national",
+                   2L, "urban/rural",
+                   3L, "subnational"
+        )
+knitr::kable(dd, 
+             format =  "html", 
+             col.names = gsub("[.]", " ", names(dd)))
+```
+
+As of now, no survey or auxiliary data is broken down at level 3 (i.e.,
+subnational), but it is important to know that the PIP internal code takes that
+possibility into account for future cases.
+
+Depending on the country, the domain level of each auxiliary data might be
+different. In Indonesia, for instance, the CPI domain is national, whereas the
+PPP domain is "urban/rural."
+
+```{r}
+pfw[ country_code == "IDN" & surveyid_year == 2018, 
+    .(cpi = unique(cpi_domain), 
+      ppp = unique(ppp_domain))]
+```
+
+Finally, [and this is really important]{style="color:red"}, variables
+`aaa_domain_var` contains the name of variable in the GMD dataset that uniquely
+identify the household survey *in the corresponding `aaa`* *auxiliary data*. In
+other words, `aaa_domain_var` contains *the name* of the variable in GMD that
+must be used as *key* *to join* GMD to `aaa`. You may ask, does the name of the
+variable in the `aaa` auxiliary data have the same variable name in the GMD data
+specified in `aaa_domain_var`? No, it does not. Since the domain level to
+identify observations in the `aaa` auxiliary data is unique, there is only one
+variable in auxiliary data used to merge any welfare data, `data_level`.
+
+### Joining data example
+
+Let's see the case of Indonesia above. The pfw says that the CPI domain is
+"national" and the PPP domain is "urban/rural." That means that the welfare data
+join to each of these auxiliary data with two different variables,
+
+```{r}
+domains <- 
+  pfw[ country_code == "IDN" & surveyid_year == 2018, 
+     .(cpi = unique(cpi_domain_var), 
+       ppp = unique(ppp_domain_var))][]
+```
+
+This says that the name of the variable in the welfare data to join PPP data is
+called `uban`, but there is not seem to be a variable name in GMD to join the
+CPI data. When the name of the variable is missing, it indicates that the
+welfare data is not split by any variable to merge CPI data. That is, it is at
+the national level.
+
+```{r, eval=FALSE}
+ccode  <- "CHN"
+cpi <- pipload::pip_load_aux("cpi")
+ppp <- pipload::pip_load_aux("ppp")
+
+CHN <-  pipload::pip_load_data(country = ccode, 
+                              year    = 2015)
+domains <- 
+  pfw[ country_code == ccode & surveyid_year == 2015, 
+       .(cpi = unique(cpi_domain_var), 
+         ppp = unique(ppp_domain_var))][]
+
+
+
+byvars <- glue::glue("{domains[['cpi']]} = data_level")
+# byvars <- parse(text = byvars)
+debugonce(joyn::merge)
+joyn::merge(CHN, cpi, 
+            by = byvars)
+
+
+domains[['cpi']]
+```
 
 ## Special data cases

@@ -1,5 +1,49 @@
-# (PART) PIP data  {.unnumbered}
+# (PART) PIP data {.unnumbered}
 
 # Welfare data {#welfare-data}
 
 blah blah blah
+
+## Survey ID nomenclature
+
+All household surveys in the PIP repository are stored following the naming
+convention of the [International Household Survey Network
+(IHSN)](http://ihsn.org/) for [archiving and managing
+data](http://www.ihsn.org/archiving). This structure can be generalized as
+follows:
+
+    CCC_YYYY_SSSS_ vNN_M_vNN_A_TYPE_MODULE
+
+where,
+
+-   `CCC` refers to 3 letter ISO country code
+-   `YYYY` refers to survey year when data collection started
+-   `SSSS` refers to survey acronym (e.g., LSMS, CWIQ, HBS, etc.)
+-   `vNN` is the version vintage of the raw/master data if followed by an `M` or
+    of the alternative/adapted data if followed by an `A`. The first version
+    will always be v01, and when a newer version is available it should be named
+    sequentially (e.g. v02, v03, etc.). Note that when a new version is
+    available, the previous ones must still be kept.
+-   `TYPE` refers to the collection name. In the case of PIP data, the type is
+    precisely, **PIP**, but be aware that there are several other types in the
+    datalibweb collection. For instance, the Global Monitoring Database uses
+    **GMD**; the South Asia region uses **SARMD**; or the LAC region uses
+    **SEDLAC**.
+-   `MODULE` refers to the module of the collection. This part of the survey ID
+    is only available at the *file level*, not at the folder (i.e, survey)
+    level. Since the folder structure is created at the survey level, there is
+    no place in the survey ID to include the module of the survey. However,
+    within a single survey, you may find different modules, which are specified
+    in the name of the file. In the case of PIP, the module of the survey is
+    divided in two: the PIP tool and the GMD module. The *PIP tool* could be
+    *PC*, *TB,* or *SOL* (forthcoming), which stand for one of the PIP systems,
+    Poverty Calculator, Table Baker (or Maker), and Statistics OnLine. the *GMD
+    module*, refers to the original module in the GMD collection, such as module
+    *ALL*, or *GPWG, HIST,* or *BIN.*
+
+For example, the most recent version of the harmonized Pakistani Household
+Survey of 2015, she would refer to the survey ID
+`PAK_2015_PSLM_v01_M_v02_A_PIP`. In this case, PSLM refers to the acronym of the
+Pakistan Social and Living Standards Measurement Survey. v01_M means that the
+version of the raw data has not changed since it was released and v02_A means
+that the most recent version of the alternative version is 02.2

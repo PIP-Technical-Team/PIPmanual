@@ -5,27 +5,27 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Poverty Calculator Pipeline (pre-computed estimations) | PIP Manual</title>
-  <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Poverty Calculator Pipeline (pre-computed estimations) | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 9 Poverty Calculator Pipeline (pre-computed estimations) | PIP Manual" />
   
-  <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
 <meta name="author" content="DECIS" />
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-24" />
+<meta name="date" content="2021-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,13 +158,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.1</b> Survey ID nomenclature</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
 <li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2</b> GDP</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.3</b> Consumption (PCE)</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.3.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.4</b> CPI</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-3"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.5</b> PPP</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-4"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.6</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-5"><i class="fa fa-check"></i><b>6.6.1</b> Original data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
@@ -268,16 +291,16 @@ Also, it provides some tips for debugging.</p>
 <p>The pipeline is hosted in the Github repository
 <a href="https://github.com/PIP-Technical-Team/pip_ingestion_pipeline">PIP-Technical-Team/pip_ingestion_pipeline</a>.
 At the root of the repo you will find a series of files and folders.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="pcpipeline.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- batch</span></span>
-<span id="cb30-2"><a href="pcpipeline.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- pip_ingestion_pipeline.Rproj</span></span>
-<span id="cb30-3"><a href="pcpipeline.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- R</span></span>
-<span id="cb30-4"><a href="pcpipeline.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- README.md</span></span>
-<span id="cb30-5"><a href="pcpipeline.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- renv</span></span>
-<span id="cb30-6"><a href="pcpipeline.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- renv.lock</span></span>
-<span id="cb30-7"><a href="pcpipeline.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- run.R</span></span>
-<span id="cb30-8"><a href="pcpipeline.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- _packages.R</span></span>
-<span id="cb30-9"><a href="pcpipeline.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \-- _targets</span></span>
-<span id="cb30-10"><a href="pcpipeline.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \-- _targets.R</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="pcpipeline.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- batch</span></span>
+<span id="cb35-2"><a href="pcpipeline.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- pip_ingestion_pipeline.Rproj</span></span>
+<span id="cb35-3"><a href="pcpipeline.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- R</span></span>
+<span id="cb35-4"><a href="pcpipeline.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- README.md</span></span>
+<span id="cb35-5"><a href="pcpipeline.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- renv</span></span>
+<span id="cb35-6"><a href="pcpipeline.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- renv.lock</span></span>
+<span id="cb35-7"><a href="pcpipeline.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- run.R</span></span>
+<span id="cb35-8"><a href="pcpipeline.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; +-- _packages.R</span></span>
+<span id="cb35-9"><a href="pcpipeline.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \-- _targets</span></span>
+<span id="cb35-10"><a href="pcpipeline.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; \-- _targets.R</span></span></code></pre></div>
 <div id="folders" class="section level3 unnumbered">
 <h3>Folders</h3>
 <ul>
@@ -310,10 +333,10 @@ PIP team, make sure you always increased the version of the package using the
 function <code>usethis::use_version()</code>. Even if the change in the package is small,
 you need on increased the version of the package. Otherwise, <code>{targets}</code> won’t
 execute the sections of the pipeline that run the functions you changed.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="pcpipeline.html#cb31-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipdm@development&quot;</span>)</span>
-<span id="cb31-2"><a href="pcpipeline.html#cb31-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipload@development&quot;</span>)</span>
-<span id="cb31-3"><a href="pcpipeline.html#cb31-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/wbpip@halfmedian_spl&quot;</span>)</span>
-<span id="cb31-4"><a href="pcpipeline.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;joyn&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="pcpipeline.html#cb36-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipdm@development&quot;</span>)</span>
+<span id="cb36-2"><a href="pcpipeline.html#cb36-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/pipload@development&quot;</span>)</span>
+<span id="cb36-3"><a href="pcpipeline.html#cb36-3" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;PIP-Technical-Team/wbpip@halfmedian_spl&quot;</span>)</span>
+<span id="cb36-4"><a href="pcpipeline.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;joyn&quot;</span>)</span></code></pre></div>
 <p>In case <code>renv</code> is not working for you, you may need to install all the packages
 mentioned in the <code>_packages.R</code> script at the root of the folder. Also, make sure
 to install the most recent version of <code>targets</code> and <code>tarchetypes</code> packages.</p>
@@ -411,23 +434,23 @@ the use of cache files.</p>
 using <code>tar_map()</code> from the <code>{tarchetypes}</code> package. The <code>tar_map()</code> function
 allows to create <strong>stem</strong> targets iteratively. See for instance the creation of
 targets for each auxiliary data,</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="pcpipeline.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_map</span>(</span>
-<span id="cb32-2"><a href="pcpipeline.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">values =</span> aux_tb, </span>
-<span id="cb32-3"><a href="pcpipeline.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names  =</span> <span class="st">&quot;auxname&quot;</span>, </span>
-<span id="cb32-4"><a href="pcpipeline.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb32-5"><a href="pcpipeline.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create dynamic name</span></span>
-<span id="cb32-6"><a href="pcpipeline.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb32-7"><a href="pcpipeline.html#cb32-7" aria-hidden="true" tabindex="-1"></a>    aux_dir,</span>
-<span id="cb32-8"><a href="pcpipeline.html#cb32-8" aria-hidden="true" tabindex="-1"></a>    auxfiles, </span>
-<span id="cb32-9"><a href="pcpipeline.html#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;file&quot;</span></span>
-<span id="cb32-10"><a href="pcpipeline.html#cb32-10" aria-hidden="true" tabindex="-1"></a>  ), </span>
-<span id="cb32-11"><a href="pcpipeline.html#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(</span>
-<span id="cb32-12"><a href="pcpipeline.html#cb32-12" aria-hidden="true" tabindex="-1"></a>    aux,</span>
-<span id="cb32-13"><a href="pcpipeline.html#cb32-13" aria-hidden="true" tabindex="-1"></a>    pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="at">file_to_load =</span> aux_dir,</span>
-<span id="cb32-14"><a href="pcpipeline.html#cb32-14" aria-hidden="true" tabindex="-1"></a>                          <span class="at">apply_label =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-15"><a href="pcpipeline.html#cb32-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb32-16"><a href="pcpipeline.html#cb32-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb32-17"><a href="pcpipeline.html#cb32-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="pcpipeline.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_map</span>(</span>
+<span id="cb37-2"><a href="pcpipeline.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">values =</span> aux_tb, </span>
+<span id="cb37-3"><a href="pcpipeline.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names  =</span> <span class="st">&quot;auxname&quot;</span>, </span>
+<span id="cb37-4"><a href="pcpipeline.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-5"><a href="pcpipeline.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create dynamic name</span></span>
+<span id="cb37-6"><a href="pcpipeline.html#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb37-7"><a href="pcpipeline.html#cb37-7" aria-hidden="true" tabindex="-1"></a>    aux_dir,</span>
+<span id="cb37-8"><a href="pcpipeline.html#cb37-8" aria-hidden="true" tabindex="-1"></a>    auxfiles, </span>
+<span id="cb37-9"><a href="pcpipeline.html#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;file&quot;</span></span>
+<span id="cb37-10"><a href="pcpipeline.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  ), </span>
+<span id="cb37-11"><a href="pcpipeline.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(</span>
+<span id="cb37-12"><a href="pcpipeline.html#cb37-12" aria-hidden="true" tabindex="-1"></a>    aux,</span>
+<span id="cb37-13"><a href="pcpipeline.html#cb37-13" aria-hidden="true" tabindex="-1"></a>    pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="at">file_to_load =</span> aux_dir,</span>
+<span id="cb37-14"><a href="pcpipeline.html#cb37-14" aria-hidden="true" tabindex="-1"></a>                          <span class="at">apply_label =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb37-15"><a href="pcpipeline.html#cb37-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-16"><a href="pcpipeline.html#cb37-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb37-17"><a href="pcpipeline.html#cb37-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><code>tar_map()</code> takes the values in the data frame <code>aux_tb</code> created in <a href="#pipe-prepare-data">Step 2:
 prepare data</a> and creates two type of targets. First, it
 creates the target <code>aux_dir</code> that contains the paths of the auxiliary files,
@@ -458,36 +481,36 @@ would lose the tracking features of <code>{targets}</code>. Also, we could have 
 have been not only impossible to visualize, but also more difficult to code.
 Thus branch targets is the best option.</p>
 <p>The following example illustrates how it works,</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="pcpipeline.html#cb33-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-2"><a href="pcpipeline.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># step A</span></span>
-<span id="cb33-3"><a href="pcpipeline.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
-<span id="cb33-4"><a href="pcpipeline.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  cache_inventory_dir, </span>
-<span id="cb33-5"><a href="pcpipeline.html#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cache_inventory_path</span>(),</span>
-<span id="cb33-6"><a href="pcpipeline.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">format =</span> <span class="st">&quot;file&quot;</span></span>
-<span id="cb33-7"><a href="pcpipeline.html#cb33-7" aria-hidden="true" tabindex="-1"></a>),</span>
-<span id="cb33-8"><a href="pcpipeline.html#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="pcpipeline.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># step B</span></span>
-<span id="cb33-10"><a href="pcpipeline.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
-<span id="cb33-11"><a href="pcpipeline.html#cb33-11" aria-hidden="true" tabindex="-1"></a>  cache_inventory, </span>
-<span id="cb33-12"><a href="pcpipeline.html#cb33-12" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb33-13"><a href="pcpipeline.html#cb33-13" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> fst<span class="sc">::</span><span class="fu">read_fst</span>(cache_inventory_dir, </span>
-<span id="cb33-14"><a href="pcpipeline.html#cb33-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">as.data.table =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb33-15"><a href="pcpipeline.html#cb33-15" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb33-16"><a href="pcpipeline.html#cb33-16" aria-hidden="true" tabindex="-1"></a>),</span>
-<span id="cb33-17"><a href="pcpipeline.html#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-18"><a href="pcpipeline.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co"># step C</span></span>
-<span id="cb33-19"><a href="pcpipeline.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(cache_files,</span>
-<span id="cb33-20"><a href="pcpipeline.html#cb33-20" aria-hidden="true" tabindex="-1"></a>           <span class="fu">get_cache_files</span>(cache_inventory)),</span>
-<span id="cb33-21"><a href="pcpipeline.html#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-22"><a href="pcpipeline.html#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="co"># step D</span></span>
-<span id="cb33-23"><a href="pcpipeline.html#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_files</span>(cache_dir, cache_files),</span>
-<span id="cb33-24"><a href="pcpipeline.html#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-25"><a href="pcpipeline.html#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="co"># step E</span></span>
-<span id="cb33-26"><a href="pcpipeline.html#cb33-26" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(cache, </span>
-<span id="cb33-27"><a href="pcpipeline.html#cb33-27" aria-hidden="true" tabindex="-1"></a>           fst<span class="sc">::</span><span class="fu">read_fst</span>(<span class="at">path =</span> cache_dir, </span>
-<span id="cb33-28"><a href="pcpipeline.html#cb33-28" aria-hidden="true" tabindex="-1"></a>                         <span class="at">as.data.table =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb33-29"><a href="pcpipeline.html#cb33-29" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="fu">map</span>(cache_dir), </span>
-<span id="cb33-30"><a href="pcpipeline.html#cb33-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">iteration =</span> <span class="st">&quot;list&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="pcpipeline.html#cb38-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-2"><a href="pcpipeline.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># step A</span></span>
+<span id="cb38-3"><a href="pcpipeline.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
+<span id="cb38-4"><a href="pcpipeline.html#cb38-4" aria-hidden="true" tabindex="-1"></a>  cache_inventory_dir, </span>
+<span id="cb38-5"><a href="pcpipeline.html#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cache_inventory_path</span>(),</span>
+<span id="cb38-6"><a href="pcpipeline.html#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">format =</span> <span class="st">&quot;file&quot;</span></span>
+<span id="cb38-7"><a href="pcpipeline.html#cb38-7" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb38-8"><a href="pcpipeline.html#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="pcpipeline.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co"># step B</span></span>
+<span id="cb38-10"><a href="pcpipeline.html#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
+<span id="cb38-11"><a href="pcpipeline.html#cb38-11" aria-hidden="true" tabindex="-1"></a>  cache_inventory, </span>
+<span id="cb38-12"><a href="pcpipeline.html#cb38-12" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb38-13"><a href="pcpipeline.html#cb38-13" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> fst<span class="sc">::</span><span class="fu">read_fst</span>(cache_inventory_dir, </span>
+<span id="cb38-14"><a href="pcpipeline.html#cb38-14" aria-hidden="true" tabindex="-1"></a>                       <span class="at">as.data.table =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb38-15"><a href="pcpipeline.html#cb38-15" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb38-16"><a href="pcpipeline.html#cb38-16" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb38-17"><a href="pcpipeline.html#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="pcpipeline.html#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="co"># step C</span></span>
+<span id="cb38-19"><a href="pcpipeline.html#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(cache_files,</span>
+<span id="cb38-20"><a href="pcpipeline.html#cb38-20" aria-hidden="true" tabindex="-1"></a>           <span class="fu">get_cache_files</span>(cache_inventory)),</span>
+<span id="cb38-21"><a href="pcpipeline.html#cb38-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-22"><a href="pcpipeline.html#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="co"># step D</span></span>
+<span id="cb38-23"><a href="pcpipeline.html#cb38-23" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_files</span>(cache_dir, cache_files),</span>
+<span id="cb38-24"><a href="pcpipeline.html#cb38-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-25"><a href="pcpipeline.html#cb38-25" aria-hidden="true" tabindex="-1"></a><span class="co"># step E</span></span>
+<span id="cb38-26"><a href="pcpipeline.html#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(cache, </span>
+<span id="cb38-27"><a href="pcpipeline.html#cb38-27" aria-hidden="true" tabindex="-1"></a>           fst<span class="sc">::</span><span class="fu">read_fst</span>(<span class="at">path =</span> cache_dir, </span>
+<span id="cb38-28"><a href="pcpipeline.html#cb38-28" aria-hidden="true" tabindex="-1"></a>                         <span class="at">as.data.table =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb38-29"><a href="pcpipeline.html#cb38-29" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern =</span> <span class="fu">map</span>(cache_dir), </span>
+<span id="cb38-30"><a href="pcpipeline.html#cb38-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">iteration =</span> <span class="st">&quot;list&quot;</span>)</span></code></pre></div>
 <p>The code above illustrates several things. It is divided in steps, being the
 last step– step E–the part of the code in which we create the <strong>branch</strong>
 target. Yet, it is important to understand the steps before.</p>
@@ -517,42 +540,42 @@ argument (See example code below). (2) make sure all the vectors or lists <stron
 the same length</strong>. This is why we cannot remove NULL or NA values from any
 target. (3) make sure you do <strong>NOT</strong> sort any of the output targets as it will
 loose its correspondence with other targets.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="pcpipeline.html#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-2"><a href="pcpipeline.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of creating branch target using several lists to iterate through.</span></span>
-<span id="cb34-3"><a href="pcpipeline.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
-<span id="cb34-4"><a href="pcpipeline.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name      =</span> dl_dist_stats,</span>
-<span id="cb34-5"><a href="pcpipeline.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">command   =</span> <span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> cache, </span>
-<span id="cb34-6"><a href="pcpipeline.html#cb34-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">mean     =</span> dl_mean, </span>
-<span id="cb34-7"><a href="pcpipeline.html#cb34-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">pop      =</span> aux_pop, </span>
-<span id="cb34-8"><a href="pcpipeline.html#cb34-8" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">cache_id =</span> cache_ids), </span>
-<span id="cb34-9"><a href="pcpipeline.html#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern   =</span>  <span class="fu">map</span>(cache, dl_mean, cache_ids), </span>
-<span id="cb34-10"><a href="pcpipeline.html#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">iteration =</span> <span class="st">&quot;list&quot;</span></span>
-<span id="cb34-11"><a href="pcpipeline.html#cb34-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="pcpipeline.html#cb39-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-2"><a href="pcpipeline.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of creating branch target using several lists to iterate through.</span></span>
+<span id="cb39-3"><a href="pcpipeline.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
+<span id="cb39-4"><a href="pcpipeline.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name      =</span> dl_dist_stats,</span>
+<span id="cb39-5"><a href="pcpipeline.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">command   =</span> <span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> cache, </span>
+<span id="cb39-6"><a href="pcpipeline.html#cb39-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">mean     =</span> dl_mean, </span>
+<span id="cb39-7"><a href="pcpipeline.html#cb39-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">pop      =</span> aux_pop, </span>
+<span id="cb39-8"><a href="pcpipeline.html#cb39-8" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">cache_id =</span> cache_ids), </span>
+<span id="cb39-9"><a href="pcpipeline.html#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern   =</span>  <span class="fu">map</span>(cache, dl_mean, cache_ids), </span>
+<span id="cb39-10"><a href="pcpipeline.html#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">iteration =</span> <span class="st">&quot;list&quot;</span></span>
+<span id="cb39-11"><a href="pcpipeline.html#cb39-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="creating-the-cache-files" class="section level3 unnumbered">
 <h3>Creating the cache files</h3>
 <p>The creation of the cache files is done in the following code,</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="pcpipeline.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(pipeline_inventory, {</span>
-<span id="cb35-2"><a href="pcpipeline.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> pipdm<span class="sc">::</span><span class="fu">db_filter_inventory</span>(</span>
-<span id="cb35-3"><a href="pcpipeline.html#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dt =</span> pip_inventory,</span>
-<span id="cb35-4"><a href="pcpipeline.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pfw_table =</span> aux_pfw)</span>
-<span id="cb35-5"><a href="pcpipeline.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-6"><a href="pcpipeline.html#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Uncomment for specific countries</span></span>
-<span id="cb35-7"><a href="pcpipeline.html#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x &lt;- x[country_code == &#39;IDN&#39; &amp; surveyid_year == 2015]</span></span>
-<span id="cb35-8"><a href="pcpipeline.html#cb35-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-9"><a href="pcpipeline.html#cb35-9" aria-hidden="true" tabindex="-1"></a>),</span>
-<span id="cb35-10"><a href="pcpipeline.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(status_cache_files_creation, </span>
-<span id="cb35-11"><a href="pcpipeline.html#cb35-11" aria-hidden="true" tabindex="-1"></a>           pipdm<span class="sc">::</span><span class="fu">create_cache_file</span>(</span>
-<span id="cb35-12"><a href="pcpipeline.html#cb35-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">pipeline_inventory =</span> pipeline_inventory,</span>
-<span id="cb35-13"><a href="pcpipeline.html#cb35-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">pip_data_dir       =</span> PIP_DATA_DIR,</span>
-<span id="cb35-14"><a href="pcpipeline.html#cb35-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">tool               =</span> <span class="st">&quot;PC&quot;</span>,</span>
-<span id="cb35-15"><a href="pcpipeline.html#cb35-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">cache_svy_dir      =</span> CACHE_SVY_DIR,</span>
-<span id="cb35-16"><a href="pcpipeline.html#cb35-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">compress           =</span> FST_COMP_LVL,</span>
-<span id="cb35-17"><a href="pcpipeline.html#cb35-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">force              =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb35-18"><a href="pcpipeline.html#cb35-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">verbose            =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb35-19"><a href="pcpipeline.html#cb35-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">cpi_dt             =</span> aux_cpi,</span>
-<span id="cb35-20"><a href="pcpipeline.html#cb35-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">ppp_dt             =</span> aux_ppp)</span>
-<span id="cb35-21"><a href="pcpipeline.html#cb35-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="pcpipeline.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(pipeline_inventory, {</span>
+<span id="cb40-2"><a href="pcpipeline.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> pipdm<span class="sc">::</span><span class="fu">db_filter_inventory</span>(</span>
+<span id="cb40-3"><a href="pcpipeline.html#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dt =</span> pip_inventory,</span>
+<span id="cb40-4"><a href="pcpipeline.html#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pfw_table =</span> aux_pfw)</span>
+<span id="cb40-5"><a href="pcpipeline.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-6"><a href="pcpipeline.html#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Uncomment for specific countries</span></span>
+<span id="cb40-7"><a href="pcpipeline.html#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x &lt;- x[country_code == &#39;IDN&#39; &amp; surveyid_year == 2015]</span></span>
+<span id="cb40-8"><a href="pcpipeline.html#cb40-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-9"><a href="pcpipeline.html#cb40-9" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb40-10"><a href="pcpipeline.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(status_cache_files_creation, </span>
+<span id="cb40-11"><a href="pcpipeline.html#cb40-11" aria-hidden="true" tabindex="-1"></a>           pipdm<span class="sc">::</span><span class="fu">create_cache_file</span>(</span>
+<span id="cb40-12"><a href="pcpipeline.html#cb40-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">pipeline_inventory =</span> pipeline_inventory,</span>
+<span id="cb40-13"><a href="pcpipeline.html#cb40-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">pip_data_dir       =</span> PIP_DATA_DIR,</span>
+<span id="cb40-14"><a href="pcpipeline.html#cb40-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">tool               =</span> <span class="st">&quot;PC&quot;</span>,</span>
+<span id="cb40-15"><a href="pcpipeline.html#cb40-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">cache_svy_dir      =</span> CACHE_SVY_DIR,</span>
+<span id="cb40-16"><a href="pcpipeline.html#cb40-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">compress           =</span> FST_COMP_LVL,</span>
+<span id="cb40-17"><a href="pcpipeline.html#cb40-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">force              =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb40-18"><a href="pcpipeline.html#cb40-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">verbose            =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb40-19"><a href="pcpipeline.html#cb40-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">cpi_dt             =</span> aux_cpi,</span>
+<span id="cb40-20"><a href="pcpipeline.html#cb40-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">ppp_dt             =</span> aux_ppp)</span>
+<span id="cb40-21"><a href="pcpipeline.html#cb40-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>It is important to understand this part of the pc pipeline thoroughly because
 the cache files used to be created in <a href="#pipe-prepare-data">Step 2: prepare data</a>
 rather than here. Now, it has not only been integrated in the pc pipeline, but
@@ -593,7 +616,7 @@ why, many of the functions in <code>{pipdm}</code> are prefixed with “db_.”<
 <div id="internal-structure-of-pipdm-functions" class="section level3" number="9.5.1">
 <h3><span class="header-section-number">9.5.1</span> Internal structure of <code>{pipdm}</code> functions</h3>
 <p>The main objective of <code>{pipdm}</code> is to execute the functions in <code>{wbpip}</code> to do
-the calculations and then build the data frames. As of today, 2021-06-24,
+the calculations and then build the data frames. As of today, 2021-06-29,
 the process is a little intricate.</p>
 <p>Let’s take the example of estimating distributive measures in the pipeline. The
 image <a href="pcpipeline.html#pipdm-structure">below</a> shows that there are at least three intermediate
@@ -667,17 +690,17 @@ which is created by executing the function <code>db_create_dist_table</code> of 
 necessary to create <code>dt_dist_stats</code> should be available in the <code>_targets/</code> data
 store. So, you can load them using <code>tar_load()</code> and execute the function in
 debugging mode. Like this,</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="pcpipeline.html#cb36-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-2"><a href="pcpipeline.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dl_dist_stats)</span>
-<span id="cb36-3"><a href="pcpipeline.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(svy_mean_ppp_table)</span>
-<span id="cb36-4"><a href="pcpipeline.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(cache_inventory)</span>
-<span id="cb36-5"><a href="pcpipeline.html#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="pcpipeline.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(pipdm<span class="sc">::</span>db_create_dist_table)</span>
-<span id="cb36-7"><a href="pcpipeline.html#cb36-7" aria-hidden="true" tabindex="-1"></a>pipdm<span class="sc">::</span><span class="fu">db_create_dist_table</span>(</span>
-<span id="cb36-8"><a href="pcpipeline.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dl        =</span> dl_dist_stats,</span>
-<span id="cb36-9"><a href="pcpipeline.html#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">dsm_table =</span> svy_mean_ppp_table, </span>
-<span id="cb36-10"><a href="pcpipeline.html#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">crr_inv   =</span> cache_inventory</span>
-<span id="cb36-11"><a href="pcpipeline.html#cb36-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="pcpipeline.html#cb41-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-2"><a href="pcpipeline.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dl_dist_stats)</span>
+<span id="cb41-3"><a href="pcpipeline.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(svy_mean_ppp_table)</span>
+<span id="cb41-4"><a href="pcpipeline.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(cache_inventory)</span>
+<span id="cb41-5"><a href="pcpipeline.html#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="pcpipeline.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(pipdm<span class="sc">::</span>db_create_dist_table)</span>
+<span id="cb41-7"><a href="pcpipeline.html#cb41-7" aria-hidden="true" tabindex="-1"></a>pipdm<span class="sc">::</span><span class="fu">db_create_dist_table</span>(</span>
+<span id="cb41-8"><a href="pcpipeline.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dl        =</span> dl_dist_stats,</span>
+<span id="cb41-9"><a href="pcpipeline.html#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">dsm_table =</span> svy_mean_ppp_table, </span>
+<span id="cb41-10"><a href="pcpipeline.html#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">crr_inv   =</span> cache_inventory</span>
+<span id="cb41-11"><a href="pcpipeline.html#cb41-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Notice that you need to use the <code>::</code> because the environment in which
 <code>{targets}</code> runs is different from your Global environment in which you might
 not have attached all the libraries.</p>
@@ -692,33 +715,33 @@ number. This requires a little more of work.</p>
 pipeline and notice that these calculation are executed in target
 <code>dl_dist_stats</code>, which is branch target created over <strong>all the cache files!</strong> It
 looks something like this,</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="pcpipeline.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
-<span id="cb37-2"><a href="pcpipeline.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name      =</span> dl_dist_stats,</span>
-<span id="cb37-3"><a href="pcpipeline.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">command   =</span> <span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> cache, </span>
-<span id="cb37-4"><a href="pcpipeline.html#cb37-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">mean     =</span> dl_mean, </span>
-<span id="cb37-5"><a href="pcpipeline.html#cb37-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">pop      =</span> aux_pop, </span>
-<span id="cb37-6"><a href="pcpipeline.html#cb37-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">cache_id =</span> cache_ids), </span>
-<span id="cb37-7"><a href="pcpipeline.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern   =</span>  <span class="fu">map</span>(cache, dl_mean, cache_ids), </span>
-<span id="cb37-8"><a href="pcpipeline.html#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iteration =</span> <span class="st">&quot;list&quot;</span></span>
-<span id="cb37-9"><a href="pcpipeline.html#cb37-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="pcpipeline.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_target</span>(</span>
+<span id="cb42-2"><a href="pcpipeline.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name      =</span> dl_dist_stats,</span>
+<span id="cb42-3"><a href="pcpipeline.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">command   =</span> <span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> cache, </span>
+<span id="cb42-4"><a href="pcpipeline.html#cb42-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">mean     =</span> dl_mean, </span>
+<span id="cb42-5"><a href="pcpipeline.html#cb42-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">pop      =</span> aux_pop, </span>
+<span id="cb42-6"><a href="pcpipeline.html#cb42-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">cache_id =</span> cache_ids), </span>
+<span id="cb42-7"><a href="pcpipeline.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern   =</span>  <span class="fu">map</span>(cache, dl_mean, cache_ids), </span>
+<span id="cb42-8"><a href="pcpipeline.html#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">iteration =</span> <span class="st">&quot;list&quot;</span></span>
+<span id="cb42-9"><a href="pcpipeline.html#cb42-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>In order to find the problem in IDN 2015, this what you could do,</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="pcpipeline.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb38-2"><a href="pcpipeline.html#cb38-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_cache</span>(<span class="st">&quot;IDN&quot;</span>, <span class="dv">2015</span>, <span class="st">&quot;PC&quot;</span>)</span>
-<span id="cb38-3"><a href="pcpipeline.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dl_mean)</span>
-<span id="cb38-4"><a href="pcpipeline.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(cache_ids)</span>
-<span id="cb38-5"><a href="pcpipeline.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(aux_pop)</span>
-<span id="cb38-6"><a href="pcpipeline.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="pcpipeline.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract corresponding mean and cache ID</span></span>
-<span id="cb38-8"><a href="pcpipeline.html#cb38-8" aria-hidden="true" tabindex="-1"></a>idt      <span class="ot">&lt;-</span> <span class="fu">which</span>(cache_ids <span class="sc">==</span> <span class="fu">unique</span>(dt<span class="sc">$</span>cache_id))</span>
-<span id="cb38-9"><a href="pcpipeline.html#cb38-9" aria-hidden="true" tabindex="-1"></a>cache_id <span class="ot">&lt;-</span> cache_ids[idt]</span>
-<span id="cb38-10"><a href="pcpipeline.html#cb38-10" aria-hidden="true" tabindex="-1"></a>mean_i   <span class="ot">&lt;-</span> dl_mean[[idt]]</span>
-<span id="cb38-11"><a href="pcpipeline.html#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="pcpipeline.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Esecute the function of interest</span></span>
-<span id="cb38-13"><a href="pcpipeline.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(pipdm<span class="sc">:::</span>compute_dist_stats)</span>
-<span id="cb38-14"><a href="pcpipeline.html#cb38-14" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> pipdm<span class="sc">::</span><span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> dt, </span>
-<span id="cb38-15"><a href="pcpipeline.html#cb38-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">mean     =</span> mean_i, </span>
-<span id="cb38-16"><a href="pcpipeline.html#cb38-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">pop      =</span> aux_pop, </span>
-<span id="cb38-17"><a href="pcpipeline.html#cb38-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">cache_id =</span> cache_id)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="pcpipeline.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb43-2"><a href="pcpipeline.html#cb43-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_cache</span>(<span class="st">&quot;IDN&quot;</span>, <span class="dv">2015</span>, <span class="st">&quot;PC&quot;</span>)</span>
+<span id="cb43-3"><a href="pcpipeline.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dl_mean)</span>
+<span id="cb43-4"><a href="pcpipeline.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(cache_ids)</span>
+<span id="cb43-5"><a href="pcpipeline.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(aux_pop)</span>
+<span id="cb43-6"><a href="pcpipeline.html#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="pcpipeline.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract corresponding mean and cache ID</span></span>
+<span id="cb43-8"><a href="pcpipeline.html#cb43-8" aria-hidden="true" tabindex="-1"></a>idt      <span class="ot">&lt;-</span> <span class="fu">which</span>(cache_ids <span class="sc">==</span> <span class="fu">unique</span>(dt<span class="sc">$</span>cache_id))</span>
+<span id="cb43-9"><a href="pcpipeline.html#cb43-9" aria-hidden="true" tabindex="-1"></a>cache_id <span class="ot">&lt;-</span> cache_ids[idt]</span>
+<span id="cb43-10"><a href="pcpipeline.html#cb43-10" aria-hidden="true" tabindex="-1"></a>mean_i   <span class="ot">&lt;-</span> dl_mean[[idt]]</span>
+<span id="cb43-11"><a href="pcpipeline.html#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="pcpipeline.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Esecute the function of interest</span></span>
+<span id="cb43-13"><a href="pcpipeline.html#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="fu">debugonce</span>(pipdm<span class="sc">:::</span>compute_dist_stats)</span>
+<span id="cb43-14"><a href="pcpipeline.html#cb43-14" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> pipdm<span class="sc">::</span><span class="fu">db_compute_dist_stats</span>(<span class="at">dt       =</span> dt, </span>
+<span id="cb43-15"><a href="pcpipeline.html#cb43-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">mean     =</span> mean_i, </span>
+<span id="cb43-16"><a href="pcpipeline.html#cb43-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">pop      =</span> aux_pop, </span>
+<span id="cb43-17"><a href="pcpipeline.html#cb43-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">cache_id =</span> cache_id)</span></code></pre></div>
 <p>First, you load all the inputs. Since target <code>dl_mean</code> is a relatively light
 object, we load it directly from the <code>_targets/</code> data store. Targets <code>cache_ids</code>
 and <code>aux_pop</code> are data frames, not lists, so we also load them from memory. The

@@ -5,27 +5,27 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Auxiliary data | PIP Manual</title>
-  <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Auxiliary data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 Auxiliary data | PIP Manual" />
   
-  <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
 
 <meta name="author" content="DECIS" />
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-06-24" />
+<meta name="date" content="2021-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,13 +158,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a></li>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.1</b> Survey ID nomenclature</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
 <li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2</b> GDP</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.3</b> Consumption (PCE)</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.3.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.4</b> CPI</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-3"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.5</b> PPP</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-4"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.6</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-5"><i class="fa fa-check"></i><b>6.6.1</b> Original data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
@@ -261,19 +284,19 @@ information is just useful information that does not affect, neither depend on,
 quantitative data. It is primary collected and made available for the end user.</p>
 <p>As explain in Chapter <a href="folder-structure.html#folder-structure">3</a>, all auxiliary data is stored in
 <code>"y:/PIP-Data/_aux/"</code>.</p>
-<pre><code>## y:/PIP-Data/_aux/
-## +-- country_list
-## +-- cpi
-## +-- dlw
-## +-- gdm
-## +-- gdp
-## +-- maddison
-## +-- pce
-## +-- pfw
-## +-- pop
-## +-- ppp
-## +-- sna
-## \-- weo</code></pre>
+<pre><code>#&gt; y:/PIP-Data/_aux/
+#&gt; +-- country_list
+#&gt; +-- cpi
+#&gt; +-- dlw
+#&gt; +-- gdm
+#&gt; +-- gdp
+#&gt; +-- maddison
+#&gt; +-- pce
+#&gt; +-- pfw
+#&gt; +-- pop
+#&gt; +-- ppp
+#&gt; +-- sna
+#&gt; \-- weo</code></pre>
 <p>The naming convention of subfolders inside the _aux directory is useful because
 auxiliary data is commonly referred to in all technical processes by its
 convention rather than by it actual name. For instance Gross Domestic Product or
@@ -299,7 +322,7 @@ name of the file.</p>
 file provided by a member of the DECDG team. Ideally, population data should be
 downloaded from WDI, but sometimes the most recent data available has not been
 uploaded yet, so it needs to be collected internally in DECDG. As of now
-(June 24, 2021), the DECDG focal point to provide the
+(June 29, 2021), the DECDG focal point to provide the
 population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to
 send her an email, and she will provide the data to you.</p>
 <p>If the data is provided by DECDG, it should be stored in the folder
@@ -329,17 +352,56 @@ in
 <p>Population data is loaded by typing either <code>pipload::pip_load_aux("pop")</code> or
 <code>pipaux::pip_pop("load")</code>. We highly recommend the former, as <code>{pipload}</code> is the
 intended R package for loading any PIP data.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="auxiliary-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pop&quot;</span>)</span></code></pre></div>
-<pre><code>## v Most recent version of data loaded
-## &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pop/pop.fst&#39;</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="auxiliary-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span></code></pre></div>
-<pre><code>##    country_code year pop_data_level     pop  pop_domain
-## 1:          ABW 1960       national   54211    national
-## 2:          ABW 1960          rural   26685 urban/rural
-## 3:          ABW 1960          urban   27526 urban/rural
-## 4:          AFG 1960       national 8996973    national
-## 5:          AFG 1960          rural 8241137 urban/rural
-## 6:          AFG 1960          urban  755836 urban/rural</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="auxiliary-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pop&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; v Most recent version of data loaded
+#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pop/pop.fst&#39;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="auxiliary-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span></code></pre></div>
+<pre><code>#&gt;    country_code year pop_data_level     pop  pop_domain
+#&gt; 1:          ABW 1960       national   54211    national
+#&gt; 2:          ABW 1960          rural   26685 urban/rural
+#&gt; 3:          ABW 1960          urban   27526 urban/rural
+#&gt; 4:          AFG 1960       national 8996973    national
+#&gt; 5:          AFG 1960          rural 8241137 urban/rural
+#&gt; 6:          AFG 1960          urban  755836 urban/rural</code></pre>
+</div>
+</div>
+<div id="gdp" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> GDP</h2>
+<p>blah</p>
+<div id="original-data-1" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Original data</h3>
+<p>blah</p>
+</div>
+</div>
+<div id="consumption-pce" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Consumption (PCE)</h2>
+<p>blah</p>
+<div id="original-data-2" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Original data</h3>
+<p>blah</p>
+</div>
+</div>
+<div id="cpi" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> CPI</h2>
+<p>blahblah</p>
+<div id="original-data-3" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Original data</h3>
+<p>blah</p>
+</div>
+</div>
+<div id="ppp" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> PPP</h2>
+<p>blah</p>
+<div id="original-data-4" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Original data</h3>
+<p>blah</p>
+</div>
+</div>
+<div id="price-framework-pfw" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Price FrameWork (PFW)</h2>
+<p>blah</p>
+<div id="original-data-5" class="section level3" number="6.6.1">
+<h3><span class="header-section-number">6.6.1</span> Original data</h3>
 
 </div>
 </div>
