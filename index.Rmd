@@ -48,3 +48,26 @@ install.packages("bookdown")
 ```
 
 Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+
+
+Make sure to install the latest version of PIP R packages by typing the following
+
+```{r, eval=FALSE}
+ipkg <- utils::installed.packages()[,1]
+
+pip_install <- function(pkg, ipkg) {
+  if (isFALSE(pkg %in% ipkg)) {
+    gitcall <- paste0("PIP-Technical-Team/", pkg)
+    remotes::install_github(gitcall, dependencies = TRUE)
+    TRUE
+  } else {
+    FALSE
+  }
+}
+
+pkgs <- c("pipload", "pipaux", "wbpip", "piptb", "pipdm", "pipapi")
+
+
+purrr::walk(pkgs, pip_install, ipkg = ipkg)
+
+```
