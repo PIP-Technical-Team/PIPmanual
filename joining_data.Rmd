@@ -115,7 +115,18 @@ must be used as *key* *to join* GMD to `aaa`. You may ask, does the name of the
 variable in the `aaa` auxiliary data have the same variable name in the GMD data
 specified in `aaa_domain_var`? No, it does not. Since the domain level to
 identify observations in the `aaa` auxiliary data is unique, there is only one
-variable in auxiliary data used to merge any welfare data, `data_level`.
+variable in auxiliary data used to merge any welfare data, `aaa_data_level`.
+Since all this process is a little cumbersome, the
+{[pipdp](https://github.com/PIP-Technical-Team/pipdp)} Stata package, during the
+process of cleaning GMD databases to PIP databases, creates as many
+`aaa_data_level` variables as needed in order to make the join of welfare data
+and auxiliary data simpler. You can see the lines of code that create these
+variables in [this
+section](https://github.com/PIP-Technical-Team/pipdp/blob/9c4e32636dd1c71954816f8a7c8ad743349959a6/pipdp_md_clean.ado#L225-L294)
+of the file "pipdp_md_clean.ado."[^joining_data-1]
+
+[^joining_data-1]: You can find more information about the conversion from GMD
+    to PIP databases in Section \@ref(welfare-data)
 
 ### Joining data example
 
@@ -136,28 +147,19 @@ CPI data. When the name of the variable is missing, it indicates that the
 welfare data is not split by any variable to merge CPI data. That is, it is at
 the national level.
 
-```{r, eval=FALSE}
+```{r}
 ccode  <- "CHN"
 cpi <- pipload::pip_load_aux("cpi")
 ppp <- pipload::pip_load_aux("ppp")
 
 CHN <-  pipload::pip_load_data(country = ccode, 
                               year    = 2015)
-domains <- 
-  pfw[ country_code == ccode & surveyid_year == 2015, 
-       .(cpi = unique(cpi_domain_var), 
-         ppp = unique(ppp_domain_var))][]
 
-
-
-byvars <- glue::glue("{domains[['cpi']]} = data_level")
-# byvars <- parse(text = byvars)
-debugonce(joyn::merge)
-joyn::merge(CHN, cpi, 
-            by = byvars)
-
-
-domains[['cpi']]
+dt <- joyn::merge(CHN, cpi,
+                  by = c("country_code", "survey_year",
+                         "survey_acronym", "cpi_data_level"),
+                  match_type = "m:1", 
+                  keep = "left")
 ```
 
 ## Special data cases

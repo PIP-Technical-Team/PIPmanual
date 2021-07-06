@@ -4,6 +4,14 @@
 
 blah blah blah
 
+## Origin of data {#welfare-origin-of-data}
+
+blah
+
+## From GMD to PIP ({pipdp} package) {#from-gmd-to-pip}
+
+blah
+
 ## Survey ID nomenclature
 
 All household surveys in the PIP repository are stored following the naming

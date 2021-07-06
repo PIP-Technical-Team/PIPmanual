@@ -88,33 +88,64 @@ pop <- pipload::pip_load_aux("pop")
 head(pop)
 ```
 
-## GDP
+## National Accounts
 
-blah
+National accounts account for the economic development of a country at an
+aggregate or macroeconomic level. These measure are thus useful to interpolate
+or extrapolate microeconomic measures mean welfare aggregate or poverty
+headcount when household surveys are not available. National accounts work as a
+proxy of the economic development that would have been present if household
+surveys were available.
 
-### Original data
+There are two main types of national accounts, Household Final Consumption
+Expenditure (HFCE) and Gross Domestic Product (GDP)---both in real per capita
+terms. Please refer to [Section
+5.3](https://povcalnet-team.github.io/Methodology/lineupestimates.html#nationalaccounts)
+of [@worldbankPovertyInequalityPlatform2021] to understand the usage of national
+accounts data.
 
-blah
+### GDP
 
-## Consumption (PCE)
+As explained in [Section
+5.3](https://povcalnet-team.github.io/Methodology/lineupestimates.html#nationalaccounts)
+of [@worldbankPovertyInequalityPlatform2021], there are three sources of GDP
+data, and one more for a few particular cases. The integration of all the
+sources of GDP data is performed by `pipaux::pip_gdp_update()`, you'll need to
+manually download and store the data from WEO and the data for the special
+cases.
 
-blah
+The most recent version of the WEO data most be downloaded from the [World
+Economic Outlook
+Databases](https://www.imf.org/en/Publications/SPROLLS/world-economic-outlook-databases)
+of the IMF.org website and saved as an .xls file in `<maindir>/_aux/weo/`. The
+filename should be in the following structure `WEO_<YYYY-DD-MM>.xls`. Due to
+potential file corruption the file must be opened and re-saved before it can be
+updated with `pip_gdp_weo()`, which is an internal function fo
+`pipaux::pip_gdp_update()`. Hopefully in the future IMF will stop using an
+\`.xls\` file that's not really xls.
 
-### Original data
+[Note: explanation of special cases provided by Samuel.]{style="color:red"}
 
-blah
+### Consumption (PCE)
+
+Private Consumption Expenditure (pce) is gathered from WDI, with the exception
+of a few special cases. As in the case of GDP, the special cases are treated in
+the same way with PCE. You only need to execute the function
+`pipaux::pip_pce_update()` to update the PCE data.
 
 ## CPI
 
-blahblah
+[Note: Minh to explain how the CPI data is collected and organized in the dlw
+folders.]{style="color:red"}
 
-### Original data
-
-blah
+CPI data is organized in the following way
 
 ## PPP
 
-blah
+[Note: Minh to explain how the PPP data is collected and organized in the dlw
+folders.]{style="color:red"}
+
+PPP data is organized... s
 
 ### Original data
 
