@@ -1,5 +1,10 @@
 # Auxiliary data
 
+```{r, echo=FALSE, include=FALSE}
+library(data.table)
+library(pipaux)
+```
+
 As it was said in Section \@ref(data-acquisition), auxiliary data is the data
 used to temporally deflate and line up welfare data, with the objective of
 getting poverty estimates comparable over time, across countries, and, more
@@ -135,10 +140,50 @@ the same way with PCE. You only need to execute the function
 
 ## CPI
 
+### Raw data
+
 [Note: Minh to explain how the CPI data is collected and organized in the dlw
 folders.]{style="color:red"}
 
-CPI data is organized in the following way
+### Vintage control
+
+```{r, echo=FALSE, include=FALSE}
+cpi <- pipload::pip_load_aux("cpi")
+cpi_id <- cpi[, 
+              unique(cpi_id)]
+```
+
+Vintage control of the CPI data comes in a similar fashion as welfare data,
+`CPI_vXX_M_vXX_A`, where `vXX_M` refers to the version of the master or raw
+data, and `vXX_A` refers to the alternative version.
+
+Every year, around November-December, PIP CPI data is updated with the most
+recent version of the IMF CPI data, which comes with information for the most
+recent year available and with changes/fixes/additions of previous years for
+each country. When this happens, the master version of the CPI ID is increased
+in one unit before the data is saved. As of today, the current ID is `r cpi_id`.
+If data is modified during the rolling of the year, then the alternative version
+of the CPI ID is increased in one unit.
+
+### Data structure 
+
+When you load CPI data using `pipload::pip_load_aux("cpi")`, the data you get
+has already been cleaned for being use in the PIP workflow, and it is slightly
+different from the original CPI data stored in datalibweb servers. That is, the
+way CPI data is used and referred to datalibweb is different from the way it is
+used in PIP even though they both achive the same purpose.
+
+The most important variable in CPI data is, no surprisingly, `cpi`. This
+variable however, is not available in the original CPI data from dlw. The
+original name of this variable comes in the form `cpiYYYY`, where `YYYY` refers
+to the base year of the CPI, which in turn depends on the collection year of the
+PPP. Today, this variable is thus "`r getOption("pipaux.cpivar")`." The name of
+this variable is stored in the `pipaux.cpivar` object in the `zzz.R` file of the
+`{pipaux}` package. This will supdate the option `getOption("pipaux.cpivar")`,
+guaranteing that `pipaux::pip_cpi_update()` uses the right variable when
+updating the CPI data.
+
+Another variable
 
 ## PPP
 
