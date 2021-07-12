@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-07-06" />
+<meta name="date" content="2021-07-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -209,6 +209,7 @@ div.csl-indent {
 <li class="chapter" data-level="5.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>5.4</b> PPP</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>5.4.1</b> Original data</a></li>
+<li class="chapter" data-level="5.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>5.4.2</b> Data structure</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>5.5</b> Price FrameWork (PFW)</a>
 <ul>
@@ -346,7 +347,7 @@ name of the file.</p>
 file provided by a member of the DECDG team. Ideally, population data should be
 downloaded from WDI, but sometimes the most recent data available has not been
 uploaded yet, so it needs to be collected internally in DECDG. As of now
-(July 06, 2021), the DECDG focal point to provide the
+(July 12, 2021), the DECDG focal point to provide the
 population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to
 send her an email, and she will provide the data to you.</p>
 <p>If the data is provided by DECDG, it should be stored in the folder
@@ -440,8 +441,6 @@ folders.</span></p>
 </div>
 <div id="vintage-control" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Vintage control</h3>
-<pre><code>## v Most recent version of data loaded
-## &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/cpi/cpi.fst&#39;</code></pre>
 <p>Vintage control of the CPI data comes in a similar fashion as welfare data,
 <code>CPI_vXX_M_vXX_A</code>, where <code>vXX_M</code> refers to the version of the master or raw
 data, and <code>vXX_A</code> refers to the alternative version.</p>
@@ -449,22 +448,83 @@ data, and <code>vXX_A</code> refers to the alternative version.</p>
 recent version of the IMF CPI data, which comes with information for the most
 recent year available and with changes/fixes/additions of previous years for
 each country. When this happens, the master version of the CPI ID is increased
-in one unit before the data is saved. As of today, the current ID is r
-CPI_v05_M_v01_A. If data is modified during the rolling of the year, then the
-alternative version of the CPI ID is increased in one unit.</p>
+in one unit before the data is saved. As of today, the current ID is CPI_v05_M_v01_A.
+If data is modified during the rolling of the year, then the alternative version
+of the CPI ID is increased in one unit.</p>
 </div>
 <div id="data-structure-1" class="section level3" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> Data structure</h3>
+<p>When you load CPI data using <code>pipload::pip_load_aux("cpi")</code>, the data you get
+has already been cleaned for being use in the PIP workflow, and it is slightly
+different from the original CPI data stored in datalibweb servers. That is, the
+way CPI data is used and referred to datalibweb is different from the way it is
+used in PIP even though they both achive the same purpose.</p>
+<p>The most important variable in CPI data is, no surprisingly, <code>cpi</code>. This
+variable however, is not available in the original CPI data from dlw. The
+original name of this variable comes in the form <code>cpiYYYY</code>, where <code>YYYY</code> refers
+to the base year of the CPI, which in turn depends on the collection year of the
+PPP. Today, this variable is thus “cpi2011.” The name of
+this variable is stored in the <code>pipaux.cpivar</code> object in the <code>zzz.R</code> file of the
+<code>{pipaux}</code> package. This will supdate the option <code>getOption("pipaux.cpivar")</code>,
+guaranteing that <code>pipaux::pip_cpi_update()</code> uses the right variable when
+updating the CPI data.</p>
+<p>Another important variable in CPI dataframe is <code>change_cpiYYYY</code>, where <code>YYYY</code>
+stands for the base year of the CPI. Since it version control of the CPI data
+does not depend on the individual changes in the CPI series of each country but
+on the release of new data by the IMF or by additional modifications by the
+Poverty GP, variable <code>change_cpiYYYY</code> tracks changes in the CPI at the
+country/year/survey with respect to the previous version. This is very useful
+when you need to identify changes in output measures like poverty rates that
+depend on deflation. One possible source of difference is the CPI and this
+variable will help you identify whether the number of interest has change
+because the CPI has changed.</p>
 </div>
 </div>
 <div id="ppp" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> PPP</h2>
-<p><span style="color:red">Note: Minh to explain how the PPP data is collected and organized in the dlw
-folders.</span></p>
-<p>PPP data is organized… s</p>
 <div id="original-data-1" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Original data</h3>
-<p>blah</p>
+<p><span style="color:red">Note: Minh to explain how the PPP data is collected and organized in the dlw
+folders.</span></p>
+<p>The name of the variables in the wide-format file will follow
+this structure, ppp_YYYY_vX_vY. Where,</p>
+<ul>
+<li><p>YYYY:
+refers to the ICP round.</p></li>
+<li><p>vX:
+    refers to the version of the release.</p></li>
+<li><p>vY:   
+refers to the adaptation of the release. So, v1 will be the original data,
+whereas v2 would be the first adaptation or estimates of the release.</p></li>
+</ul>
+</div>
+<div id="data-structure-2" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Data structure</h3>
+<p>PPP data is available by typing, <code>pipload::pip_load_aux("ppp")</code>. As expected,
+the data you get has already been cleaned for being use in the PIP workflow, and
+it is slightly different from the original PPP data stored in datalibweb
+servers. The most important difference between the PIP data frame and the
+datalibweb data frame is its rectangular structure. PIP data is in long format,
+whereas datalibweb data in wide format.</p>
+<p>The reason for having PPP data in long format in PIP is that some countries,
+very few, use a different PPP year than the rest of the countries. Instead of
+using a different variable for the calculations of those specific countries, we
+use the same variable for all the countries but filter the corresponding
+observations for each country using metadata from the Price Framework database.</p>
+<p>The PPP data is at the country/ppp year/data_level/release version/adapation
+version level. Yet, several filters most always be applied before this data can
+be used. Ultimately, the data frame should be at the country/data_level level to
+used properly. As a general rule, the filter must be done by selecting the most
+recent <code>release_version</code> and the most recent <code>adaptation_version</code> in each year.
+Then you can just filter by the PPP year you want to work with. In order to make
+this process even easier we have created variables <code>ppp_default</code> and
+<code>ppp_default_by_year</code>, which dummy variables to filter data. If you keep all
+observations that <code>ppp_default == 1</code> you will get the current PPP used for all
+PIP calculations. If you use <code>ppp_default_by_year == 1</code>, you get the default
+version used in each PPP year. This is useful in case you want to make
+comparisons between PPP releases. This two variables are created in function
+<code>pipaux::pip_ppp_clean()</code> , in particular in <a href="https://github.com/PIP-Technical-Team/pipaux/blob/cd7738f98ec5373db8333c3573700b4991776c8d/R/pip_ppp_clean.R#L44-L66">these
+lines</a>.</p>
 </div>
 </div>
 <div id="price-framework-pfw" class="section level2" number="5.5">

@@ -244,37 +244,11 @@ observations that `ppp_default == 1` you will get the current PPP used for all
 PIP calculations. If you use `ppp_default_by_year == 1`, you get the default
 version used in each PPP year. This is useful in case you want to make
 comparisons between PPP releases. This two variables are created in function
-`pipaux::pip_ppp_clean()` , in particular in the lines below:
-
-```{r, eval=FALSE}
- y[ # Find Max release version
-    ,
-    d1 := release_version == max(release_version),
-    by = .(code, ppp_year)
-
-  ][
-    # Find max adaptation version of the max release
-    d1 == TRUE,
-    d2 := adaptation_version == max(adaptation_version),
-    by = .(code, ppp_year)
-
-  ][,
-    # get intersection
-    `:=`(
-      ppp_default         = (d1 == TRUE & d2 == TRUE & ppp_year == (default_year)),
-      ppp_default_by_year = (d1 == TRUE & d2 == TRUE),
-      country_code        = code
-    )
-
-  ][,
-    # Remove unnecessary variables
-    c("d1", "d2", "code") := NULL
-  ]
-```
+`pipaux::pip_ppp_clean()` , in particular in [these
+lines](https://github.com/PIP-Technical-Team/pipaux/blob/cd7738f98ec5373db8333c3573700b4991776c8d/R/pip_ppp_clean.R#L44-L66).
 
 ## Price FrameWork (PFW)
 
 blah
 
 ### Original data
-
