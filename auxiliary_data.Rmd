@@ -149,8 +149,7 @@ folders.]{style="color:red"}
 
 ```{r, echo=FALSE, include=FALSE}
 cpi <- pipload::pip_load_aux("cpi")
-cpi_id <- cpi[, 
-              unique(cpi_id)]
+cpi_id <- cpi[, unique(cpi_id)]
 ```
 
 Vintage control of the CPI data comes in a similar fashion as welfare data,
@@ -165,7 +164,7 @@ in one unit before the data is saved. As of today, the current ID is `r cpi_id`.
 If data is modified during the rolling of the year, then the alternative version
 of the CPI ID is increased in one unit.
 
-### Data structure 
+### Data structure
 
 When you load CPI data using `pipload::pip_load_aux("cpi")`, the data you get
 has already been cleaned for being use in the PIP workflow, and it is slightly
@@ -183,21 +182,99 @@ this variable is stored in the `pipaux.cpivar` object in the `zzz.R` file of the
 guaranteing that `pipaux::pip_cpi_update()` uses the right variable when
 updating the CPI data.
 
-Another variable
+Another important variable in CPI dataframe is `change_cpiYYYY`, where `YYYY`
+stands for the base year of the CPI. Since it version control of the CPI data
+does not depend on the individual changes in the CPI series of each country but
+on the release of new data by the IMF or by additional modifications by the
+Poverty GP, variable `change_cpiYYYY` tracks changes in the CPI at the
+country/year/survey with respect to the previous version. This is very useful
+when you need to identify changes in output measures like poverty rates that
+depend on deflation. One possible source of difference is the CPI and this
+variable will help you identify whether the number of interest has change
+because the CPI has changed.
 
 ## PPP
+
+### Original data
 
 [Note: Minh to explain how the PPP data is collected and organized in the dlw
 folders.]{style="color:red"}
 
-PPP data is organized... s
+The name of the variables in the wide-format file will follow
+this structure, ppp_YYYY_vX_vY. Where,
 
-### Original data
+-   YYYY:
+    refers to the ICP round.
 
-blah
+-   vX:
+        refers to the version of the release.
+
+-   vY:   
+    refers to the adaptation of the release. So, v1 will be the original data,
+    whereas v2 would be the first adaptation or estimates of the release.
+
+```{r, echo=FALSE, include=FALSE}
+ppp <- pipload::pip_load_aux("ppp")
+```
+
+### Data structure
+
+PPP data is available by typing, `pipload::pip_load_aux("ppp")`. As expected,
+the data you get has already been cleaned for being use in the PIP workflow, and
+it is slightly different from the original PPP data stored in datalibweb
+servers. The most important difference between the PIP data frame and the
+datalibweb data frame is its rectangular structure. PIP data is in long format,
+whereas datalibweb data in wide format.
+
+The reason for having PPP data in long format in PIP is that some countries,
+very few, use a different PPP year than the rest of the countries. Instead of
+using a different variable for the calculations of those specific countries, we
+use the same variable for all the countries but filter the corresponding
+observations for each country using metadata from the Price Framework database.
+
+The PPP data is at the country/ppp year/data_level/release version/adapation
+version level. Yet, several filters most always be applied before this data can
+be used. Ultimately, the data frame should be at the country/data_level level to
+used properly. As a general rule, the filter must be done by selecting the most
+recent `release_version` and the most recent `adaptation_version` in each year.
+Then you can just filter by the PPP year you want to work with. In order to make
+this process even easier we have created variables `ppp_default` and
+`ppp_default_by_year`, which dummy variables to filter data. If you keep all
+observations that `ppp_default == 1` you will get the current PPP used for all
+PIP calculations. If you use `ppp_default_by_year == 1`, you get the default
+version used in each PPP year. This is useful in case you want to make
+comparisons between PPP releases. This two variables are created in function
+`pipaux::pip_ppp_clean()` , in particular in the lines below:
+
+```{r, eval=FALSE}
+ y[ # Find Max release version
+    ,
+    d1 := release_version == max(release_version),
+    by = .(code, ppp_year)
+
+  ][
+    # Find max adaptation version of the max release
+    d1 == TRUE,
+    d2 := adaptation_version == max(adaptation_version),
+    by = .(code, ppp_year)
+
+  ][,
+    # get intersection
+    `:=`(
+      ppp_default         = (d1 == TRUE & d2 == TRUE & ppp_year == (default_year)),
+      ppp_default_by_year = (d1 == TRUE & d2 == TRUE),
+      country_code        = code
+    )
+
+  ][,
+    # Remove unnecessary variables
+    c("d1", "d2", "code") := NULL
+  ]
+```
 
 ## Price FrameWork (PFW)
 
 blah
 
 ### Original data
+
