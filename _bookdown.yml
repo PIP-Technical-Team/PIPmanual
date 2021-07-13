@@ -19,6 +19,7 @@ rmd_files: [
 
   "welfare_data.Rmd",
   "auxiliary_data.Rmd",
+  "price_framework.Rmd",
   "PRIMUS.Rmd",
 
   "load_md_aux.Rmd",

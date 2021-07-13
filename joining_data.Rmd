@@ -35,7 +35,7 @@ understanding of the Price FrameWork (pfw) data frame. This file does not only
 contain valuable metadata, but it could also be considered as the anchor among
 all PIP data.
 
-## The Price FrameWork (pfw) data
+## The Price FrameWork (pfw) data {#pfw-join}
 
 As always, this file can be loaded by typing,
 

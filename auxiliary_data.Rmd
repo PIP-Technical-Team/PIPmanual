@@ -200,18 +200,15 @@ because the CPI has changed.
 [Note: Minh to explain how the PPP data is collected and organized in the dlw
 folders.]{style="color:red"}
 
-The name of the variables in the wide-format file will follow
-this structure, ppp_YYYY_vX_vY. Where,
+The name of the variables in the wide-format file will follow this structure,
+ppp_YYYY_vX_vY. Where,
 
--   YYYY:
-    refers to the ICP round.
+-   YYYY: refers to the ICP round.
 
--   vX:
-        refers to the version of the release.
+-   vX:     refers to the version of the release.
 
--   vY:   
-    refers to the adaptation of the release. So, v1 will be the original data,
-    whereas v2 would be the first adaptation or estimates of the release.
+-   vY:    refers to the adaptation of the release. So, v1 will be the original
+    data, whereas v2 would be the first adaptation or estimates of the release.
 
 ```{r, echo=FALSE, include=FALSE}
 ppp <- pipload::pip_load_aux("ppp")

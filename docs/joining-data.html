@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-07-02" />
+<meta name="date" content="2021-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -176,7 +176,7 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
 <li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#the-price-framework-pfw-data"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a>
+<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#pfw-join"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a>
 <ul>
 <li class="chapter" data-level="4.1.1" data-path="joining-data.html"><a href="joining-data.html#joining-data-example"><i class="fa fa-check"></i><b>4.1.1</b> Joining data example</a></li>
 </ul></li>
@@ -203,15 +203,18 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.3</b> CPI</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.3.1</b> Original data</a></li>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data"><i class="fa fa-check"></i><b>6.3.1</b> Raw data</a></li>
+<li class="chapter" data-level="6.3.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#vintage-control"><i class="fa fa-check"></i><b>6.3.2</b> Vintage control</a></li>
+<li class="chapter" data-level="6.3.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-1"><i class="fa fa-check"></i><b>6.3.3</b> Data structure</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.4</b> PPP</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-3"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>6.4.2</b> Data structure</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.5</b> Price FrameWork (PFW)</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-4"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>7</b> PRIMUS</a>
@@ -316,7 +319,7 @@ for which there is CPI, PPP, and population auxiliary data, as well as a
 household survey representative at that level. There are some exceptions to this
 criterion like China or the Philippines, but this cases explained in detailed in
 Section <a href="joining-data.html#special-data-cases">4.2</a>. As of today
-(July 02, 2021), most country/years are reported at the
+(July 13, 2021), most country/years are reported at the
 national domain and few are reported at the urban/rural domain. However, the PIP
 technical infrastructure has been designed to incorporate other domain levels
 if, at some point in time, it is the case. Finally, the <em>welfare type</em> specifies
@@ -330,22 +333,22 @@ we discuss below. This challenge is easily addressed by having a clear
 understanding of the Price FrameWork (pfw) data frame. This file does not only
 contain valuable metadata, but it could also be considered as the anchor among
 all PIP data.</p>
-<div id="the-price-framework-pfw-data" class="section level2" number="4.1">
+<div id="pfw-join" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> The Price FrameWork (pfw) data</h2>
 <p>As always, this file can be loaded by typing,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="joining-data.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="joining-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code></pre></div>
 <pre><code>#&gt; data.table 1.14.0 using 4 threads (see ?getDTthreads).  Latest news: r-datatable.com</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="joining-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
-<pre><code>#&gt; v Most recent version of data loaded
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="joining-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
 #&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pfw/pfw.fst&#39;</code></pre>
 <pre><code>#&gt; no labels available for measure `pfw`</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="joining-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a>joyn<span class="sc">::</span><span class="fu">is_id</span>(pfw, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;surveyid_year&quot;</span>, <span class="st">&quot;survey_acronym&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="joining-data.html#cb8-1" aria-hidden="true" tabindex="-1"></a>joyn<span class="sc">::</span><span class="fu">is_id</span>(pfw, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;surveyid_year&quot;</span>, <span class="st">&quot;survey_acronym&quot;</span>))</span></code></pre></div>
 <pre><code>#&gt; </code></pre>
 <pre><code>#&gt; -- Duplicates in terms of `country_code`, `surveyid_year`, and `survey_acronym`</code></pre>
 <pre><code>#&gt;    copies    n percent
 #&gt; 1:      1 1968    100%
 #&gt; 2:  total 1968    100%</code></pre>
-<pre><code>#&gt; ----------------------------------------- End of is_id() report --</code></pre>
+<pre><code>#&gt; ----- End of is_id() report --</code></pre>
 <pre><code>#&gt; [1] TRUE</code></pre>
 <p>First of all, notice that <code>pfw</code> is uniquely identified by country code, survey
 year, and survey acronym. The reason for this is that pfw aims at providing a
@@ -366,10 +369,10 @@ that correspond to the survey ID formed by concatenating variables
 <code>country_code</code>, <code>surveyid_year</code>, and <code>survey_acronym</code>. For example, the
 <code>welfare_type</code> of the <code>welfare</code> variable in the datasets of
 <em><strong>COL_2018_GEIH</strong>_V01_M_V03_A_GMD</em> is income.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="joining-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code    <span class="sc">==</span> <span class="st">&quot;COL&quot;</span></span>
-<span id="cb13-2"><a href="joining-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> surveyid_year  <span class="sc">==</span> <span class="dv">2018</span></span>
-<span id="cb13-3"><a href="joining-data.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> survey_acronym <span class="sc">==</span> <span class="st">&quot;GEIH&quot;</span>, <span class="co"># Not necessary since it is the only one</span></span>
-<span id="cb13-4"><a href="joining-data.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unique</span>(welfare_type)]</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="joining-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code    <span class="sc">==</span> <span class="st">&quot;COL&quot;</span></span>
+<span id="cb14-2"><a href="joining-data.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> surveyid_year  <span class="sc">==</span> <span class="dv">2018</span></span>
+<span id="cb14-3"><a href="joining-data.html#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> survey_acronym <span class="sc">==</span> <span class="st">&quot;GEIH&quot;</span>, <span class="co"># Not necessary since it is the only one</span></span>
+<span id="cb14-4"><a href="joining-data.html#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unique</span>(welfare_type)]</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;income&quot;</code></pre>
 <p>The prefix <code>aaa</code> in variables <code>aaa_domain</code> and <code>aaa_domain_var</code> refers to the
 identification code of any of the auxiliary data. Thus, you will find a
@@ -421,9 +424,9 @@ possibility into account for future cases.</p>
 <p>Depending on the country, the domain level of each auxiliary data might be
 different. In Indonesia, for instance, the CPI domain is national, whereas the
 PPP domain is “urban/rural.”</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="joining-data.html#cb15-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code <span class="sc">==</span> <span class="st">&quot;IDN&quot;</span> <span class="sc">&amp;</span> surveyid_year <span class="sc">==</span> <span class="dv">2018</span>, </span>
-<span id="cb15-2"><a href="joining-data.html#cb15-2" aria-hidden="true" tabindex="-1"></a>    .(<span class="at">cpi =</span> <span class="fu">unique</span>(cpi_domain), </span>
-<span id="cb15-3"><a href="joining-data.html#cb15-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">ppp =</span> <span class="fu">unique</span>(ppp_domain))]</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="joining-data.html#cb16-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code <span class="sc">==</span> <span class="st">&quot;IDN&quot;</span> <span class="sc">&amp;</span> surveyid_year <span class="sc">==</span> <span class="dv">2018</span>, </span>
+<span id="cb16-2"><a href="joining-data.html#cb16-2" aria-hidden="true" tabindex="-1"></a>    .(<span class="at">cpi =</span> <span class="fu">unique</span>(cpi_domain), </span>
+<span id="cb16-3"><a href="joining-data.html#cb16-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">ppp =</span> <span class="fu">unique</span>(ppp_domain))]</span></code></pre></div>
 <pre><code>#&gt;    cpi ppp
 #&gt; 1:   1   2</code></pre>
 <p>Finally, <span style="color:red">and this is really important</span>, variables
@@ -448,40 +451,43 @@ of the file “pipdp_md_clean.ado.”<a href="#fn2" class="footnote-ref" id="fnr
 <p>Let’s see the case of Indonesia above. The pfw says that the CPI domain is
 “national” and the PPP domain is “urban/rural.” That means that the welfare data
 join to each of these auxiliary data with two different variables,</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="joining-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a>domains <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a href="joining-data.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  pfw[ country_code <span class="sc">==</span> <span class="st">&quot;IDN&quot;</span> <span class="sc">&amp;</span> surveyid_year <span class="sc">==</span> <span class="dv">2018</span>, </span>
-<span id="cb17-3"><a href="joining-data.html#cb17-3" aria-hidden="true" tabindex="-1"></a>     .(<span class="at">cpi =</span> <span class="fu">unique</span>(cpi_domain_var), </span>
-<span id="cb17-4"><a href="joining-data.html#cb17-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">ppp =</span> <span class="fu">unique</span>(ppp_domain_var))][]</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="joining-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a>domains <span class="ot">&lt;-</span> </span>
+<span id="cb18-2"><a href="joining-data.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  pfw[ country_code <span class="sc">==</span> <span class="st">&quot;IDN&quot;</span> <span class="sc">&amp;</span> surveyid_year <span class="sc">==</span> <span class="dv">2018</span>, </span>
+<span id="cb18-3"><a href="joining-data.html#cb18-3" aria-hidden="true" tabindex="-1"></a>     .(<span class="at">cpi =</span> <span class="fu">unique</span>(cpi_domain_var), </span>
+<span id="cb18-4"><a href="joining-data.html#cb18-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">ppp =</span> <span class="fu">unique</span>(ppp_domain_var))][]</span></code></pre></div>
 <p>This says that the name of the variable in the welfare data to join PPP data is
 called <code>uban</code>, but there is not seem to be a variable name in GMD to join the
 CPI data. When the name of the variable is missing, it indicates that the
 welfare data is not split by any variable to merge CPI data. That is, it is at
 the national level.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="joining-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a>ccode  <span class="ot">&lt;-</span> <span class="st">&quot;CHN&quot;</span></span>
-<span id="cb18-2"><a href="joining-data.html#cb18-2" aria-hidden="true" tabindex="-1"></a>cpi <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;cpi&quot;</span>)</span></code></pre></div>
-<pre><code>#&gt; v Most recent version of data loaded
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="joining-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a>ccode  <span class="ot">&lt;-</span> <span class="st">&quot;CHN&quot;</span></span>
+<span id="cb19-2"><a href="joining-data.html#cb19-2" aria-hidden="true" tabindex="-1"></a>cpi <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;cpi&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
 #&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/cpi/cpi.fst&#39;</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="joining-data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>ppp <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;ppp&quot;</span>)</span></code></pre></div>
-<pre><code>#&gt; v Most recent version of data loaded
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="joining-data.html#cb21-1" aria-hidden="true" tabindex="-1"></a>ppp <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;ppp&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
 #&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/ppp/ppp.fst&#39;</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="joining-data.html#cb22-1" aria-hidden="true" tabindex="-1"></a>CHN <span class="ot">&lt;-</span>  pipload<span class="sc">::</span><span class="fu">pip_load_data</span>(<span class="at">country =</span> ccode, </span>
-<span id="cb22-2"><a href="joining-data.html#cb22-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">year    =</span> <span class="dv">2015</span>)</span></code></pre></div>
-<pre><code>#&gt; i Loading data and creating a dataframe</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="joining-data.html#cb23-1" aria-hidden="true" tabindex="-1"></a>CHN <span class="ot">&lt;-</span>  pipload<span class="sc">::</span><span class="fu">pip_load_data</span>(<span class="at">country =</span> ccode, </span>
+<span id="cb23-2"><a href="joining-data.html#cb23-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">year    =</span> <span class="dv">2015</span>)</span></code></pre></div>
+<pre><code>#&gt; i Loading data and creating...</code></pre>
 <pre><code>#&gt; 
-v Loading data and creating a dataframe ... done</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="joining-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> joyn<span class="sc">::</span><span class="fu">merge</span>(CHN, cpi,</span>
-<span id="cb25-2"><a href="joining-data.html#cb25-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;survey_year&quot;</span>,</span>
-<span id="cb25-3"><a href="joining-data.html#cb25-3" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;survey_acronym&quot;</span>, <span class="st">&quot;cpi_data_level&quot;</span>),</span>
-<span id="cb25-4"><a href="joining-data.html#cb25-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">match_type =</span> <span class="st">&quot;m:1&quot;</span>, </span>
-<span id="cb25-5"><a href="joining-data.html#cb25-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">keep =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
-<pre><code>#&gt; &gt; removing key variables `country_code`, `survey_year`,
-#&gt; `survey_acronym`, and `cpi_data_level` from yvars
+√ Loading data and creating...</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="joining-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> joyn<span class="sc">::</span><span class="fu">merge</span>(CHN, cpi,</span>
+<span id="cb26-2"><a href="joining-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;survey_year&quot;</span>,</span>
+<span id="cb26-3"><a href="joining-data.html#cb26-3" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;survey_acronym&quot;</span>, <span class="st">&quot;cpi_data_level&quot;</span>),</span>
+<span id="cb26-4"><a href="joining-data.html#cb26-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">match_type =</span> <span class="st">&quot;m:1&quot;</span>, </span>
+<span id="cb26-5"><a href="joining-data.html#cb26-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">keep =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; &gt; removing key variables
+#&gt; `country_code`,
+#&gt; `survey_year`,
+#&gt; `survey_acronym`, and
+#&gt; `cpi_data_level` from yvars
 #&gt; 
 #&gt; -- JOYn Report --</code></pre>
 <pre><code>#&gt;    report  n percent
 #&gt; 1:  x &amp; y 40    100%
 #&gt; 2:  total 40    100%</code></pre>
-<pre><code>#&gt; -------------------------------------------- End of JOYn report --</code></pre>
+<pre><code>#&gt; -------- End of JOYn report --</code></pre>
 </div>
 </div>
 <div id="special-data-cases" class="section level2" number="4.2">

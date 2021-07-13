@@ -9,9 +9,10 @@ api-feeding
 packages-interaction
 folder-structure
 joining-data
-the-price-framework-pfw-data
+pfw-join
 joining-data-example
 special-data-cases
+welfare-data
 welfare-origin-of-data
 from-gmd-to-pip
 survey-id-nomenclature
@@ -36,6 +37,7 @@ interacting-with-primus
 understand-primus
 checking-primus-estimates
 approve-primus
+load
 auxiilary-data
 udpate-data
 load-data
