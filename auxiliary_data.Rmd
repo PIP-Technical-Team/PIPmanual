@@ -167,7 +167,7 @@ following cases[^auxiliary_data-1]:
     for Liberia up to 1999 are based on the growth rate in GDP per capita from
     MPD.
 
-3.   The available national accounts data from official sources (e.g. WDI, WEO,
+3.  The available national accounts data from official sources (e.g. WDI, WEO,
     MPD) are considered to have quality issues.
 
     This is the case for Syria. Supplementary national accounts data are
@@ -181,8 +181,7 @@ following cases[^auxiliary_data-1]:
     for more details on how this is implemented.
 
 4.  National accounts data need to be adjusted for the purposes of global
-    poverty
-    monitoring.
+    poverty monitoring.
 
     This is the case for India. Growth rates in national accounts data for rural
     and urban India after 2014, precisely HFCE (or formerly PCE) per capita from
@@ -258,9 +257,9 @@ ppp_YYYY_vX_vY. Where,
 
 -   YYYY: refers to the ICP round.
 
--   vX:     refers to the version of the release.
+-   vX: refers to the version of the release.
 
--   vY:    refers to the adaptation of the release. So, v1 will be the original
+-   vY: refers to the adaptation of the release. So, v1 will be the original
     data, whereas v2 would be the first adaptation or estimates of the release.
 
 ```{r, echo=FALSE, include=FALSE}
@@ -316,4 +315,5 @@ asds
 **WDI** -- World Development Indicators
 
 **WEO** -- World Economic Outlook
+
 
