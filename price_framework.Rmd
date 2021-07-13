@@ -15,7 +15,7 @@ pfw <- pipload::pip_load_aux("pfw")
 
 blah blah
 
-### ID vars
+### ID vars {-} 
 
 Variables of identification are `wb_region_code`, `pcn_region_code`,
 `country_code`, `ctryname`, `year`, `surveyid_year`, `survey_acronym`.
@@ -32,7 +32,7 @@ janitor::tabyl(pfw, wb_region_code, pcn_region_code)
 The difference between `year` and `surveyid_year` is that... [Minh, could you
 please explain here?]{style="color:red"}
 
-### `altname`
+### `altname` {-}
 
 Alternative survey name for some surveys.
 
@@ -40,27 +40,27 @@ Alternative survey name for some surveys.
 head(pfw[altname != "", c("altname", "survey_acronym")])
 ```
 
-### `wbint_link`
+### `wbint_link` {-}
 
 [Minh, could you please explain here?]{style="color:red"}
 
-### `wbext_link`
+### `wbext_link` {-}
 
 [Minh, could you please explain here?]{style="color:red"}
 
-### `alt_link`
+### `alt_link` {-}
 
 [Minh, could you please explain here?]{style="color:red"}
 
-### `surv_title`
+### `surv_title` {-}
 
 blah blah
 
-### `surv_producer`
+### `surv_producer`  {-}
 
 blah blah
 
-### `survey_coverage`
+### `survey_coverage`  {-}
 
 This variable represent the househol survey coverage. This is different from the
 disaggregation data level.
@@ -69,7 +69,7 @@ disaggregation data level.
 janitor::tabyl(pfw, survey_coverage)
 ```
 
-### `welfare_type`
+### `welfare_type`  {-}
 
 This variable contains the welfare type of the main welfare aggregate variable
 in a survey in case it has more than one. The welfare type of alternative
@@ -79,7 +79,7 @@ welfare aggregates is found in variable `oth_welfare1_type`.
 janitor::tabyl(pfw, welfare_type)
 ```
 
-### `use_imputed`
+### `use_imputed`  {-}
 
 Whether the welfare aggregate has been imputed. There are just few countries
 with this kind of data.
@@ -88,7 +88,7 @@ with this kind of data.
 pfw[use_imputed == 1, unique(country_code)]
 ```
 
-### `use_microdata`
+### `use_microdata`  {-}
 
 Whether the welfare aggregate *vector* used in PIP is directly extracted from
 microdata without any sort of aggregation. Mos of the countries have this kind
@@ -98,7 +98,7 @@ of data. Below you can see those that do not.
 pfw[use_microdata != 1, unique(country_code)]
 ```
 
-### `use_bin`
+### `use_bin`  {-}
 
 Whether the welfare aggregate was aggregated to 400 bins from microdata before
 being incorporated to the PIP repository. This is the case of houshold surveys
@@ -110,7 +110,7 @@ micro data for technical purposes.
 pfw[use_bin == 1, unique(country_code)]
 ```
 
-### `use_groupdata`
+### `use_groupdata`  {-}
 
 Whether welfare aggregate comes from grouped data. Information about this type
 of data is available in [@dattComputationalToolsPoverty1998;
@@ -121,143 +121,107 @@ The following countries have this kind of data.
 pfw[use_groupdata == 1, unique(country_code)]
 ```
 
-### `reporting_year`
-
+### `reporting_year`  {-}
 blah blah
 
-### `survey_comparability`
-
+### `survey_comparability`  {-}
 blah blah
 
-### `comp_note`
-
+### `comp_note`  {-}
 blah blah
 
-### `preferable`
-
+### `preferable`  {-}
 blah blah
 
-### `show_portal`
-
+### `show_portal`  {-}
 blah blah
 
-### `fieldwork_range`
-
+### `fieldwork_range`  {-}
 blah blah
 
-### `survey_year`
-
+### `survey_year`  {-}
 blah blah
 
-### `newref`
-
+### `newref`  {-}
 blah blah
 
-### `ref_year_des`
-
+### `ref_year_des`  {-}
 blah blah
 
-### `wf_baseprice`
-
+### `wf_baseprice`  {-}
 blah blah
 
-### `wf_baseprice_note`
-
+### `wf_baseprice_note`  {-}
 blah blah
 
-### `wf_baseprice_des`
-
+### `wf_baseprice_des`  {-}
 blah blah
 
-### `wf_spatial_des`
-
+### `wf_spatial_des`  {-}
 blah blah
 
-### `wf_spatial_var`
-
+### `wf_spatial_var`  {-}
 blah blah
 
-### `cpi_replication`
-
+### `cpi_replication`  {-}
 blah blah
 
-### `cpi_domain`
-
+### `cpi_domain`  {-}
 blah blah
 
-### `cpi_domain_var`
-
+### `cpi_domain_var`  {-}
 blah blah
 
-### `wf_currency_des`
-
+### `wf_currency_des`  {-}
 blah blah
 
-### `ppp_replication`
-
+### `ppp_replication`  {-}
 blah blah
 
-### `ppp_domain`
-
+### `ppp_domain`  {-}
 blah blah
 
-### `ppp_domain_var`
-
+### `ppp_domain_var`  {-}
 blah blah
 
-### `wf_add_temp_des`
-
+### `wf_add_temp_des`  {-}
 blah blah
 
-### `wf_add_temp_var`
-
+### `wf_add_temp_var`  {-}
 blah blah
 
-### `wf_add_spatial_des`
-
+### `wf_add_spatial_des`  {-}
 blah blah
 
-### `wf_add_spatial_var`
-
+### `wf_add_spatial_var`  {-}
 blah blah
 
-### `tosplit`
-
+### `tosplit`  {-}
 blah blah
 
-### `tosplit_var`
-
+### `tosplit_var`  {-}
 blah blah
 
-### `inpovcal`
-
+### `inpovcal`  {-}
 blah blah
 
-### `oth_welfare1_type`
-
+### `oth_welfare1_type`  {-}
 blah blah
 
-### `oth_welfare1_var`
-
+### `oth_welfare1_var`  {-}
 blah blah
 
-### `gdp_domain`
-
+### `gdp_domain`  {-}
 blah blah
 
-### `pce_domain`
-
+### `pce_domain`  {-}
 blah blah
 
-### `pop_domain`
-
+### `pop_domain`  {-}
 blah blah
 
-### `Note`
-
+### `Note`  {-}
 blah blah
 
-### `pfw_id`
-
+### `pfw_id`  {-}
 blah blah
-
