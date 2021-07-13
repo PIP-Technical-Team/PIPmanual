@@ -23,6 +23,7 @@ data-structure
 national-accounts
 gdp
 consumption-pce
+national-accounts-special-cases
 cpi
 raw-data
 vintage-control
@@ -32,10 +33,10 @@ original-data-1
 data-structure-2
 price-framework-pfw
 original-data-2
-price-framework-pfw-data-frame
+abbreviations
+pfw-chapter
 variables
 id-vars
-fieldwork
 altname
 wbint_link
 wbext_link

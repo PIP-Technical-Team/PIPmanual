@@ -133,7 +133,7 @@ pip_find_data(country = "PRY",
 
 Function `pip_load_data` takes care of loading the data. The very first instruction within `pip_load_data` is to find the data avialable in the repository by using `pip_load_inventory()`. The difference however is two-fold. First, `pip_load_data` will load the default and/or most recent version of the country/year combination available. Second, it gives the user the possibility to load different datasets in either list or dataframe form. For instance, if the user wants to load the Paraguay data in 2014 and 2015 used in the Poverty Calculator tool, she may type, 
 
-```{r load-data}
+```{r load-data, cache=TRUE}
 
 df <- pip_load_data(country = "PRY",
                     year    = c(2014, 2015), 

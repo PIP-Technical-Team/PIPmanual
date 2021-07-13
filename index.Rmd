@@ -4,7 +4,7 @@ author: ["DECIS", "Poverty GP"]
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [PIP_internal_Guidelines.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow."

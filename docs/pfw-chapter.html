@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | PIP Manual</title>
+  <title>Chapter 7 Price FrameWork (pfw) data frame | PIP Manual</title>
   <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | PIP Manual" />
+  <meta property="og:title" content="Chapter 7 Price FrameWork (pfw) data frame | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 7 Price FrameWork (pfw) data frame | PIP Manual" />
   
   <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="pcpipeline.html"/>
-
+<link rel="prev" href="auxiliary-data.html"/>
+<link rel="next" href="primus.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -354,48 +354,306 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Castaneda Aguilar, R. Andres, Tony H. M. J. Fujs, Dean M. Jolliffe, Christoph Lakner, Daniel Gerszon Mahler, Minh C. Nguyen, Marta Schoch, et al. 2020. <span>“September 2020 <span>PovcalNet Update</span>: <span>What</span>’s <span>New</span>.”</span> 14. <em>Global Poverty Monitoring Technical Note Series</em>. <span>The World Bank</span>.
+<div id="pfw-chapter" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Price FrameWork (pfw) data frame</h1>
+<p>The price framework data frame (pfw) is the most important source of technical
+metadata of the PIP project, which makes pertinent the have of a separate
+chapter for it. The general explanation of the structure of the pfw can be found
+in Section <a href="joining-data.html#pfw-join">4.1</a>. This chapter focuses more on the use of each of the
+variables. Yet, it is worh repeating a few things already mentioned in Section
+<a href="joining-data.html#pfw-join">4.1</a>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="pfw-chapter.html#cb35-1" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
+#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pfw/pfw.fst&#39;</code></pre>
+<pre><code>#&gt; no labels available for measure `pfw`</code></pre>
+<div id="variables" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Variables</h2>
+<p>blah blah</p>
+<div id="id-vars" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> ID vars</h3>
+<p>Variables of identification are <code>wb_region_code</code>, <code>pcn_region_code</code>,
+<code>country_code</code>, <code>ctryname</code>, <code>year</code>, <code>surveyid_year</code>, <code>survey_acronym</code>.</p>
+<p>The main difference between <code>wb_region_code</code> and <code>pcn_region_code</code> is that the
+former only include geographical regions internally used by the world bank,
+whereas the latter has an additional category, “OHI,” for Other High Income
+countries.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="pfw-chapter.html#cb38-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">tabyl</span>(pfw, wb_region_code, pcn_region_code)</span></code></pre></div>
+<pre><code>#&gt;  wb_region_code EAP ECA LAC MNA OHI SAS SSA
+#&gt;             EAP 144   0   0   0  31   0   0
+#&gt;             ECA   0 583   0   0 389   0   0
+#&gt;             LAC   0   0 432   0   0   0   0
+#&gt;             MNA   0   0   0  65  26   0   0
+#&gt;             NAC   0   0   0   0  49   0   0
+#&gt;             SAR   0   0   0   0   0  48   0
+#&gt;             SSA   0   0   0   0   0   0 201</code></pre>
+<p>The difference between <code>year</code> and <code>surveyid_year</code> is that… <span style="color:red">Minh, could you
+please explain here?</span></p>
 </div>
-<div class="csl-entry">
+<div id="altname" class="section level3" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> <code>altname</code></h3>
+<p>Alternative survey name for some surveys.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="pfw-chapter.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pfw[altname <span class="sc">!=</span> <span class="st">&quot;&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;altname&quot;</span>, <span class="st">&quot;survey_acronym&quot;</span>)])</span></code></pre></div>
+<pre><code>#&gt;                       altname survey_acronym
+#&gt; 1:         FSM_2000_PHC_v01_M            CPH
+#&gt; 2: IDN_2002_SUSENAS-FEB_v01_M        SUSENAS
+#&gt; 3: IDN_2003_SUSENAS-FEB_v01_M        SUSENAS
+#&gt; 4: IDN_2004_SUSENAS-FEB_v01_M        SUSENAS
+#&gt; 5: IDN_2005_SUSENAS-FEB_v01_M        SUSENAS
+#&gt; 6: IDN_2006_SUSENAS-FEB_v01_M        SUSENAS</code></pre>
+</div>
+<div id="wbint_link" class="section level3" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> <code>wbint_link</code></h3>
+<p><span style="color:red">Minh, could you please explain here?</span></p>
+</div>
+<div id="wbext_link" class="section level3" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> <code>wbext_link</code></h3>
+<p><span style="color:red">Minh, could you please explain here?</span></p>
+</div>
+<div id="alt_link" class="section level3" number="7.1.5">
+<h3><span class="header-section-number">7.1.5</span> <code>alt_link</code></h3>
+<p><span style="color:red">Minh, could you please explain here?</span></p>
+</div>
+<div id="surv_title" class="section level3" number="7.1.6">
+<h3><span class="header-section-number">7.1.6</span> <code>surv_title</code></h3>
+<p>blah blah</p>
+</div>
+<div id="surv_producer" class="section level3" number="7.1.7">
+<h3><span class="header-section-number">7.1.7</span> <code>surv_producer</code></h3>
+<p>blah blah</p>
+</div>
+<div id="survey_coverage" class="section level3" number="7.1.8">
+<h3><span class="header-section-number">7.1.8</span> <code>survey_coverage</code></h3>
+<p>This variable represent the househol survey coverage. This is different from the
+disaggregation data level.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="pfw-chapter.html#cb42-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">tabyl</span>(pfw, survey_coverage)</span></code></pre></div>
+<pre><code>#&gt;  survey_coverage    n  percent
+#&gt;         national 1916 0.973577
+#&gt;            rural    1 0.000508
+#&gt;            urban   51 0.025915</code></pre>
+</div>
+<div id="welfare_type" class="section level3" number="7.1.9">
+<h3><span class="header-section-number">7.1.9</span> <code>welfare_type</code></h3>
+<p>This variable contains the welfare type of the main welfare aggregate variable
+in a survey in case it has more than one. The welfare type of alternative
+welfare aggregates is found in variable <code>oth_welfare1_type</code>.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="pfw-chapter.html#cb44-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">tabyl</span>(pfw, welfare_type)</span></code></pre></div>
+<pre><code>#&gt;  welfare_type    n percent
+#&gt;   consumption  807    0.41
+#&gt;        income 1161    0.59</code></pre>
+</div>
+<div id="use_imputed" class="section level3" number="7.1.10">
+<h3><span class="header-section-number">7.1.10</span> <code>use_imputed</code></h3>
+<p>Whether the welfare aggregate has been imputed. There are just few countries
+with this kind of data.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="pfw-chapter.html#cb46-1" aria-hidden="true" tabindex="-1"></a>pfw[use_imputed <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">unique</span>(country_code)]</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;SOM&quot; &quot;SSD&quot; &quot;ZWE&quot;</code></pre>
+</div>
+<div id="use_microdata" class="section level3" number="7.1.11">
+<h3><span class="header-section-number">7.1.11</span> <code>use_microdata</code></h3>
+<p>Whether the welfare aggregate <em>vector</em> used in PIP is directly extracted from
+microdata without any sort of aggregation. Mos of the countries have this kind
+of data. Below you can see those that do not.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="pfw-chapter.html#cb48-1" aria-hidden="true" tabindex="-1"></a>pfw[use_microdata <span class="sc">!=</span> <span class="dv">1</span>, <span class="fu">unique</span>(country_code)]</span></code></pre></div>
+<pre><code>#&gt;  [1] &quot;AUS&quot; &quot;CHN&quot; &quot;IDN&quot; &quot;JPN&quot; &quot;KOR&quot; &quot;MNG&quot; &quot;MYS&quot; &quot;PHL&quot; &quot;THA&quot; &quot;TWN&quot;
+#&gt; [11] &quot;ARM&quot; &quot;AUT&quot; &quot;BEL&quot; &quot;BGR&quot; &quot;BLR&quot; &quot;CHE&quot; &quot;CZE&quot; &quot;DEU&quot; &quot;DNK&quot; &quot;ESP&quot;
+#&gt; [21] &quot;EST&quot; &quot;FIN&quot; &quot;FRA&quot; &quot;GBR&quot; &quot;GEO&quot; &quot;GRC&quot; &quot;HRV&quot; &quot;HUN&quot; &quot;IRL&quot; &quot;ITA&quot;
+#&gt; [31] &quot;KAZ&quot; &quot;LTU&quot; &quot;LUX&quot; &quot;LVA&quot; &quot;MKD&quot; &quot;NLD&quot; &quot;NOR&quot; &quot;POL&quot; &quot;ROU&quot; &quot;RUS&quot;
+#&gt; [41] &quot;SVK&quot; &quot;SVN&quot; &quot;SWE&quot; &quot;TUR&quot; &quot;UKR&quot; &quot;ARG&quot; &quot;BOL&quot; &quot;COL&quot; &quot;CRI&quot; &quot;DOM&quot;
+#&gt; [51] &quot;ECU&quot; &quot;GTM&quot; &quot;GUY&quot; &quot;HND&quot; &quot;JAM&quot; &quot;LCA&quot; &quot;PAN&quot; &quot;SLV&quot; &quot;TTO&quot; &quot;URY&quot;
+#&gt; [61] &quot;VEN&quot; &quot;ARE&quot; &quot;DZA&quot; &quot;EGY&quot; &quot;IRN&quot; &quot;ISR&quot; &quot;JOR&quot; &quot;MAR&quot; &quot;TUN&quot; &quot;BGD&quot;
+#&gt; [71] &quot;IND&quot; &quot;LKA&quot; &quot;NPL&quot; &quot;BDI&quot; &quot;BWA&quot; &quot;CAF&quot; &quot;ETH&quot; &quot;GHA&quot; &quot;GIN&quot; &quot;GNB&quot;
+#&gt; [81] &quot;KEN&quot; &quot;LSO&quot; &quot;MDG&quot; &quot;MRT&quot; &quot;NAM&quot; &quot;NER&quot; &quot;NGA&quot; &quot;RWA&quot; &quot;SEN&quot; &quot;SLE&quot;
+#&gt; [91] &quot;SWZ&quot; &quot;UGA&quot; &quot;ZAF&quot; &quot;ZMB&quot; &quot;ZWE&quot; &quot;CAN&quot; &quot;USA&quot;</code></pre>
+</div>
+<div id="use_bin" class="section level3" number="7.1.12">
+<h3><span class="header-section-number">7.1.12</span> <code>use_bin</code></h3>
+<p>Whether the welfare aggregate was aggregated to 400 bins from microdata before
+being incorporated to the PIP repository. This is the case of houshold surveys
+only available in the Luxembourg Data Center
+(<a href="https://www.lisdatacenter.org/">LIS</a>). Countries with bin data is considered
+micro data for technical purposes.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="pfw-chapter.html#cb50-1" aria-hidden="true" tabindex="-1"></a>pfw[use_bin <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">unique</span>(country_code)]</span></code></pre></div>
+<pre><code>#&gt;  [1] &quot;AUS&quot; &quot;JPN&quot; &quot;KOR&quot; &quot;TWN&quot; &quot;AUT&quot; &quot;BEL&quot; &quot;CHE&quot; &quot;CZE&quot; &quot;DEU&quot; &quot;DNK&quot;
+#&gt; [11] &quot;ESP&quot; &quot;FIN&quot; &quot;FRA&quot; &quot;GBR&quot; &quot;GRC&quot; &quot;HUN&quot; &quot;IRL&quot; &quot;ITA&quot; &quot;LUX&quot; &quot;NLD&quot;
+#&gt; [21] &quot;NOR&quot; &quot;POL&quot; &quot;ROU&quot; &quot;SVK&quot; &quot;SVN&quot; &quot;SWE&quot; &quot;ISR&quot; &quot;CAN&quot; &quot;USA&quot;</code></pre>
+</div>
+<div id="use_groupdata" class="section level3" number="7.1.13">
+<h3><span class="header-section-number">7.1.13</span> <code>use_groupdata</code></h3>
+<p>Whether welfare aggregate comes from grouped data. Information about this type
+of data is available in <span class="citation">(<a href="#ref-dattComputationalToolsPoverty1998" role="doc-biblioref">Datt 1998</a>; <a href="#ref-krauseCorrigendumEllipticalLorenz2013" role="doc-biblioref">Krause 2013</a>; <a href="#ref-villasenorEllipticalLorenzCurves1989" role="doc-biblioref">Villaseñor and Arnold 1989</a>)</span>.
+The following countries have this kind of data.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="pfw-chapter.html#cb52-1" aria-hidden="true" tabindex="-1"></a>pfw[use_groupdata <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">unique</span>(country_code)]</span></code></pre></div>
+<pre><code>#&gt;  [1] &quot;CHN&quot; &quot;IDN&quot; &quot;MNG&quot; &quot;MYS&quot; &quot;PHL&quot; &quot;THA&quot; &quot;ARM&quot; &quot;BGR&quot; &quot;BLR&quot; &quot;CZE&quot;
+#&gt; [11] &quot;EST&quot; &quot;GEO&quot; &quot;HRV&quot; &quot;HUN&quot; &quot;KAZ&quot; &quot;LTU&quot; &quot;LVA&quot; &quot;MKD&quot; &quot;POL&quot; &quot;ROU&quot;
+#&gt; [21] &quot;RUS&quot; &quot;SVN&quot; &quot;TUR&quot; &quot;UKR&quot; &quot;ARG&quot; &quot;BOL&quot; &quot;COL&quot; &quot;CRI&quot; &quot;DOM&quot; &quot;ECU&quot;
+#&gt; [31] &quot;GTM&quot; &quot;GUY&quot; &quot;HND&quot; &quot;JAM&quot; &quot;LCA&quot; &quot;PAN&quot; &quot;SLV&quot; &quot;TTO&quot; &quot;URY&quot; &quot;VEN&quot;
+#&gt; [41] &quot;ARE&quot; &quot;DZA&quot; &quot;EGY&quot; &quot;IRN&quot; &quot;JOR&quot; &quot;MAR&quot; &quot;TUN&quot; &quot;BGD&quot; &quot;IND&quot; &quot;LKA&quot;
+#&gt; [51] &quot;NPL&quot; &quot;BDI&quot; &quot;BWA&quot; &quot;CAF&quot; &quot;ETH&quot; &quot;GHA&quot; &quot;GIN&quot; &quot;GNB&quot; &quot;KEN&quot; &quot;LSO&quot;
+#&gt; [61] &quot;MDG&quot; &quot;MRT&quot; &quot;NAM&quot; &quot;NER&quot; &quot;NGA&quot; &quot;RWA&quot; &quot;SEN&quot; &quot;SLE&quot; &quot;SWZ&quot; &quot;UGA&quot;
+#&gt; [71] &quot;ZAF&quot; &quot;ZMB&quot; &quot;ZWE&quot;</code></pre>
+</div>
+<div id="reporting_year" class="section level3" number="7.1.14">
+<h3><span class="header-section-number">7.1.14</span> <code>reporting_year</code></h3>
+<p>blah blah</p>
+</div>
+<div id="survey_comparability" class="section level3" number="7.1.15">
+<h3><span class="header-section-number">7.1.15</span> <code>survey_comparability</code></h3>
+<p>blah blah</p>
+</div>
+<div id="comp_note" class="section level3" number="7.1.16">
+<h3><span class="header-section-number">7.1.16</span> <code>comp_note</code></h3>
+<p>blah blah</p>
+</div>
+<div id="preferable" class="section level3" number="7.1.17">
+<h3><span class="header-section-number">7.1.17</span> <code>preferable</code></h3>
+<p>blah blah</p>
+</div>
+<div id="show_portal" class="section level3" number="7.1.18">
+<h3><span class="header-section-number">7.1.18</span> <code>show_portal</code></h3>
+<p>blah blah</p>
+</div>
+<div id="fieldwork_range" class="section level3" number="7.1.19">
+<h3><span class="header-section-number">7.1.19</span> <code>fieldwork_range</code></h3>
+<p>blah blah</p>
+</div>
+<div id="survey_year" class="section level3" number="7.1.20">
+<h3><span class="header-section-number">7.1.20</span> <code>survey_year</code></h3>
+<p>blah blah</p>
+</div>
+<div id="newref" class="section level3" number="7.1.21">
+<h3><span class="header-section-number">7.1.21</span> <code>newref</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ref_year_des" class="section level3" number="7.1.22">
+<h3><span class="header-section-number">7.1.22</span> <code>ref_year_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_baseprice" class="section level3" number="7.1.23">
+<h3><span class="header-section-number">7.1.23</span> <code>wf_baseprice</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_baseprice_note" class="section level3" number="7.1.24">
+<h3><span class="header-section-number">7.1.24</span> <code>wf_baseprice_note</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_baseprice_des" class="section level3" number="7.1.25">
+<h3><span class="header-section-number">7.1.25</span> <code>wf_baseprice_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_spatial_des" class="section level3" number="7.1.26">
+<h3><span class="header-section-number">7.1.26</span> <code>wf_spatial_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_spatial_var" class="section level3" number="7.1.27">
+<h3><span class="header-section-number">7.1.27</span> <code>wf_spatial_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="cpi_replication" class="section level3" number="7.1.28">
+<h3><span class="header-section-number">7.1.28</span> <code>cpi_replication</code></h3>
+<p>blah blah</p>
+</div>
+<div id="cpi_domain" class="section level3" number="7.1.29">
+<h3><span class="header-section-number">7.1.29</span> <code>cpi_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="cpi_domain_var" class="section level3" number="7.1.30">
+<h3><span class="header-section-number">7.1.30</span> <code>cpi_domain_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_currency_des" class="section level3" number="7.1.31">
+<h3><span class="header-section-number">7.1.31</span> <code>wf_currency_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ppp_replication" class="section level3" number="7.1.32">
+<h3><span class="header-section-number">7.1.32</span> <code>ppp_replication</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ppp_domain" class="section level3" number="7.1.33">
+<h3><span class="header-section-number">7.1.33</span> <code>ppp_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ppp_domain_var" class="section level3" number="7.1.34">
+<h3><span class="header-section-number">7.1.34</span> <code>ppp_domain_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_temp_des" class="section level3" number="7.1.35">
+<h3><span class="header-section-number">7.1.35</span> <code>wf_add_temp_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_temp_var" class="section level3" number="7.1.36">
+<h3><span class="header-section-number">7.1.36</span> <code>wf_add_temp_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_spatial_des" class="section level3" number="7.1.37">
+<h3><span class="header-section-number">7.1.37</span> <code>wf_add_spatial_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_spatial_var" class="section level3" number="7.1.38">
+<h3><span class="header-section-number">7.1.38</span> <code>wf_add_spatial_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="tosplit" class="section level3" number="7.1.39">
+<h3><span class="header-section-number">7.1.39</span> <code>tosplit</code></h3>
+<p>blah blah</p>
+</div>
+<div id="tosplit_var" class="section level3" number="7.1.40">
+<h3><span class="header-section-number">7.1.40</span> <code>tosplit_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="inpovcal" class="section level3" number="7.1.41">
+<h3><span class="header-section-number">7.1.41</span> <code>inpovcal</code></h3>
+<p>blah blah</p>
+</div>
+<div id="oth_welfare1_type" class="section level3" number="7.1.42">
+<h3><span class="header-section-number">7.1.42</span> <code>oth_welfare1_type</code></h3>
+<p>blah blah</p>
+</div>
+<div id="oth_welfare1_var" class="section level3" number="7.1.43">
+<h3><span class="header-section-number">7.1.43</span> <code>oth_welfare1_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="gdp_domain" class="section level3" number="7.1.44">
+<h3><span class="header-section-number">7.1.44</span> <code>gdp_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="pce_domain" class="section level3" number="7.1.45">
+<h3><span class="header-section-number">7.1.45</span> <code>pce_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="pop_domain" class="section level3" number="7.1.46">
+<h3><span class="header-section-number">7.1.46</span> <code>pop_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="note" class="section level3" number="7.1.47">
+<h3><span class="header-section-number">7.1.47</span> <code>Note</code></h3>
+<p>blah blah</p>
+</div>
+<div id="pfw_id" class="section level3" number="7.1.48">
+<h3><span class="header-section-number">7.1.48</span> <code>pfw_id</code></h3>
+<p>blah blah</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-dattComputationalToolsPoverty1998" class="csl-entry">
 Datt, Gaurav. 1998. <span>“Computational Tools for Poverty Measurement and Analysis.”</span> FCND discussion paper 50. <span>International Food Policy Research Institute (IFPRI)</span>. <a href="https://econpapers.repec.org/paper/fprfcnddp/50.htm">https://econpapers.repec.org/paper/fprfcnddp/50.htm</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-krauseCorrigendumEllipticalLorenz2013" class="csl-entry">
 Krause, Melanie. 2013. <span>“Corrigendum to <span>‘<span>Elliptical Lorenz Curves</span>’</span> [<span>J</span>. <span>Econom</span>. 40 (1989) 327–338].”</span> <em>Journal of Econometrics</em> 1 (174): 44. <a href="https://doi.org/10.1016/j.jeconom.2013.01.001">https://doi.org/10.1016/j.jeconom.2013.01.001</a>.
 </div>
-<div class="csl-entry">
-Prydz, Espen, Dean Jolliffe, Christoph Lakner, Daniel Mahler, and Prem Sangraula. 2019. <span>“National <span>Accounts Data Used</span> in <span>Global Poverty Measurement</span>.”</span> Global Poverty Monitoring Technical Note Series 8. <span>The World Bank</span>. <a href="https://econpapers.repec.org/paper/wbkwbgpmt/8.htm">https://econpapers.repec.org/paper/wbkwbgpmt/8.htm</a>.
-</div>
-<div class="csl-entry">
+<div id="ref-villasenorEllipticalLorenzCurves1989" class="csl-entry">
 Villaseñor, JoséA., and Barry C. Arnold. 1989. <span>“Elliptical <span>Lorenz</span> Curves.”</span> <em>Journal of Econometrics</em> 40 (2): 327–38. <a href="https://doi.org/10.1016/0304-4076(89)90089-4">https://doi.org/10.1016/0304-4076(89)90089-4</a>.
 </div>
-<div class="csl-entry">
-World Bank. 2021. <em>Poverty and <span>Inequality Platform Methodology Handbook</span></em>. <span>Washington, D.C.</span> <a href="https://povcalnet-team.github.io/Methodology">https://povcalnet-team.github.io/Methodology</a>.
 </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="pcpipeline.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="auxiliary-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="primus.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

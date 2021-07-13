@@ -1,4 +1,4 @@
-# Price FrameWork (pfw) data frame
+# Price FrameWork (pfw) data frame {#pfw-chapter}
 
 The price framework data frame (pfw) is the most important source of technical
 metadata of the PIP project, which makes pertinent the have of a separate
@@ -26,31 +26,31 @@ whereas the latter has an additional category, "OHI," for Other High Income
 countries.
 
 ```{r}
-janitor::tabyl(pfw, wb_region_code, pcn_region_code )
+janitor::tabyl(pfw, wb_region_code, pcn_region_code)
 ```
 
 The difference between `year` and `surveyid_year` is that... [Minh, could you
 please explain here?]{style="color:red"}
 
-### `fieldwork`
-
-blah blah
-
 ### `altname`
 
-blah blah
+Alternative survey name for some surveys.
+
+```{r}
+head(pfw[altname != "", c("altname", "survey_acronym")])
+```
 
 ### `wbint_link`
 
-blah blah
+[Minh, could you please explain here?]{style="color:red"}
 
 ### `wbext_link`
 
-blah blah
+[Minh, could you please explain here?]{style="color:red"}
 
 ### `alt_link`
 
-blah blah
+[Minh, could you please explain here?]{style="color:red"}
 
 ### `surv_title`
 
@@ -62,27 +62,64 @@ blah blah
 
 ### `survey_coverage`
 
-blah blah
+This variable represent the househol survey coverage. This is different from the
+disaggregation data level.
+
+```{r}
+janitor::tabyl(pfw, survey_coverage)
+```
 
 ### `welfare_type`
 
-blah blah
+This variable contains the welfare type of the main welfare aggregate variable
+in a survey in case it has more than one. The welfare type of alternative
+welfare aggregates is found in variable `oth_welfare1_type`.
+
+```{r}
+janitor::tabyl(pfw, welfare_type)
+```
 
 ### `use_imputed`
 
-blah blah
+Whether the welfare aggregate has been imputed. There are just few countries
+with this kind of data.
+
+```{r}
+pfw[use_imputed == 1, unique(country_code)]
+```
 
 ### `use_microdata`
 
-blah blah
+Whether the welfare aggregate *vector* used in PIP is directly extracted from
+microdata without any sort of aggregation. Mos of the countries have this kind
+of data. Below you can see those that do not.
+
+```{r}
+pfw[use_microdata != 1, unique(country_code)]
+```
 
 ### `use_bin`
 
-blah blah
+Whether the welfare aggregate was aggregated to 400 bins from microdata before
+being incorporated to the PIP repository. This is the case of houshold surveys
+only available in the Luxembourg Data Center
+([LIS](https://www.lisdatacenter.org/)). Countries with bin data is considered
+micro data for technical purposes.
+
+```{r}
+pfw[use_bin == 1, unique(country_code)]
+```
 
 ### `use_groupdata`
 
-blah blah
+Whether welfare aggregate comes from grouped data. Information about this type
+of data is available in [@dattComputationalToolsPoverty1998;
+@krauseCorrigendumEllipticalLorenz2013; @villasenorEllipticalLorenzCurves1989].
+The following countries have this kind of data.
+
+```{r}
+pfw[use_groupdata == 1, unique(country_code)]
+```
 
 ### `reporting_year`
 
@@ -223,3 +260,4 @@ blah blah
 ### `pfw_id`
 
 blah blah
+

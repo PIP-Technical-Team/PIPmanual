@@ -117,7 +117,8 @@ of [@worldbankPovertyInequalityPlatform2021], there are three sources of GDP
 data, and one more for a few particular cases. The integration of all the
 sources of GDP data is performed by `pipaux::pip_gdp_update()`, you'll need to
 manually download and store the data from WEO and the data for the special
-cases.
+cases. The national accounts series from WDI are GDP per capita  [series code:
+**NY.GDP.PCAP.KD**]. These series are in constant 2010 US\$.
 
 The most recent version of the WEO data most be downloaded from the [World
 Economic Outlook
@@ -136,7 +137,59 @@ updated with `pip_gdp_weo()`, which is an internal function fo
 Private Consumption Expenditure (pce) is gathered from WDI, with the exception
 of a few special cases. As in the case of GDP, the special cases are treated in
 the same way with PCE. You only need to execute the function
-`pipaux::pip_pce_update()` to update the PCE data.
+`pipaux::pip_pce_update()` to update the PCE data. HFCE per capita [series code:
+**NE.CON.PRVT.PC.KD**] [@prydzNationalAccountsData2019]. These series are in
+constant 2010 US\$.
+
+### National Accounts, Special Cases
+
+Special national accounts are used for lining up poverty estimates in the
+following cases[^auxiliary_data-1]:
+
+[^auxiliary_data-1]: The examples of special cases mentioned in this document
+    are based on the March 2021 PovcalNet update.
+
+1.  National accounts data are *unavailable* in the latest version of WDI.
+
+    In such cases, national accounts data are obtained, in order of preference,
+    from the latest version of WEO, or the latest version of MPD. For example,
+    the entire series of GDP per capita for Taiwan, China and Somalia are
+    missing in WDI, so WEO
+    series are used instead.
+
+2.  National accounts data are *incomplete* in the latest version of WDI.
+
+    These are the cases where national accounts data are not available in WDI
+    for some historical or recent years. In such cases, national accounts data
+    in WDI are chained on backward or forward using growth rates from WEO or
+    MPD, in that order. For example, GDP per capita for South Sudan (2016-2019)
+    are based on the growth rate of GDP per capita from WEO. GDP per capita data
+    for Liberia up to 1999 are based on the growth rate in GDP per capita from
+    MPD.
+
+3.   The available national accounts data from official sources (e.g. WDI, WEO,
+    MPD) are considered to have quality issues.
+
+    This is the case for Syria. Supplementary national accounts data are
+    obtained from other sources, including research
+    papers or national statistical offices. GDP per capita series for Syria (for
+    2010 through 2019) are from research
+    papers---@kostialSyriaConflictEconomy2016Gobat (for 2011-2015) and
+    @devadasGrowthWarSyria2019 (for 2016-2019)---and are chained on backward
+    with growth rates in GDP per capita from WEO. See
+    *P:\\01.PovcalNet\\03.QA\\04.NationalAccounts\\data\\NAS special_2021-01-14*
+    for more details on how this is implemented.
+
+4.  National accounts data need to be adjusted for the purposes of global
+    poverty
+    monitoring.
+
+    This is the case for India. Growth rates in national accounts data for rural
+    and urban India after 2014, precisely HFCE (or formerly PCE) per capita from
+    WDI, are adjusted with a pass-through rate of 67%, as described in Section 5
+    of @castanedaaguilarSeptember2020PovcalNet2020. See
+    *P:\\01.PovcalNet\\03.QA\\04.NationalAccounts\\data\\NAS special_2021-01-14*
+    for more details on how this is implemented.
 
 ## CPI
 
@@ -249,3 +302,18 @@ lines](https://github.com/PIP-Technical-Team/pipaux/blob/cd7738f98ec5373db8333c3
 blah
 
 ### Original data
+
+asds
+
+## Abbreviations
+
+**HFCE** -- final consumption expenditure
+
+**MDP** -- Maddison Project Database
+
+**PCE** -- private consumption expenditure
+
+**WDI** -- World Development Indicators
+
+**WEO** -- World Economic Outlook
+
