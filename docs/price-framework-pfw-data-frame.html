@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Welfare data | PIP Manual</title>
+  <title>Chapter 7 Price FrameWork (pfw) data frame | PIP Manual</title>
   <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Welfare data | PIP Manual" />
+  <meta property="og:title" content="Chapter 7 Price FrameWork (pfw) data frame | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Welfare data | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 7 Price FrameWork (pfw) data frame | PIP Manual" />
   
   <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="joining-data.html"/>
-<link rel="next" href="auxiliary-data.html"/>
+<link rel="prev" href="auxiliary-data.html"/>
+<link rel="next" href="primus.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -353,59 +353,234 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="welfare-data" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Welfare data</h1>
-<p>blah blah blah</p>
-<div id="welfare-origin-of-data" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Origin of data</h2>
-<p>blah</p>
+<div id="price-framework-pfw-data-frame" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Price FrameWork (pfw) data frame</h1>
+<p>The price framework data frame (pfw) is the most important source of technical
+metadata of the PIP project, which makes pertinent the have of a separate
+chapter for it. The general explanation of the structure of the pfw can be found
+in Section <a href="joining-data.html#pfw-join">4.1</a>. This chapter focuses more on the use of each of the
+variables. Yet, it is worh repeating a few things already mentioned in Section
+<a href="joining-data.html#pfw-join">4.1</a>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="price-framework-pfw-data-frame.html#cb34-1" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
+#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pfw/pfw.fst&#39;</code></pre>
+<pre><code>#&gt; no labels available for measure `pfw`</code></pre>
+<div id="variables" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Variables</h2>
+<p>blah blah</p>
+<div id="id-vars" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> ID vars</h3>
+<p>Variables of identification are <code>wb_region_code</code>, <code>pcn_region_code</code>,
+<code>country_code</code>, <code>ctryname</code>, <code>year</code>, <code>surveyid_year</code>, <code>survey_acronym</code>.</p>
+<p>The main difference between <code>wb_region_code</code> and <code>pcn_region_code</code> is that the
+former only include geographical regions internally used by the world bank,
+whereas the latter has an additional category, “OHI,” for Other High Income
+countries.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="price-framework-pfw-data-frame.html#cb37-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">tabyl</span>(pfw, wb_region_code, pcn_region_code )</span></code></pre></div>
+<pre><code>#&gt;  wb_region_code EAP ECA LAC MNA OHI SAS SSA
+#&gt;             EAP 144   0   0   0  31   0   0
+#&gt;             ECA   0 583   0   0 389   0   0
+#&gt;             LAC   0   0 432   0   0   0   0
+#&gt;             MNA   0   0   0  65  26   0   0
+#&gt;             NAC   0   0   0   0  49   0   0
+#&gt;             SAR   0   0   0   0   0  48   0
+#&gt;             SSA   0   0   0   0   0   0 201</code></pre>
+<p>The difference between <code>year</code> and <code>surveyid_year</code> is that… <span style="color:red">Minh, could you
+please explain here?</span></p>
 </div>
-<div id="from-gmd-to-pip" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> From GMD to PIP ({pipdp} package)</h2>
-<p>blah</p>
+<div id="fieldwork" class="section level3" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> <code>fieldwork</code></h3>
+<p>blah blah</p>
 </div>
-<div id="survey-id-nomenclature" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Survey ID nomenclature</h2>
-<p>All household surveys in the PIP repository are stored following the naming
-convention of the <a href="http://ihsn.org/">International Household Survey Network
-(IHSN)</a> for <a href="http://www.ihsn.org/archiving">archiving and managing
-data</a>. This structure can be generalized as
-follows:</p>
-<pre><code>CCC_YYYY_SSSS_ vNN_M_vNN_A_TYPE_MODULE</code></pre>
-<p>where,</p>
-<ul>
-<li><code>CCC</code> refers to 3 letter ISO country code</li>
-<li><code>YYYY</code> refers to survey year when data collection started</li>
-<li><code>SSSS</code> refers to survey acronym (e.g., LSMS, CWIQ, HBS, etc.)</li>
-<li><code>vNN</code> is the version vintage of the raw/master data if followed by an <code>M</code> or
-of the alternative/adapted data if followed by an <code>A</code>. The first version
-will always be v01, and when a newer version is available it should be named
-sequentially (e.g. v02, v03, etc.). Note that when a new version is
-available, the previous ones must still be kept.</li>
-<li><code>TYPE</code> refers to the collection name. In the case of PIP data, the type is
-precisely, <strong>PIP</strong>, but be aware that there are several other types in the
-datalibweb collection. For instance, the Global Monitoring Database uses
-<strong>GMD</strong>; the South Asia region uses <strong>SARMD</strong>; or the LAC region uses
-<strong>SEDLAC</strong>.</li>
-<li><code>MODULE</code> refers to the module of the collection. This part of the survey ID
-is only available at the <em>file level</em>, not at the folder (i.e, survey)
-level. Since the folder structure is created at the survey level, there is
-no place in the survey ID to include the module of the survey. However,
-within a single survey, you may find different modules, which are specified
-in the name of the file. In the case of PIP, the module of the survey is
-divided in two: the PIP tool and the GMD module. The <em>PIP tool</em> could be
-<em>PC</em>, <em>TB,</em> or <em>SOL</em> (forthcoming), which stand for one of the PIP systems,
-Poverty Calculator, Table Baker (or Maker), and Statistics OnLine. the <em>GMD
-module</em>, refers to the original module in the GMD collection, such as module
-<em>ALL</em>, or <em>GPWG, HIST,</em> or <em>BIN.</em></li>
-</ul>
-<p>For example, the most recent version of the harmonized Pakistani Household
-Survey of 2015, she would refer to the survey ID
-<code>PAK_2015_PSLM_v01_M_v02_A_PIP</code>. In this case, PSLM refers to the acronym of the
-Pakistan Social and Living Standards Measurement Survey. v01_M means that the
-version of the raw data has not changed since it was released and v02_A means
-that the most recent version of the alternative version is 02.2</p>
+<div id="altname" class="section level3" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> <code>altname</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wbint_link" class="section level3" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> <code>wbint_link</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wbext_link" class="section level3" number="7.1.5">
+<h3><span class="header-section-number">7.1.5</span> <code>wbext_link</code></h3>
+<p>blah blah</p>
+</div>
+<div id="alt_link" class="section level3" number="7.1.6">
+<h3><span class="header-section-number">7.1.6</span> <code>alt_link</code></h3>
+<p>blah blah</p>
+</div>
+<div id="surv_title" class="section level3" number="7.1.7">
+<h3><span class="header-section-number">7.1.7</span> <code>surv_title</code></h3>
+<p>blah blah</p>
+</div>
+<div id="surv_producer" class="section level3" number="7.1.8">
+<h3><span class="header-section-number">7.1.8</span> <code>surv_producer</code></h3>
+<p>blah blah</p>
+</div>
+<div id="survey_coverage" class="section level3" number="7.1.9">
+<h3><span class="header-section-number">7.1.9</span> <code>survey_coverage</code></h3>
+<p>blah blah</p>
+</div>
+<div id="welfare_type" class="section level3" number="7.1.10">
+<h3><span class="header-section-number">7.1.10</span> <code>welfare_type</code></h3>
+<p>blah blah</p>
+</div>
+<div id="use_imputed" class="section level3" number="7.1.11">
+<h3><span class="header-section-number">7.1.11</span> <code>use_imputed</code></h3>
+<p>blah blah</p>
+</div>
+<div id="use_microdata" class="section level3" number="7.1.12">
+<h3><span class="header-section-number">7.1.12</span> <code>use_microdata</code></h3>
+<p>blah blah</p>
+</div>
+<div id="use_bin" class="section level3" number="7.1.13">
+<h3><span class="header-section-number">7.1.13</span> <code>use_bin</code></h3>
+<p>blah blah</p>
+</div>
+<div id="use_groupdata" class="section level3" number="7.1.14">
+<h3><span class="header-section-number">7.1.14</span> <code>use_groupdata</code></h3>
+<p>blah blah</p>
+</div>
+<div id="reporting_year" class="section level3" number="7.1.15">
+<h3><span class="header-section-number">7.1.15</span> <code>reporting_year</code></h3>
+<p>blah blah</p>
+</div>
+<div id="survey_comparability" class="section level3" number="7.1.16">
+<h3><span class="header-section-number">7.1.16</span> <code>survey_comparability</code></h3>
+<p>blah blah</p>
+</div>
+<div id="comp_note" class="section level3" number="7.1.17">
+<h3><span class="header-section-number">7.1.17</span> <code>comp_note</code></h3>
+<p>blah blah</p>
+</div>
+<div id="preferable" class="section level3" number="7.1.18">
+<h3><span class="header-section-number">7.1.18</span> <code>preferable</code></h3>
+<p>blah blah</p>
+</div>
+<div id="show_portal" class="section level3" number="7.1.19">
+<h3><span class="header-section-number">7.1.19</span> <code>show_portal</code></h3>
+<p>blah blah</p>
+</div>
+<div id="fieldwork_range" class="section level3" number="7.1.20">
+<h3><span class="header-section-number">7.1.20</span> <code>fieldwork_range</code></h3>
+<p>blah blah</p>
+</div>
+<div id="survey_year" class="section level3" number="7.1.21">
+<h3><span class="header-section-number">7.1.21</span> <code>survey_year</code></h3>
+<p>blah blah</p>
+</div>
+<div id="newref" class="section level3" number="7.1.22">
+<h3><span class="header-section-number">7.1.22</span> <code>newref</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ref_year_des" class="section level3" number="7.1.23">
+<h3><span class="header-section-number">7.1.23</span> <code>ref_year_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_baseprice" class="section level3" number="7.1.24">
+<h3><span class="header-section-number">7.1.24</span> <code>wf_baseprice</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_baseprice_note" class="section level3" number="7.1.25">
+<h3><span class="header-section-number">7.1.25</span> <code>wf_baseprice_note</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_baseprice_des" class="section level3" number="7.1.26">
+<h3><span class="header-section-number">7.1.26</span> <code>wf_baseprice_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_spatial_des" class="section level3" number="7.1.27">
+<h3><span class="header-section-number">7.1.27</span> <code>wf_spatial_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_spatial_var" class="section level3" number="7.1.28">
+<h3><span class="header-section-number">7.1.28</span> <code>wf_spatial_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="cpi_replication" class="section level3" number="7.1.29">
+<h3><span class="header-section-number">7.1.29</span> <code>cpi_replication</code></h3>
+<p>blah blah</p>
+</div>
+<div id="cpi_domain" class="section level3" number="7.1.30">
+<h3><span class="header-section-number">7.1.30</span> <code>cpi_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="cpi_domain_var" class="section level3" number="7.1.31">
+<h3><span class="header-section-number">7.1.31</span> <code>cpi_domain_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_currency_des" class="section level3" number="7.1.32">
+<h3><span class="header-section-number">7.1.32</span> <code>wf_currency_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ppp_replication" class="section level3" number="7.1.33">
+<h3><span class="header-section-number">7.1.33</span> <code>ppp_replication</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ppp_domain" class="section level3" number="7.1.34">
+<h3><span class="header-section-number">7.1.34</span> <code>ppp_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="ppp_domain_var" class="section level3" number="7.1.35">
+<h3><span class="header-section-number">7.1.35</span> <code>ppp_domain_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_temp_des" class="section level3" number="7.1.36">
+<h3><span class="header-section-number">7.1.36</span> <code>wf_add_temp_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_temp_var" class="section level3" number="7.1.37">
+<h3><span class="header-section-number">7.1.37</span> <code>wf_add_temp_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_spatial_des" class="section level3" number="7.1.38">
+<h3><span class="header-section-number">7.1.38</span> <code>wf_add_spatial_des</code></h3>
+<p>blah blah</p>
+</div>
+<div id="wf_add_spatial_var" class="section level3" number="7.1.39">
+<h3><span class="header-section-number">7.1.39</span> <code>wf_add_spatial_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="tosplit" class="section level3" number="7.1.40">
+<h3><span class="header-section-number">7.1.40</span> <code>tosplit</code></h3>
+<p>blah blah</p>
+</div>
+<div id="tosplit_var" class="section level3" number="7.1.41">
+<h3><span class="header-section-number">7.1.41</span> <code>tosplit_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="inpovcal" class="section level3" number="7.1.42">
+<h3><span class="header-section-number">7.1.42</span> <code>inpovcal</code></h3>
+<p>blah blah</p>
+</div>
+<div id="oth_welfare1_type" class="section level3" number="7.1.43">
+<h3><span class="header-section-number">7.1.43</span> <code>oth_welfare1_type</code></h3>
+<p>blah blah</p>
+</div>
+<div id="oth_welfare1_var" class="section level3" number="7.1.44">
+<h3><span class="header-section-number">7.1.44</span> <code>oth_welfare1_var</code></h3>
+<p>blah blah</p>
+</div>
+<div id="gdp_domain" class="section level3" number="7.1.45">
+<h3><span class="header-section-number">7.1.45</span> <code>gdp_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="pce_domain" class="section level3" number="7.1.46">
+<h3><span class="header-section-number">7.1.46</span> <code>pce_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="pop_domain" class="section level3" number="7.1.47">
+<h3><span class="header-section-number">7.1.47</span> <code>pop_domain</code></h3>
+<p>blah blah</p>
+</div>
+<div id="note" class="section level3" number="7.1.48">
+<h3><span class="header-section-number">7.1.48</span> <code>Note</code></h3>
+<p>blah blah</p>
+</div>
+<div id="pfw_id" class="section level3" number="7.1.49">
+<h3><span class="header-section-number">7.1.49</span> <code>pfw_id</code></h3>
+<p>blah blah</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -413,8 +588,8 @@ that the most recent version of the alternative version is 02.2</p>
           </div>
         </div>
       </div>
-<a href="joining-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="auxiliary-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="auxiliary-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="primus.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

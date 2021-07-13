@@ -6,3 +6,220 @@ chapter for it. The general explanation of the structure of the pfw can be found
 in Section \@ref(pfw-join). This chapter focuses more on the use of each of the
 variables. Yet, it is worh repeating a few things already mentioned in Section
 \@ref(pfw-join).
+
+```{r}
+pfw <- pipload::pip_load_aux("pfw")
+```
+
+## Variables
+
+blah blah
+
+### ID vars
+
+Variables of identification are `wb_region_code`, `pcn_region_code`,
+`country_code`, `ctryname`, `year`, `surveyid_year`, `survey_acronym`.
+
+The main difference between `wb_region_code` and `pcn_region_code` is that the
+former only include geographical regions internally used by the world bank,
+whereas the latter has an additional category, "OHI," for Other High Income
+countries.
+
+```{r}
+janitor::tabyl(pfw, wb_region_code, pcn_region_code )
+```
+
+The difference between `year` and `surveyid_year` is that... [Minh, could you
+please explain here?]{style="color:red"}
+
+### `fieldwork`
+
+blah blah
+
+### `altname`
+
+blah blah
+
+### `wbint_link`
+
+blah blah
+
+### `wbext_link`
+
+blah blah
+
+### `alt_link`
+
+blah blah
+
+### `surv_title`
+
+blah blah
+
+### `surv_producer`
+
+blah blah
+
+### `survey_coverage`
+
+blah blah
+
+### `welfare_type`
+
+blah blah
+
+### `use_imputed`
+
+blah blah
+
+### `use_microdata`
+
+blah blah
+
+### `use_bin`
+
+blah blah
+
+### `use_groupdata`
+
+blah blah
+
+### `reporting_year`
+
+blah blah
+
+### `survey_comparability`
+
+blah blah
+
+### `comp_note`
+
+blah blah
+
+### `preferable`
+
+blah blah
+
+### `show_portal`
+
+blah blah
+
+### `fieldwork_range`
+
+blah blah
+
+### `survey_year`
+
+blah blah
+
+### `newref`
+
+blah blah
+
+### `ref_year_des`
+
+blah blah
+
+### `wf_baseprice`
+
+blah blah
+
+### `wf_baseprice_note`
+
+blah blah
+
+### `wf_baseprice_des`
+
+blah blah
+
+### `wf_spatial_des`
+
+blah blah
+
+### `wf_spatial_var`
+
+blah blah
+
+### `cpi_replication`
+
+blah blah
+
+### `cpi_domain`
+
+blah blah
+
+### `cpi_domain_var`
+
+blah blah
+
+### `wf_currency_des`
+
+blah blah
+
+### `ppp_replication`
+
+blah blah
+
+### `ppp_domain`
+
+blah blah
+
+### `ppp_domain_var`
+
+blah blah
+
+### `wf_add_temp_des`
+
+blah blah
+
+### `wf_add_temp_var`
+
+blah blah
+
+### `wf_add_spatial_des`
+
+blah blah
+
+### `wf_add_spatial_var`
+
+blah blah
+
+### `tosplit`
+
+blah blah
+
+### `tosplit_var`
+
+blah blah
+
+### `inpovcal`
+
+blah blah
+
+### `oth_welfare1_type`
+
+blah blah
+
+### `oth_welfare1_var`
+
+blah blah
+
+### `gdp_domain`
+
+blah blah
+
+### `pce_domain`
+
+blah blah
+
+### `pop_domain`
+
+blah blah
+
+### `Note`
+
+blah blah
+
+### `pfw_id`
+
+blah blah
