@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Poverty | PIP Manual</title>
+  <meta name="description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packages for the PIP workflow." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Poverty | PIP Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packages for the PIP workflow." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Poverty | PIP Manual" />
+  
+  <meta name="twitter:description" content="This is a manual to document all the technical and methodological decisions taken during the creation of packages for the PIP workflow." />
+  
+
+<meta name="author" content="DECIS, Poverty GP" />
+
+
+<meta name="date" content="2020-11-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="national-accounts.html"/>
+<link rel="next" href="deciles.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PIP Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="interpolation.html"><a href="interpolation.html"><i class="fa fa-check"></i><b>2</b> Interpolation</a></li>
+<li class="chapter" data-level="3" data-path="national-accounts.html"><a href="national-accounts.html"><i class="fa fa-check"></i><b>3</b> National Accounts</a></li>
+<li class="chapter" data-level="4" data-path="poverty.html"><a href="poverty.html"><i class="fa fa-check"></i><b>4</b> Poverty</a></li>
+<li class="chapter" data-level="5" data-path="deciles.html"><a href="deciles.html"><i class="fa fa-check"></i><b>5</b> Deciles</a></li>
+<li class="chapter" data-level="6" data-path="gini.html"><a href="gini.html"><i class="fa fa-check"></i><b>6</b> Gini</a></li>
+<li class="chapter" data-level="7" data-path="mean-log-deviation.html"><a href="mean-log-deviation.html"><i class="fa fa-check"></i><b>7</b> Mean log deviation</a></li>
+<li class="chapter" data-level="8" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>8</b> Load microdata and Auxiliary data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>8.1</b> Auxiilary data</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>8.1.1</b> udpate data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>8.1.2</b> Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>8.2</b> Microdata</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>8.2.1</b> Inventory file</a></li>
+<li class="chapter" data-level="8.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>8.2.2</b> Finding data</a></li>
+<li class="chapter" data-level="8.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>8.2.3</b> Loading data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIP Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="poverty" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Poverty</h1>
+<p>Poverty measures for the developing world
+In assessing poverty in a given economy, and how best to reduce poverty, one naturally focuses on a poverty line that is considered appropriate for that economy. But how do we talk meaningfully about “global poverty”? Poverty lines across economies vary in terms of their purchasing power, and they have a strong economic gradient, such that richer economies tend to adopt higher standards of living in defining poverty (Ravallion, et al., 2009). But to consistently measure global absolute poverty in terms of consumption we need to treat two people with the same purchasing power over commodities the same way—both are either poor or not poor—even if they live in different economies
+This note summarizes the methods used by the World Bank in measuring global poverty, and by PovcalNet in implementing those methods. Chen and Ravallion (2010a), Ferreira et al. (2016) and World Bank (2015) provide more details.</p>
+<p>Methods used for international poverty measurement
+To measure poverty in the developing world as a whole, the World Bank’s “$1 a day” measures apply a common standard, anchored to what “poverty” means in the world’s poorest economies. The original “$1-a-day” line was based on a compilation of national lines for only 22 developing economies, mostly from academic studies in the 1980s (Ravallion et al., 1991). While this was the best that could be done at the time, the sample was hardly representative of developing economies even in the 1980s. Since then, national poverty lines have been developed for many other economies. Based on a new compilation of national lines for 75 developing economies, Ravallion, Chen and Sangraula (RCS) (2009) proposed a new international poverty line of $1.25 a day. This was the average poverty line for the poorest 15 economies in their data set. Since October 2015, the World Bank uses a poverty line of $1.90 a day at 2011 PPP to estimate global poverty. This new poverty line (referred to as the International Poverty Line) is the average of the same 15 national poverty lines that yielded the $1.25 line at 2005 PPPs (Ferreira et al., 2016).</p>
+<p>Multiple poverty lines should be used to test the robustness of global poverty comparisons. Chen and Ravallion (2010a) used five lines (in 2005 PPP): $1.00, $1.25, $1.45, $2.00 and $2.50 a day. Since October 2017, PovcalNet also reports global poverty at two higher poverty lines of $3.20 and $5.50 per day, in addition the International Poverty Line of $1.90. These additional lines are based on the national poverty lines typically found in lower- and upper-middle income economies, respectively (see Jolliffe and Prydz, 2016). Also note that global poverty rates at global lines cannot be directly compared with poverty measured at national poverty lines in local currency, which reflect economy-specific definitions of poverty.</p>
+<p>The poverty lines at PPP are converted to local currencies in 2011 prices and are then converted to the prices prevailing at the time of the relevant household survey using the best available Consumer Price Index (CPI) (see details about CPIs in the “What is new” section). (Equivalently, the survey data on household consumption or income for the survey year are expressed in the prices of the ICP base year, and then converted to PPP $’s.) Then the poverty rate is calculated from that survey. All inter-temporal comparisons are real, as assessed using the economy-specific CPI.</p>
+<p>To compare the number of poor people across economies and compute regional aggregates, economy-level estimates must be “lined up” first to a common reference year, interpolating and extrapolating for economies in which survey data are not available in the reference year but are available either before, after, or both (see World Bank, 2015, Chapter 6). The reference years range from 1981 to 2018. The more survey data are available (that is, the more data for different years), the more accurate the interpolation.</p>
+<p>The process requires adjusting the mean income or expenditure observed in the survey year by a growth factor to infer the unobserved level in the reference year. Thus, two assumptions are required to implement this process: distribution-neutral growth and a real rate of growth between the survey and reference year.</p>
+<p>Distribution-neutral growth implies that income or expenditure levels are adjusted for growth assuming that the underlying relative distribution of income or expenditure observed in survey years remains unchanged. In other words, the growth rate is the same along the distribution. Under this assumption, it is straightforward to interpolate the poverty estimate in a given reference year implied by a given rate of growth in income or expenditure. Rates of change in real consumption per capita should be based on the change in real consumption measured by comparing survey data across different years. In practice, however, survey data in most economies are not available on an annual basis. Therefore, the change in private consumption per capita as measured from the national accounts is used instead.</p>
+<p>When the reference year falls between two survey years, an estimate of mean consumption at the reference year is constructed by extrapolating the means obtained from the surveys forward and backward to the reference year. The second step is to compute the headcount poverty rate at the reference year after normalizing the distributions observed in the two survey years by the reference year mean. This yields two estimates of the headcount poverty rates in the reference year. The final reported poverty headcount rate for the reference years is the linear interpolation of the two. When data from only one survey year are available, the reference year mean is based on the survey mean by applying the growth rate in private consumption per capita from the national accounts. The reference year poverty estimate is then based on this mean and on the distribution observed in the one survey year.</p>
+<p>The aggregate headcount index for a region is the population-weighted mean of the headcount indices across the economies in that region. The number of poor in each region is the product of the region’s headcount index and total regional population. (See point 5 in the next section.) This assumes that the poverty rate for an economy without a household survey is the regional average.</p>
+<p>The underlying data
+Data sources: The distributional data used here are drawn from nationally representative household surveys, which are conducted by national statistical offices or by private agencies under the supervision of government or international agencies and obtained from government statistical offices and World Bank Group operational departments.
+Price indices: The CPIs are primarily taken from the IMF’s International Financial Statistics. Lakner et al. (2018) provide an overview of the CPI series used, while the precise source for every country-year is given in the “What is new” note released with every PovcalNet update. The CPI data used in the poverty estimates is available here.
+Micro data (household level data) vs. grouped data: recently access to micro data has improved dramatically. When available, micro data are used directly to estimate poverty. In a few economies (more common in earlier years), estimates are based on grouped tabulations from economy’s statistical offices in combination with a parametric Lorenz curve.
+The same PPPs are used to convert the international lines to local currency units (LCUs). Three economies were treated differently, China, India and Indonesia. For these three economies, national PPPs from the ICP are disaggregated into rural and urban PPPs that are constructed to reflect cost-of-living differences between rural and urban areas. Following Chen and Ravallion (2010a, 2010b) and Ravallion (2008), this adjustment requires rural and urban poverty lines (which are used to capture differences in the cost of living) as well as information on the rural and urban shares of the ICP price collection. Further details are given in Ferreira et al. (2016).
+In several other economies, the welfare aggregate has also been adjusted for within-economy spatial price differences. Ferreira et al. (2016) describe the adjustment for economies in the Latin America and the Caribbean and Europe and Central Asia regions. Beginning in October 2017, we have also incorporated a spatial price adjustment in several economies in East Asia and the Pacific (see the “What is new” entry for October 2017).
+Observations with negative incomes have been dropped from those surveys where income is the welfare measure (and where we have access to micro data). From October 2017, this has been applied to all income surveys. Previously, this approach was only followed in Latin America and the Caribbean. For more details, see the October 2017 entry in “What is new”.
+The regional and global population may differ from the aggregates given in the World Development Indicators, because PovcalNet uses the classification of economies based on whether they are IBRD eligible or recently graduated. The regional total population only includes economies that are IBRD eligible or recently graduated. The remaining economies are included in the group “Other high income” (see World Bank, 2016, p. 49 for a list of economies). Furthermore, the regional total in PovcalNet also includes economies without a household survey or other missing data. Hence, the sum of the populations of the economies that are included in PovcalNet is less than the regional total.
+PovcalNet uses per capita household income or consumption expenditure. In other words, every household member is assigned an equal share of household income or consumption, regardless of their age, and ignoring economies of scale.
+Data availability
+PovcalNet has income or consumption distributional data from more than 1500 household surveys spanning 1967-2018 and 166 economies. Not all these surveys are comparable in design and sampling methods. Non-representative surveys, though useful for some purposes, are excluded from the calculation of international poverty rates.</p>
+<p>The World Bank produced its first global poverty estimates for developing economies for the World Development Report 1990 using household survey data for 22 economies. Since 1979 there has been a considerable expansion in the number of economies that field such surveys, from 30 between 1979 and 1984 to 451 surveys between 2013 and 2018.</p>
+<p>Data coverage is improving in all regions, but the Middle East and North Africa, South Asia and Sub-Saharan Africa continue to lag behind. Poverty rates for a region are only reported when the available surveys cover at least 50 percent of the population in that region (within a window of three years either side of the reference year). Global poverty estimates are reported only if data is representative of at least 50 percent of the population in low-income and lower-middle income countries (LIC/LMIC countries), where most of the poor live. This requirement is only applied to the global poverty estimate, not at the regional level. The World Bank classification of countries according to income groups in the line-up year is used.</p>
+<p>The database, maintained by the PovcalNet team in the World Bank’s Development Research Group, is updated several times a year as new survey data become available, and a major reassessment of progress against poverty is made about every three years until 2008, from 2010 onwards such major updates were made annually until 2013. We now release new estimates of global poverty every two years. A complete overview of data availability by year and economy is available here. The lag between the reference year and when the estimates become available depends on the availability and reliability of household surveys for each economy. The lag is between two and three years, i.e. regional poverty estimates for reference year 2018 and global estimates for 2017 were released in 2020.</p>
+<p>Poverty measures are available for 166 economies.</p>
+<p>In the global aggregation, we had previously assumed that the “other high income economies” have no people living in extreme poverty. This group includes the rich economies that are not eligible to borrow form the World Bank (see World Bank, 2016 for a list of economies that are included in this group). At the recommendation of Prof. Atkinson’s Commission on Global Poverty (World Bank, 2017), we now adopt a truly global approach to poverty measurement and no longer impose this assumption. Therefore, as of October 2017, the global poverty estimate includes the people who live in the “other high income economies” and whose income falls below the poverty line.</p>
+<p>Data limitations
+No data are ideal. International comparisons of poverty estimates entail both conceptual and practical problems that should be understood by users.</p>
+<p>An important step in the process of compiling global poverty estimates is the conversion of the $1.90 a day International Poverty Line into respective national currency units. PPP exchange rates, such as those from the International Comparison Program or the Penn World Tables, are used because they take into account the local prices of goods and services not traded internationally. Since PPP rates were designed for comparing national accounts aggregates, they were not intended for making international poverty comparisons. PPPs are based on prices of goods and services that may not be representative of the consumption baskets of the poor, so they may not fully reflect the relative price level faced by very poor consumers. As a result, there is no certainty that an international poverty line measures exactly the same degree of deprivation across economies. Similarly, the poverty line may need to be adjusted for different locations (such as urban and rural areas) within the economy, if prices or access to goods and services differs. However, for most of economies, this information is not available.</p>
+<p>Discrepancies between national accounts and household surveys also make the estimation of poverty difficult. There is no reason why these sources would agree exactly on consumption, as they are not strictly measuring the same thing. But large discrepancies are still of concern, as they may reflect measurement errors in either number.</p>
+<p>There are also problems with comparability of surveys, both over time and across economies. The surveys underlying the welfare distributions used in PovcalNet are carried out by national statistical offices, central banks, or other national agencies, so they are designed to serve the specific needs and interests of each particular economy. Household survey questionnaires can differ widely, and similar surveys may not be strictly comparable because of differences in quality. Since September 2019, we publish a comparability dataset aimed at informing the user about the comparability of different surveys used in Povcalnet. These problems are diminishing as survey methods improve and become more standardized, but achieving strict comparability is still impossible. Under-reporting of income and selective compliances are other sources of measurement errors, and these problems are unlikely to be distribution-neutral.</p>
+<p>References
+Chen, Shaohua and Martin Ravallion, “The developing world is poorer than we thought, but no less successful in the fight against poverty”, The Quarterly Journal of Economics, Vol. 125, Issue 4, pp. 1577-1625, 2010a.</p>
+<p>Chen, Shaohua and Martin Ravallion, “China is poorer than we thought, but no less successful in the fight against poverty”, Chapter 13 of Sudhir Anand, Paul Segal, and Joseph Stiglitz (ed.), Debates on the Measurement of Poverty, Oxford University Press, Oxford: 2010b.</p>
+<p>Ferreira, Francisco H. G., Shaohua. Chen, Andrew. L. Dabalen, Yuri. M. Dikhanov, Nada Hamadeh, Dean M. Jolliffe, Ambar Narayan, Espen B. Prydz, Ana L. Revenga, Prem Sangraula, Umar Serajuddin and Nobuo Yoshida, “A global count of the extreme poor in 2012: data issues, methodology and initial results”, The Journal of Economic Inequality, Vol. 14(2), 141-172, 2016.</p>
+<p>Jolliffe, Dean and Espen B. Prydz, “Estimating international poverty lines from comparable national thresholds: a robust approach for estimating relevant thresholds”, The Journal of Economic Inequality, Vol. 14(2), 185-198, 2016.</p>
+<p>Lakner, Christoph, Daniel G. Mahler, Minh C. Nguyen, Joao Pedro Azevedo, Shaohua Chen, Dean M. Jolliffe, Espen B. Prydz and Prem Sangraula, “Consumer Price Indices used in Global Poverty Measurement”, Global Poverty Monitoring Technical Note, No. 4. September 2018. World Bank.</p>
+<p>Ravallion, Martin, “A Global Perspective on Poverty in India”, Economic and Political Weekly, October 25, Vol.43, No. 43, pp.31-37, 2008.</p>
+<p>Ravallion, Martin, Shaohua Chen and Prem Sangraula, “Dollar a day revisited”, World Bank Economic Review, Vol. 23, No. 2, pp. 163-184, 2009</p>
+<p>Ravallion, Martin, Gaurav Datt and Dominique van de Walle, “Quantifying Absolute Poverty in the Developing World”, Review of Income and Wealth, Vol. 37, pp. 345-361, 1991.</p>
+<p>World Bank, “A Measured Approach to Ending Poverty and Boosting Shared Prosperity: Concepts, Data, and the Twin Goals”, Policy Research Report. Washington, DC: World Bank, 2015.</p>
+<p>World Bank, “Poverty and Shared Prosperity 2016: Taking on Inequality”, Washington, DC: World Bank, 2016.</p>
+<p>World Bank, “Monitoring Global Poverty: Report of the Commission on Global Poverty”, Washington, DC: World Bank, 2017.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="national-accounts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="deciles.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["PIPmanual.pdf", "PIPmanual.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

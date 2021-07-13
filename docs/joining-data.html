@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Joining Data | PIP Manual</title>
+  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Joining Data | PIP Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Joining Data | PIP Manual" />
+  
+  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  
+
+<meta name="author" content="DECIS" />
+<meta name="author" content="Poverty GP" />
+
+
+<meta name="date" content="2021-07-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="folder-structure.html"/>
+<link rel="next" href="welfare-data.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PIP Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="internal-workflow.html"><a href="internal-workflow.html"><i class="fa fa-check"></i><b>2</b> Internal Workflow</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="internal-workflow.html"><a href="internal-workflow.html#the-github-group"><i class="fa fa-check"></i><b>2.1</b> The Github group</a></li>
+<li class="chapter" data-level="2.2" data-path="internal-workflow.html"><a href="internal-workflow.html#overview"><i class="fa fa-check"></i><b>2.2</b> Overview</a></li>
+<li class="chapter" data-level="2.3" data-path="internal-workflow.html"><a href="internal-workflow.html#data-acquisition"><i class="fa fa-check"></i><b>2.3</b> Data acquisition</a></li>
+<li class="chapter" data-level="2.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> Data preparation</a></li>
+<li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-computed-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-computed indicators</a></li>
+<li class="chapter" data-level="2.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>2.6</b> API feeding</a></li>
+<li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#pfw-join"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="joining-data.html"><a href="joining-data.html#joining-data-example"><i class="fa fa-check"></i><b>4.1.1</b> Joining data example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
+</ul></li>
+<li class="part"><span><b>II PIP data</b></span></li>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#welfare-origin-of-data"><i class="fa fa-check"></i><b>5.1</b> Origin of data</a></li>
+<li class="chapter" data-level="5.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>5.2</b> From GMD to PIP ({pipdp} package)</a></li>
+<li class="chapter" data-level="5.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.3</b> Survey ID nomenclature</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts"><i class="fa fa-check"></i><b>6.2</b> National Accounts</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2.1</b> GDP</a></li>
+<li class="chapter" data-level="6.2.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.2.2</b> Consumption (PCE)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts-special-cases"><i class="fa fa-check"></i><b>6.2.3</b> National Accounts, Special Cases</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.3</b> CPI</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data"><i class="fa fa-check"></i><b>6.3.1</b> Raw data</a></li>
+<li class="chapter" data-level="6.3.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#vintage-control"><i class="fa fa-check"></i><b>6.3.2</b> Vintage control</a></li>
+<li class="chapter" data-level="6.3.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-1"><i class="fa fa-check"></i><b>6.3.3</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.4</b> PPP</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>6.4.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.5</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#abbreviations"><i class="fa fa-check"></i><b>6.6</b> Abbreviations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="pfw-chapter.html"><a href="pfw-chapter.html"><i class="fa fa-check"></i><b>7</b> Price FrameWork (pfw) data frame</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="pfw-chapter.html"><a href="pfw-chapter.html#variables"><i class="fa fa-check"></i><b>7.1</b> Variables</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="pfw-chapter.html"><a href="pfw-chapter.html#id-vars"><i class="fa fa-check"></i><b>7.1.1</b> ID vars</a></li>
+<li class="chapter" data-level="7.1.2" data-path="pfw-chapter.html"><a href="pfw-chapter.html#altname"><i class="fa fa-check"></i><b>7.1.2</b> <code>altname</code></a></li>
+<li class="chapter" data-level="7.1.3" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wbint_link"><i class="fa fa-check"></i><b>7.1.3</b> <code>wbint_link</code></a></li>
+<li class="chapter" data-level="7.1.4" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wbext_link"><i class="fa fa-check"></i><b>7.1.4</b> <code>wbext_link</code></a></li>
+<li class="chapter" data-level="7.1.5" data-path="pfw-chapter.html"><a href="pfw-chapter.html#alt_link"><i class="fa fa-check"></i><b>7.1.5</b> <code>alt_link</code></a></li>
+<li class="chapter" data-level="7.1.6" data-path="pfw-chapter.html"><a href="pfw-chapter.html#surv_title"><i class="fa fa-check"></i><b>7.1.6</b> <code>surv_title</code></a></li>
+<li class="chapter" data-level="7.1.7" data-path="pfw-chapter.html"><a href="pfw-chapter.html#surv_producer"><i class="fa fa-check"></i><b>7.1.7</b> <code>surv_producer</code></a></li>
+<li class="chapter" data-level="7.1.8" data-path="pfw-chapter.html"><a href="pfw-chapter.html#survey_coverage"><i class="fa fa-check"></i><b>7.1.8</b> <code>survey_coverage</code></a></li>
+<li class="chapter" data-level="7.1.9" data-path="pfw-chapter.html"><a href="pfw-chapter.html#welfare_type"><i class="fa fa-check"></i><b>7.1.9</b> <code>welfare_type</code></a></li>
+<li class="chapter" data-level="7.1.10" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_imputed"><i class="fa fa-check"></i><b>7.1.10</b> <code>use_imputed</code></a></li>
+<li class="chapter" data-level="7.1.11" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_microdata"><i class="fa fa-check"></i><b>7.1.11</b> <code>use_microdata</code></a></li>
+<li class="chapter" data-level="7.1.12" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_bin"><i class="fa fa-check"></i><b>7.1.12</b> <code>use_bin</code></a></li>
+<li class="chapter" data-level="7.1.13" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_groupdata"><i class="fa fa-check"></i><b>7.1.13</b> <code>use_groupdata</code></a></li>
+<li class="chapter" data-level="7.1.14" data-path="pfw-chapter.html"><a href="pfw-chapter.html#reporting_year"><i class="fa fa-check"></i><b>7.1.14</b> <code>reporting_year</code></a></li>
+<li class="chapter" data-level="7.1.15" data-path="pfw-chapter.html"><a href="pfw-chapter.html#survey_comparability"><i class="fa fa-check"></i><b>7.1.15</b> <code>survey_comparability</code></a></li>
+<li class="chapter" data-level="7.1.16" data-path="pfw-chapter.html"><a href="pfw-chapter.html#comp_note"><i class="fa fa-check"></i><b>7.1.16</b> <code>comp_note</code></a></li>
+<li class="chapter" data-level="7.1.17" data-path="pfw-chapter.html"><a href="pfw-chapter.html#preferable"><i class="fa fa-check"></i><b>7.1.17</b> <code>preferable</code></a></li>
+<li class="chapter" data-level="7.1.18" data-path="pfw-chapter.html"><a href="pfw-chapter.html#show_portal"><i class="fa fa-check"></i><b>7.1.18</b> <code>show_portal</code></a></li>
+<li class="chapter" data-level="7.1.19" data-path="pfw-chapter.html"><a href="pfw-chapter.html#fieldwork_range"><i class="fa fa-check"></i><b>7.1.19</b> <code>fieldwork_range</code></a></li>
+<li class="chapter" data-level="7.1.20" data-path="pfw-chapter.html"><a href="pfw-chapter.html#survey_year"><i class="fa fa-check"></i><b>7.1.20</b> <code>survey_year</code></a></li>
+<li class="chapter" data-level="7.1.21" data-path="pfw-chapter.html"><a href="pfw-chapter.html#newref"><i class="fa fa-check"></i><b>7.1.21</b> <code>newref</code></a></li>
+<li class="chapter" data-level="7.1.22" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ref_year_des"><i class="fa fa-check"></i><b>7.1.22</b> <code>ref_year_des</code></a></li>
+<li class="chapter" data-level="7.1.23" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_baseprice"><i class="fa fa-check"></i><b>7.1.23</b> <code>wf_baseprice</code></a></li>
+<li class="chapter" data-level="7.1.24" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_baseprice_note"><i class="fa fa-check"></i><b>7.1.24</b> <code>wf_baseprice_note</code></a></li>
+<li class="chapter" data-level="7.1.25" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_baseprice_des"><i class="fa fa-check"></i><b>7.1.25</b> <code>wf_baseprice_des</code></a></li>
+<li class="chapter" data-level="7.1.26" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_spatial_des"><i class="fa fa-check"></i><b>7.1.26</b> <code>wf_spatial_des</code></a></li>
+<li class="chapter" data-level="7.1.27" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_spatial_var"><i class="fa fa-check"></i><b>7.1.27</b> <code>wf_spatial_var</code></a></li>
+<li class="chapter" data-level="7.1.28" data-path="pfw-chapter.html"><a href="pfw-chapter.html#cpi_replication"><i class="fa fa-check"></i><b>7.1.28</b> <code>cpi_replication</code></a></li>
+<li class="chapter" data-level="7.1.29" data-path="pfw-chapter.html"><a href="pfw-chapter.html#cpi_domain"><i class="fa fa-check"></i><b>7.1.29</b> <code>cpi_domain</code></a></li>
+<li class="chapter" data-level="7.1.30" data-path="pfw-chapter.html"><a href="pfw-chapter.html#cpi_domain_var"><i class="fa fa-check"></i><b>7.1.30</b> <code>cpi_domain_var</code></a></li>
+<li class="chapter" data-level="7.1.31" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_currency_des"><i class="fa fa-check"></i><b>7.1.31</b> <code>wf_currency_des</code></a></li>
+<li class="chapter" data-level="7.1.32" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ppp_replication"><i class="fa fa-check"></i><b>7.1.32</b> <code>ppp_replication</code></a></li>
+<li class="chapter" data-level="7.1.33" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ppp_domain"><i class="fa fa-check"></i><b>7.1.33</b> <code>ppp_domain</code></a></li>
+<li class="chapter" data-level="7.1.34" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ppp_domain_var"><i class="fa fa-check"></i><b>7.1.34</b> <code>ppp_domain_var</code></a></li>
+<li class="chapter" data-level="7.1.35" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_temp_des"><i class="fa fa-check"></i><b>7.1.35</b> <code>wf_add_temp_des</code></a></li>
+<li class="chapter" data-level="7.1.36" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_temp_var"><i class="fa fa-check"></i><b>7.1.36</b> <code>wf_add_temp_var</code></a></li>
+<li class="chapter" data-level="7.1.37" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_spatial_des"><i class="fa fa-check"></i><b>7.1.37</b> <code>wf_add_spatial_des</code></a></li>
+<li class="chapter" data-level="7.1.38" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_spatial_var"><i class="fa fa-check"></i><b>7.1.38</b> <code>wf_add_spatial_var</code></a></li>
+<li class="chapter" data-level="7.1.39" data-path="pfw-chapter.html"><a href="pfw-chapter.html#tosplit"><i class="fa fa-check"></i><b>7.1.39</b> <code>tosplit</code></a></li>
+<li class="chapter" data-level="7.1.40" data-path="pfw-chapter.html"><a href="pfw-chapter.html#tosplit_var"><i class="fa fa-check"></i><b>7.1.40</b> <code>tosplit_var</code></a></li>
+<li class="chapter" data-level="7.1.41" data-path="pfw-chapter.html"><a href="pfw-chapter.html#inpovcal"><i class="fa fa-check"></i><b>7.1.41</b> <code>inpovcal</code></a></li>
+<li class="chapter" data-level="7.1.42" data-path="pfw-chapter.html"><a href="pfw-chapter.html#oth_welfare1_type"><i class="fa fa-check"></i><b>7.1.42</b> <code>oth_welfare1_type</code></a></li>
+<li class="chapter" data-level="7.1.43" data-path="pfw-chapter.html"><a href="pfw-chapter.html#oth_welfare1_var"><i class="fa fa-check"></i><b>7.1.43</b> <code>oth_welfare1_var</code></a></li>
+<li class="chapter" data-level="7.1.44" data-path="pfw-chapter.html"><a href="pfw-chapter.html#gdp_domain"><i class="fa fa-check"></i><b>7.1.44</b> <code>gdp_domain</code></a></li>
+<li class="chapter" data-level="7.1.45" data-path="pfw-chapter.html"><a href="pfw-chapter.html#pce_domain"><i class="fa fa-check"></i><b>7.1.45</b> <code>pce_domain</code></a></li>
+<li class="chapter" data-level="7.1.46" data-path="pfw-chapter.html"><a href="pfw-chapter.html#pop_domain"><i class="fa fa-check"></i><b>7.1.46</b> <code>pop_domain</code></a></li>
+<li class="chapter" data-level="7.1.47" data-path="pfw-chapter.html"><a href="pfw-chapter.html#note"><i class="fa fa-check"></i><b>7.1.47</b> <code>Note</code></a></li>
+<li class="chapter" data-level="7.1.48" data-path="pfw-chapter.html"><a href="pfw-chapter.html#pfw_id"><i class="fa fa-check"></i><b>7.1.48</b> <code>pfw_id</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>8</b> PRIMUS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>8.1</b> Interacting with PRIMUS</a>
+<ul>
+<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
+<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
+<li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>8.2</b> Understanding PRIMUS</a></li>
+<li class="chapter" data-level="8.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>8.3</b> Checking PRIMUS estimates</a></li>
+<li class="chapter" data-level="8.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>8.4</b> Confirming and approving data in PRIMUS</a></li>
+</ul></li>
+<li class="part"><span><b>III Technical Considerations</b></span></li>
+<li class="chapter" data-level="9" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>9</b> Load microdata and Auxiliary data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>9.1</b> Auxiilary data</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>9.1.1</b> udpate data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>9.1.2</b> Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>9.2</b> Microdata</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>9.2.1</b> Inventory file</a></li>
+<li class="chapter" data-level="9.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>9.2.2</b> Finding data</a></li>
+<li class="chapter" data-level="9.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>9.2.3</b> Loading data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>10</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure-1"><i class="fa fa-check"></i><b>10.1</b> Folder structure</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#folders"><i class="fa fa-check"></i>Folders</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#files"><i class="fa fa-check"></i>Files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites-1"><i class="fa fa-check"></i><b>10.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="10.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>10.3</b> Structure of the <code>_targets.R</code> file</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#start-up"><i class="fa fa-check"></i>Start up</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-1-small-functions"><i class="fa fa-check"></i>Step 1: small functions</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-2-prepare-data"><i class="fa fa-check"></i>Step 2: prepare data</a></li>
+<li class="chapter" data-level="10.3.1" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i><b>10.3.1</b> Step 3: The actual pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>10.4</b> Understanding the pipeline</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#stem-targets"><i class="fa fa-check"></i>Stem targets</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>10.5</b> Understanding <code>{pipdm}</code> functions</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>10.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
+<li class="chapter" data-level="10.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>10.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>10.6</b> Executing the <code>_targets.R</code> file</a></li>
+<li class="chapter" data-level="10.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>10.7</b> Debugging</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-stem-targets"><i class="fa fa-check"></i>Debugging stem targets</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-branch-targets"><i class="fa fa-check"></i>Debugging branch targets</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIP Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="joining-data" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Joining Data</h1>
+<p>Since the PIP project is comprised of several databases at very different domain
+levels, this chapter provides all the guidelines to join data frames correctly.
+The first to understand is that the reporting measures in PIP (e.g., poverty and
+inequality) are uniquely identified by four variables: <em>Country</em>, <em>year</em>,
+<em>domain</em>, and <em>welfare type</em>. <em>Country</em> refers to independent economies that
+conduct independent household surveys. For instance, China and Taiwan are
+treated as <strong>two different economies</strong> by the World Bank, and hence by PIP, even
+though under some criteria some people think that Taiwan is part of China.
+<em>Year</em> refers to reporting year rather than the actual calendar years over which
+the survey was conducted. Some household surveys like India 2011/2012 are
+conducted over the of two calendar year, but the welfare aggregate is deflated
+to the reporting year, 2011. <em>Domain</em> refers to the smallest geographical
+disaggregation for which it is possible to deflate and line up to PPP values the
+welfare aggregate of a household survey. The criteria to determine the reporting
+domain of a household survey is still under consideration, but ideally it such
+for which there is CPI, PPP, and population auxiliary data, as well as a
+household survey representative at that level. There are some exceptions to this
+criterion like China or the Philippines, but this cases explained in detailed in
+Section <a href="joining-data.html#special-data-cases">4.2</a>. As of today
+(July 13, 2021), most country/years are reported at the
+national domain and few are reported at the urban/rural domain. However, the PIP
+technical infrastructure has been designed to incorporate other domain levels
+if, at some point in time, it is the case. Finally, the <em>welfare type</em> specifies
+whether the welfare aggregate is based on income or in consumption. For the
+latter case, though some households surveys capture expenditure instead, they
+are still considered consumption-based surveys.</p>
+<p>The challenge to join different data frames in PIP is that these four variables
+that uniquely identify the reporting measures <strong>are not</strong> available to uniquely
+identify any of the PIP data files—with the exception of the cache files that
+we discuss below. This challenge is easily addressed by having a clear
+understanding of the Price FrameWork (pfw) data frame. This file does not only
+contain valuable metadata, but it could also be considered as the anchor among
+all PIP data.</p>
+<div id="pfw-join" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> The Price FrameWork (pfw) data</h2>
+<p>As always, this file can be loaded by typing,</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="joining-data.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb3-2"><a href="joining-data.html#cb3-2" aria-hidden="true" tabindex="-1"></a>pfw <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pfw&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
+#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/pfw/pfw.fst&#39;</code></pre>
+<pre><code>#&gt; no labels available for measure `pfw`</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="joining-data.html#cb6-1" aria-hidden="true" tabindex="-1"></a>joyn<span class="sc">::</span><span class="fu">is_id</span>(pfw, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;surveyid_year&quot;</span>, <span class="st">&quot;survey_acronym&quot;</span>))</span></code></pre></div>
+<pre><code>#&gt; </code></pre>
+<pre><code>#&gt; -- Duplicates in terms of `country_code`, `surveyid_year`, and `survey_acronym`</code></pre>
+<pre><code>#&gt;    copies    n percent
+#&gt; 1:      1 1968    100%
+#&gt; 2:  total 1968    100%</code></pre>
+<pre><code>#&gt; ---------------------------------------- End of is_id() report --</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<p>First of all, notice that <code>pfw</code> is uniquely identified by country code, survey
+year, and survey acronym. The reason for this is that pfw aims at providing a
+link between every single household survey and all the other auxiliary data.
+Since welfare data is stored following the naming convention of the
+<a href="http://ihsn.org/">International Household Survey Network (IHSN)</a>, data is
+stored according to country, survey year, acronym of the survey, and vintage
+control of master and alternative versions. The vintage control of the master
+and alternative version of the data is not relevant for joining data because PIP
+uses, by default, the most recent version.</p>
+<p>Keep in mind that PIP estimates are reported at the country, year, domain, and
+welfare type level, but the last two of these are not found either in the survey
+ID nor as unique identifiers of the pfw. To solve this problem, the pfw data
+makes use of the variables <code>welfare_type,</code> <code>aaa_domain</code>, and <code>aaa_domain_var</code>.</p>
+<p>As the name suggests, <code>welfare_type</code> indicates the <strong>main</strong> welfare aggregate
+type (i.e, income or consumption ) of the variable <code>welfare</code> in the GMD datasets
+that correspond to the survey ID formed by concatenating variables
+<code>country_code</code>, <code>surveyid_year</code>, and <code>survey_acronym</code>. For example, the
+<code>welfare_type</code> of the <code>welfare</code> variable in the datasets of
+<em><strong>COL_2018_GEIH</strong>_V01_M_V03_A_GMD</em> is income.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="joining-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code    <span class="sc">==</span> <span class="st">&quot;COL&quot;</span></span>
+<span id="cb12-2"><a href="joining-data.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> surveyid_year  <span class="sc">==</span> <span class="dv">2018</span></span>
+<span id="cb12-3"><a href="joining-data.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;</span> survey_acronym <span class="sc">==</span> <span class="st">&quot;GEIH&quot;</span>, <span class="co"># Not necessary since it is the only one</span></span>
+<span id="cb12-4"><a href="joining-data.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unique</span>(welfare_type)]</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;income&quot;</code></pre>
+<p>The prefix <code>aaa</code> in variables <code>aaa_domain</code> and <code>aaa_domain_var</code> refers to the
+identification code of any of the auxiliary data. Thus, you will find a
+<code>gdp_domain</code>, <code>cpi_domain</code>, <code>ppp_domain</code> and several others. All <code>aaa_domain</code>
+variables contain the <em>lower</em> level of geographical disaggregation of the
+corresponding <code>aaa</code> auxiliary data. There are only three possible levels of
+disaagregation,</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+domain value
+</th>
+<th style="text-align:left;">
+meaning
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+national
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+urban/rural
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+subnational
+</td>
+</tr>
+</tbody>
+</table>
+<p>As of now, no survey or auxiliary data is broken down at level 3 (i.e.,
+subnational), but it is important to know that the PIP internal code takes that
+possibility into account for future cases.</p>
+<p>Depending on the country, the domain level of each auxiliary data might be
+different. In Indonesia, for instance, the CPI domain is national, whereas the
+PPP domain is “urban/rural.”</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="joining-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a>pfw[ country_code <span class="sc">==</span> <span class="st">&quot;IDN&quot;</span> <span class="sc">&amp;</span> surveyid_year <span class="sc">==</span> <span class="dv">2018</span>, </span>
+<span id="cb14-2"><a href="joining-data.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    .(<span class="at">cpi =</span> <span class="fu">unique</span>(cpi_domain), </span>
+<span id="cb14-3"><a href="joining-data.html#cb14-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">ppp =</span> <span class="fu">unique</span>(ppp_domain))]</span></code></pre></div>
+<pre><code>#&gt;    cpi ppp
+#&gt; 1:   1   2</code></pre>
+<p>Finally, <span style="color:red">and this is really important</span>, variables
+<code>aaa_domain_var</code> contains the name of variable in the GMD dataset that uniquely
+identify the household survey <em>in the corresponding <code>aaa</code></em> <em>auxiliary data</em>. In
+other words, <code>aaa_domain_var</code> contains <em>the name</em> of the variable in GMD that
+must be used as <em>key</em> <em>to join</em> GMD to <code>aaa</code>. You may ask, does the name of the
+variable in the <code>aaa</code> auxiliary data have the same variable name in the GMD data
+specified in <code>aaa_domain_var</code>? No, it does not. Since the domain level to
+identify observations in the <code>aaa</code> auxiliary data is unique, there is only one
+variable in auxiliary data used to merge any welfare data, <code>aaa_data_level</code>.
+Since all this process is a little cumbersome, the
+{<a href="https://github.com/PIP-Technical-Team/pipdp">pipdp</a>} Stata package, during the
+process of cleaning GMD databases to PIP databases, creates as many
+<code>aaa_data_level</code> variables as needed in order to make the join of welfare data
+and auxiliary data simpler. You can see the lines of code that create these
+variables in <a href="https://github.com/PIP-Technical-Team/pipdp/blob/9c4e32636dd1c71954816f8a7c8ad743349959a6/pipdp_md_clean.ado#L225-L294">this
+section</a>
+of the file “pipdp_md_clean.ado.”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<div id="joining-data-example" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Joining data example</h3>
+<p>Let’s see the case of Indonesia above. The pfw says that the CPI domain is
+“national” and the PPP domain is “urban/rural.” That means that the welfare data
+join to each of these auxiliary data with two different variables,</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="joining-data.html#cb16-1" aria-hidden="true" tabindex="-1"></a>domains <span class="ot">&lt;-</span> </span>
+<span id="cb16-2"><a href="joining-data.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  pfw[ country_code <span class="sc">==</span> <span class="st">&quot;IDN&quot;</span> <span class="sc">&amp;</span> surveyid_year <span class="sc">==</span> <span class="dv">2018</span>, </span>
+<span id="cb16-3"><a href="joining-data.html#cb16-3" aria-hidden="true" tabindex="-1"></a>     .(<span class="at">cpi =</span> <span class="fu">unique</span>(cpi_domain_var), </span>
+<span id="cb16-4"><a href="joining-data.html#cb16-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">ppp =</span> <span class="fu">unique</span>(ppp_domain_var))][]</span></code></pre></div>
+<p>This says that the name of the variable in the welfare data to join PPP data is
+called <code>uban</code>, but there is not seem to be a variable name in GMD to join the
+CPI data. When the name of the variable is missing, it indicates that the
+welfare data is not split by any variable to merge CPI data. That is, it is at
+the national level.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="joining-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a>ccode  <span class="ot">&lt;-</span> <span class="st">&quot;CHN&quot;</span></span>
+<span id="cb17-2"><a href="joining-data.html#cb17-2" aria-hidden="true" tabindex="-1"></a>cpi <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;cpi&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
+#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/cpi/cpi.fst&#39;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="joining-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a>ppp <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;ppp&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; √ Most recent version of data loaded
+#&gt; &#39;//w1wbgencifs01/pip/PIP-Data_QA/_aux/ppp/ppp.fst&#39;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="joining-data.html#cb21-1" aria-hidden="true" tabindex="-1"></a>CHN <span class="ot">&lt;-</span>  pipload<span class="sc">::</span><span class="fu">pip_load_data</span>(<span class="at">country =</span> ccode, </span>
+<span id="cb21-2"><a href="joining-data.html#cb21-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">year    =</span> <span class="dv">2015</span>)</span></code></pre></div>
+<pre><code>#&gt; i Loading data and creating a dataframe</code></pre>
+<pre><code>#&gt; 
+√ Loading data and creating a dataframe ... done</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="joining-data.html#cb24-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> joyn<span class="sc">::</span><span class="fu">merge</span>(CHN, cpi,</span>
+<span id="cb24-2"><a href="joining-data.html#cb24-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;country_code&quot;</span>, <span class="st">&quot;survey_year&quot;</span>,</span>
+<span id="cb24-3"><a href="joining-data.html#cb24-3" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;survey_acronym&quot;</span>, <span class="st">&quot;cpi_data_level&quot;</span>),</span>
+<span id="cb24-4"><a href="joining-data.html#cb24-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">match_type =</span> <span class="st">&quot;m:1&quot;</span>, </span>
+<span id="cb24-5"><a href="joining-data.html#cb24-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">keep =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; &gt; removing key variables `country_code`, `survey_year`,
+#&gt; `survey_acronym`, and `cpi_data_level` from yvars
+#&gt; 
+#&gt; -- JOYn Report --</code></pre>
+<pre><code>#&gt;    report  n percent
+#&gt; 1:  x &amp; y 40    100%
+#&gt; 2:  total 40    100%</code></pre>
+<pre><code>#&gt; ------------------------------------------- End of JOYn report --</code></pre>
+</div>
+</div>
+<div id="special-data-cases" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Special data cases</h2>
+
+</div>
+</div>
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>You can find more information about the conversion from GMD
+to PIP databases in Section <a href="welfare-data.html#welfare-data">5</a><a href="joining-data.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="folder-structure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="welfare-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["PIPmanual.pdf", "PIPmanual.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

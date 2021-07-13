@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Internal Workflow | PIP Manual</title>
+  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Internal Workflow | PIP Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Internal Workflow | PIP Manual" />
+  
+  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  
+
+<meta name="author" content="DECIS" />
+<meta name="author" content="Poverty GP" />
+
+
+<meta name="date" content="2021-07-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="folder-structure.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PIP Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="internal-workflow.html"><a href="internal-workflow.html"><i class="fa fa-check"></i><b>2</b> Internal Workflow</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="internal-workflow.html"><a href="internal-workflow.html#the-github-group"><i class="fa fa-check"></i><b>2.1</b> The Github group</a></li>
+<li class="chapter" data-level="2.2" data-path="internal-workflow.html"><a href="internal-workflow.html#overview"><i class="fa fa-check"></i><b>2.2</b> Overview</a></li>
+<li class="chapter" data-level="2.3" data-path="internal-workflow.html"><a href="internal-workflow.html#data-acquisition"><i class="fa fa-check"></i><b>2.3</b> Data acquisition</a></li>
+<li class="chapter" data-level="2.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> Data preparation</a></li>
+<li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-computed-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-computed indicators</a></li>
+<li class="chapter" data-level="2.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>2.6</b> API feeding</a></li>
+<li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#pfw-join"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="joining-data.html"><a href="joining-data.html#joining-data-example"><i class="fa fa-check"></i><b>4.1.1</b> Joining data example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
+</ul></li>
+<li class="part"><span><b>II PIP data</b></span></li>
+<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#welfare-origin-of-data"><i class="fa fa-check"></i><b>5.1</b> Origin of data</a></li>
+<li class="chapter" data-level="5.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>5.2</b> From GMD to PIP ({pipdp} package)</a></li>
+<li class="chapter" data-level="5.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.3</b> Survey ID nomenclature</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts"><i class="fa fa-check"></i><b>6.2</b> National Accounts</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2.1</b> GDP</a></li>
+<li class="chapter" data-level="6.2.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.2.2</b> Consumption (PCE)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts-special-cases"><i class="fa fa-check"></i><b>6.2.3</b> National Accounts, Special Cases</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.3</b> CPI</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data"><i class="fa fa-check"></i><b>6.3.1</b> Raw data</a></li>
+<li class="chapter" data-level="6.3.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#vintage-control"><i class="fa fa-check"></i><b>6.3.2</b> Vintage control</a></li>
+<li class="chapter" data-level="6.3.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-1"><i class="fa fa-check"></i><b>6.3.3</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.4</b> PPP</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>6.4.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.5</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#abbreviations"><i class="fa fa-check"></i><b>6.6</b> Abbreviations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="pfw-chapter.html"><a href="pfw-chapter.html"><i class="fa fa-check"></i><b>7</b> Price FrameWork (pfw) data frame</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="pfw-chapter.html"><a href="pfw-chapter.html#variables"><i class="fa fa-check"></i><b>7.1</b> Variables</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="pfw-chapter.html"><a href="pfw-chapter.html#id-vars"><i class="fa fa-check"></i><b>7.1.1</b> ID vars</a></li>
+<li class="chapter" data-level="7.1.2" data-path="pfw-chapter.html"><a href="pfw-chapter.html#altname"><i class="fa fa-check"></i><b>7.1.2</b> <code>altname</code></a></li>
+<li class="chapter" data-level="7.1.3" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wbint_link"><i class="fa fa-check"></i><b>7.1.3</b> <code>wbint_link</code></a></li>
+<li class="chapter" data-level="7.1.4" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wbext_link"><i class="fa fa-check"></i><b>7.1.4</b> <code>wbext_link</code></a></li>
+<li class="chapter" data-level="7.1.5" data-path="pfw-chapter.html"><a href="pfw-chapter.html#alt_link"><i class="fa fa-check"></i><b>7.1.5</b> <code>alt_link</code></a></li>
+<li class="chapter" data-level="7.1.6" data-path="pfw-chapter.html"><a href="pfw-chapter.html#surv_title"><i class="fa fa-check"></i><b>7.1.6</b> <code>surv_title</code></a></li>
+<li class="chapter" data-level="7.1.7" data-path="pfw-chapter.html"><a href="pfw-chapter.html#surv_producer"><i class="fa fa-check"></i><b>7.1.7</b> <code>surv_producer</code></a></li>
+<li class="chapter" data-level="7.1.8" data-path="pfw-chapter.html"><a href="pfw-chapter.html#survey_coverage"><i class="fa fa-check"></i><b>7.1.8</b> <code>survey_coverage</code></a></li>
+<li class="chapter" data-level="7.1.9" data-path="pfw-chapter.html"><a href="pfw-chapter.html#welfare_type"><i class="fa fa-check"></i><b>7.1.9</b> <code>welfare_type</code></a></li>
+<li class="chapter" data-level="7.1.10" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_imputed"><i class="fa fa-check"></i><b>7.1.10</b> <code>use_imputed</code></a></li>
+<li class="chapter" data-level="7.1.11" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_microdata"><i class="fa fa-check"></i><b>7.1.11</b> <code>use_microdata</code></a></li>
+<li class="chapter" data-level="7.1.12" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_bin"><i class="fa fa-check"></i><b>7.1.12</b> <code>use_bin</code></a></li>
+<li class="chapter" data-level="7.1.13" data-path="pfw-chapter.html"><a href="pfw-chapter.html#use_groupdata"><i class="fa fa-check"></i><b>7.1.13</b> <code>use_groupdata</code></a></li>
+<li class="chapter" data-level="7.1.14" data-path="pfw-chapter.html"><a href="pfw-chapter.html#reporting_year"><i class="fa fa-check"></i><b>7.1.14</b> <code>reporting_year</code></a></li>
+<li class="chapter" data-level="7.1.15" data-path="pfw-chapter.html"><a href="pfw-chapter.html#survey_comparability"><i class="fa fa-check"></i><b>7.1.15</b> <code>survey_comparability</code></a></li>
+<li class="chapter" data-level="7.1.16" data-path="pfw-chapter.html"><a href="pfw-chapter.html#comp_note"><i class="fa fa-check"></i><b>7.1.16</b> <code>comp_note</code></a></li>
+<li class="chapter" data-level="7.1.17" data-path="pfw-chapter.html"><a href="pfw-chapter.html#preferable"><i class="fa fa-check"></i><b>7.1.17</b> <code>preferable</code></a></li>
+<li class="chapter" data-level="7.1.18" data-path="pfw-chapter.html"><a href="pfw-chapter.html#show_portal"><i class="fa fa-check"></i><b>7.1.18</b> <code>show_portal</code></a></li>
+<li class="chapter" data-level="7.1.19" data-path="pfw-chapter.html"><a href="pfw-chapter.html#fieldwork_range"><i class="fa fa-check"></i><b>7.1.19</b> <code>fieldwork_range</code></a></li>
+<li class="chapter" data-level="7.1.20" data-path="pfw-chapter.html"><a href="pfw-chapter.html#survey_year"><i class="fa fa-check"></i><b>7.1.20</b> <code>survey_year</code></a></li>
+<li class="chapter" data-level="7.1.21" data-path="pfw-chapter.html"><a href="pfw-chapter.html#newref"><i class="fa fa-check"></i><b>7.1.21</b> <code>newref</code></a></li>
+<li class="chapter" data-level="7.1.22" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ref_year_des"><i class="fa fa-check"></i><b>7.1.22</b> <code>ref_year_des</code></a></li>
+<li class="chapter" data-level="7.1.23" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_baseprice"><i class="fa fa-check"></i><b>7.1.23</b> <code>wf_baseprice</code></a></li>
+<li class="chapter" data-level="7.1.24" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_baseprice_note"><i class="fa fa-check"></i><b>7.1.24</b> <code>wf_baseprice_note</code></a></li>
+<li class="chapter" data-level="7.1.25" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_baseprice_des"><i class="fa fa-check"></i><b>7.1.25</b> <code>wf_baseprice_des</code></a></li>
+<li class="chapter" data-level="7.1.26" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_spatial_des"><i class="fa fa-check"></i><b>7.1.26</b> <code>wf_spatial_des</code></a></li>
+<li class="chapter" data-level="7.1.27" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_spatial_var"><i class="fa fa-check"></i><b>7.1.27</b> <code>wf_spatial_var</code></a></li>
+<li class="chapter" data-level="7.1.28" data-path="pfw-chapter.html"><a href="pfw-chapter.html#cpi_replication"><i class="fa fa-check"></i><b>7.1.28</b> <code>cpi_replication</code></a></li>
+<li class="chapter" data-level="7.1.29" data-path="pfw-chapter.html"><a href="pfw-chapter.html#cpi_domain"><i class="fa fa-check"></i><b>7.1.29</b> <code>cpi_domain</code></a></li>
+<li class="chapter" data-level="7.1.30" data-path="pfw-chapter.html"><a href="pfw-chapter.html#cpi_domain_var"><i class="fa fa-check"></i><b>7.1.30</b> <code>cpi_domain_var</code></a></li>
+<li class="chapter" data-level="7.1.31" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_currency_des"><i class="fa fa-check"></i><b>7.1.31</b> <code>wf_currency_des</code></a></li>
+<li class="chapter" data-level="7.1.32" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ppp_replication"><i class="fa fa-check"></i><b>7.1.32</b> <code>ppp_replication</code></a></li>
+<li class="chapter" data-level="7.1.33" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ppp_domain"><i class="fa fa-check"></i><b>7.1.33</b> <code>ppp_domain</code></a></li>
+<li class="chapter" data-level="7.1.34" data-path="pfw-chapter.html"><a href="pfw-chapter.html#ppp_domain_var"><i class="fa fa-check"></i><b>7.1.34</b> <code>ppp_domain_var</code></a></li>
+<li class="chapter" data-level="7.1.35" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_temp_des"><i class="fa fa-check"></i><b>7.1.35</b> <code>wf_add_temp_des</code></a></li>
+<li class="chapter" data-level="7.1.36" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_temp_var"><i class="fa fa-check"></i><b>7.1.36</b> <code>wf_add_temp_var</code></a></li>
+<li class="chapter" data-level="7.1.37" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_spatial_des"><i class="fa fa-check"></i><b>7.1.37</b> <code>wf_add_spatial_des</code></a></li>
+<li class="chapter" data-level="7.1.38" data-path="pfw-chapter.html"><a href="pfw-chapter.html#wf_add_spatial_var"><i class="fa fa-check"></i><b>7.1.38</b> <code>wf_add_spatial_var</code></a></li>
+<li class="chapter" data-level="7.1.39" data-path="pfw-chapter.html"><a href="pfw-chapter.html#tosplit"><i class="fa fa-check"></i><b>7.1.39</b> <code>tosplit</code></a></li>
+<li class="chapter" data-level="7.1.40" data-path="pfw-chapter.html"><a href="pfw-chapter.html#tosplit_var"><i class="fa fa-check"></i><b>7.1.40</b> <code>tosplit_var</code></a></li>
+<li class="chapter" data-level="7.1.41" data-path="pfw-chapter.html"><a href="pfw-chapter.html#inpovcal"><i class="fa fa-check"></i><b>7.1.41</b> <code>inpovcal</code></a></li>
+<li class="chapter" data-level="7.1.42" data-path="pfw-chapter.html"><a href="pfw-chapter.html#oth_welfare1_type"><i class="fa fa-check"></i><b>7.1.42</b> <code>oth_welfare1_type</code></a></li>
+<li class="chapter" data-level="7.1.43" data-path="pfw-chapter.html"><a href="pfw-chapter.html#oth_welfare1_var"><i class="fa fa-check"></i><b>7.1.43</b> <code>oth_welfare1_var</code></a></li>
+<li class="chapter" data-level="7.1.44" data-path="pfw-chapter.html"><a href="pfw-chapter.html#gdp_domain"><i class="fa fa-check"></i><b>7.1.44</b> <code>gdp_domain</code></a></li>
+<li class="chapter" data-level="7.1.45" data-path="pfw-chapter.html"><a href="pfw-chapter.html#pce_domain"><i class="fa fa-check"></i><b>7.1.45</b> <code>pce_domain</code></a></li>
+<li class="chapter" data-level="7.1.46" data-path="pfw-chapter.html"><a href="pfw-chapter.html#pop_domain"><i class="fa fa-check"></i><b>7.1.46</b> <code>pop_domain</code></a></li>
+<li class="chapter" data-level="7.1.47" data-path="pfw-chapter.html"><a href="pfw-chapter.html#note"><i class="fa fa-check"></i><b>7.1.47</b> <code>Note</code></a></li>
+<li class="chapter" data-level="7.1.48" data-path="pfw-chapter.html"><a href="pfw-chapter.html#pfw_id"><i class="fa fa-check"></i><b>7.1.48</b> <code>pfw_id</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>8</b> PRIMUS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>8.1</b> Interacting with PRIMUS</a>
+<ul>
+<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
+<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
+<li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>8.2</b> Understanding PRIMUS</a></li>
+<li class="chapter" data-level="8.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>8.3</b> Checking PRIMUS estimates</a></li>
+<li class="chapter" data-level="8.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>8.4</b> Confirming and approving data in PRIMUS</a></li>
+</ul></li>
+<li class="part"><span><b>III Technical Considerations</b></span></li>
+<li class="chapter" data-level="9" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>9</b> Load microdata and Auxiliary data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>9.1</b> Auxiilary data</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>9.1.1</b> udpate data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>9.1.2</b> Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>9.2</b> Microdata</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>9.2.1</b> Inventory file</a></li>
+<li class="chapter" data-level="9.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>9.2.2</b> Finding data</a></li>
+<li class="chapter" data-level="9.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>9.2.3</b> Loading data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>10</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure-1"><i class="fa fa-check"></i><b>10.1</b> Folder structure</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#folders"><i class="fa fa-check"></i>Folders</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#files"><i class="fa fa-check"></i>Files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites-1"><i class="fa fa-check"></i><b>10.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="10.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>10.3</b> Structure of the <code>_targets.R</code> file</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#start-up"><i class="fa fa-check"></i>Start up</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-1-small-functions"><i class="fa fa-check"></i>Step 1: small functions</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-2-prepare-data"><i class="fa fa-check"></i>Step 2: prepare data</a></li>
+<li class="chapter" data-level="10.3.1" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i><b>10.3.1</b> Step 3: The actual pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>10.4</b> Understanding the pipeline</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#stem-targets"><i class="fa fa-check"></i>Stem targets</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>10.5</b> Understanding <code>{pipdm}</code> functions</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>10.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
+<li class="chapter" data-level="10.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>10.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>10.6</b> Executing the <code>_targets.R</code> file</a></li>
+<li class="chapter" data-level="10.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>10.7</b> Debugging</a>
+<ul>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-stem-targets"><i class="fa fa-check"></i>Debugging stem targets</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-branch-targets"><i class="fa fa-check"></i>Debugging branch targets</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIP Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="internal-workflow" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Internal Workflow</h1>
+<p>This chapter explains the internal technical workflow of the PIP project. Many
+of the different steps of the workflow are explained in more detail in other
+chapters of this book. This chapter, however, presents an overview of the
+workflow and its components.</p>
+<div id="the-github-group" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> The Github group</h2>
+<p>The technical code of the PIP project is organized in Git repositories in the
+Github group <a href="https://github.com/PIP-Technical-Team">/PIP-Technical-Team</a>. You
+need to be granted collaborator status in order to contribute to any of the
+repositories in the group. Also, many of the repositories do not play a direct
+role in the PIP technical workflow. Some of them are intended for documenting
+parts of the workflow or for testing purposes. For example, the repository of
+this book–<a href="https://github.com/PIP-Technical-Team/PIPmanual">/PIPmanual</a>–is not
+part of the workflow of PIP, since it is not necessary for any estimation. Yet,
+you need get familiar with all the repositories in case you need to make a
+contribution in any of them. In this chapter, however, we will focus on
+understanding the repositories that affect directly the PIP workflow.</p>
+<p>First, we will see the overview of the workflow. It is an overview because each
+bucket of its buckets is a workflow in itself. Yet, it is important to have the
+overview clear in order to understand how and where all the pieces fall
+together. Then, we will unpack each of the workflow buckets to understand them
+in more detail.</p>
+</div>
+<div id="overview" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Overview</h2>
+<p>The workflow overview is mainly composed of four steps.</p>
+<ol style="list-style-type: decimal">
+<li>Data acquisition</li>
+<li>Data preparation</li>
+<li>pre-computed indicators</li>
+<li>API feeding</li>
+</ol>
+<p><img src="img/PIP_workflow_overview.png" title="PIP workflow overview" /></p>
+<p>Each of the steps (or buckets) is prerequisite of the next one, so if something
+changes in one of the them, it is necessary to execute the subsequent steps.</p>
+</div>
+<div id="data-acquisition" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Data acquisition</h2>
+<p>Before understanding how the input data of PIP is acquired, we need to
+understand PIP data itself. The PIP is fed by two kinds of data: welfare data
+and auxiliary data.</p>
+<p><strong>Welfare data</strong> refers to the data files that contain at least one welfare
+vector and one population expansion factor (i.e., weights) vector. These two
+variables are the minimum data necessary to estimate poverty and inequality
+measures.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> These files come in four varieties; microdata,
+group data, bin data, and synthetic data. The details of welfare can be found in
+Section <a href="welfare-data.html#welfare-data">5</a>. Regardless of the variety of the data, all welfare
+data in PIP are gathered from the Global Monitoring Database, GMD. For a
+comprehensive explanation of how the household data are selected and obtained,
+you may check chapter <a href="https://povcalnet-team.github.io/Methodology/acquiring.html"><em>Acquiring household survey
+data</em></a>of the
+<a href="https://povcalnet-team.github.io/Methodology/index.html">methodological PIP
+manual</a>.</p>
+<p><em>Microdata</em> is uploaded into the PRIMUS system by the regional teams of the
+Poverty Global Practice. To do so, each regional team has to follow the GMD
+guidelines, which are verified by the Stata command <code>{primus}</code>. Rarely. the
+<code>{primus}</code> command does NOT capture some potential errors in the data. More
+details in Section <a href="primus.html#primus">8</a></p>
+<p>As of now (July 13, 2021), <em>Group data</em> is divided two:
+historical group data and new group data. Historical group data is organized and
+provided by the PovcalNet team, who sends it to the Poverty GP to be included in
+the datalibweb system. New group data is collected by the poverty economist of
+the corresponding country, who shares it with her regional focal team, who
+shares it with PovcalNet team. This new group data is organized and tested by
+the PovcalNet team and then send back to the poverty GP to be included in the
+datalibweb system.</p>
+<p><em>Bin data</em> refers to welfare data from countries for which there is no poverty
+economist. Most of these countries are developed countries such as Canada or
+Japan. The main characteristic of this data is that it is only available through
+the <a href="https://www.lisdatacenter.org/data-access/lissy/">LISSY system</a> of the <a href="https://www.lisdatacenter.org/">LIS
+data center</a>, which does not allow access to the
+entire microdata. Thus, we need to contract the microdata into 400 bins or
+quantiles. The code that gathers LIS data is available in the Github repository
+<a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>.</p>
+<p>Finally, <em>synthetic data</em>, refers to simulated microdata from an statistical
+procedure. As of now (July 13, 2021), the these data are
+estimated using multiple imputation techniques, so that any calculation must
+take into account the imputation-id variable. The data is calculated by the
+poverty economist of the country and the organizes by the global team in the
+Poverty GP.</p>
+<p><strong>Auxiliary data</strong> refers to all data necessary to temporally deflate and line
+up welfare data, with the objective of getting poverty estimates comparable over
+time, across countries, and, more importantly, being able to estimate regional
+and global estimates. Some of these data are national population, GDP, consumer
+price index, purchasing parity power, etc. Auxiliary data also include metadata
+such as time comparability or type of welfare aggregate. Since each measure of
+auxiliary data is acquired differently, all the details are explain in Section
+<a href="auxiliary-data.html#auxiliary-data">6</a>.</p>
+</div>
+<div id="data-preparation" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Data preparation</h2>
+<p>This step assumes that all welfare data is properly organized in the datalibweb
+system and vetted in PRIMUS. In contrast to the previous global-poverty
+calculator system, PovcalNet, the PIP system only gathers welfare from the
+datalibweb server.</p>
+<p>The welfare data preparation is done using the repository
+<a href="https://github.com/PIP-Technical-Team/pipdp">/pipdp</a>. As of now
+(July 13, 2021), this part of the process has been coded
+in Stata, given that the there is no an R version of <code>{dataliweb}</code>. As for the
+auxiliary data preparation, it is done with package <code>{pipaux}</code>, available in the
+repository <a href="https://github.com/PIP-Technical-Team/pipaux">/pipaux</a>. Right now
+the automation of updating the auxiliary has not been implemented. Thus, it has
+to be done manually by typing <code>pipaux::pip_update_all_aux()</code> to update all
+measures, or use function <code>pipaux::update_aux()</code> to update a particular measure.</p>
+</div>
+<div id="pre-computed-indicators" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Pre-computed indicators</h2>
+<p>All measures in PIP that do not depend on the value of the poverty line are
+pre-computed in order to make the API more efficient and responsive. Some other
+indicators that not depend on the poverty lines but do depend on other
+parameters, like the societal poverty, are not included as part of the
+pre-computed indicators.</p>
+<p>This step is executed in the repository
+<a href="https://github.com/PIP-Technical-Team/pip_ingestion_pipeline">/pip_ingestion_pipeline</a>,
+which is a pipeline powered by the <code>{targets}</code> package. The process to estimate
+the pre-computed indicators is explained in detail in Chapter <a href="pcpipeline.html#pcpipeline">10</a>.
+The pipeline makes use of two R packages, <code>{wbpip}</code> and <code>{pipdm}</code>. The former is
+publicly available and contains all the technical and methodological procedures
+to estimate poverty and inequality measures at the country, regional, and global
+level. The latter, makes use of <code>{wbpip}</code> to execute the calculations and put
+the resulting data in order, ready to be ingested by the PIP API.</p>
+</div>
+<div id="api-feeding" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> API feeding</h2>
+<p><span style="color:red">We need to finish this part (Tony?)</span> .</p>
+</div>
+<div id="packages-interaction" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Packages interaction</h2>
+<p><span style="color:red">We need to finish this part</span>.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Population data is also necessary when working with
+group data.<a href="internal-workflow.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="folder-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["PIPmanual.pdf", "PIPmanual.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

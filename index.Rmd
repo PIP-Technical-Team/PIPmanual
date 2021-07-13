@@ -4,10 +4,10 @@ author: ["DECIS", "Poverty GP"]
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [PIP_internal_Guidelines.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is a manual to document all the technical and methodological decisions taken during the creation of packges for the PIP workflow."
+description: "This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow."
 ---
 
 # Prerequisites {-}
@@ -17,6 +17,30 @@ description: "This is a manual to document all the technical and methodological 
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
+
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, 
+        dplyr.print_max = 6)
+
+ipkg <- utils::installed.packages()[,1]
+if (!("emo"  %in% ipkg)){
+  remotes::install_github("hadley/emo")
+}
+
 ```
 
 
@@ -29,3 +53,26 @@ install.packages("bookdown")
 ```
 
 Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+
+
+Make sure to install the latest version of PIP R packages by typing the following
+
+```{r, eval=FALSE}
+ipkg <- utils::installed.packages()[,1]
+
+pip_install <- function(pkg, ipkg) {
+  if (isFALSE(pkg %in% ipkg)) {
+    gitcall <- paste0("PIP-Technical-Team/", pkg)
+    remotes::install_github(gitcall, dependencies = TRUE)
+    TRUE
+  } else {
+    FALSE
+  }
+}
+
+pkgs <- c("pipload", "pipaux", "wbpip", "piptb", "pipdm", "pipapi")
+
+
+purrr::walk(pkgs, pip_install, ipkg = ipkg)
+
+```
