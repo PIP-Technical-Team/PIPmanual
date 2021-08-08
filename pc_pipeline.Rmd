@@ -4,11 +4,11 @@ The Poverty Calculator Pipeline--hereafter, and only for the rest of this
 chapter, pipeline--is the technical procedure to calculate the pre-computed
 estimations of the PIP project. These estimations have two main purposes:
 
-1.  Provide the user with instantaneous information about distributive measures
+1.  To provide the user with instantaneous information about distributive measures
     of all the household surveys in the PIP repository that do not depend on the
     value of the poverty line. Avoiding thus the need for re-computation as it
     was the case in PovcalNet for some of these measures.
-2.  Provide the necessary inputs to the PIP API.
+2.  To provide the necessary inputs to the PIP API.
 
 This chapter walks you through the folder structure of the folder, the main R
 script, `_targets.R`, and the complete and partial execution of the script.
