@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [PIP_internal_Guidelines.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow."
+description: "These are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow."
 ---
 
 # Prerequisites {-}
@@ -44,6 +44,7 @@ if (!("emo"  %in% ipkg)){
 ```
 
 
+## Technical requirements
 You need to make sure the `bookdown` package is installed in your computer
 ```{r eval=FALSE}
 install.packages("bookdown")
