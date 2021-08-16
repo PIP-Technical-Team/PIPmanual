@@ -1,0 +1,392 @@
+# Docker Container {#docker}
+
+[Note: Aleksander, please complete this sectiona and make everything makes sense
+and the links work]{style="color:red"}
+
+## Introduction
+
+Docker container for the PIP Poverty Calculator API application.
+
+This repository is meant to develop and run the Docker container for the Poverty
+Calculator API on local World Bank laptops. For DEV, QA and Production
+deployments on Azure please refer to the [TFS
+repository](https://tfs.worldbank.org/tfs/ITSOC%20Collection2/_git/ITSES-POVERTYSCOREAPI).
+For details see the section [Deploying to Azure](#deploying-to-azure).
+
+## Table of Contents
+
+1.  [Prerequisites](#prerequisites)
+2.  [Create volume](#create-volume)
+3.  [Build image](#build-image)
+4.  [Run container](#run-container)
+5.  [Debugging](#debugging)
+6.  [Security](#security)
+7.  [Base image options](#base-image-options)
+8.  [Deploying to Azure](#deploying-to-azure)
+9.  [Tips and tricks](#tips-and-tricks)
+10. [Resources](#resources)
+
+## Prerequisites {#prerequisites}
+
+-   Local admin account
+-   Docker Desktop for Windows
+-   WSL 2 (recommended)
+-   Visual Studio Code (recommended)
+
+See [Docker on World Bank laptops](wb-docker.md) for recommendations on how to
+install Docker Desktop and WSL 2.
+
+Visual Code is not strictly needed, but the [VS Docker
+plugin](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+is one of the best tools to interact with Docker.
+
+## Create volume {#create-volume}
+
+The data that is used in the poverty calculations is stored outside the Docker
+container. We therefore need to link a data source on our local machine to the
+container when we run it. This could be accomplished with a [bind
+mount](https://docs.docker.com/storage/bind-mounts/), but the preferred way is
+to use a [named volume](https://docs.docker.com/storage/volumes/).
+
+You can create and populate a volume by following the steps below. First we
+create an empty volume, then we link this to a temporay container, before using
+`docker cp` to copy the files to the container and volume. After the data has
+been copied you can discard the temporary container.
+
+``` {.bash}
+# Create volume 
+docker volume create pip-vol
+# Mount volume to tmp container  
+docker run -d --name pip-data --mount type=volume,source=pip-vol,target=/data ubuntu:20.04
+# Copy data to container (and volume)
+docker cp <data-folder>/. pip-data:data
+# Stop and remove tmp container 
+docker stop pip-data 
+docker rm pip-data
+```
+
+For some purposes you will only need to create this volume once, but remember to
+update the contents of the volume in case the data structure changes or you want
+to make sure the container is running against the latest available data. See the
+[TFS data
+repo](https://tfs.worldbank.org/tfs/ITSOC%20Collection2/ITSES-POVERTYSCOREAPI/_git/ITSES-POVERTYSCORE-DATA)
+(DEV branch) for latest data updates.
+
+The volume can be inspected with the `docker inspect` and `docker system`
+commands. If you are running Docker Desktop on Windows with WSL 2.0 then then
+the physical location of Docker volumes is usually found under
+`\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes`. For
+more information on volumes see the [Use
+volumes](https://docs.docker.com/storage/volumes/) section in Docker's reference
+manual.
+
+## Build image {#build-image}
+
+Docker images are built using the `docker build` command. Here we build the
+image and set the image name to `pip-api`.
+
+``` {.bash}
+docker build -t pip-api .
+```
+
+You can also set a specific tag for the image. For example you can specify the
+version number or the base image used as source. How you decide to tag your
+images is up to you. Often a tag of `latest` (the default) will suffice, but in
+other instances keeping track of different versions of your development image
+will be useful.
+
+``` {.bash}
+# Set tag when building
+docker build -t pip-api:0.0.4
+# Set tag after build (version number) 
+docker image tag pip-api:latest pip-api:0.0.4
+# Set tag after build (base image)
+docker image tag pip-api:latest pip-api:ubi8 
+```
+
+Note that each layer in a Dockerfile is cached when built. These layers won't be
+re-run unless the code to produce that specific layer or a previous layer in the
+Dockerfile changes. This is handy for fast iterations, but can also cause the
+image to be outdated.
+
+If needed you can use the `--no-cache` flag to force a re-build. This is useful
+when you want to make sure that the latest Linux updates are installed or for
+updating the `{wbpip}` and `{pipapi}` R packages. See also the [Tips and
+Tricks](#tips-and-tricks) section on how to do partial re-builds.
+
+``` {.bash}
+docker build --no-cache -t pip-api .
+```
+
+## Run container {#run-container}
+
+Run the container by exposing port 80 and mounting a volume with the survey and
+auxiliary data. The data structure in the attached volume must correspond to the
+sub-folder specifications in `R/main.R`.
+
+``` {.bash}
+docker run --rm -d -p 80:80/tcp --mount src=pip-vol,target=/ipp,type=volume,readonly --name pip-api pip-api
+```
+
+Navigate to [`http://localhost/__docs__/`](localhost/__docs__/) to see the
+running API.
+
+For details on the `docker run` command and its options see the [Docker
+Docs](https://docs.docker.com/engine/reference/commandline/run/).
+
+## Debugging {#debugging}
+
+**Run container interactively:**
+
+Run the container in interactive mode, using the `-it` flag, to see output
+messages.
+
+``` {.bash}
+$ docker run --rm -it -p 80:80/tcp --mount src=pip-vol,target=/ipp,type=volume,readonly --name pip-api pip-api
+Running plumber API at http://0.0.0.0:80
+Running swagger Docs at http://127.0.0.1:80/__docs__/
+```
+
+**Inspect container:**
+
+For development purposes it can be useful to inspect the Docker container.
+Luckily it is very easy to enter a running container with the `docker exec`
+command.
+
+``` {.bash}
+# Enter the container as default user 
+$ docker exec -it pip-api /bin/bash
+plumber@bd8ea77299ca:/$ 
+# Enter the container as root user
+$ docker exec -it -u 0 pip-api /bin/bash
+root@bd8ea77299ca:/$ 
+```
+
+## Security {#security}
+
+Since the PIP Techincal Team is developing both the API and the Docker
+container, we also have a larger responsibility for security. When deploying to
+Azure the image will need to go through a security scan, provided by
+[Aquasec](https://blog.aquasec.com/), that is generally quite strict. Any high
+level vulnerability found by the Aquasec scan will result in a failed
+deployment. It is not possible to leverage Aquasec on local machines, but we can
+get an indication of potential vulnerabilites by taking advantage of the built
+in security scan that comes with Docker. Additionally it is also possible to
+scan the contents of the R packages used in the image.
+
+Note that neither the Snyk or Oyster scans described below are requirements from
+OIS. They are only included here as additional and preliminary tools.
+
+**Run image security scan:**
+
+Before deploying to Azure you can run preliminary security scans with Snyk. See
+[Vulnerability scanning for Docker local
+images](https://docs.docker.com/engine/scan/) and [Docker Security Scanning
+Guide 2021](https://snyk.io/learn/docker-security-scanning/) for details.
+
+``` {.bash}
+docker scan --file .\Dockerfile pip-api
+```
+
+It is important to note that the Aquasec scan that runs on Azure is different
+that the Snyk scan, and can detect different vulnerabilites. Even though few or
+zero vulnerabilites are found by Snyk, further issues might still be detected by
+Aquasec.
+
+**Run security scan for R packages:**
+
+You can scan the R packages inside the container with the `{oysteR}` package,
+which scans R projects against insecure dependencies using the [OSS
+Index](https://ossindex.sonatype.org/).
+
+First log into a running container as root, and start R.
+
+``` {.bash}
+$ docker exec -it -u 0 pip-api /bin/bash
+root@ab54fbf1eb36:/# R 
+```
+
+Then install the `{oyster}` package, and run an audit.
+
+``` {.r}
+install.packages("oysteR")
+library("oysteR")
+audit <- audit_installed_r_pkgs()
+get_vulnerabilities(audit)
+```
+
+Note that finding zero vulnerabilities is no guarantee against threats. For
+example is scanning of C++ code inside R packages not yet implemented. For more
+details and latest developments on the `{oyster}` package see the
+[README](https://github.com/sonatype-nexus-community/oysteR) on Github.
+
+## Base image options {#base-image-options}
+
+In the development process of the Dockerfile there have been used different base
+images.
+
+The current image in the main branch is based on `ubi8`, but other options
+(`rocker`, `centos8`) are available in seperate branches. These seperate
+branches will not be actively maintained, but should be kept in case there is a
+need to switch to another base image in the future.
+
+The main need to switch base image is likely to stem from the Azure DevOps
+security scan. For example do images based on `rocker` or `centos8` work well
+locally, but neither will pass deployment. CentOS images are unfortunately not
+on the list of approved images by OIS, while
+[Rocker](https://github.com/rocker-org/rocker-versioned2/) images (which are
+based on Ubuntu 20.04 LTS) currently has a vulnerability
+([CVE-2019-18276](https://ubuntu.com/security/CVE-2019-18276)) that is
+classified as a high level threat by Aqua Scan.
+
+In fact one of the Linux dependencies for R on UBI 8, `libX11`, also currently
+trigger a high level vulnerability
+([CVE-2020-14363](https://access.redhat.com/security/cve/CVE-2020-14363)) in
+Aqua Scan. Even though this issue has been solved in the offical RHEL 8 release,
+the issue still persist for UBI 8. It can however be solved by manually
+downloading a newer version of libX11 (1.6.12 or later), and removing the
+problematic version (1.6.8).
+
+In case there is any need to develop with other base images in the future it is
+**strongly recommended** to start with one of the Linux distributions where
+[RStudio provides precompiled binaries for
+R](https://docs.rstudio.com/resources/install-r/). This avoids the need to
+install R from source.
+
+## Deploying to Azure {#deploying-to-azure}
+
+The Azure repo consists of three branches; DEV, QA and PROD. The PIP Techincal
+Team has access to the first two, while ITS will handle deployments to
+Production.
+
+Conduct deployments in the following order:
+
+**Local:**
+
+1.  Build image from scratch (wo/ caching).
+2.  Update your volume with the latest available data (sync with [TFS DEV data
+    repo](https://tfs.worldbank.org/tfs/ITSOC%20Collection2/ITSES-POVERTYSCOREAPI/_git/ITSES-POVERTYSCORE-DATA)).
+3.  Run the container in interactive mode and test the API.\
+4.  [Optional] Scan the image w/ Snyk for potential vulnerabilites.
+
+**DEV:**
+
+1.  Copy the Dockerfile in question to your local TFS repo, e.g. use
+    `copy-dockerfile.ps1 -outdir '../ITSES-POVERTYSCOREAPI`.
+2.  Commit and push in to the TFS remote repo.
+3.  Go to the [Release
+    pipline](https://tfs.worldbank.org/tfs/ITSOC%20Collection2/ITSES-POVERTYSCOREAPI/_release?_a=releases&view=mine&definitionId=2)
+    to see results from the image build and security scan.
+4.  Vist the [DEV](https://ippscoreapidev.aseqa.worldbank.org/__docs__/) website
+    for further testing.
+
+**QA:**
+
+1.  After checking that the DEV build is working correctly, you can commit to QA
+    by creating a PR and merge this to the QA branch.
+2.  Go to the [Release
+    pipline](https://tfs.worldbank.org/tfs/ITSOC%20Collection2/ITSES-POVERTYSCOREAPI/_release?_a=releases&view=mine&definitionId=3)
+    to see results from the image build and security scan.
+3.  Vist the [QA](https://ippscoreapiqa.asestg.worldbank.org/__docs__/) website
+    for further testing.
+
+**PROD:**
+
+TBD.
+
+## Tips and tricks {#tips-and-tricks}
+
+1.  Start your Docker working day by opening a CMD shell in admin-mode and run
+    `sc config LxssManager start=auto`. Keep the shell open because you might
+    need to re-run the command if WSL crashes.
+2.  Turn off your VPN when using Docker. This avoids the issue with WSL crashing
+    from time to time. It still might happen though if the VPN switces on
+    automatically or if you for other reasons switch back and forth.
+3.  If WSL causes too much pain, try switching to the legacy Hyper-V backend.
+    (Go to Docker Desktop -\> General Setting -\> Use the WSL 2 based engine).
+4.  Re-build an image from a partial cache by adding a `ARG` or `ENV` variable
+    right before the layer you want to invalidate (yes, this is hacky but it
+    works). E.g. do something like:
+
+``` {.dockerfile}
+# Install PIP specific R packages 
+ENV test=test06302021
+RUN Rscript -e "remotes::install_github('PIP-Technical-Team/wbpip@master', repos = '${CRAN}')"
+RUN Rscript -e "remotes::install_github('PIP-Technical-Team/pipapi@master', repos = '${CRAN}')"
+```
+
+## Installation on World Bank laptops
+
+*Last updated: 4/19/2021*
+
+1.  Install [Docker
+    Dekstop](https://docs.docker.com/docker-for-windows/release-notes/) (v.
+    3.3.0 or later)
+
+    -   Remember to check the box to enable WSL integration.
+
+2.  Activate WSL
+
+    -   Check if the WSL feature on Windows is activated (e.g. run `wsl --help`
+        from Powershell). If it is then proceed to step 3. Note: If you get a
+        message saying "service cannot be started" try restarting WSL like
+        suggested below under [Known problems and
+        solutions](#known-problems-and-solutions).
+    -   Go to Control Panel -\> Programs -\> Turn Windows features on or off and
+        check the box *Windows Subsystem for Linux*, or follow [these
+        steps](https://docs.microsoft.com/en-us/windows/wsl/install-win10) if
+        you prefer to activate WSL from the command line.
+    -   Reboot system.
+
+3.  Install WSL 2
+
+    -   Download and install the [Linux kernel update
+        package](https://docs.microsoft.com/windows/wsl/wsl2-kernel).
+    -   Set WSL 2 as your default version (run `wsl --set-default-version 2`
+        from Powershell).
+
+4.  Configure Docker access privileges
+
+    -   In order to run Docker wo/ admin privileges you need to add yourself to
+        the "docker-users" group.
+    -   Open Computer Management. Go to Local User and Groups -\> Groups -\>
+        docker-users and add your regular account (`WB/wb<UPI>`) to the list of
+        users.
+    -   Reboot system.
+
+5.  Start Docker Desktop and enjoy your hard work :-)
+
+### Known problems and solutions {#known-problems-and-solutions .unnumbered}
+
+Docker Dekstop sometimes fails with the following error.
+
+    System.InvalidOperationException:
+    Failed to deploy distro docker-desktop to C:\Users\<User>\AppData\Local\Docker\wsl\distro: exit code: -1
+    stdout: Error: 0xffffffff
+
+The root cause of this problem is unclear, but many users online report similar
+issues. The best solution I have found so far is to open a CMD shell in Admin
+mode, and then run the following code to restart `LxssManager` / `wsl` .
+
+``` {.cmd}
+> sc config LxssManager start=auto
+[SC] ChangeServiceConfig SUCCESS
+```
+
+After this you will also need to restart Docker Desktop.
+
+It is possible that the World Bank VPN connection is contributing to the error.
+Turning of your VPN completly while you are using Docker might help in avoiding
+the issue.
+
+## Usage
+
+## Resources {#resources}
+
+See [Best practices for writing
+Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+for advice on how to build Docker images.
+
+Follow the [Docker for Windows release
+notes](https://docs.docker.com/docker-for-windows/release-notes/) for
+information on new releases and bug fixes.
