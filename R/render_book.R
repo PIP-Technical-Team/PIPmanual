@@ -6,6 +6,7 @@ file <- "intro.Rmd"
 file <- "load_md_aux.Rmd"
 file <- "auxiliary_data.Rmd"
 file <- "price_framework.Rmd"
+file <- "welfare_data.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 

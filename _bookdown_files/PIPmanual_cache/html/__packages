@@ -1,10 +1,6 @@
 base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 data.table
 pipaux
 pipload
+knitr
+here
