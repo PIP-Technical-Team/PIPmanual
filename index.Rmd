@@ -1,4 +1,4 @@
---- 
+---
 title: "PIP Manual"
 author: ["DECIS", "Poverty GP"]
 date: "`r Sys.Date()`"
@@ -7,79 +7,35 @@ documentclass: book
 bibliography: [PIP_internal_Guidelines.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "These are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow."
+description: "These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow."
 ---
 
+```{r setup, include=FALSE}
+library(knitr)
 
-::: {.rmdbox .rmdwarning}
-DISCLAIMER: This book contains relevant only for the internal Technical team of the PIP project. It has been made available to the public for the sake of transparency, but its information has no use outside the internal team.
-:::
+here::i_am("index.Rmd")
+library(here)
 
-
-# Prerequisites {-}
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-
-set.seed(1234)
-options(digits = 3)
-
-knitr::opts_chunk$set(
-  comment = "#>",
+## Global options
+# options(max.print="75")
+opts_chunk$set(
+  # echo    = FALSE,
+  cache   = TRUE,
+  prompt  = FALSE,
+  tidy    = FALSE,
+  comment = NA,
+  message = FALSE,
   warning = FALSE
-  #collapse = TRUE,
-  #cache = TRUE,
-  #out.width = "70%",
-  #fig.align = 'center',
-  #fig.width = 6,
-  #fig.asp = 0.618,  # 1 / phi
-  #fig.show = "hold"
 )
 
-options(dplyr.print_min = 6, 
-        dplyr.print_max = 6)
-
-ipkg <- utils::installed.packages()[,1]
-if (!("emo"  %in% ipkg)){
-  remotes::install_github("hadley/emo")
-}
-
+opts_knit$set(width=75)
 ```
 
 
-## Technical requirements
-You need to make sure the `bookdown` package is installed in your computer
-```{r eval=FALSE}
-install.packages("bookdown")
+# Welcome! {.unnumbered}
 
-# or the development version
- devtools::install_github("rstudio/bookdown")
-```
+These are the internal guidelines for the technical process of the PIP project. Visit the [Github repository for this book](https://github.com/PIP-Technical-Team/PIPmanual). 
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+## Team {-}
 
-
-Make sure to install the latest version of PIP R packages by typing the following
-
-```{r, eval=FALSE}
-ipkg <- utils::installed.packages()[,1]
-
-pip_install <- function(pkg, ipkg) {
-  if (isFALSE(pkg %in% ipkg)) {
-    gitcall <- paste0("PIP-Technical-Team/", pkg)
-    remotes::install_github(gitcall, dependencies = TRUE)
-    TRUE
-  } else {
-    FALSE
-  }
-}
-
-pkgs <- c("pipload", "pipaux", "wbpip", "piptb", "pipdm", "pipapi")
-
-
-purrr::walk(pkgs, pip_install, ipkg = ipkg)
-
-```
+The PIP technical team is composed of .... 

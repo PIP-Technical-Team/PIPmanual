@@ -1,14 +1,15 @@
 bookdown::bs4_book:
   theme:
-    primary: "#982a31"
+    primary: "#012E67"
     fg: "#2b2121"
     bg: "#ffffff"
   repo: https://github.com/PIP-Technical-Team/PIPmanual/
   css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css]
 
 bookdown::gitbook:
+  highlight: tango
   includes:
-    in_header: files/hypothesis.html
+    # in_header: files/hypothesis.html
     before_body: files/open_review_block.html
   css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css]
   config:
