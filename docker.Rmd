@@ -1,6 +1,6 @@
 # Docker Container {#docker}
 
-[Note: Aleksander, please complete this sectiona and make everything makes sense
+[Note: Aleksander, please complete this section and make everything makes sense
 and the links work]{style="color:red"}
 
 ## Introduction
@@ -12,19 +12,6 @@ Calculator API on local World Bank laptops. For DEV, QA and Production
 deployments on Azure please refer to the [TFS
 repository](https://tfs.worldbank.org/tfs/ITSOC%20Collection2/_git/ITSES-POVERTYSCOREAPI).
 For details see the section [Deploying to Azure](#deploying-to-azure).
-
-## Table of Contents
-
-1.  [Prerequisites](#prerequisites)
-2.  [Create volume](#create-volume)
-3.  [Build image](#build-image)
-4.  [Run container](#run-container)
-5.  [Debugging](#debugging)
-6.  [Security](#security)
-7.  [Base image options](#base-image-options)
-8.  [Deploying to Azure](#deploying-to-azure)
-9.  [Tips and tricks](#tips-and-tricks)
-10. [Resources](#resources)
 
 ## Prerequisites {#prerequisites}
 
