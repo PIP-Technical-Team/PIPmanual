@@ -130,8 +130,6 @@ updated with `pip_gdp_weo()`, which is an internal function fo
 `pipaux::pip_gdp_update()`. Hopefully in the future IMF will stop using an
 \`.xls\` file that's not really xls.
 
-[Note: explanation of special cases provided by Samuel.]{style="color:red"}
-
 ### Consumption (PCE)
 
 Private Consumption Expenditure (pce) is gathered from WDI, with the exception
@@ -177,7 +175,7 @@ following cases[^auxiliary_data-1]:
     papers---@kostialSyriaConflictEconomy2016Gobat (for 2011-2015) and
     @devadasGrowthWarSyria2019 (for 2016-2019)---and are chained on backward
     with growth rates in GDP per capita from WEO. See
-    *P:\\01.PovcalNet\\03.QA\\04.NationalAccounts\\data\\NAS special_2021-01-14*
+    *y:/PIP-Data/_aux/sna/*
     for more details on how this is implemented.
 
 4.  National accounts data need to be adjusted for the purposes of global
@@ -187,7 +185,7 @@ following cases[^auxiliary_data-1]:
     and urban India after 2014, precisely HFCE (or formerly PCE) per capita from
     WDI, are adjusted with a pass-through rate of 67%, as described in Section 5
     of @castanedaaguilarSeptember2020PovcalNet2020. See
-    *P:\\01.PovcalNet\\03.QA\\04.NationalAccounts\\data\\NAS special_2021-01-14*
+    *y:/PIP-Data/_aux/sna/NAS special_2021-01-14.csv*
     for more details on how this is implemented.
 
 ## CPI

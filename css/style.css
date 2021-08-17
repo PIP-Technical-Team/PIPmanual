@@ -1,0 +1,140 @@
+.goog-te-banner-frame.skiptranslate {display: none !important;}
+    body { top: 0px !important; }
+
+.h-icon-chevron-left {
+    background: white;
+	    padding: 3px;
+	    border: #eee 1px solid;
+	    color: #666;
+	  }
+
+
+.fa-rotate-315 {
+    -webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    transform: rotate(315deg);
+}
+
+
+.rmdbox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f5f5f5 5px center/3em no-repeat;
+}
+.rmdcaution {
+  background-image: url("../img/caution.png");
+}
+.rmdimportant {
+  background-image: url("../img/important.png");
+}
+.rmdnote {
+  background-image: url("../img/note.png");
+}
+.rmdtip {
+  background-image: url("../img/tip.png");
+}
+.rmdwarning {
+  background-image: url("../img/warning.png");
+}
+
+.rmdreview {
+  padding: 1em 1em 1em 5em;
+  margin-bottom: 0px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  position:relative;
+}
+
+.rmdreview:before {
+    content: "\f0e6";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:10px;
+    bottom: 0px;
+    font-size: 60px;
+ }
+
+ .rmdsale {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 0px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  position:relative;
+}
+
+.rmdsale:before {
+    content: "\f07a";
+    font-family: FontAwesome;
+    left:10px;
+    position:absolute;
+    top:15px;
+    bottom: 0px;
+    font-size: 40px;
+ }
+
+.rmdtranslate {
+  padding: 1em 1em 1em 5em;
+  margin-bottom: 0px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  position:relative;
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+/* This part comes from
+https://github.com/EmilHvitfeldt/smltar/blob/master/style.css
+*/
+
+
+.book .book-body .page-wrapper .page-inner section.normal {
+  overflow: visible !important; /*so anchor link doesnt get cut off */
+}
+
+a.anchor {
+  margin-left: -30px;
+  padding-right: 3px;
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(https://image.flaticon.com/icons/svg/34/34735.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 20px 20px !important;
+  background-position: center bottom !important;
+  opacity: 0;
+}
+
+
+.hasAnchor:hover a.anchor, a.anchor:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 1144px) { /* dont show anchor link on small screens */
+  .hasAnchor:hover a.anchor {
+visibility: hidden;
+  }
+}
+
+
+
+
+
+
+
+
+
+

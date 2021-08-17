@@ -17,13 +17,20 @@ rmd_files: [
   "Folder_structure.Rmd",
   "joining_data.Rmd",
 
-  "welfare_data.Rmd",
-  "auxiliary_data.Rmd",
   "price_framework.Rmd",
   "PRIMUS.Rmd",
+  "welfare_data.Rmd",
+  "auxiliary_data.Rmd",
+
+  "pc_pipeline.Rmd",
+  "tm_pipeline.Rmd",
 
   "load_md_aux.Rmd",
-  "pc_pipeline.Rmd",
+  "docker.Rmd",
+  "azure.Rmd",
 
   "references.Rmd",
 ]
+
+before_chapter_script: "_common.R"
+

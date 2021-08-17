@@ -1,4 +1,4 @@
-# (PART) Technical Considerations {.unnumbered}
+# (PART) Standalone Technical Considerations {.unnumbered}
 
 # Load microdata and Auxiliary data {#load}
 

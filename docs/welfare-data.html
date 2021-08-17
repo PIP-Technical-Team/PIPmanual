@@ -4,35 +4,35 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Welfare data | PIP Manual</title>
-  <meta name="description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <title>Chapter 7 Welfare data | PIP Manual</title>
+  <meta name="description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Welfare data | PIP Manual" />
+  <meta property="og:title" content="Chapter 7 Welfare data | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta property="og:description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Welfare data | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 7 Welfare data | PIP Manual" />
   
-  <meta name="twitter:description" content="This is are the guidelines to all the technical and methodological decisions taken during the creation of packges for the PIP workflow." />
+  <meta name="twitter:description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
   
 
 <meta name="author" content="DECIS" />
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-07-13" />
+<meta name="date" content="2021-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="joining-data.html"/>
+<link rel="prev" href="primus.html"/>
 <link rel="next" href="auxiliary-data.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -86,39 +86,38 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  background-color: #f8f8f8; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <style type="text/css">
@@ -144,7 +143,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/r-colors.css" type="text/css" />
+<link rel="stylesheet" href="css/smltar.css" type="text/css" />
 </head>
 
 <body>
@@ -157,12 +159,19 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">PIP Manual</a></li>
+<li><strong><a href="./">PIP Internal Guidelines</a></strong></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#team"><i class="fa fa-check"></i>Team</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction</b></span></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#ojectives"><i class="fa fa-check"></i><b>1.1</b> Ojectives</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#technical-requirements"><i class="fa fa-check"></i><b>1.2</b> Technical requirements</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="internal-workflow.html"><a href="internal-workflow.html"><i class="fa fa-check"></i><b>2</b> Internal Workflow</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="internal-workflow.html"><a href="internal-workflow.html#the-github-group"><i class="fa fa-check"></i><b>2.1</b> The Github group</a></li>
@@ -183,45 +192,9 @@ div.csl-indent {
 <li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases</a></li>
 </ul></li>
 <li class="part"><span><b>II PIP data</b></span></li>
-<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<li class="chapter" data-level="5" data-path="pfw-chapter.html"><a href="pfw-chapter.html"><i class="fa fa-check"></i><b>5</b> Price FrameWork (pfw) data frame</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#welfare-origin-of-data"><i class="fa fa-check"></i><b>5.1</b> Origin of data</a></li>
-<li class="chapter" data-level="5.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>5.2</b> From GMD to PIP ({pipdp} package)</a></li>
-<li class="chapter" data-level="5.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-nomenclature"><i class="fa fa-check"></i><b>5.3</b> Survey ID nomenclature</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts"><i class="fa fa-check"></i><b>6.2</b> National Accounts</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2.1</b> GDP</a></li>
-<li class="chapter" data-level="6.2.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.2.2</b> Consumption (PCE)</a></li>
-<li class="chapter" data-level="6.2.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts-special-cases"><i class="fa fa-check"></i><b>6.2.3</b> National Accounts, Special Cases</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.3</b> CPI</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data"><i class="fa fa-check"></i><b>6.3.1</b> Raw data</a></li>
-<li class="chapter" data-level="6.3.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#vintage-control"><i class="fa fa-check"></i><b>6.3.2</b> Vintage control</a></li>
-<li class="chapter" data-level="6.3.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-1"><i class="fa fa-check"></i><b>6.3.3</b> Data structure</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.4</b> PPP</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.4.1</b> Original data</a></li>
-<li class="chapter" data-level="6.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>6.4.2</b> Data structure</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.5</b> Price FrameWork (PFW)</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
-</ul></li>
-<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#abbreviations"><i class="fa fa-check"></i><b>6.6</b> Abbreviations</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="pfw-chapter.html"><a href="pfw-chapter.html"><i class="fa fa-check"></i><b>7</b> Price FrameWork (pfw) data frame</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="pfw-chapter.html"><a href="pfw-chapter.html#variables"><i class="fa fa-check"></i><b>7.1</b> Variables</a>
+<li class="chapter" data-level="5.1" data-path="pfw-chapter.html"><a href="pfw-chapter.html#variables"><i class="fa fa-check"></i><b>5.1</b> Variables</a>
 <ul>
 <li class="chapter" data-level="" data-path="pfw-chapter.html"><a href="pfw-chapter.html#id-vars"><i class="fa fa-check"></i>ID vars</a></li>
 <li><a href="pfw-chapter.html#altname"><code>altname</code></a></li>
@@ -273,69 +246,134 @@ div.csl-indent {
 <li><a href="pfw-chapter.html#pfw_id"><code>pfw_id</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>8</b> PRIMUS</a>
+<li class="chapter" data-level="6" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>6</b> PRIMUS</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>8.1</b> Interacting with PRIMUS</a>
+<li class="chapter" data-level="6.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>6.1</b> Interacting with PRIMUS</a>
 <ul>
 <li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
 <li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
 <li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>8.2</b> Understanding PRIMUS</a></li>
-<li class="chapter" data-level="8.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>8.3</b> Checking PRIMUS estimates</a></li>
-<li class="chapter" data-level="8.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>8.4</b> Confirming and approving data in PRIMUS</a></li>
+<li class="chapter" data-level="6.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>6.2</b> Understanding PRIMUS</a></li>
+<li class="chapter" data-level="6.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>6.3</b> Checking PRIMUS estimates</a></li>
+<li class="chapter" data-level="6.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>6.4</b> Confirming and approving data in PRIMUS</a></li>
 </ul></li>
-<li class="part"><span><b>III Technical Considerations</b></span></li>
-<li class="chapter" data-level="9" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>9</b> Load microdata and Auxiliary data</a>
+<li class="chapter" data-level="7" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>7</b> Welfare data</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>9.1</b> Auxiilary data</a>
+<li class="chapter" data-level="7.1" data-path="welfare-data.html"><a href="welfare-data.html#welfare-origin-of-data"><i class="fa fa-check"></i><b>7.1</b> From Raw to GMD</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>9.1.1</b> udpate data</a></li>
-<li class="chapter" data-level="9.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>9.1.2</b> Load data</a></li>
+<li class="chapter" data-level="7.1.1" data-path="welfare-data.html"><a href="welfare-data.html#microdata"><i class="fa fa-check"></i><b>7.1.1</b> Microdata</a></li>
+<li class="chapter" data-level="7.1.2" data-path="welfare-data.html"><a href="welfare-data.html#group-data"><i class="fa fa-check"></i><b>7.1.2</b> Group Data</a></li>
+<li class="chapter" data-level="7.1.3" data-path="welfare-data.html"><a href="welfare-data.html#bin-data"><i class="fa fa-check"></i><b>7.1.3</b> Bin Data</a></li>
+<li class="chapter" data-level="7.1.4" data-path="welfare-data.html"><a href="welfare-data.html#synthetic-data"><i class="fa fa-check"></i><b>7.1.4</b> Synthetic Data</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="load.html"><a href="load.html#microdata"><i class="fa fa-check"></i><b>9.2</b> Microdata</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>9.2.1</b> Inventory file</a></li>
-<li class="chapter" data-level="9.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>9.2.2</b> Finding data</a></li>
-<li class="chapter" data-level="9.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>9.2.3</b> Loading data</a></li>
+<li class="chapter" data-level="7.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>7.2</b> From GMD to PIP ({pipdp} package)</a></li>
+<li class="chapter" data-level="7.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id"><i class="fa fa-check"></i><b>7.3</b> Survey ID nomenclature</a></li>
+<li class="chapter" data-level="7.4" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-cache"><i class="fa fa-check"></i><b>7.4</b> Survey CACHE ID nomenclature</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>10</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
+<li class="chapter" data-level="8" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>8</b> Auxiliary data</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure-1"><i class="fa fa-check"></i><b>10.1</b> Folder structure</a>
+<li class="chapter" data-level="8.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>8.1</b> Population</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>8.1.1</b> Original data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>8.1.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts"><i class="fa fa-check"></i><b>8.2</b> National Accounts</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>8.2.1</b> GDP</a></li>
+<li class="chapter" data-level="8.2.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>8.2.2</b> Consumption (PCE)</a></li>
+<li class="chapter" data-level="8.2.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts-special-cases"><i class="fa fa-check"></i><b>8.2.3</b> National Accounts, Special Cases</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>8.3</b> CPI</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data"><i class="fa fa-check"></i><b>8.3.1</b> Raw data</a></li>
+<li class="chapter" data-level="8.3.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#vintage-control"><i class="fa fa-check"></i><b>8.3.2</b> Vintage control</a></li>
+<li class="chapter" data-level="8.3.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-1"><i class="fa fa-check"></i><b>8.3.3</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>8.4</b> PPP</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>8.4.1</b> Original data</a></li>
+<li class="chapter" data-level="8.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>8.4.2</b> Data structure</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>8.5</b> Price FrameWork (PFW)</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-2"><i class="fa fa-check"></i><b>8.5.1</b> Original data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#abbreviations"><i class="fa fa-check"></i><b>8.6</b> Abbreviations</a></li>
+</ul></li>
+<li class="part"><span><b>III PIP Procedures</b></span></li>
+<li class="chapter" data-level="9" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>9</b> Poverty Calculator Pipeline (pre-computed estimations)</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure-1"><i class="fa fa-check"></i><b>9.1</b> Folder structure</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#folders"><i class="fa fa-check"></i>Folders</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#files"><i class="fa fa-check"></i>Files</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites-1"><i class="fa fa-check"></i><b>10.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="10.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>10.3</b> Structure of the <code>_targets.R</code> file</a>
+<li class="chapter" data-level="9.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites"><i class="fa fa-check"></i><b>9.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="9.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>9.3</b> Structure of the <code>_targets.R</code> file</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#start-up"><i class="fa fa-check"></i>Start up</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-1-small-functions"><i class="fa fa-check"></i>Step 1: small functions</a></li>
-<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-2-prepare-data"><i class="fa fa-check"></i>Step 2: prepare data</a></li>
-<li class="chapter" data-level="10.3.1" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i><b>10.3.1</b> Step 3: The actual pipeline</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-2-preparing-the-data"><i class="fa fa-check"></i>Step 2: preparing the data</a></li>
+<li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i>Step 3: The actual pipeline</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>10.4</b> Understanding the pipeline</a>
+<li class="chapter" data-level="9.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>9.4</b> Understanding the pipeline</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#stem-targets"><i class="fa fa-check"></i>Stem targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>10.5</b> Understanding <code>{pipdm}</code> functions</a>
+<li class="chapter" data-level="9.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>9.5</b> Understanding <code>{pipdm}</code> functions</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>10.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
-<li class="chapter" data-level="10.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>10.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
+<li class="chapter" data-level="9.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>9.5.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
+<li class="chapter" data-level="9.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>9.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>10.6</b> Executing the <code>_targets.R</code> file</a></li>
-<li class="chapter" data-level="10.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>10.7</b> Debugging</a>
+<li class="chapter" data-level="9.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>9.6</b> Executing the <code>_targets.R</code> file</a></li>
+<li class="chapter" data-level="9.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>9.7</b> Debugging</a>
 <ul>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-stem-targets"><i class="fa fa-check"></i>Debugging stem targets</a></li>
 <li class="chapter" data-level="" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging-branch-targets"><i class="fa fa-check"></i>Debugging branch targets</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="tmpipelilne.html"><a href="tmpipelilne.html"><i class="fa fa-check"></i><b>10</b> Table Maker Pipeline</a></li>
+<li class="part"><span><b>IV Standalone Technical Considerations</b></span></li>
+<li class="chapter" data-level="11" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>11</b> Load microdata and Auxiliary data</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>11.1</b> Auxiilary data</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>11.1.1</b> udpate data</a></li>
+<li class="chapter" data-level="11.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>11.1.2</b> Load data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="load.html"><a href="load.html#microdata-1"><i class="fa fa-check"></i><b>11.2</b> Microdata</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>11.2.1</b> Inventory file</a></li>
+<li class="chapter" data-level="11.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>11.2.2</b> Finding data</a></li>
+<li class="chapter" data-level="11.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>11.2.3</b> Loading data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>12</b> Docker Container</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="docker.html"><a href="docker.html#introduction"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites"><i class="fa fa-check"></i><b>12.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="12.3" data-path="docker.html"><a href="docker.html#create-volume"><i class="fa fa-check"></i><b>12.3</b> Create volume</a></li>
+<li class="chapter" data-level="12.4" data-path="docker.html"><a href="docker.html#build-image"><i class="fa fa-check"></i><b>12.4</b> Build image</a></li>
+<li class="chapter" data-level="12.5" data-path="docker.html"><a href="docker.html#run-container"><i class="fa fa-check"></i><b>12.5</b> Run container</a></li>
+<li class="chapter" data-level="12.6" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>12.6</b> Debugging</a></li>
+<li class="chapter" data-level="12.7" data-path="docker.html"><a href="docker.html#security"><i class="fa fa-check"></i><b>12.7</b> Security</a></li>
+<li class="chapter" data-level="12.8" data-path="docker.html"><a href="docker.html#base-image-options"><i class="fa fa-check"></i><b>12.8</b> Base image options</a></li>
+<li class="chapter" data-level="12.9" data-path="docker.html"><a href="docker.html#deploying-to-azure"><i class="fa fa-check"></i><b>12.9</b> Deploying to Azure</a></li>
+<li class="chapter" data-level="12.10" data-path="docker.html"><a href="docker.html#tips-and-tricks"><i class="fa fa-check"></i><b>12.10</b> Tips and tricks</a></li>
+<li class="chapter" data-level="12.11" data-path="docker.html"><a href="docker.html#installation-on-world-bank-laptops"><i class="fa fa-check"></i><b>12.11</b> Installation on World Bank laptops</a>
+<ul>
+<li class="chapter" data-level="" data-path="docker.html"><a href="docker.html#known-problems-and-solutions"><i class="fa fa-check"></i>Known problems and solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="12.12" data-path="docker.html"><a href="docker.html#usage"><i class="fa fa-check"></i><b>12.12</b> Usage</a></li>
+<li class="chapter" data-level="12.13" data-path="docker.html"><a href="docker.html#resources"><i class="fa fa-check"></i><b>12.13</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="azure.html"><a href="azure.html"><i class="fa fa-check"></i><b>13</b> Deployment in Azure server</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/PIP-Technical-Team/PIPmanual" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -354,19 +392,243 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="welfare-data" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Welfare data</h1>
-<p>blah blah blah</p>
-<div id="welfare-origin-of-data" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Origin of data</h2>
-<p>blah</p>
+<div class="rmdbox rmdwarning"><strong>DISCLAIMER:</strong> This book contains relevant only for the internal Technical team of the PIP project. It has been made available to the public for the sake of transparency, but its information has no use outside the internal team.
+ </div>
+<div id="welfare-data" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Welfare data</h1>
+<p>Welfare data refers to any data file that contains the welfare vector that
+underlies the poverty and inequality measures in each country/year/welfare type.
+PIP makes use of four different data kinds to store the welfare vectors:
+microdata, bin data, group data, and synthetic data. Each of these is collected,
+formatted, and stored in a particular way.</p>
+<div id="welfare-origin-of-data" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> From Raw to GMD</h2>
+<div id="microdata" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Microdata</h3>
+<p><span style="color:red">Minh: Could you please add an explanation here?</span></p>
 </div>
-<div id="from-gmd-to-pip" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> From GMD to PIP ({pipdp} package)</h2>
-<p>blah</p>
+<div id="group-data" class="section level3" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Group Data</h3>
+<p><span style="color:red">Minh: Could you please explain who gets the original group data and how it is formatted?</span> We still need to develop the code to format original group data to PIP structure. Right now, we are still using Povcalnet’s code.</p>
 </div>
-<div id="survey-id-nomenclature" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Survey ID nomenclature</h2>
+<div id="bin-data" class="section level3" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Bin Data</h3>
+<p>Some of the countries that are not available in DataLibWeb can be found in the
+repository of the <a href="https://www.lisdatacenter.org/">LIS Cross-National Data
+Center</a> (hereafter, LIS). Currently, PovcalNet
+uses LIS data for 8 high-income economies: AUS, CAN, DEU, ISR, JPN, KOR, TWN &amp;
+USA, plus the Pre-EUSILC years (generally before 2002) of European Economies.</p>
+<p>LIS datasets cannot be downloaded in full; however, they provide a
+remote-execution system,
+<a href="http://www.lisdatacenter.org/data-access/lissy/">LISSY,</a> that allows us
+interact with their microdata without having access to the individual records.
+We have developed a set of Stata do-files to interact with LISSY and aggregate
+the welfare distribution of our countries of interest to 400 bins. Then, these
+data is organized locally and shared with the Poverty GP to be included in
+DataLibWeb as a collection independent from GPWG.</p>
+<div id="the-lis_data-repository" class="section level4 unnumbered">
+<h4>The LIS_data repository</h4>
+<p>In order to work with the LIS data you need to clone the repository
+<a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>. You
+will find in there three folders, <em>00.LIS_output</em>, <em>01.programs</em>, and
+<em>02.data</em>.</p>
+</div>
+<div id="interacting-with-lissy" class="section level4 unnumbered">
+<h4>Interacting with LISSY</h4>
+<p><strong>Opening an account in LISSY:</strong></p>
+<p>To interact with the LIS data you need to first register
+<a href="http://www.lisdatacenter.org/lis-luli-frontend-webapp/app/request-account-identification"><strong>here</strong></a>,
+by first completing the <a href="http://www.lisdatacenter.org/wp-content/uploads/our-microdata-user-registration-form.pdf">LIS microdata User Registration
+Form</a>,
+and then submitting it through the same website using your <strong>institutional
+e-mail</strong> account. Within a couple of days, you will receive an e-mail from LIS
+containing your username and password.</p>
+<div class="rmdbox rmdnote">
+<p><em>You do not get to choose your own username or password. LISdatacenter creates
+both for you and those won’t change in time. Make sure to save that e-mail and
+record that information for your future log-ins. Also, know that LISSY passwords
+expire each year on December 31st. While your password won’t change, it must be
+<strong>renewed</strong><a href="http://www.lisdatacenter.org/lis-luli-frontend-webapp/app/request-renew-identification">here</a>
+after January 1st.</em></p>
+</div>
+<p><strong>Interacting with LISSY:</strong></p>
+<p>To get acquainted with LISSY’s interface, coding structure, database naming and
+variables available, and learn how to compute estimates within LISSY we highly
+recommend taking some time to review the
+<a href="https://www.lisdatacenter.org/resources/"><strong>tutorials</strong></a> and <a href="https://www.lisdatacenter.org/resources/self-teaching/"><strong>self-teaching
+materials</strong></a>. However,
+in order to update the 400 bins twice a year, Stata codes have been previously
+written, so you simply need to follow the 5 steps in the next section.</p>
+</div>
+<div id="getting-the-400-bins-from-lissy" class="section level4 unnumbered">
+<h4>Getting the 400 bins from LISSY</h4>
+<p><strong>1. log in</strong> Go to <a href="https://www.lisdatacenter.org/">LIS main page</a>, scroll
+down and click on the lock icon <img src="images/LIS_login.JPG" width="113" /></p>
+<p><strong>2. Provide info</strong> Feed the three drop-down menus on top of the platform with the following
+information:</p>
+<ul>
+<li><p>Project: <strong>LIS</strong></p></li>
+<li><p>Package: <strong>Stata</strong></p></li>
+<li><p>Subject: (<em>Choose a name</em> Ex: “<strong>Bins #1 - Dec 2020</strong>”)</p></li>
+</ul>
+<div class="rmdbox rmdimportant">
+<p>The LISSY platform cannot run the code for ALL surveys available at once. If you
+attempt to do so, your project will stop and you will receive an e-mail
+containing the text:</p>
+<pre><code>#####################################################
+  Your job has been killed and will be not executed  
+#####################################################</code></pre>
+<p>To avoid this, we need to run the code in groups of 5 to 6 countries, depending
+on the amount of years in each of them. Currently, LIS has data for <u>52
+countries</u> (26 of them are in the EUSILC project, and 26 do not) which
+usually take approximately <u>10 rounds</u> of this process.</p>
+</div>
+<p><strong>3. Add do-file</strong> Copy and paste the entire content of <code>01.LIS_400bins.do</code> file into
+the the main large command window and update the locals in lines 23-24 with the
+LIS 2-letter acronyms of the group of 5-6 countries in each round.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="welfare-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> silc   <span class="st">&quot;at be cz&quot;</span></span>
+<span id="cb25-2"><a href="welfare-data.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> nosilc <span class="st">&quot;au br&quot;</span></span></code></pre></div>
+<div class="rmdbox rmdtip">
+<p>Remember to update the subject with each round (Ex: “Bins #2 - Dec 2020”)
+so you keep track of the number of output files. Be careful not to leave out
+[or repeat] any country in the process.</p>
+</div>
+<p><strong>4 Submit</strong>. Click on the green arrow <img src="images/LIS_submit_job.JPG" width="18" height="15" />icon to submit your project. You will get an e-mail within some
+minutes with your output. If the system kills your project, your group of
+countries was probably too large. Remove one country and try again.</p>
+<p><strong>5. Retrieve results</strong> Copy the entire text in the output e-mail you receive for each round,
+open your notepad and paste. Save each round in the <strong><em>\00.LIS_output</em></strong>
+folder. Save each text file with the name <strong>LISSY_Dec202@_#.txt</strong>, [where @
+is the year and # the round]. Consistency with this naming format is important
+for the next step (<code>02.LIS_organize_output.do</code> file)</p>
+</div>
+<div id="from-text-file-to-datalibweb-structure" class="section level4 unnumbered">
+<h4>From Text file to datalibweb structure</h4>
+<p>We now need to convert the the text files generated by the LISSY system to
+actual data suitable for datalibweb. This structure is suggested by the
+<a href="https://ihsn.org/">International Household Survey Network</a> (IHSN). Once the
+data is saved in folder <code>00.LIS_output</code> you need to execute the file
+<strong><code>02.LIS_organize_output.do</code></strong>. This file created to be executed in just one
+go. However, it could be ran in sections taking advantage of the different
+<a href="https://www.stata.com/new-in-stata/multiple-datasets-in-memory/">frames</a> along
+the code.</p>
+<p>Before you execute this code, you need to ensure a few things,</p>
+<p><strong>1. Get <code>rcall</code> working in your computer</strong></p>
+<p>The processing of the text files is not done anymore on Stata but in R. To avoid
+changing systems, we need to execute R code directly from Stata. In order to do
+this, you need to make sure to have install R in your computer and also the
+Stata command <code>rcall</code>. The do-file <code>02.LIS_organize_output.do</code> will check if you
+have it installed and will install it for you in case it is not. However, you
+can run the lines below to make sure everything is working fine. Also, you can
+take a look at the help file of <code>rcall</code> to get familiar with it.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="welfare-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a>cap which rcall</span>
+<span id="cb26-2"><a href="welfare-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb26-3"><a href="welfare-data.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    cap which github</span>
+<span id="cb26-4"><a href="welfare-data.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb26-5"><a href="welfare-data.html#cb26-5" aria-hidden="true" tabindex="-1"></a>        net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span>
+<span id="cb26-6"><a href="welfare-data.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-7"><a href="welfare-data.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    github install haghish/rcall, stable</span>
+<span id="cb26-8"><a href="welfare-data.html#cb26-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>2. Personal Drive</strong></p>
+<p>Make sure to add your UPI to the appropriate sections it appears by typing
+<code>disp lower("`c(username)'")</code> , following the example below,</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="welfare-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wbxxxxx&quot;</span>) {</span>
+<span id="cb27-2"><a href="welfare-data.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> <span class="ot">dir</span> <span class="st">&quot;c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data&quot;</span></span>
+<span id="cb27-3"><a href="welfare-data.html#cb27-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>3. Directives of the code</strong></p>
+<p>This do-file works like an ado-file in the sense that the output depends on the
+value of some local macros,</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="welfare-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> update_surveynames = 1 <span class="co">// 1 to update survey names.</span></span>
+<span id="cb28-2"><a href="welfare-data.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> <span class="kw">replace</span>            = 0 <span class="co">// 1 to replace data in memory even if it has not changed</span></span>
+<span id="cb28-3"><a href="welfare-data.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> p_drive_output_dir = 0 <span class="co">// 1 to use default Vintage_control folder</span></span></code></pre></div>
+<p>If local <code>update_surveynames</code> is set to 1, the code will load the sheet
+<code>LIS_survname</code> from the the file <code>02.data/_aux/LIS datasets.xlsx</code> and updated
+the file <code>02.data/_aux/LIS_survname.dta</code>. If <code>replace</code> is set to 1, the code
+will replace any output with the same name. Otherwise, it will create a new
+vintage version <em>if the two files are different</em>. If they are not different, the
+code will do nothing. local <code>p_drive_output_dir</code> is deprecated, so you must
+leave it as <strong>0</strong>.</p>
+<p><strong>4. Pattern of the text files</strong></p>
+<p>When the text files with the information from LIS are stored in <code>00.LIS_output</code>,
+they should be stored in a systematic way so that they could be loaded and
+processed at the same time. This can be done by specifying in a matching regular
+expression in local <code>pattern</code>. For instance, all the files downloaded in
+December, 2020 could by loaded and processed using the directive,
+<code>local pattern = "LISSY_Dec2020.*txt"</code>.</p>
+<p><strong>5. Output</strong></p>
+<p>When the do-file is concluded, it saves the file <code>02.data/create_dta_status.dta</code>
+with the status of all the surveys processed.</p>
+</div>
+<div id="compare-new-lis-data-to-datalibweb-inventory" class="section level4 unnumbered">
+<h4>Compare new LIS data to Datalibweb inventory</h4>
+<p>To identify what data is new and what data has changed with respect to the one
+available in datalibweb, you need to execute do-file <code>03.LIS_compare_dlw.do</code>.
+Again, this do-file is intended to be executed in one run, but you can do it in
+parts taking advantage of the different frames. At the end of the execution the
+file <code>02.data/comparison_results.dta</code> is created. This file contains three
+important variables <code>wf</code>, <code>wt</code>, and <code>gn</code>, which correspond to the ration of
+welfare means, weight means, and Gini coefficient between the data in datalibweb
+and the data in the folder, <code>p:/01.PovcalNet/03.QA/06.LIS/03.Vintage_control</code>.</p>
+<p>You should only send to the Poverty GP those surveys for which at least one of
+these three variables is different to 1.</p>
+</div>
+<div id="the-excel-file-lis-datasets.xlsx" class="section level4 unnumbered">
+<h4>The Excel file <code>LIS datasets.xlsx</code></h4>
+<p>With each LIS data update performed, we must first identify from LIS the new
+surveys (countries and/or years) they had recently added. LIS send users e-mails
+informing about new datasets added, and also releases
+<a href="https://www.lisdatacenter.org/news-and-events/highlights/">newsletters</a> with
+this information.</p>
+<p>Inside the <em>02.data</em> folder of your LIS_data GIT repository you will find a
+<em>_aux</em> sub folder, and the <code>LIS datasets.xlsx</code> file placed in there. We must
+<strong>manually</strong> update the tab <strong>LIS_survname tab</strong> adding new rows to the sheet.
+All necessary information to fill up this metadata (household size, currency,
+etc.) can be found in <a href="http://www.lisdatacenter.org/frontend#/home">METIS</a>.</p>
+<div class="rmdbox rmdtip">
+<p><strong>ACRONYMS:</strong> The column survey_acronym is created by us. If you come across a
+new survey for which an acronym has not been previously established, the rules
+applied in the past by the team were the following:</p>
+<ul>
+<li><p>Acronyms are created based on the ENGLISH name of the survey. (Ex: <em>German
+Transfer Survey (Germany)</em> is “GTS,” followed by the suffix -LIS; thus
+GTS-LIS.</p></li>
+<li><p>For the surveys that were Microcensus, we created the acronym “MC,” and for
+Denmark’s Law Model, “LM.”</p></li>
+<li><p>All acronyms are created in capital letters.</p></li>
+</ul>
+</div>
+<p>Finally, while the survey names in METIS are in English, some of the acronyms in
+parenthesis are still in the original language. In those cases we translated
+them to English. For instance, the survey name “<em>Household Budget Survey (BdF)
+(France)</em>” from METIS was changed to “<em>Household Budget Survey (<strong>HBS</strong>)
+(France)</em>” in the column <strong>surveyname</strong> of the excel.</p>
+</div>
+<div id="prepare-data-for-the-poverty-gp" class="section level4 unnumbered">
+<h4>Prepare data for the Poverty GP</h4>
+<p>Finally, the do-file <code>04.Append_new_LIS_bases.do</code> prepares the data to be shared
+with the Poverty GP. Note that this do-file ONLY appends the 400 bins data of
+surveys that are <strong>new</strong> and those where <strong>welfare changed</strong>, which are
+identified in the previous step <code>/comparison_results.dta</code> as those <code>gn != 1</code>.</p>
+<p>Before running the code, make sure to <strong>change the output file name</strong> to the
+<strong>date</strong> of your update (last one saved was “LIS_bins_Dec_21_2020.dta”). The
+output is saved in <code>P:\01.PovcalNet\03.QA\06.LIS\04.Share_with_GP.</code></p>
+<p>Finally, quickly prepare a short .dta file importing the metadata already
+created in the LIS_survname tab from the Excel, keeping ONLY the surveys of the
+append output you just run and send both files to Minh Cong Nguyen
+&lt;mnguyen3@worldbank.org&gt; from the Poverty GP.</p>
+</div>
+</div>
+<div id="synthetic-data" class="section level3" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> Synthetic Data</h3>
+<p><span style="color:red">Minh: Could you please add an explanation here?</span></p>
+</div>
+</div>
+<div id="from-gmd-to-pip" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> From GMD to PIP ({pipdp} package)</h2>
+<p><span style="color:red">NOTE: Aleksander, could you pleas eprovide a short explanation here?</span></p>
+</div>
+<div id="survey-id" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Survey ID nomenclature</h2>
 <p>All household surveys in the PIP repository are stored following the naming
 convention of the <a href="http://ihsn.org/">International Household Survey Network
 (IHSN)</a> for <a href="http://www.ihsn.org/archiving">archiving and managing
@@ -406,6 +668,14 @@ Survey of 2015, she would refer to the survey ID
 Pakistan Social and Living Standards Measurement Survey. v01_M means that the
 version of the raw data has not changed since it was released and v02_A means
 that the most recent version of the alternative version is 02.2</p>
+</div>
+<div id="survey-id-cache" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Survey CACHE ID nomenclature</h2>
+<p><span style="color:red">NOTE:Andres, add explanation here</span></p>
+<div class="light-purple">
+<p>Testing tachyons colors</p>
+</div>
+<p>This is a test <span style="color:royalblue">Royal blue</span> color in line</p>
 
 </div>
 </div>
@@ -414,7 +684,7 @@ that the most recent version of the alternative version is 02.2</p>
           </div>
         </div>
       </div>
-<a href="joining-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="primus.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="auxiliary-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -430,25 +700,15 @@ that the most recent version of the alternative version is 02.2</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
+"sharing": false,
 "fontsettings": {
 "theme": "white",
 "family": "sans",
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/PIP-Technical-Team/PIPmanual/edit/master/welfare_data.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -460,8 +720,14 @@ gitbook.start({
 },
 "download": ["PIPmanual.pdf", "PIPmanual.epub"],
 "toc": {
-"collapse": "subsection"
-}
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true,
+"info": true
 });
 });
 </script>

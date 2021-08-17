@@ -1,1 +1,3 @@
 # Folder Structure
+[Note: Aleksander, could you please write this chapter?]{style="color:red"} Basically, we need an overview of each of the folders in the root of the Y drive and then a detailed explanation of the structure of the Data folder and the pipiline folder. 
+

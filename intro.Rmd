@@ -2,4 +2,90 @@
 
 # Introduction {#intro}
 
-PIP workflow is ...
+
+## Ojectives
+This book explains several things,
+
+1. An overview of the project from a technical perspective.
+2. The interaction between R packages developed to manage the data and do the calculations.
+3. The different types of data in the PIP project and the interaction between them.
+4. How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated. 
+5. Technical standalone procedure necessary for the execution of some parts of the project. 
+
+## Technical requirements
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, 
+        dplyr.print_max = 6)
+
+ipkg <- utils::installed.packages()[,1]
+if (!("emo"  %in% ipkg)){
+  remotes::install_github("hadley/emo")
+}
+
+
+```
+
+<!-- ::: {.rmdbox .rmdwarning} -->
+<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->
+<!-- Technical team of the PIP project. It has been made available to the public for -->
+<!-- the sake of transparency, but its information has no use outside the internal -->
+<!-- team. -->
+<!-- ::: -->
+
+
+You need to make sure the `bookdown` package is installed in your computer
+
+```{r eval=FALSE}
+install.packages("bookdown")
+
+# or the development version
+ devtools::install_github("rstudio/bookdown")
+```
+
+Remember each Rmd file contains one and only one chapter, and a chapter is
+defined by the first-level heading `#`.
+
+Make sure to install the latest version of PIP R packages by typing the
+following
+
+```{r, eval=FALSE}
+ipkg <- utils::installed.packages()[,1]
+
+pip_install <- function(pkg, ipkg) {
+  if (isFALSE(pkg %in% ipkg)) {
+    gitcall <- paste0("PIP-Technical-Team/", pkg)
+    remotes::install_github(gitcall, dependencies = TRUE)
+    TRUE
+  } else {
+    FALSE
+  }
+}
+
+pkgs <- c("pipload", "pipaux", "wbpip", "piptb", "pipdm", "pipapi")
+
+
+purrr::walk(pkgs, pip_install, ipkg = ipkg)
+
+```
+
