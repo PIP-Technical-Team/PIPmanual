@@ -1,3 +1,4 @@
 # Table Maker Pipeline {#tmpipelilne}
 
-blah blah
+[NOTE:Andres, write this chapter when the pipeline is done]{style="color:red"}
+    

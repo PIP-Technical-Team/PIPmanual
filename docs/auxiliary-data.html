@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-16" />
+<meta name="date" content="2021-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,8 @@ div.csl-indent {
 
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/r-colors.css" type="text/css" />
+<link rel="stylesheet" href="css/smltar.css" type="text/css" />
 </head>
 
 <body>
@@ -267,6 +269,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>7.2</b> From GMD to PIP ({pipdp} package)</a></li>
 <li class="chapter" data-level="7.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id"><i class="fa fa-check"></i><b>7.3</b> Survey ID nomenclature</a></li>
+<li class="chapter" data-level="7.4" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-cache"><i class="fa fa-check"></i><b>7.4</b> Survey CACHE ID nomenclature</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>8</b> Auxiliary data</a>
 <ul>
@@ -404,19 +407,19 @@ information is just useful information that does not affect, neither depend on,
 quantitative data. It is primary collected and made available for the end user.</p>
 <p>As explain in Chapter <a href="folder-structure.html#folder-structure">3</a>, all auxiliary data is stored in
 <code>"y:/PIP-Data/_aux/"</code>.</p>
-<pre><code>y:/PIP-Data/_aux/
-+-- country_list
-+-- cpi
-+-- dlw
-+-- gdm
-+-- gdp
-+-- maddison
-+-- pce
-+-- pfw
-+-- pop
-+-- ppp
-+-- sna
-\-- weo</code></pre>
+<pre><code>#&gt; [01;34my:/PIP-Data/_aux/[0m
+#&gt; +-- [01;34mcountry_list[0m
+#&gt; +-- [01;34mcpi[0m
+#&gt; +-- [01;34mdlw[0m
+#&gt; +-- [01;34mgdm[0m
+#&gt; +-- [01;34mgdp[0m
+#&gt; +-- [01;34mmaddison[0m
+#&gt; +-- [01;34mpce[0m
+#&gt; +-- [01;34mpfw[0m
+#&gt; +-- [01;34mpop[0m
+#&gt; +-- [01;34mppp[0m
+#&gt; +-- [01;34msna[0m
+#&gt; \-- [01;34mweo[0m</code></pre>
 <p>The naming convention of subfolders inside the _aux directory is useful because
 auxiliary data is commonly referred to in all technical processes by its
 convention rather than by it actual name. For instance Gross Domestic Product or
@@ -442,7 +445,7 @@ name of the file.</p>
 file provided by a member of the DECDG team. Ideally, population data should be
 downloaded from WDI, but sometimes the most recent data available has not been
 uploaded yet, so it needs to be collected internally in DECDG. As of now
-(August 16, 2021), the DECDG focal point to provide the
+(August 17, 2021), the DECDG focal point to provide the
 population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to
 send her an email, and she will provide the data to you.</p>
 <p>If the data is provided by DECDG, it should be stored in the folder
@@ -472,15 +475,15 @@ in
 <p>Population data is loaded by typing either <code>pipload::pip_load_aux("pop")</code> or
 <code>pipaux::pip_pop("load")</code>. We highly recommend the former, as <code>{pipload}</code> is the
 intended R package for loading any PIP data.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="auxiliary-data.html#cb44-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pop&quot;</span>)</span>
-<span id="cb44-2"><a href="auxiliary-data.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span></code></pre></div>
-<pre><code>   country_code year pop_data_level     pop  pop_domain
-1:          ABW 1960       national   54211    national
-2:          ABW 1960          rural   26685 urban/rural
-3:          ABW 1960          urban   27526 urban/rural
-4:          AFG 1960       national 8996973    national
-5:          AFG 1960          rural 8241137 urban/rural
-6:          AFG 1960          urban  755836 urban/rural</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="auxiliary-data.html#cb31-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> pipload<span class="sc">::</span><span class="fu">pip_load_aux</span>(<span class="st">&quot;pop&quot;</span>)</span>
+<span id="cb31-2"><a href="auxiliary-data.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop)</span>
+<span id="cb31-3"><a href="auxiliary-data.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    country_code year pop_data_level     pop  pop_domain</span></span>
+<span id="cb31-4"><a href="auxiliary-data.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:          ABW 1960       national   54211    national</span></span>
+<span id="cb31-5"><a href="auxiliary-data.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:          ABW 1960          rural   26685 urban/rural</span></span>
+<span id="cb31-6"><a href="auxiliary-data.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3:          ABW 1960          urban   27526 urban/rural</span></span>
+<span id="cb31-7"><a href="auxiliary-data.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:          AFG 1960       national 8996973    national</span></span>
+<span id="cb31-8"><a href="auxiliary-data.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:          AFG 1960          rural 8241137 urban/rural</span></span>
+<span id="cb31-9"><a href="auxiliary-data.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:          AFG 1960          urban  755836 urban/rural</span></span></code></pre></div>
 </div>
 </div>
 <div id="national-accounts" class="section level2" number="8.2">
@@ -516,7 +519,6 @@ potential file corruption the file must be opened and re-saved before it can be
 updated with <code>pip_gdp_weo()</code>, which is an internal function fo
 <code>pipaux::pip_gdp_update()</code>. Hopefully in the future IMF will stop using an
 `.xls` file that’s not really xls.</p>
-<p><span style="color:red">Note: explanation of special cases provided by Samuel.</span></p>
 </div>
 <div id="consumption-pce" class="section level3" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> Consumption (PCE)</h3>
@@ -555,7 +557,7 @@ papers or national statistical offices. GDP per capita series for Syria (for
 <a href="mailto:papers---@kostialSyriaConflictEconomy2016Gobat" class="email">papers---@kostialSyriaConflictEconomy2016Gobat</a> (for 2011-2015) and
 <span class="citation"><a href="#ref-devadasGrowthWarSyria2019" role="doc-biblioref">Devadas, Elbadawi, and Loayza</a> (<a href="#ref-devadasGrowthWarSyria2019" role="doc-biblioref">2019</a>)</span> (for 2016-2019)—and are chained on backward
 with growth rates in GDP per capita from WEO. See
-<em>P:\01.PovcalNet\03.QA\04.NationalAccounts\data\NAS special_2021-01-14</em>
+*y:/PIP-Data/_aux/sna/*
 for more details on how this is implemented.</p></li>
 <li><p>National accounts data need to be adjusted for the purposes of global
 poverty monitoring.</p>
@@ -563,7 +565,7 @@ poverty monitoring.</p>
 and urban India after 2014, precisely HFCE (or formerly PCE) per capita from
 WDI, are adjusted with a pass-through rate of 67%, as described in Section 5
 of <span class="citation"><a href="#ref-castanedaaguilarSeptember2020PovcalNet2020" role="doc-biblioref">Castaneda Aguilar et al.</a> (<a href="#ref-castanedaaguilarSeptember2020PovcalNet2020" role="doc-biblioref">2020</a>)</span>. See
-<em>P:\01.PovcalNet\03.QA\04.NationalAccounts\data\NAS special_2021-01-14</em>
+*y:/PIP-Data/_aux/sna/NAS special_2021-01-14.csv*
 for more details on how this is implemented.</p></li>
 </ol>
 </div>

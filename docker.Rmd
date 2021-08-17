@@ -1,7 +1,7 @@
 # Docker Container {#docker}
 
-[Note: Aleksander, please complete this section and make everything makes sense
-and the links work]{style="color:red"}
+[Note: Aleksander, Could you please complete this section and make sure everything makes sense
+and the links work?]{style="color:red"}
 
 ## Introduction
 

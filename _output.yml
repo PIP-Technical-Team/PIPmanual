@@ -4,14 +4,14 @@ bookdown::bs4_book:
     fg: "#2b2121"
     bg: "#ffffff"
   repo: https://github.com/PIP-Technical-Team/PIPmanual/
-  css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css]
+  css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css, css/r-colors.css, css/smltar.css]
 
 bookdown::gitbook:
   highlight: tango
   includes:
     # in_header: files/hypothesis.html
     before_body: files/open_review_block.html
-  css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css]
+  css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css, css/r-colors.css, css/smltar.css]
   config:
     toc:
       collapse: section
@@ -27,3 +27,5 @@ bookdown::gitbook:
     search: yes
     sharing: no
     info: yes
+  # pandoc_args: [ "--top-level-division=chapter", "--csl", "taylor-and-francis-chicago-author-date.csl" ]
+

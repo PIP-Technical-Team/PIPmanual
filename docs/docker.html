@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-16" />
+<meta name="date" content="2021-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,8 @@ div.csl-indent {
 
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/r-colors.css" type="text/css" />
+<link rel="stylesheet" href="css/smltar.css" type="text/css" />
 </head>
 
 <body>
@@ -267,6 +269,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>7.2</b> From GMD to PIP ({pipdp} package)</a></li>
 <li class="chapter" data-level="7.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id"><i class="fa fa-check"></i><b>7.3</b> Survey ID nomenclature</a></li>
+<li class="chapter" data-level="7.4" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-cache"><i class="fa fa-check"></i><b>7.4</b> Survey CACHE ID nomenclature</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>8</b> Auxiliary data</a>
 <ul>
@@ -393,8 +396,8 @@ div.csl-indent {
  </div>
 <div id="docker" class="section level1" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Docker Container</h1>
-<p><span style="color:red">Note: Aleksander, please complete this section and make everything makes sense
-and the links work</span></p>
+<p><span style="color:red">Note: Aleksander, Could you please complete this section and make sure everything makes sense
+and the links work?</span></p>
 <div id="introduction" class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> Introduction</h2>
 <p>Docker container for the PIP Poverty Calculator API application.</p>
@@ -429,15 +432,15 @@ to use a <a href="https://docs.docker.com/storage/volumes/">named volume</a>.</p
 create an empty volume, then we link this to a temporay container, before using
 <code>docker cp</code> to copy the files to the container and volume. After the data has
 been copied you can discard the temporary container.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="docker.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create volume </span></span>
-<span id="cb67-2"><a href="docker.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create pip-vol</span>
-<span id="cb67-3"><a href="docker.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Mount volume to tmp container  </span></span>
-<span id="cb67-4"><a href="docker.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> pip-data <span class="at">--mount</span> type=volume,source=pip-vol,target=/data ubuntu:20.04</span>
-<span id="cb67-5"><a href="docker.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy data to container (and volume)</span></span>
-<span id="cb67-6"><a href="docker.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> cp <span class="op">&lt;</span>data-folder<span class="op">&gt;</span>/. pip-data:data</span>
-<span id="cb67-7"><a href="docker.html#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop and remove tmp container </span></span>
-<span id="cb67-8"><a href="docker.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop pip-data </span>
-<span id="cb67-9"><a href="docker.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm pip-data</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="docker.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create volume </span></span>
+<span id="cb48-2"><a href="docker.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create pip-vol</span>
+<span id="cb48-3"><a href="docker.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Mount volume to tmp container  </span></span>
+<span id="cb48-4"><a href="docker.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> pip-data <span class="at">--mount</span> type=volume,source=pip-vol,target=/data ubuntu:20.04</span>
+<span id="cb48-5"><a href="docker.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy data to container (and volume)</span></span>
+<span id="cb48-6"><a href="docker.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> cp <span class="op">&lt;</span>data-folder<span class="op">&gt;</span>/. pip-data:data</span>
+<span id="cb48-7"><a href="docker.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop and remove tmp container </span></span>
+<span id="cb48-8"><a href="docker.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop pip-data </span>
+<span id="cb48-9"><a href="docker.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm pip-data</span></code></pre></div>
 <p>For some purposes you will only need to create this volume once, but remember to
 update the contents of the volume in case the data structure changes or you want
 to make sure the container is running against the latest available data. See the
@@ -456,18 +459,18 @@ manual.</p>
 <h2><span class="header-section-number">12.4</span> Build image</h2>
 <p>Docker images are built using the <code>docker build</code> command. Here we build the
 image and set the image name to <code>pip-api</code>.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="docker.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> pip-api .</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="docker.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> pip-api .</span></code></pre></div>
 <p>You can also set a specific tag for the image. For example you can specify the
 version number or the base image used as source. How you decide to tag your
 images is up to you. Often a tag of <code>latest</code> (the default) will suffice, but in
 other instances keeping track of different versions of your development image
 will be useful.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="docker.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag when building</span></span>
-<span id="cb69-2"><a href="docker.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> pip-api:0.0.4</span>
-<span id="cb69-3"><a href="docker.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag after build (version number) </span></span>
-<span id="cb69-4"><a href="docker.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image tag pip-api:latest pip-api:0.0.4</span>
-<span id="cb69-5"><a href="docker.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag after build (base image)</span></span>
-<span id="cb69-6"><a href="docker.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image tag pip-api:latest pip-api:ubi8 </span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="docker.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag when building</span></span>
+<span id="cb50-2"><a href="docker.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> pip-api:0.0.4</span>
+<span id="cb50-3"><a href="docker.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag after build (version number) </span></span>
+<span id="cb50-4"><a href="docker.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image tag pip-api:latest pip-api:0.0.4</span>
+<span id="cb50-5"><a href="docker.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag after build (base image)</span></span>
+<span id="cb50-6"><a href="docker.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image tag pip-api:latest pip-api:ubi8 </span></code></pre></div>
 <p>Note that each layer in a Dockerfile is cached when built. These layers won’t be
 re-run unless the code to produce that specific layer or a previous layer in the
 Dockerfile changes. This is handy for fast iterations, but can also cause the
@@ -476,14 +479,14 @@ image to be outdated.</p>
 when you want to make sure that the latest Linux updates are installed or for
 updating the <code>{wbpip}</code> and <code>{pipapi}</code> R packages. See also the <a href="docker.html#tips-and-tricks">Tips and
 Tricks</a> section on how to do partial re-builds.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="docker.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">--no-cache</span> <span class="at">-t</span> pip-api .</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="docker.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">--no-cache</span> <span class="at">-t</span> pip-api .</span></code></pre></div>
 </div>
 <div id="run-container" class="section level2" number="12.5">
 <h2><span class="header-section-number">12.5</span> Run container</h2>
 <p>Run the container by exposing port 80 and mounting a volume with the survey and
 auxiliary data. The data structure in the attached volume must correspond to the
 sub-folder specifications in <code>R/main.R</code>.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="docker.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">-p</span> 80:80/tcp <span class="at">--mount</span> src=pip-vol,target=/ipp,type=volume,readonly <span class="at">--name</span> pip-api pip-api</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="docker.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">-p</span> 80:80/tcp <span class="at">--mount</span> src=pip-vol,target=/ipp,type=volume,readonly <span class="at">--name</span> pip-api pip-api</span></code></pre></div>
 <p>Navigate to <a href="localhost/__docs__/"><code>http://localhost/__docs__/</code></a> to see the
 running API.</p>
 <p>For details on the <code>docker run</code> command and its options see the <a href="https://docs.docker.com/engine/reference/commandline/run/">Docker
@@ -494,19 +497,19 @@ Docs</a>.</p>
 <p><strong>Run container interactively:</strong></p>
 <p>Run the container in interactive mode, using the <code>-it</code> flag, to see output
 messages.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="docker.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-p</span> 80:80/tcp <span class="at">--mount</span> src=pip-vol,target=/ipp,type=volume,readonly <span class="at">--name</span> pip-api pip-api</span>
-<span id="cb72-2"><a href="docker.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> plumber API at http://0.0.0.0:80</span>
-<span id="cb72-3"><a href="docker.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> swagger Docs at http://127.0.0.1:80/__docs__/</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="docker.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-p</span> 80:80/tcp <span class="at">--mount</span> src=pip-vol,target=/ipp,type=volume,readonly <span class="at">--name</span> pip-api pip-api</span>
+<span id="cb53-2"><a href="docker.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> plumber API at http://0.0.0.0:80</span>
+<span id="cb53-3"><a href="docker.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> swagger Docs at http://127.0.0.1:80/__docs__/</span></code></pre></div>
 <p><strong>Inspect container:</strong></p>
 <p>For development purposes it can be useful to inspect the Docker container.
 Luckily it is very easy to enter a running container with the <code>docker exec</code>
 command.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="docker.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the container as default user </span></span>
-<span id="cb73-2"><a href="docker.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> pip-api /bin/bash</span>
-<span id="cb73-3"><a href="docker.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="ex">plumber@bd8ea77299ca:/$</span> </span>
-<span id="cb73-4"><a href="docker.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the container as root user</span></span>
-<span id="cb73-5"><a href="docker.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> <span class="at">-u</span> 0 pip-api /bin/bash</span>
-<span id="cb73-6"><a href="docker.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="ex">root@bd8ea77299ca:/$</span> </span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="docker.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the container as default user </span></span>
+<span id="cb54-2"><a href="docker.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> pip-api /bin/bash</span>
+<span id="cb54-3"><a href="docker.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="ex">plumber@bd8ea77299ca:/$</span> </span>
+<span id="cb54-4"><a href="docker.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the container as root user</span></span>
+<span id="cb54-5"><a href="docker.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> <span class="at">-u</span> 0 pip-api /bin/bash</span>
+<span id="cb54-6"><a href="docker.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="ex">root@bd8ea77299ca:/$</span> </span></code></pre></div>
 </div>
 <div id="security" class="section level2" number="12.7">
 <h2><span class="header-section-number">12.7</span> Security</h2>
@@ -526,7 +529,7 @@ OIS. They are only included here as additional and preliminary tools.</p>
 <a href="https://docs.docker.com/engine/scan/">Vulnerability scanning for Docker local
 images</a> and <a href="https://snyk.io/learn/docker-security-scanning/">Docker Security Scanning
 Guide 2021</a> for details.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="docker.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> scan <span class="at">--file</span> .<span class="dt">\D</span>ockerfile pip-api</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="docker.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> scan <span class="at">--file</span> .<span class="dt">\D</span>ockerfile pip-api</span></code></pre></div>
 <p>It is important to note that the Aquasec scan that runs on Azure is different
 that the Snyk scan, and can detect different vulnerabilites. Even though few or
 zero vulnerabilites are found by Snyk, further issues might still be detected by
@@ -536,13 +539,13 @@ Aquasec.</p>
 which scans R projects against insecure dependencies using the <a href="https://ossindex.sonatype.org/">OSS
 Index</a>.</p>
 <p>First log into a running container as root, and start R.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="docker.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> <span class="at">-u</span> 0 pip-api /bin/bash</span>
-<span id="cb75-2"><a href="docker.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="ex">root@ab54fbf1eb36:/#</span> R </span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="docker.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> <span class="at">-u</span> 0 pip-api /bin/bash</span>
+<span id="cb56-2"><a href="docker.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="ex">root@ab54fbf1eb36:/#</span> R </span></code></pre></div>
 <p>Then install the <code>{oyster}</code> package, and run an audit.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="docker.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;oysteR&quot;</span>)</span>
-<span id="cb76-2"><a href="docker.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;oysteR&quot;</span>)</span>
-<span id="cb76-3"><a href="docker.html#cb76-3" aria-hidden="true" tabindex="-1"></a>audit <span class="ot">&lt;-</span> <span class="fu">audit_installed_r_pkgs</span>()</span>
-<span id="cb76-4"><a href="docker.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_vulnerabilities</span>(audit)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="docker.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;oysteR&quot;</span>)</span>
+<span id="cb57-2"><a href="docker.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;oysteR&quot;</span>)</span>
+<span id="cb57-3"><a href="docker.html#cb57-3" aria-hidden="true" tabindex="-1"></a>audit <span class="ot">&lt;-</span> <span class="fu">audit_installed_r_pkgs</span>()</span>
+<span id="cb57-4"><a href="docker.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_vulnerabilities</span>(audit)</span></code></pre></div>
 <p>Note that finding zero vulnerabilities is no guarantee against threats. For
 example is scanning of C++ code inside R packages not yet implemented. For more
 details and latest developments on the <code>{oyster}</code> package see the
@@ -631,10 +634,10 @@ automatically or if you for other reasons switch back and forth.</li>
 right before the layer you want to invalidate (yes, this is hacky but it
 works). E.g. do something like:</li>
 </ol>
-<div class="sourceCode" id="cb77"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb77-1"><a href="docker.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install PIP specific R packages </span></span>
-<span id="cb77-2"><a href="docker.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> test=test06302021</span>
-<span id="cb77-3"><a href="docker.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> Rscript -e <span class="st">&quot;remotes::install_github(&#39;PIP-Technical-Team/wbpip@master&#39;, repos = &#39;${CRAN}&#39;)&quot;</span></span>
-<span id="cb77-4"><a href="docker.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> Rscript -e <span class="st">&quot;remotes::install_github(&#39;PIP-Technical-Team/pipapi@master&#39;, repos = &#39;${CRAN}&#39;)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb58-1"><a href="docker.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install PIP specific R packages </span></span>
+<span id="cb58-2"><a href="docker.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> test=test06302021</span>
+<span id="cb58-3"><a href="docker.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> Rscript -e <span class="st">&quot;remotes::install_github(&#39;PIP-Technical-Team/wbpip@master&#39;, repos = &#39;${CRAN}&#39;)&quot;</span></span>
+<span id="cb58-4"><a href="docker.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> Rscript -e <span class="st">&quot;remotes::install_github(&#39;PIP-Technical-Team/pipapi@master&#39;, repos = &#39;${CRAN}&#39;)&quot;</span></span></code></pre></div>
 </div>
 <div id="installation-on-world-bank-laptops" class="section level2" number="12.11">
 <h2><span class="header-section-number">12.11</span> Installation on World Bank laptops</h2>

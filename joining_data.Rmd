@@ -16,7 +16,7 @@ poverty and inequality) are uniquely identified by four variables: *Country*,
     are conducted over the of two calendar year, but the welfare aggregate is
     deflated to the reporting year, 2011.
 
--    *Domain* refers to the smallest geographical disaggregation for which it is
+-   *Domain* refers to the smallest geographical disaggregation for which it is
     possible to deflate and line up to PPP values the welfare aggregate of a
     household survey. The criteria to determine the reporting domain of a
     household survey is still under consideration, but ideally it such for which
@@ -170,3 +170,5 @@ dt <- joyn::merge(CHN, cpi,
 ```
 
 ## Special data cases
+
+[NOTE: Andres. Add this section]{style="color:red"}

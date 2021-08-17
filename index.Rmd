@@ -15,20 +15,6 @@ library(knitr)
 
 here::i_am("index.Rmd")
 library(here)
-
-## Global options
-# options(max.print="75")
-opts_chunk$set(
-  # echo    = FALSE,
-  cache   = TRUE,
-  prompt  = FALSE,
-  tidy    = FALSE,
-  comment = NA,
-  message = FALSE,
-  warning = FALSE
-)
-
-opts_knit$set(width=75)
 ```
 
 

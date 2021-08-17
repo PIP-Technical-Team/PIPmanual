@@ -29,6 +29,7 @@ bin-data
 synthetic-data
 from-gmd-to-pip
 survey-id
+survey-id-cache
 auxiliary-data
 population
 original-data

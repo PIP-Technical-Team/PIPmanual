@@ -138,8 +138,8 @@ the resulting data in order, ready to be ingested by the PIP API.
 
 ## API feeding
 
-[NOTE: Tony, please finish this sections. ]{style="color:red"}
+[NOTE: Tony, please finish this section.]{style="color:red"}
 
 ## Packages interaction
 
-[NOTE: Andres, finished this sections ]{style="color:red"}.
+[NOTE: Andres, finished this section]{style="color:red"}.

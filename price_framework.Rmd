@@ -2,6 +2,8 @@
 
 # Price FrameWork (pfw) data frame {#pfw-chapter}
 
+[NOTE:Minh: Could you please add (or ask someone to add) a short explanation for each variable? Just follow the same line of explanations as the ones already done.]{style="color:red"}
+
 The price framework data frame (pfw) is the most important source of technical
 metadata of the PIP project, which makes pertinent the have of a separate
 chapter for it. The general explanation of the structure of the pfw can be found
@@ -44,15 +46,15 @@ head(pfw[altname != "", c("altname", "survey_acronym")])
 
 ### `wbint_link` {-}
 
-[Minh, could you please explain here?]{style="color:red"}
+blah blah
 
 ### `wbext_link` {-}
 
-[Minh, could you please explain here?]{style="color:red"}
+blah blah
 
 ### `alt_link` {-}
 
-[Minh, could you please explain here?]{style="color:red"}
+blah blah
 
 ### `surv_title` {-}
 

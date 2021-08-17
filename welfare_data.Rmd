@@ -281,7 +281,8 @@ append output you just run and send both files to Minh Cong Nguyen
 
 ### Synthetic Data
 
-blah
+[Minh: Could you please add an explanation here?]{style="color:red"}
+
 
 ## From GMD to PIP ({pipdp} package) {#from-gmd-to-pip}
 
@@ -330,3 +331,14 @@ Survey of 2015, she would refer to the survey ID
 Pakistan Social and Living Standards Measurement Survey. v01_M means that the
 version of the raw data has not changed since it was released and v02_A means
 that the most recent version of the alternative version is 02.2
+
+
+## Survey CACHE ID nomenclature {#survey-id-cache}
+
+[NOTE:Andres, add explanation here]{style="color:red"}
+
+:::{.light-purple}
+Testing tachyons colors
+:::
+
+This is a test [Royal blue]{style="color:royalblue"} color in line

@@ -18,6 +18,7 @@ bookdown::render_book(file, "bookdown::gitbook",
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 bookdown::render_book("index.Rmd", "bookdown::gitbook")
+browseURL("docs/index.html")
 # bookdown::render_book("index.Rmd", "bookdown::bs4_book")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

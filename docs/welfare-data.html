@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-16" />
+<meta name="date" content="2021-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,8 @@ div.csl-indent {
 
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/r-colors.css" type="text/css" />
+<link rel="stylesheet" href="css/smltar.css" type="text/css" />
 </head>
 
 <body>
@@ -267,6 +269,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>7.2</b> From GMD to PIP ({pipdp} package)</a></li>
 <li class="chapter" data-level="7.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id"><i class="fa fa-check"></i><b>7.3</b> Survey ID nomenclature</a></li>
+<li class="chapter" data-level="7.4" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-cache"><i class="fa fa-check"></i><b>7.4</b> Survey CACHE ID nomenclature</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>8</b> Auxiliary data</a>
 <ul>
@@ -483,8 +486,8 @@ usually take approximately <u>10 rounds</u> of this process.</p>
 <p><strong>3. Add do-file</strong> Copy and paste the entire content of <code>01.LIS_400bins.do</code> file into
 the the main large command window and update the locals in lines 23-24 with the
 LIS 2-letter acronyms of the group of 5-6 countries in each round.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="welfare-data.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> silc   <span class="st">&quot;at be cz&quot;</span></span>
-<span id="cb38-2"><a href="welfare-data.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> nosilc <span class="st">&quot;au br&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="welfare-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> silc   <span class="st">&quot;at be cz&quot;</span></span>
+<span id="cb25-2"><a href="welfare-data.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> nosilc <span class="st">&quot;au br&quot;</span></span></code></pre></div>
 <div class="rmdbox rmdtip">
 <p>Remember to update the subject with each round (Ex: “Bins #2 - Dec 2020”)
 so you keep track of the number of output files. Be careful not to leave out
@@ -518,26 +521,26 @@ Stata command <code>rcall</code>. The do-file <code>02.LIS_organize_output.do</c
 have it installed and will install it for you in case it is not. However, you
 can run the lines below to make sure everything is working fine. Also, you can
 take a look at the help file of <code>rcall</code> to get familiar with it.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="welfare-data.html#cb39-1" aria-hidden="true" tabindex="-1"></a>cap which rcall</span>
-<span id="cb39-2"><a href="welfare-data.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
-<span id="cb39-3"><a href="welfare-data.html#cb39-3" aria-hidden="true" tabindex="-1"></a>    cap which github</span>
-<span id="cb39-4"><a href="welfare-data.html#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
-<span id="cb39-5"><a href="welfare-data.html#cb39-5" aria-hidden="true" tabindex="-1"></a>        net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span>
-<span id="cb39-6"><a href="welfare-data.html#cb39-6" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb39-7"><a href="welfare-data.html#cb39-7" aria-hidden="true" tabindex="-1"></a>    github install haghish/rcall, stable</span>
-<span id="cb39-8"><a href="welfare-data.html#cb39-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="welfare-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a>cap which rcall</span>
+<span id="cb26-2"><a href="welfare-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb26-3"><a href="welfare-data.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    cap which github</span>
+<span id="cb26-4"><a href="welfare-data.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb26-5"><a href="welfare-data.html#cb26-5" aria-hidden="true" tabindex="-1"></a>        net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span>
+<span id="cb26-6"><a href="welfare-data.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-7"><a href="welfare-data.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    github install haghish/rcall, stable</span>
+<span id="cb26-8"><a href="welfare-data.html#cb26-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>2. Personal Drive</strong></p>
 <p>Make sure to add your UPI to the appropriate sections it appears by typing
 <code>disp lower("`c(username)'")</code> , following the example below,</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a href="welfare-data.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wbxxxxx&quot;</span>) {</span>
-<span id="cb40-2"><a href="welfare-data.html#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> <span class="ot">dir</span> <span class="st">&quot;c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data&quot;</span></span>
-<span id="cb40-3"><a href="welfare-data.html#cb40-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="welfare-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wbxxxxx&quot;</span>) {</span>
+<span id="cb27-2"><a href="welfare-data.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> <span class="ot">dir</span> <span class="st">&quot;c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data&quot;</span></span>
+<span id="cb27-3"><a href="welfare-data.html#cb27-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>3. Directives of the code</strong></p>
 <p>This do-file works like an ado-file in the sense that the output depends on the
 value of some local macros,</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb41-1"><a href="welfare-data.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> update_surveynames = 1 <span class="co">// 1 to update survey names.</span></span>
-<span id="cb41-2"><a href="welfare-data.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> <span class="kw">replace</span>            = 0 <span class="co">// 1 to replace data in memory even if it has not changed</span></span>
-<span id="cb41-3"><a href="welfare-data.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> p_drive_output_dir = 0 <span class="co">// 1 to use default Vintage_control folder</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="welfare-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> update_surveynames = 1 <span class="co">// 1 to update survey names.</span></span>
+<span id="cb28-2"><a href="welfare-data.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> <span class="kw">replace</span>            = 0 <span class="co">// 1 to replace data in memory even if it has not changed</span></span>
+<span id="cb28-3"><a href="welfare-data.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> p_drive_output_dir = 0 <span class="co">// 1 to use default Vintage_control folder</span></span></code></pre></div>
 <p>If local <code>update_surveynames</code> is set to 1, the code will load the sheet
 <code>LIS_survname</code> from the the file <code>02.data/_aux/LIS datasets.xlsx</code> and updated
 the file <code>02.data/_aux/LIS_survname.dta</code>. If <code>replace</code> is set to 1, the code
@@ -617,7 +620,7 @@ append output you just run and send both files to Minh Cong Nguyen
 </div>
 <div id="synthetic-data" class="section level3" number="7.1.4">
 <h3><span class="header-section-number">7.1.4</span> Synthetic Data</h3>
-<p>blah</p>
+<p><span style="color:red">Minh: Could you please add an explanation here?</span></p>
 </div>
 </div>
 <div id="from-gmd-to-pip" class="section level2" number="7.2">
@@ -665,6 +668,14 @@ Survey of 2015, she would refer to the survey ID
 Pakistan Social and Living Standards Measurement Survey. v01_M means that the
 version of the raw data has not changed since it was released and v02_A means
 that the most recent version of the alternative version is 02.2</p>
+</div>
+<div id="survey-id-cache" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Survey CACHE ID nomenclature</h2>
+<p><span style="color:red">NOTE:Andres, add explanation here</span></p>
+<div class="light-purple">
+<p>Testing tachyons colors</p>
+</div>
+<p>This is a test <span style="color:royalblue">Royal blue</span> color in line</p>
 
 </div>
 </div>

@@ -1,6 +1,7 @@
 # Deployment in Azure server {#azure}
 
 
+[NOTE:Tony, Could you please write this chapter?]{style="color:red"}
 
 
 
