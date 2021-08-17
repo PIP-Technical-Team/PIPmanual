@@ -2,6 +2,7 @@
 
 # Introduction {#intro}
 
+[NOTE:Andres, finish chapter]{style="color:red"}
 
 ## Ojectives
 This book explains several things,
