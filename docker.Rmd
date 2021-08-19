@@ -116,7 +116,8 @@ docker rm pip-data
 For some purposes you will only need to create this volume once, but remember to
 update the contents of the volume in case the data structure changes or you want
 to make sure the container is running against the latest available data. See the
-Azure DevOps data repo (DEV branch) for the latest updates.
+[Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources)
+(DEV branch) for the latest updates.
 
 The volume can be inspected with the `docker inspect` and `docker system`
 commands. If you are running Docker Desktop on Windows with WSL 2.0 then then

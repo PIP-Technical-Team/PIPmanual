@@ -1,6 +1,6 @@
 # Deploying to Azure {#azure}
 
-The Azure DevOps site for PIP currently consists of two repos;  ITSES-POVERTYSCORE and ITSES-POVERTYSCORE-DATA. Each repo consists of three branches; 
+The Azure DevOps site for PIP currently consists of two repos; ITSES-POVERTYSCORE and ITSES-POVERTYSCORE-DATA. Each repo consists of three branches; 
 DEV, QA and PROD. The PIP Techincal Team will handle deployments to DEV and QA, while ITS need to approve deployments to Production. 
 [Note: PROD deployments are TBD]{style="color:red"}
 
@@ -13,7 +13,7 @@ After that you can follow the step by step guide below.
 
 **Step 1:** Sync you local DEV branch with the remote. Commit and push any data changes to the remote. 
 
-**Step 2:** Nagivate to the Azure DevOps data repo (insert link). Click on Pipelines. 
+**Step 2:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources). Click on Pipelines. 
 
 ![](img/azure_pc_data_pipeline_step2.png)
 
@@ -55,7 +55,7 @@ After that you can follow the step by step guide below.
 
 ### Deploying data on QA
 
-**Step 1:** Nagivate to the Azure DevOps data repo (insert link).
+**Step 1:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
 
 **Step 2:** Click on Create pull request. Select from DEV to QA. 
 
@@ -90,11 +90,12 @@ to pick up changes in the mounted folder or volume. The best way to do this is t
 **Step 2:** [Optional] Verify that the most recent Dockerfile builds on your local machine. This is certainly something that should be done if the contents of the Dockerfile has changed,
 or before major releases. But in a continous workflow where you know that Dockerfile hasn't changed, it migth be sufficent to verify that the R packages in question are working. 
 
-**Step 3:** Go Pipelines -> Pipelines. Trigger the ACR-DEV-CI pipeline, either by a) Pushing an updated Dockerfile to the remote repo or b) Running the Pipeline manually. 
+**Step 3:** Navigate to the [Azure DevOps Docker repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources). 
+Go Pipelines -> Pipelines. Trigger the ACR-DEV-CI pipeline, either by a) Pushing an updated Dockerfile to the remote repo or b) Running the Pipeline manually. 
 
 **Step 4:** Go to the Pipelines -> Releases and select "Create release" in order to run a new deployment. View the logs to see results from the image build and security scan. 
 
-**Step 5:**. Vist the [DEV API website] (insertlink) for further testing. 
+**Step 5:**. Vist the [DEV API website](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources) for further testing. 
 
  
 ### Deploying image on QA 
@@ -103,12 +104,12 @@ or before major releases. But in a continous workflow where you know that Docker
 
 **Step 2:** Make sure the data on QA is up-to-date (in sync with DEV). If it isn't you will need to create a PR and merge the data first. 
 
-**Step 3:** Create a pull request from DEV to QA.G o through the steps to commit and approve the pull request.
+**Step 3:** Create a pull request from DEV to QA. Go through the steps to commit and approve the pull request.
 Please make sure that the "Delete source branch" box is unchecked, ie. don't delete the DEV branch. 
 
 **Step 4:** Go to the Release pipline to see results from the image build and security scan.
 
-**Step 5:**  Vist the QA API website (insertlink) for further testing.
+**Step 5:**  Vist the [QA API website](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources) for further testing.
 
 
 
