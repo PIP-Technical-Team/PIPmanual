@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 Deployment in Azure server | PIP Manual</title>
+  <title>Chapter 13 Deploying to Azure | PIP Manual</title>
   <meta name="description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 Deployment in Azure server | PIP Manual" />
+  <meta property="og:title" content="Chapter 13 Deploying to Azure | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 Deployment in Azure server | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 13 Deploying to Azure | PIP Manual" />
   
   <meta name="twitter:description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
   
@@ -25,16 +25,16 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-17" />
+<meta name="date" content="2021-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="docker.html"/>
+<link rel="prev" href="pc-docker.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -351,26 +351,39 @@ div.csl-indent {
 <li class="chapter" data-level="11.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>11.2.3</b> Loading data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>12</b> Docker Container</a>
+<li class="chapter" data-level="12" data-path="pc-docker.html"><a href="pc-docker.html"><i class="fa fa-check"></i><b>12</b> Docker Container</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="docker.html"><a href="docker.html#introduction"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.1" data-path="pc-docker.html"><a href="pc-docker.html#introduction"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
 <li class="chapter" data-level="12.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites"><i class="fa fa-check"></i><b>12.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="12.3" data-path="docker.html"><a href="docker.html#create-volume"><i class="fa fa-check"></i><b>12.3</b> Create volume</a></li>
-<li class="chapter" data-level="12.4" data-path="docker.html"><a href="docker.html#build-image"><i class="fa fa-check"></i><b>12.4</b> Build image</a></li>
-<li class="chapter" data-level="12.5" data-path="docker.html"><a href="docker.html#run-container"><i class="fa fa-check"></i><b>12.5</b> Run container</a></li>
-<li class="chapter" data-level="12.6" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>12.6</b> Debugging</a></li>
-<li class="chapter" data-level="12.7" data-path="docker.html"><a href="docker.html#security"><i class="fa fa-check"></i><b>12.7</b> Security</a></li>
-<li class="chapter" data-level="12.8" data-path="docker.html"><a href="docker.html#base-image-options"><i class="fa fa-check"></i><b>12.8</b> Base image options</a></li>
-<li class="chapter" data-level="12.9" data-path="docker.html"><a href="docker.html#deploying-to-azure"><i class="fa fa-check"></i><b>12.9</b> Deploying to Azure</a></li>
-<li class="chapter" data-level="12.10" data-path="docker.html"><a href="docker.html#tips-and-tricks"><i class="fa fa-check"></i><b>12.10</b> Tips and tricks</a></li>
-<li class="chapter" data-level="12.11" data-path="docker.html"><a href="docker.html#installation-on-world-bank-laptops"><i class="fa fa-check"></i><b>12.11</b> Installation on World Bank laptops</a>
+<li class="chapter" data-level="12.3" data-path="pc-docker.html"><a href="pc-docker.html#docker-on-world-bank-laptops"><i class="fa fa-check"></i><b>12.3</b> Docker on World Bank laptops</a>
 <ul>
-<li class="chapter" data-level="" data-path="docker.html"><a href="docker.html#known-problems-and-solutions"><i class="fa fa-check"></i>Known problems and solutions</a></li>
+<li class="chapter" data-level="12.3.1" data-path="pc-docker.html"><a href="pc-docker.html#wb-docker-install"><i class="fa fa-check"></i><b>12.3.1</b> Install Docker</a></li>
+<li class="chapter" data-level="12.3.2" data-path="pc-docker.html"><a href="pc-docker.html#known-problems-and-solutions"><i class="fa fa-check"></i><b>12.3.2</b> Known problems and solutions</a></li>
+<li class="chapter" data-level="12.3.3" data-path="pc-docker.html"><a href="pc-docker.html#tips-and-tricks"><i class="fa fa-check"></i><b>12.3.3</b> Tips and tricks</a></li>
 </ul></li>
-<li class="chapter" data-level="12.12" data-path="docker.html"><a href="docker.html#usage"><i class="fa fa-check"></i><b>12.12</b> Usage</a></li>
-<li class="chapter" data-level="12.13" data-path="docker.html"><a href="docker.html#resources"><i class="fa fa-check"></i><b>12.13</b> Resources</a></li>
+<li class="chapter" data-level="12.4" data-path="pc-docker.html"><a href="pc-docker.html#create-volume"><i class="fa fa-check"></i><b>12.4</b> Create volume</a></li>
+<li class="chapter" data-level="12.5" data-path="pc-docker.html"><a href="pc-docker.html#build-image"><i class="fa fa-check"></i><b>12.5</b> Build image</a></li>
+<li class="chapter" data-level="12.6" data-path="pc-docker.html"><a href="pc-docker.html#run-container"><i class="fa fa-check"></i><b>12.6</b> Run container</a></li>
+<li class="chapter" data-level="12.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>12.7</b> Debugging</a></li>
+<li class="chapter" data-level="12.8" data-path="pc-docker.html"><a href="pc-docker.html#security"><i class="fa fa-check"></i><b>12.8</b> Security</a></li>
+<li class="chapter" data-level="12.9" data-path="pc-docker.html"><a href="pc-docker.html#base-image-options"><i class="fa fa-check"></i><b>12.9</b> Base image options</a></li>
+<li class="chapter" data-level="12.10" data-path="pc-docker.html"><a href="pc-docker.html#resources"><i class="fa fa-check"></i><b>12.10</b> Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="azure.html"><a href="azure.html"><i class="fa fa-check"></i><b>13</b> Deployment in Azure server</a></li>
+<li class="chapter" data-level="13" data-path="azure.html"><a href="azure.html"><i class="fa fa-check"></i><b>13</b> Deploying to Azure</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="azure.html"><a href="azure.html#azure-pc-data"><i class="fa fa-check"></i><b>13.1</b> Poverty Calculator Data</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="azure.html"><a href="azure.html#deploying-data-on-dev"><i class="fa fa-check"></i><b>13.1.1</b> Deploying data on DEV</a></li>
+<li class="chapter" data-level="13.1.2" data-path="azure.html"><a href="azure.html#deploying-data-on-qa"><i class="fa fa-check"></i><b>13.1.2</b> Deploying data on QA</a></li>
+<li class="chapter" data-level="13.1.3" data-path="azure.html"><a href="azure.html#deploying-data-to-production"><i class="fa fa-check"></i><b>13.1.3</b> Deploying data to Production</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="azure.html"><a href="azure.html#azure-pc-docker"><i class="fa fa-check"></i><b>13.2</b> Poverty Calculator Docker image</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="azure.html"><a href="azure.html#deploying-image-on-dev"><i class="fa fa-check"></i><b>13.2.1</b> Deploying image on DEV</a></li>
+<li class="chapter" data-level="13.2.2" data-path="azure.html"><a href="azure.html#deploying-image-on-qa"><i class="fa fa-check"></i><b>13.2.2</b> Deploying image on QA</a></li>
+<li class="chapter" data-level="13.2.3" data-path="azure.html"><a href="azure.html#deploying-image-to-production"><i class="fa fa-check"></i><b>13.2.3</b> Deploying image to Production</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/PIP-Technical-Team/PIPmanual" target="blank">Published with bookdown</a></li>
@@ -395,16 +408,94 @@ div.csl-indent {
 <div class="rmdbox rmdwarning"><strong>DISCLAIMER:</strong> This book contains relevant only for the internal Technical team of the PIP project. It has been made available to the public for the sake of transparency, but its information has no use outside the internal team.
  </div>
 <div id="azure" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> Deployment in Azure server</h1>
-<p><span style="color:red">NOTE:Tony, Could you please write this chapter?</span></p>
+<h1><span class="header-section-number">Chapter 13</span> Deploying to Azure</h1>
+<p>The Azure DevOps site for PIP currently consists of two repos; ITSES-POVERTYSCORE and ITSES-POVERTYSCORE-DATA. Each repo consists of three branches;
+DEV, QA and PROD. The PIP Techincal Team will handle deployments to DEV and QA, while ITS need to approve deployments to Production.
+<span style="color:red">Note: PROD deployments are TBD</span></p>
+<div id="azure-pc-data" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Poverty Calculator Data</h2>
+<p>Before you start with the data deployment process you will need to clone the Azure DevOps Data repo (DEV branch) to your local machine. You will only need to this once.
+After that you can follow the step by step guide below.</p>
+<div id="deploying-data-on-dev" class="section level3" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> Deploying data on DEV</h3>
+<p><strong>Step 1:</strong> Sync you local DEV branch with the remote. Commit and push any data changes to the remote.</p>
+<p><strong>Step 2:</strong> Nagivate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a>. Click on Pipelines.</p>
+<p><img src="img/azure_pc_data_pipeline_step2.png" /></p>
+<p><strong>Step 3:</strong> Select the FILE-COPY-DEV-CI pipeline.</p>
+<p><img src="img/azure_pc_data_pipeline_step3.png" /></p>
+<p><strong>Step 4:</strong> Click on Run pipeline.</p>
+<p><img src="img/azure_pc_data_pipeline_step4.png" /></p>
+<p><strong>Step 5:</strong> Click on Variables -&gt; FolderName, and add the name of the folder which should be copied to the Cloud Blob Store.</p>
+<p><img src="img/azure_pc_data_pipeline_step5-1.png" /></p>
+<p><img src="img/azure_pc_data_pipeline_step5-2.png" /></p>
+<p><img src="img/azure_pc_data_pipeline_step5-3.png" /></p>
+<p><strong>Step 6:</strong> Click on Run.</p>
+<p><img src="img/azure_pc_data_pipeline_step6.png" /></p>
+<p><strong>Step 7:</strong> View the new build.</p>
+<p><img src="img/azure_pc_data_pipeline_step7.png" /></p>
+<p><strong>Step 8:</strong> Click on Releases and select the FILE-COPY-DEV-CD release. Approve the pending request.</p>
+<p><img src="img/azure_pc_data_pipeline_step8-1.png" /></p>
+<p><img src="img/azure_pc_data_pipeline_step8-2.png" /></p>
+<p><img src="img/azure_pc_data_pipeline_step8-3.png" /></p>
+<p><strong>Step 9:</strong> Verify that the build completed.</p>
+<p><img src="img/azure_pc_data_pipeline_step9.png" /></p>
+</div>
+<div id="deploying-data-on-qa" class="section level3" number="13.1.2">
+<h3><span class="header-section-number">13.1.2</span> Deploying data on QA</h3>
+<p><strong>Step 1:</strong> Nagivate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a>.</p>
+<p><strong>Step 2:</strong> Click on Create pull request. Select from DEV to QA.</p>
+<p><strong>Step 3:</strong> Go through the steps to commit and approve the pull request.
+Please make sure that the “Delete source branch” box is unchecked,
+ie. don’t delete the DEV branch.</p>
+<p><strong>Step 5:</strong> Go to Pipelines -&gt; Piplines and select the FILE-COPY-QA-CI pipeline.
+Verify that the pipeline is building. If it wasn’t triggered you will need to
+trigger it manually.</p>
+<p><strong>Step 6:</strong> Go to Pipelines -&gt; Releases and select the FILE-COPY-QA-CD release.
+Approve the request, and verify that the build completes.</p>
+</div>
+<div id="deploying-data-to-production" class="section level3" number="13.1.3">
+<h3><span class="header-section-number">13.1.3</span> Deploying data to Production</h3>
+<p>TBD.</p>
+</div>
+</div>
+<div id="azure-pc-docker" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> Poverty Calculator Docker image</h2>
+<p>Before you start with the application deployment process you will need to clone the Azure DevOps Docker repo (DEV branch) to your local machine. You will only need to this once.
+After that you can follow the step by step guide below.</p>
+<p>Please note that it is important that data changes are pushed through and released before deploying the Docker image. This is because the Docker container will need to restart in order
+to pick up changes in the mounted folder or volume. The best way to do this is to deploy the data, and then re-deploy the Docker image since a re-deployment includes a container restart.</p>
+<div id="deploying-image-on-dev" class="section level3" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Deploying image on DEV</h3>
+<p><strong>Step 1:</strong> Verify that the latest code in the master branches of {wbpip} and {pipapi} works with the latest data on DEV. This can be done by running the {pipapi} pacakge in a local RStudio session.</p>
+<p><strong>Step 2:</strong> [Optional] Verify that the most recent Dockerfile builds on your local machine. This is certainly something that should be done if the contents of the Dockerfile has changed,
+or before major releases. But in a continous workflow where you know that Dockerfile hasn’t changed, it migth be sufficent to verify that the R packages in question are working.</p>
+<p><strong>Step 3:</strong> Navigate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Docker repo</a>.
+Go Pipelines -&gt; Pipelines. Trigger the ACR-DEV-CI pipeline, either by a) Pushing an updated Dockerfile to the remote repo or b) Running the Pipeline manually.</p>
+<p><strong>Step 4:</strong> Go to the Pipelines -&gt; Releases and select “Create release” in order to run a new deployment. View the logs to see results from the image build and security scan.</p>
+<p><strong>Step 5:</strong>. Vist the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">DEV API website</a> for further testing.</p>
+</div>
+<div id="deploying-image-on-qa" class="section level3" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Deploying image on QA</h3>
+<p><strong>Step 1:</strong> Check that the DEV deployment is working correctly.</p>
+<p><strong>Step 2:</strong> Make sure the data on QA is up-to-date (in sync with DEV). If it isn’t you will need to create a PR and merge the data first.</p>
+<p><strong>Step 3:</strong> Create a pull request from DEV to QA. Go through the steps to commit and approve the pull request.
+Please make sure that the “Delete source branch” box is unchecked, ie. don’t delete the DEV branch.</p>
+<p><strong>Step 4:</strong> Go to the Release pipline to see results from the image build and security scan.</p>
+<p><strong>Step 5:</strong> Vist the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">QA API website</a> for further testing.</p>
+</div>
+<div id="deploying-image-to-production" class="section level3" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> Deploying image to Production</h3>
+<p>TBD.</p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="docker.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pc-docker.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
