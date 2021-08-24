@@ -286,7 +286,110 @@ append output you just run and send both files to Minh Cong Nguyen
 
 ## From GMD to PIP ({pipdp} package) {#from-gmd-to-pip}
 
-[NOTE: Aleksander, could you pleas eprovide a short explanation here?]{style="color:red"}
+The next step in the preperation of survey data for PIP is to leverage the [`{pipdp}`](https://github.com/PIP-Technical-Team/pipdp) package. This package
+retrives survey data from DLW and standardizes it into the format used by the PIP ingestion pipelines ([Poverty Calculator Pipeline](#pcpipeline) and 
+[Table Maker Pipeline](#tmpipelilne)).
+
+### Requirements
+
+ `{pipdp}` depends on the following Stata packages.
+
+```stata
+ssc install moremata
+ssc install missings
+```
+
+You will also need to have the World Bank `{datalibweb}` module and the PovcalNet internal `{pcn}` command installed.
+
+### Installation
+
+```powershell
+# Clone repo
+git clone "https://github.com/PIP-Technical-Team/pipdp"
+# Edit profile.do
+notepad.exe C:\ado\personal\profile.do
+# Add adopath ++ "<mypath>\pipdp"
+```
+
+### Remote server
+
+It is recommended to both use `{pipdp}` on the PovcalNet remote server (WBGMSDDG001). The phyiscal location of this server is much closer to the data storage so queries to Datalibweb,
+ as well as read/write operations to the PIP shared network drive, will be much faster.
+
+The only issue with using the server is that Datalibweb will require login credentials for each new Stata session. To avoid this it is highly recommended that users apply
+for direct access to Datalibweb. This will grant access to the Datalibweb file storage and enable the possiblity of using the `files` option in all `datalibweb` queries.
+
+In order to use the `files` option you will also need to make some minor adjustments to your Datalibweb setup files. In particular the global `root` variable in
+ `C:/ado/personal/datalibweb/GMD.do` needs to be specified correctly. This can be achived by copying `datalibweb.ado` and `GMD.do` in the `_aux` directory to their 
+ respective locations.
+
+Since WBGMSDDG001 is a shared server and the DLW settings thus can be reset, you will need to make sure that these settings are correct every time you use `pipdp`. 
+The modified setup files will *only* change the behavior of Datalibweb for users that have direct access to the file storage. It will not affect other users. 
+You could either check and copy the files manually or run the following from the command line.
+
+```{cmd, eval = FALSE}
+copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado
+copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do
+```
+
+For details on how to connect to WBGMSDDG001 see the 
+[Remote server connection](https://povcalnet-team.github.io/Povcalnet_internal_guidelines/folder-structures.html#server) 
+section in the PovcalNet Internal Guidelines and Protocols.
+
+### Usage
+
+`pipdp` has two main commands, `pipdp group` to copy and prepare grouped data files from the PocvalNet shared network drive and `pipdp micro` 
+to download and prepare micro datasets from Datalibweb.
+For examples on how to use these commands see the [Usage section](https://github.com/PIP-Technical-Team/pipdp#usage) in the `{pipdp} `README. 
+
+### Preparing survey data for Poverty Calculator Pipeline
+
+Follow these steps when preparing survey data for the [Poverty Calculator Pipeline](#pcpipeline)
+
+1. Make sure the Price Framework file is up to date in the directory you are using.
+
+```{r, eval = FALSE}
+# Update PFW file
+PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR
+# pipaux::pip_country_list('update', maindir = PIP_DATA_DIR)
+pipaux::pip_pfw('update', maindir = PIP_DATA_DIR)
+```
+
+2. Make sure the Datalibweb repository file is up to date in directory you are using. Note that if you are running this code on the PovcalNet 
+remote server you will be required to log in to DLW, regardless if you have direct access or not. This is because the underlying 
+`datalibweb, type(GMD) repo(create dlwrepo)` command always sends queries over web. 
+If you want you to avoid the login requirement you can conduct this specific step from your local machine.
+
+```{stata, eval = FALSE}
+// Update DLW repo
+pipdp dlw maindir("$PIP_DATA_DIR>")
+```
+
+3. Make sure DLW setup files are up-to-date (needed for `files` option).
+
+```{bat, eval = FALSE}
+::Copy setup files
+copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado
+copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do
+```
+
+4. Update surveys
+
+```{stata, eval = FALSE}
+// Update grouped data surveys (from PCN-drive)
+pipdp group, countries(all) maindir("$PIP_DATA_DIR>")
+// Download new surveys from DLW 
+pipdp micro, countries(all) files new maindir("$PIP_DATA_DIR>")
+```
+
+5. Update the PIP inventory 
+
+```{r, eval = FALSE}
+# Update PIP inventory
+PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR
+pipload::pip_update_inventory(maindir = PIP_DATA_DIR)
+```
+
 
 ## Survey ID nomenclature {#survey-id}
 
