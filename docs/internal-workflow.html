@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Internal Workflow | PIP Manual</title>
   <meta name="description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Internal Workflow | PIP Manual" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-19" />
+<meta name="date" content="2021-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -35,7 +35,8 @@
 <link rel="prev" href="intro.html"/>
 <link rel="next" href="folder-structure.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,7 +44,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -182,7 +182,24 @@ div.csl-indent {
 <li class="chapter" data-level="2.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>2.6</b> API feeding</a></li>
 <li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a></li>
+<li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="folder-structure.html"><a href="folder-structure.html#pip-data"><i class="fa fa-check"></i><b>3.1</b> PIP-Data</a></li>
+<li class="chapter" data-level="3.2" data-path="folder-structure.html"><a href="folder-structure.html#pip-data_qa"><i class="fa fa-check"></i><b>3.2</b> PIP-Data_QA</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="folder-structure.html"><a href="folder-structure.html#aux"><i class="fa fa-check"></i><b>3.2.1</b> _aux</a></li>
+<li class="chapter" data-level="3.2.2" data-path="folder-structure.html"><a href="folder-structure.html#inventory"><i class="fa fa-check"></i><b>3.2.2</b> _inventory</a></li>
+<li class="chapter" data-level="3.2.3" data-path="folder-structure.html"><a href="folder-structure.html#country-data"><i class="fa fa-check"></i><b>3.2.3</b> Country data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="folder-structure.html"><a href="folder-structure.html#pip-data_extsol"><i class="fa fa-check"></i><b>3.3</b> PIP-Data_ExtSOL</a></li>
+<li class="chapter" data-level="3.4" data-path="folder-structure.html"><a href="folder-structure.html#pip_data_testing"><i class="fa fa-check"></i><b>3.4</b> PIP_Data_Testing</a></li>
+<li class="chapter" data-level="3.5" data-path="folder-structure.html"><a href="folder-structure.html#pip_data_vintage"><i class="fa fa-check"></i><b>3.5</b> PIP_Data_Vintage</a></li>
+<li class="chapter" data-level="3.6" data-path="folder-structure.html"><a href="folder-structure.html#pip_ingestion_pipeline"><i class="fa fa-check"></i><b>3.6</b> pip_ingestion_pipeline</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="folder-structure.html"><a href="folder-structure.html#pc_data"><i class="fa fa-check"></i><b>3.6.1</b> pc_data</a></li>
+<li class="chapter" data-level="3.6.2" data-path="folder-structure.html"><a href="folder-structure.html#tb_data"><i class="fa fa-check"></i><b>3.6.2</b> tb_data</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#pfw-join"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data</a>
@@ -267,7 +284,14 @@ div.csl-indent {
 <li class="chapter" data-level="7.1.3" data-path="welfare-data.html"><a href="welfare-data.html#bin-data"><i class="fa fa-check"></i><b>7.1.3</b> Bin Data</a></li>
 <li class="chapter" data-level="7.1.4" data-path="welfare-data.html"><a href="welfare-data.html#synthetic-data"><i class="fa fa-check"></i><b>7.1.4</b> Synthetic Data</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>7.2</b> From GMD to PIP ({pipdp} package)</a></li>
+<li class="chapter" data-level="7.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>7.2</b> From GMD to PIP ({pipdp} package)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="welfare-data.html"><a href="welfare-data.html#requirements"><i class="fa fa-check"></i><b>7.2.1</b> Requirements</a></li>
+<li class="chapter" data-level="7.2.2" data-path="welfare-data.html"><a href="welfare-data.html#installation"><i class="fa fa-check"></i><b>7.2.2</b> Installation</a></li>
+<li class="chapter" data-level="7.2.3" data-path="welfare-data.html"><a href="welfare-data.html#remote-server"><i class="fa fa-check"></i><b>7.2.3</b> Remote server</a></li>
+<li class="chapter" data-level="7.2.4" data-path="welfare-data.html"><a href="welfare-data.html#usage"><i class="fa fa-check"></i><b>7.2.4</b> Usage</a></li>
+<li class="chapter" data-level="7.2.5" data-path="welfare-data.html"><a href="welfare-data.html#preparing-survey-data-for-poverty-calculator-pipeline"><i class="fa fa-check"></i><b>7.2.5</b> Preparing survey data for Poverty Calculator Pipeline</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id"><i class="fa fa-check"></i><b>7.3</b> Survey ID nomenclature</a></li>
 <li class="chapter" data-level="7.4" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-cache"><i class="fa fa-check"></i><b>7.4</b> Survey CACHE ID nomenclature</a></li>
 </ul></li>
@@ -467,7 +491,7 @@ Poverty Global Practice. To do so, each regional team has to follow the GMD
 guidelines, which are verified by the Stata command <code>{primus}</code>. Rarely. the
 <code>{primus}</code> command does NOT capture some potential errors in the data. More
 details in Section <a href="primus.html#primus">6</a></p>
-<p>As of now (August 19, 2021), <em>Group data</em> is divided two:
+<p>As of now (August 24, 2021), <em>Group data</em> is divided two:
 historical group data and new group data. Historical group data is organized and
 provided by the PovcalNet team, who sends it to the Poverty GP to be included in
 the datalibweb system. New group data is collected by the poverty economist of
@@ -484,7 +508,7 @@ entire microdata. Thus, we need to contract the microdata into 400 bins or
 quantiles. The code that gathers LIS data is available in the Github repository
 <a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>.</p>
 <p>Finally, <em>synthetic data</em>, refers to simulated microdata from an statistical
-procedure. As of now (August 19, 2021), the these data are
+procedure. As of now (August 24, 2021), the these data are
 estimated using multiple imputation techniques, so that any calculation must
 take into account the imputation-id variable. The data is calculated by the
 poverty economist of the country and the organizes by the global team in the
@@ -506,7 +530,7 @@ calculator system, PovcalNet, the PIP system only gathers welfare from the
 datalibweb server.</p>
 <p>The welfare data preparation is done using the repository
 <a href="https://github.com/PIP-Technical-Team/pipdp">/pipdp</a>. As of now
-(August 19, 2021), this part of the process has been coded
+(August 24, 2021), this part of the process has been coded
 in Stata, given that the there is no an R version of <code>{dataliweb}</code>. As for the
 auxiliary data preparation, it is done with package <code>{pipaux}</code>, available in the
 repository <a href="https://github.com/PIP-Technical-Team/pipaux">/pipaux</a>. Right now
@@ -558,7 +582,6 @@ group data.<a href="internal-workflow.html#fnref1" class="footnote-back">↩︎<
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -588,6 +611,10 @@ gitbook.start({
 "text": null
 },
 "download": ["PIPmanual.pdf", "PIPmanual.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -595,7 +622,6 @@ gitbook.start({
 "toolbar": {
 "position": "fixed"
 },
-"search": true,
 "info": true
 });
 });

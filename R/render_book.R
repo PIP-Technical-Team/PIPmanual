@@ -17,6 +17,7 @@ bookdown::render_book(file, "bookdown::gitbook",
 #---------   render the whole book   ---------
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+debugonce(rmarkdown:::create_output_format)
 bookdown::render_book("index.Rmd", "bookdown::gitbook")
 browseURL("docs/index.html")
 # bookdown::render_book("index.Rmd", "bookdown::bs4_book")
