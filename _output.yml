@@ -24,7 +24,8 @@ bookdown::gitbook:
       position: fixed
     edit:
       link: https://github.com/PIP-Technical-Team/PIPmanual/edit/master/%s
-    search: yes
+    search:
+      engine: fuse
     sharing: no
     info: yes
   # pandoc_args: [ "--top-level-division=chapter", "--csl", "taylor-and-francis-chicago-author-date.csl" ]
