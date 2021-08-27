@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,6 +408,11 @@ div.csl-indent {
 <li class="chapter" data-level="13.2.3" data-path="azure.html"><a href="azure.html#deploying-image-to-production"><i class="fa fa-check"></i><b>13.2.3</b> Deploying image to Production</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="workflows.html"><a href="workflows.html"><i class="fa fa-check"></i><b>14</b> Standalone Workflows</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="workflows.html"><a href="workflows.html#package-webpage-using-pkgdown"><i class="fa fa-check"></i><b>14.1</b> Package webpage using <code>pkgdown</code></a></li>
+<li class="chapter" data-level="14.2" data-path="workflows.html"><a href="workflows.html#build-checks"><i class="fa fa-check"></i><b>14.2</b> Build checks</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/PIP-Technical-Team/PIPmanual" target="blank">Published with bookdown</a></li>
@@ -482,7 +487,7 @@ name of the file.</p>
 file provided by a member of the DECDG team. Ideally, population data should be
 downloaded from WDI, but sometimes the most recent data available has not been
 uploaded yet, so it needs to be collected internally in DECDG. As of now
-(August 24, 2021), the DECDG focal point to provide the
+(August 27, 2021), the DECDG focal point to provide the
 population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to
 send her an email, and she will provide the data to you.</p>
 <p>If the data is provided by DECDG, it should be stored in the folder
@@ -638,7 +643,7 @@ used in PIP even though they both achive the same purpose.</p>
 variable however, is not available in the original CPI data from dlw. The
 original name of this variable comes in the form <code>cpiYYYY</code>, where <code>YYYY</code> refers
 to the base year of the CPI, which in turn depends on the collection year of the
-PPP. Today, this variable is thus “cpi2011.” The name of
+PPP. Today, this variable is thus “.” The name of
 this variable is stored in the <code>pipaux.cpivar</code> object in the <code>zzz.R</code> file of the
 <code>{pipaux}</code> package. This will supdate the option <code>getOption("pipaux.cpivar")</code>,
 guaranteing that <code>pipaux::pip_cpi_update()</code> uses the right variable when

@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,6 +408,11 @@ div.csl-indent {
 <li class="chapter" data-level="13.2.3" data-path="azure.html"><a href="azure.html#deploying-image-to-production"><i class="fa fa-check"></i><b>13.2.3</b> Deploying image to Production</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="workflows.html"><a href="workflows.html"><i class="fa fa-check"></i><b>14</b> Standalone Workflows</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="workflows.html"><a href="workflows.html#package-webpage-using-pkgdown"><i class="fa fa-check"></i><b>14.1</b> Package webpage using <code>pkgdown</code></a></li>
+<li class="chapter" data-level="14.2" data-path="workflows.html"><a href="workflows.html#build-checks"><i class="fa fa-check"></i><b>14.2</b> Build checks</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/PIP-Technical-Team/PIPmanual" target="blank">Published with bookdown</a></li>
@@ -641,7 +646,7 @@ div.csl-indent {
 <p>The <code>{pipdm}</code> package is the backbone of the pc pipeline. It is in charge of executing the functions in <code>{wbpip}</code> and consolidate the new DataBases. This is why many of the functions in <code>{pipdm}</code> are prefixed with “db_.”</p>
 <div id="internal-structure-of-pipdm-functions" class="section level3" number="9.5.1">
 <h3><span class="header-section-number">9.5.1</span> Internal structure of <code>{pipdm}</code> functions</h3>
-<p>The main objective of <code>{pipdm}</code> is to execute the functions in <code>{wbpip}</code> to do the calculations and then build the data frames. As of today (2021-08-24), the process is a little intricate.</p>
+<p>The main objective of <code>{pipdm}</code> is to execute the functions in <code>{wbpip}</code> to do the calculations and then build the data frames. As of today (2021-08-27), the process is a little intricate.</p>
 <p>Let’s take the example of estimating distributive measures in the pipeline. The image <a href="pcpipeline.html#pipdm-structure">below</a> shows that there are at least three intermediate function levels between the <code>db_compute_dist_stats()</code> function, which is directly executed in the pc pipeline, and the <code>wbpip::md_compute_dist_stats()</code>, which makes the calculations. Also, notice that the functions are very general in regards to the output. No higher level function is specific enough to retrieve only one measure, such as the Gini coefficient, or the median, or the quantiles of the distribution. If you need to add or modify one particular distributive measure, you must do it in functions inside <code>wbpip::md_compute_dist_stats()</code>, making sure the new output does not mess up the execution of any of the intermediate functions before the results get to <code>db_compute_dist_stats()</code>.</p>
 <p><img src="img/pipdm_structure.png" id="pipdm-structure" /></p>
 <p>This long chain of functions is inflexible and makes debugging very difficult. So, if you need to make any modification, first identify the chain of execution in each <code>pipdm</code> function you modify, and then make sure your changes do not affect the output format as it may break the execution chain. This is also a good example of why this structure needs to be improved.</p>

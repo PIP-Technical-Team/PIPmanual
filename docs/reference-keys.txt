@@ -108,3 +108,6 @@ azure-pc-docker
 deploying-image-on-dev
 deploying-image-on-qa
 deploying-image-to-production
+workflows
+package-webpage-using-pkgdown
+build-checks

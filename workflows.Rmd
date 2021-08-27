@@ -1,0 +1,10 @@
+# Standalone Workflows {#workflows}
+
+## Package webpage using `pkgdown`
+
+Blah blah
+
+## Build checks
+
+Blah blah
+

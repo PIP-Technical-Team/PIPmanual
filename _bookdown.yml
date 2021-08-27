@@ -28,6 +28,7 @@ rmd_files: [
   "load_md_aux.Rmd",
   "docker.Rmd",
   "azure.Rmd",
+  "workflows.Rmd",
 
   "references.Rmd",
 ]
