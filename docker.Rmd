@@ -308,7 +308,73 @@ In case there is any need to develop with other base images in the future it is
 R](https://docs.rstudio.com/resources/install-r/). This avoids the need to
 install R from source.
 
+## Using R on Linux
+
+Docker images are usually based on Linux containers. Some familiarity with Linux is 
+thus necessary in order to develop and work with Docker. 
+
+R users in particular should familiarize themselves with the difference between installing R
+and R packages from source vs binary, as well as potential Linux dependencies that might
+be nessecary to make a specific package work. 
+
+**Installing R:** 
+
+[Installing R from source](https://docs.rstudio.com/resources/install-r-source/) is possible 
+on most Linux distributions, but this not always an easy endavour. It will often require you to
+maintain a list of the nessecary Linux dependencies for R. Installing from source is also much
+slower than installing from a binary version. 
+
+Another way to install R on Linux is to use the available pre-compiled binary in your 
+Linux distro's repository (e.g `sudo apt install r-base` on Ubuntu). The problem with
+this approach is that the latest version of R might not yet be available, and for some 
+Linux distro's there will also only be a limited number of R versions available. 
+This impedes the flexilibility needed for a production grade project. 
+
+The recommended approach is thus to rely on 
+[RStudio's precompiled binaries](https://docs.rstudio.com/resources/install-r/).
+These binaries are available for the most common Linux distributions, 
+including Ubuntu, Debian and CentOS / RHEL. 
+Relying on these binaries will limited the number of base image options avaiable, 
+e.g. a ligth-weight distro like [Alpine](https://www.alpinelinux.org/) is not supported,
+nor is the newest release of Ubuntu (Hirsute Hippo). But it will make much easier 
+to maintain, upgrade and change the R version used in the project.
+
+**Installing R packages:** 
+
+As a contrast to Windows and macOS, CRAN only supports source versions of the R packages 
+available for Linux. 
+This will significantly slow down the installation process of each pacakge. 
+
+Luckily RStudio provides binary versions of all packages on CRAN for a series of different Linux distro's through their
+[Public Pacakge Manager](https://packagemanager.rstudio.com/). It is therefore strongly recommended
+that you rely on RSPM as your installation repo. 
+
+An additional benefit of RSPM is that you can also select a specific date for the package versions
+to use. 
+
+On the RSPM website go the [Setup](https://packagemanager.rstudio.com/client/#/repos/1/overview) 
+page on the main menu and select the appropiate client OS and date. You should then see a URL similar too
+`https://packagemanager.rstudio.com/all/__linux__/centos8/4743918`, where `centos8` represents the distro 
+and `4743918` the date. 
+
+For a more detailed introduction to the difference between binary and source packages, see 
+[Package structure and state](https://r-pkgs.org/package-structure-state.html) in the book
+R Packages. 
+
+**Installing R package dependencies:** 
+
+Linux distro's doesn't come with the dependencies needed to work with all R packages. This includes common 
+packages like `{data.table}` and `{plumber}`. It is important that such dependencies are installed prior
+to the installation of your R packages. 
+
+The best way to look for dependencies is to use the RSPM website and search for the specific package in question.
+Remeber to also select the correct Linux distribution. 
+
 ## Resources {#resources}
+
+For a further introduction to Docker take a look at this 
+[Data Science for Economists lecture on Docker](https://raw.githack.com/uo-ec607/lectures/master/13-docker/13-docker.html#1)
+by Grant McDermott. 
 
 See [Best practices for writing
 Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
