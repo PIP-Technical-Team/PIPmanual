@@ -1,10 +1,106 @@
-# Standalone Workflows {#workflows}
+# Github Workflows {#gh-workflows}
 
-## Package webpage using `pkgdown`
+[Github Actions](https://github.com/features/actions) allows for a series of automated workflows that are very handy when it comes to
+publishing R packages, as well as other more general CI/CD work. 
 
-Blah blah
+This chapter explains the most common workflows used across the PIP project. Other example workflows can be found
+[here](https://github.com/r-lib/actions/tree/master/examples). 
 
-## Build checks
+## Package webpage using `{pkgdown}`
 
-Blah blah
+[pkgdown](https://pkgdown.r-lib.org/) makes it easy to build websites for R packages.
+With a Github Action workflow this is made even easier because the website
+will be built and published automatically everytime you commit to the master (main) branch.
+There is thus no need to run `pkgdown::build_site()` yourself.  
 
+### Create `gh-pages` branch
+
+The most common is for a `{pkgdown}` site to live in a seperate branch in your repository called `gh-pages`. 
+This should be an empty orphan branch, with no files or commits other then the inital root commit. 
+
+Some `{usethis}` helpers claims to create this branch for you, but this doesn't always work. 
+Follow the steps to below to create an empty branch manually. 
+
+```powershell
+# Create new orphan branch 
+git checkout --orphan gh-pages
+# Remove everything
+git rm -rf .
+# Create empty commit
+git commit --allow-empty -m "root commit"
+# Push to remote
+git push origin gh-pages
+# Switch back to master
+git checkout master 
+```
+
+### Create "setup" files 
+
+Create a new local branch in your repository, and then take advantage of the helper functions in the `{usethis}` package.
+Run this from the working directory of your local branch: 
+
+```r
+usethis::use_pkgdown_github_pages()
+```
+
+This should create the entire setup needed, including adding the files `_pkgdown.yml` 
+and `.github/workflows/pkgdown.yaml` to your working directory. 
+
+Create a pull request and merge the changes to the master branch.
+
+### Activate Github Pages
+
+Go to Settings -> Github Pages. Activate Github Pages and set it to build from `gh-pages/root`.
+
+Remember to also add your page link to the About section of your repo.
+
+## Package build checks
+
+A crucial part of any R package development process is the [build check](https://devtools.r-lib.org/reference/check.html). 
+
+With Github Actions you can add workflows to automatically check your package for different versions of R and on 
+different operating systems. A good way to get started is to use the simple
+[release](https://github.com/r-lib/actions/tree/master/examples#quickstart-ci-workflow)
+workflow, but more advanced packages will benefit from a 
+[standard](https://github.com/r-lib/actions/tree/master/examples#standard-ci-workflow)
+or custom workflow. 
+
+A standard workflow checks if the package builds on the latest available R version on all three major operating systems (Windows, macOS, Ubuntu), 
+and should be used for all packages that are planned to be published on CRAN. A custom workflow is helpful if you want to check your package 
+against specific versions of R or other OS variants. 
+
+For the current PIP R packages both `{wbpip}` and `{pipapi}` go through a standard build check, while other packages have custom workflows.
+For example do the build checks for `{pipaux}` and `{pipdm}` test if the package works for the latest version of R and the 
+current R version on the PovcalNet remote server. 
+
+## Code coverage 
+
+Another important part of package development is to check the code coverage of your unit tests. 
+This is typically done with the [{covr}](https://covr.r-lib.org/) package. 
+
+With Github Actions you can automatically upload coverage reports to [codecov.io](https://about.codecov.io/),
+to let yourself and others more easily keep track of the test coverage of your package. 
+
+### Create "setup" files
+
+Create a new local branch in your repository, and then take advantage of the helper functions in the `{usethis}` package.
+Run this from the working directory of your local branch: 
+
+```r 
+usethis::use_github_action("test-coverage")
+```
+
+This should create the entire setup needed, including adding the files `codecov.yml`
+and `.github/workflows/test-coverage.yaml` to your working directory. 
+
+Create a pull request and merge the changes to the master branch.
+
+### Integrate with codecov.io 
+
+TBD. 
+
+## Other workflows 
+
+The [PR commands](https://github.com/r-lib/actions/tree/master/examples#commands-workflow) workflow enables the use of
+two specific commands in pull request issue comments. `/document` will use roxygen2 to rebuild the documentation 
+for the package and commit the result to the pull request. `/style` will use styler to restyle your package.

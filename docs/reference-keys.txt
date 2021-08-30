@@ -111,3 +111,13 @@ deploying-image-to-production
 workflows
 package-webpage-using-pkgdown
 build-checks
+gh-workflows
+create-gh-pages-branch
+create-setup-files
+activate-github-pages
+package-build-checks
+code-coverage
+setup
+integrate-with-codecov.io
+other-workflows
+create-setup-files-1
