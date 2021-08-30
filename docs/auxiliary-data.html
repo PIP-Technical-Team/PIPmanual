@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -391,7 +391,8 @@ div.csl-indent {
 <li class="chapter" data-level="12.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>12.7</b> Debugging</a></li>
 <li class="chapter" data-level="12.8" data-path="pc-docker.html"><a href="pc-docker.html#security"><i class="fa fa-check"></i><b>12.8</b> Security</a></li>
 <li class="chapter" data-level="12.9" data-path="pc-docker.html"><a href="pc-docker.html#base-image-options"><i class="fa fa-check"></i><b>12.9</b> Base image options</a></li>
-<li class="chapter" data-level="12.10" data-path="pc-docker.html"><a href="pc-docker.html#resources"><i class="fa fa-check"></i><b>12.10</b> Resources</a></li>
+<li class="chapter" data-level="12.10" data-path="pc-docker.html"><a href="pc-docker.html#using-r-on-linux"><i class="fa fa-check"></i><b>12.10</b> Using R on Linux</a></li>
+<li class="chapter" data-level="12.11" data-path="pc-docker.html"><a href="pc-docker.html#resources"><i class="fa fa-check"></i><b>12.11</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="azure.html"><a href="azure.html"><i class="fa fa-check"></i><b>13</b> Deploying to Azure</a>
 <ul>
@@ -408,10 +409,21 @@ div.csl-indent {
 <li class="chapter" data-level="13.2.3" data-path="azure.html"><a href="azure.html#deploying-image-to-production"><i class="fa fa-check"></i><b>13.2.3</b> Deploying image to Production</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="workflows.html"><a href="workflows.html"><i class="fa fa-check"></i><b>14</b> Standalone Workflows</a>
+<li class="chapter" data-level="14" data-path="gh-workflows.html"><a href="gh-workflows.html"><i class="fa fa-check"></i><b>14</b> Github Workflows</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="workflows.html"><a href="workflows.html#package-webpage-using-pkgdown"><i class="fa fa-check"></i><b>14.1</b> Package webpage using <code>pkgdown</code></a></li>
-<li class="chapter" data-level="14.2" data-path="workflows.html"><a href="workflows.html#build-checks"><i class="fa fa-check"></i><b>14.2</b> Build checks</a></li>
+<li class="chapter" data-level="14.1" data-path="gh-workflows.html"><a href="gh-workflows.html#package-webpage-using-pkgdown"><i class="fa fa-check"></i><b>14.1</b> Package webpage using <code>{pkgdown}</code></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="gh-workflows.html"><a href="gh-workflows.html#create-gh-pages-branch"><i class="fa fa-check"></i><b>14.1.1</b> Create <code>gh-pages</code> branch</a></li>
+<li class="chapter" data-level="14.1.2" data-path="gh-workflows.html"><a href="gh-workflows.html#create-setup-files"><i class="fa fa-check"></i><b>14.1.2</b> Create “setup” files</a></li>
+<li class="chapter" data-level="14.1.3" data-path="gh-workflows.html"><a href="gh-workflows.html#activate-github-pages"><i class="fa fa-check"></i><b>14.1.3</b> Activate Github Pages</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="gh-workflows.html"><a href="gh-workflows.html#package-build-checks"><i class="fa fa-check"></i><b>14.2</b> Package build checks</a></li>
+<li class="chapter" data-level="14.3" data-path="gh-workflows.html"><a href="gh-workflows.html#code-coverage"><i class="fa fa-check"></i><b>14.3</b> Code coverage</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="gh-workflows.html"><a href="gh-workflows.html#create-setup-files-1"><i class="fa fa-check"></i><b>14.3.1</b> Create “setup” files</a></li>
+<li class="chapter" data-level="14.3.2" data-path="gh-workflows.html"><a href="gh-workflows.html#integrate-with-codecov.io"><i class="fa fa-check"></i><b>14.3.2</b> Integrate with codecov.io</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="gh-workflows.html"><a href="gh-workflows.html#other-workflows"><i class="fa fa-check"></i><b>14.4</b> Other workflows</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -487,7 +499,7 @@ name of the file.</p>
 file provided by a member of the DECDG team. Ideally, population data should be
 downloaded from WDI, but sometimes the most recent data available has not been
 uploaded yet, so it needs to be collected internally in DECDG. As of now
-(August 27, 2021), the DECDG focal point to provide the
+(August 30, 2021), the DECDG focal point to provide the
 population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to
 send her an email, and she will provide the data to you.</p>
 <p>If the data is provided by DECDG, it should be stored in the folder

@@ -98,6 +98,7 @@ build-image
 run-container
 security
 base-image-options
+using-r-on-linux
 resources
 azure
 azure-pc-data
@@ -108,16 +109,13 @@ azure-pc-docker
 deploying-image-on-dev
 deploying-image-on-qa
 deploying-image-to-production
-workflows
-package-webpage-using-pkgdown
-build-checks
 gh-workflows
+package-webpage-using-pkgdown
 create-gh-pages-branch
 create-setup-files
 activate-github-pages
 package-build-checks
 code-coverage
-setup
+create-setup-files-1
 integrate-with-codecov.io
 other-workflows
-create-setup-files-1
