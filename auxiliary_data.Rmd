@@ -152,8 +152,7 @@ following cases[^auxiliary_data-1]:
     In such cases, national accounts data are obtained, in order of preference,
     from the latest version of WEO, or the latest version of MPD. For example,
     the entire series of GDP per capita for Taiwan, China and Somalia are
-    missing in WDI, so WEO
-    series are used instead.
+    missing in WDI, so WEO series are used instead.
 
 2.  National accounts data are *incomplete* in the latest version of WDI.
 
@@ -169,14 +168,13 @@ following cases[^auxiliary_data-1]:
     MPD) are considered to have quality issues.
 
     This is the case for Syria. Supplementary national accounts data are
-    obtained from other sources, including research
-    papers or national statistical offices. GDP per capita series for Syria (for
-    2010 through 2019) are from research
-    papers---@kostialSyriaConflictEconomy2016Gobat (for 2011-2015) and
-    @devadasGrowthWarSyria2019 (for 2016-2019)---and are chained on backward
-    with growth rates in GDP per capita from WEO. See
-    *y:/PIP-Data/_aux/sna/*
-    for more details on how this is implemented.
+    obtained from other sources, including research papers or national
+    statistical offices. GDP per capita series for Syria (for 2010 through 2019)
+    are from research
+    [papers---\@kostialSyriaConflictEconomy2016Gobat](mailto:papers---@kostialSyriaConflictEconomy2016Gobat){.email}
+    (for 2011-2015) and @devadasGrowthWarSyria2019 (for 2016-2019)---and are
+    chained on backward with growth rates in GDP per capita from WEO. See
+    \*y:/PIP-Data/\_aux/sna/\* for more details on how this is implemented.
 
 4.  National accounts data need to be adjusted for the purposes of global
     poverty monitoring.
@@ -185,15 +183,57 @@ following cases[^auxiliary_data-1]:
     and urban India after 2014, precisely HFCE (or formerly PCE) per capita from
     WDI, are adjusted with a pass-through rate of 67%, as described in Section 5
     of @castanedaaguilarSeptember2020PovcalNet2020. See
-    *y:/PIP-Data/_aux/sna/NAS special_2021-01-14.csv*
-    for more details on how this is implemented.
+    \*y:/PIP-Data/\_aux/sna/NAS special_2021-01-14.csv\* for more details on how
+    this is implemented.
 
 ## CPI
 
 ### Raw data
 
-[Note: Minh to explain how the CPI data is collected and organized in the dlw
-folders.]{style="color:red"}
+General documents on the CPI source and the CPI frameworks are posted here. Yet,
+for more details, please refer to [@laknerConsumerPriceIndices2018b;
+@azevedoPricesUsedGlobal2018a].
+
+There are three sources of CPI: IFS, WEO, and country team.
+
+In general, the CPI data will be taken from the IMF International Financial
+Statistics (IFS). For the incoming update, about 2-3 months to the upload we
+initial the request to DECDG CPI team for the three series: annually, quarterly,
+monthly from IFS CPI database. The purpose of requesting DECDG CPI team is to
+ensure the same vintage will be updated in WDI later in the next update cycle.
+We would need the three series as for some countries we only have annually, and
+for other countries we could have up to monthly. This is also a check for us in
+checking the consistency of annual and monthly series. The monthly series will
+be used to construct annual and quarterly series, as that there are some
+inconsistences between the annual and monthly series in the IFS. For the
+exceptional countries, Poverty GP replaces data series based on previous
+consultations when there is no update or better information.
+
+Some countries also use National series which are not available from IFS -- in
+this case we check with country poverty TTLs to provide the updated information,
+especially when we have a new survey for that country.
+
+In some cases where the CPI value are missing for some sources but not other
+sources. This is especially true for the very old year where the data is
+available for one source, or very recent year where WEO has a projection on the
+CPI while it is not available in IFS. In those cases, we will follow the logic
+and method described in the "CPI source document" to ensure we have all CPI
+values for all data points.
+
+Global D4G team will prepare and send the CPI raw series as well as the weighted
+numbers for the current data points in the system. The data will be query by
+datalibweb. The following files will be added to the system each round:
+
+| File ane                     | Description                                                 |
+|------------------------------|-------------------------------------------------------------|
+| Final_CPI_PPP_to_be_used.dta | final weighted CPI for poverty calculation                  |
+| Yearly_CPI_Final.dta         | annual CPI -- combined from different sources using chained |
+| methods Yearly_CPI.dta       | annual CPI constructed from the monthly CPI                 |
+| Yearly_CPI_Annual.dta        | annual CPI from the annual series                           |
+| Quarterly_CPI.dta            | quarterly CPI                                               |
+| Monthly_CPI.dta              | monthly CPI series                                          |
+| WEO_Yearly_CPI.dta           | annual CPI from WEO                                         |
+| Special_CPI_series.dta       | Special case of CPI (national source, imputation)           |
 
 ### Vintage control
 
@@ -313,5 +353,3 @@ asds
 **WDI** -- World Development Indicators
 
 **WEO** -- World Economic Outlook
-
-
