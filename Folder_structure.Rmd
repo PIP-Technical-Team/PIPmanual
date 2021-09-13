@@ -55,7 +55,7 @@ An explanation of each subfolder is given below.
 |pce         | Private consumption     | PC pipeline         | pipaux |
 |pfw         | Price Framework         | pipdp, PC pipeline  | pipaux |
 |pl	         | Poverty Lines           | pipapi              | pipaux |
-|pop	     | Population              | PC pipeline         | pipaux |
+|pop	       | Population              | PC pipeline         | pipaux |
 |ppp         | Purchasing Power Parity | PC pipeline         | pipaux |
 |regions     | Regions                 | pipapi              | pipaux |
 |sna         | Special National Account cases | pipaux       | Manual |
@@ -85,7 +85,23 @@ labelled with TB.
 
 ## PIP-Data_ExtSOL
 
-This folder is used for SOL. [Minh: Could you provide details?]{style="color:red"}
+This folder is for external SOL application. This is the folder where the data for the externa SOL will be synced between the network drive and the storage in Azure. The synchronization will be done daily from the ITS side. There are two subfolders GMD-DLW and HFPS-COVID19.
+
+-	GMD-DLW: it is the folder for GMD data for both raw and harmonized GMD data.
+-	HFPS-COVID19: it is the folder for High Frequent Phone Survey data for both raw and harmonized data.
+
+The structured folders for these two catalogs are standard likes the ones used in DLW system.
+
+There are dofiles on the synchronization between GMD in DLW and GMD in SOL. Those files are “Data in SOL.xlsx” and “Convert GMD to GMD SOL.do”. Only data with clear and explicit data license will be uploaded in this folder. 
+
+For now, only “public data” is in this application. Public means any users can download and redistribute the data, and there is no login in the country NSO website or any condition/terms when downloading the data. Otherwise, there is an explicit agreement with NSO on the usage of the data for SOL – email: Microdata for an external Statistics Online (SOL) platform.
+
+At the moment, we are working with Legal on the Custom license for the data license template where SOL will be mentioned explicitly. Once the Custom license is developed (after the launch of SOL) we can reach out to all countries to ask for permission to use and “limited redistribute” in the data in our secured platform.
+
+::: {.rmdbox .rmdwarning}
+Please do not touch or change any content in this folder without permission
+:::
+
 
 ## PIP_Data_Testing 
 
