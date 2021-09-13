@@ -2,8 +2,6 @@
 
 # Price FrameWork (pfw) data frame {#pfw-chapter}
 
-[NOTE:Minh: Could you please add (or ask someone to add) a short explanation for each variable? Just follow the same line of explanations as the ones already done.]{style="color:red"}
-
 The price framework data frame (pfw) is the most important source of technical
 metadata of the PIP project, which makes pertinent the have of a separate
 chapter for it. The general explanation of the structure of the pfw can be found
@@ -17,9 +15,17 @@ pfw <- pipload::pip_load_aux("pfw")
 
 ## Variables
 
-blah blah
+The table provides a short description of each variable of the Price FrameWork 
+data frame. We provide additional information for variable.  
 
-### ID vars {-} 
+```{r, echo=FALSE}
+pfwd <- readxl::read_xlsx(here::here("files/pfw_descriptions.xlsx"))
+DT::datatable(pfwd)
+```
+
+## Additional explanation 
+
+### ID vars {-}
 
 Variables of identification are `wb_region_code`, `pcn_region_code`,
 `country_code`, `ctryname`, `year`, `surveyid_year`, `survey_acronym`.
@@ -43,26 +49,6 @@ Alternative survey name for some surveys.
 ```{r}
 head(pfw[altname != "", c("altname", "survey_acronym")])
 ```
-
-### `wbint_link` {-}
-
-blah blah
-
-### `wbext_link` {-}
-
-blah blah
-
-### `alt_link` {-}
-
-blah blah
-
-### `surv_title` {-}
-
-blah blah
-
-### `surv_producer`  {-}
-
-blah blah
 
 ### `survey_coverage`  {-}
 
@@ -125,107 +111,3 @@ The following countries have this kind of data.
 pfw[use_groupdata == 1, unique(country_code)]
 ```
 
-### `reporting_year`  {-}
-blah blah
-
-### `survey_comparability`  {-}
-blah blah
-
-### `comp_note`  {-}
-blah blah
-
-### `preferable`  {-}
-blah blah
-
-### `show_portal`  {-}
-blah blah
-
-### `fieldwork_range`  {-}
-blah blah
-
-### `survey_year`  {-}
-blah blah
-
-### `newref`  {-}
-blah blah
-
-### `ref_year_des`  {-}
-blah blah
-
-### `wf_baseprice`  {-}
-blah blah
-
-### `wf_baseprice_note`  {-}
-blah blah
-
-### `wf_baseprice_des`  {-}
-blah blah
-
-### `wf_spatial_des`  {-}
-blah blah
-
-### `wf_spatial_var`  {-}
-blah blah
-
-### `cpi_replication`  {-}
-blah blah
-
-### `cpi_domain`  {-}
-blah blah
-
-### `cpi_domain_var`  {-}
-blah blah
-
-### `wf_currency_des`  {-}
-blah blah
-
-### `ppp_replication`  {-}
-blah blah
-
-### `ppp_domain`  {-}
-blah blah
-
-### `ppp_domain_var`  {-}
-blah blah
-
-### `wf_add_temp_des`  {-}
-blah blah
-
-### `wf_add_temp_var`  {-}
-blah blah
-
-### `wf_add_spatial_des`  {-}
-blah blah
-
-### `wf_add_spatial_var`  {-}
-blah blah
-
-### `tosplit`  {-}
-blah blah
-
-### `tosplit_var`  {-}
-blah blah
-
-### `inpovcal`  {-}
-blah blah
-
-### `oth_welfare1_type`  {-}
-blah blah
-
-### `oth_welfare1_var`  {-}
-blah blah
-
-### `gdp_domain`  {-}
-blah blah
-
-### `pce_domain`  {-}
-blah blah
-
-### `pop_domain`  {-}
-blah blah
-
-### `Note`  {-}
-blah blah
-
-### `pfw_id`  {-}
-blah blah
