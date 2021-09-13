@@ -10,15 +10,20 @@ formatted, and stored in a particular way.
 
 ### Microdata
 
-[Minh: Could you please add an explanation here?]{style="color:red"}
+The Global Monitoring Database (GMD) is the World Bank’s repository of multitopic income and expenditure household surveys used to monitor global poverty and shared prosperity. The household survey data are typically collected by national statistical offices in each country, and then compiled, processed, and harmonized. The process of harmonization is done at the regional level by the regional statistical development teams. This is to ensure that the harmonization is done with best country knowledge from the country TTLs as well as to ensure consistency of country data overtime.  Selected variables have been harmonized to the extent possible such that levels and trends in poverty and other key sociodemographic attributes can be reasonably compared across and within countries over time.
+
+The regional harmonization process also follows the global harmonization guidelines for most of the variables in GMD. PovcalNet also contributed historical data from before 1990, and recent survey data from Luxemburg Income Studies (LIS).
+
+The global update process is coordinated by the Data for Goals (D4G) team and supported by the six regional statistics teams in the Poverty and Equity Global Practice. 
+
+The original data files used for the regional harmonization and GMD harmonization should be cataloged and stored in the regional shared drive and the central Microdata Library catalog (http://microdatalib/). We assume that the depositing of the original microdata in the Microdata Library is a collective responsibility shared by all World Bank staff working in all the World Bank’s regions, irrespective of global practice, since the dialogue and data acquisition through the NSO and line ministries often take place in a decentralized manner.
+
 
 ### Group Data
 
-[Minh: Could you please explain who gets the original group data and how it is formatted?]{style="color:red"} We still need to develop the code to format original group data to PIP structure. Right now, we are still using Povcalnet's code. 
+Some countries have very restrictive and confidential data sharing conditions. In such cases, country economist, in collaboration with the regional team and PIP team, would send a request to the country NSO for the group or “collapsed” data for the purpose of monitoring international poverty (SDG 1.1.1). Historically, the group data can be exported from national statistics reports with either data format of type 2 or type 5. In recent years, country economists would request the group data from NSO directly. For example, we request the group data - ventile (20) for China by urban and rural, type 2. For other countries, like high income countries, such as UEA (Country code ARE), NSO directly reach out to us in order to update SDG 1.1.1, in this case the group data is shared to us and we validate the data.
 
 ### Bin Data
-
-
 
 Some of the countries that are not available in DataLibWeb can be found in the
 repository of the [LIS Cross-National Data
