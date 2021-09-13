@@ -31,6 +31,7 @@ joining-data-example
 special-data-cases
 pfw-chapter
 variables
+additional-explanation
 primus
 interacting-with-primus
 understand-primus
@@ -63,10 +64,10 @@ raw-data
 vintage-control
 data-structure-1
 ppp
-original-data-1
+raw-data-1
 data-structure-2
 price-framework-pfw
-original-data-2
+original-data-1
 abbreviations
 pcpipeline
 folder-structure-1
