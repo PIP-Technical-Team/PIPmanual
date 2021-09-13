@@ -285,13 +285,23 @@ because the CPI has changed.
 
 ## PPP
 
-### Original data
+### Raw data
 
-[Note: Minh to explain how the PPP data is collected and organized in the dlw
-folders.]{style="color:red"}
+The PPP data is downloaded from ICP website for most of the countries (Ask ICP
+team for the link, outlier, countries with changes in currency). Often there is
+a GPWG working group to assess the PPP and its impacts on poverty. In this case,
+the team would determine the countries for which there is a need to impute the
+PPP value, either from the ICP model or the team model.
 
-The name of the variables in the wide-format file will follow this structure,
-ppp_YYYY_vX_vY. Where,
+After the validation and adjustment process, the PPP values are stored in the
+data file for all PPP rounds with vintage controls for each round.
+
+The name of the variables in the wide-format file will follow the structure
+**ppp_YYYY_vX_vY**. Where, *YYYY* refers to the ICP round. *vX* refers to the
+version of the release, and *vY* refers to the adaptation of the release. So, v1
+will be the original data, whereas v2 would be the first adaptation or estimates
+of the release.
+
 
 -   YYYY: refers to the ICP round.
 
