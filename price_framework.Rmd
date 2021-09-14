@@ -39,8 +39,7 @@ countries.
 janitor::tabyl(pfw, wb_region_code, pcn_region_code)
 ```
 
-The difference between `year` and `surveyid_year` is that... [Minh, could you
-please explain here?]{style="color:red"}
+There is also difference between `year` and `surveyid_year`. For most of the data points, there should be no difference in between year and surveyid_year. However, in some extreme cases (not available at the moment), year could be different due to the reporting criteria from the NSO. For our purpose, we use `rep_year` as the reporting year in our system for integer ones, and `ref_year` for decimal reporting purpose.
 
 ### `altname` {-}
 
