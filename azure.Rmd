@@ -2,12 +2,13 @@
 
 The Azure DevOps site for PIP currently consists of two repos; ITSES-POVERTYSCORE and ITSES-POVERTYSCORE-DATA. Each repo consists of three branches; 
 DEV, QA and PROD. The PIP Techincal Team will handle deployments to DEV and QA, while ITS need to approve deployments to Production. 
-[Note: PROD deployments are TBD]{style="color:red"}
 
 ## Poverty Calculator Data {#azure-pc-data}
 
-Before you start with the data deployment process you will need to clone the Azure DevOps Data repo (DEV branch) to your local machine. You will only need to this once. 
+Before you start with the data deployment process you will need to clone the Azure DevOps Data repo (DEV branch) to your local machine. You will only need to do this once. 
 After that you can follow the step by step guide below. 
+[Note: In the (near) future the Azure Data repo will be directly synced with pipeline outputs folder on the PIP network drive. 
+There will then be no need to clone the repo to your local computer.]{style="color:red"}
  
 ### Deploying data on DEV 
 
@@ -26,6 +27,7 @@ After that you can follow the step by step guide below.
 ![](img/azure_pc_data_pipeline_step4.png)
 
 **Step 5:** Click on Variables -> FolderName, and add the name of the folder which should be copied to the Cloud Blob Store.
+[Note: This step is likely to change when the Data pipeline is re-written to handle mulitiple data version folders.]{style="color:red"}
 
 ![](img/azure_pc_data_pipeline_step5-1.png)
 
@@ -53,6 +55,9 @@ After that you can follow the step by step guide below.
 
 ![](img/azure_pc_data_pipeline_step9.png)
 
+**Step 10:** Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the scenes to 
+copy the data from the blob storage to the VM. This runs at regular intervals, every 10 (?) minutes. 
+
 ### Deploying data on QA
 
 **Step 1:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
@@ -72,7 +77,21 @@ Approve the request, and verify that the build completes.
 
 ### Deploying data to Production
 
-TBD.
+**Step 1:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
+
+**Step 2:** Click on Create pull request. Select from QA to PROD. 
+
+**Step 3:** Go through the steps to commit and approve the pull request. 
+Please make sure that the "Delete source branch" box is unchecked, 
+ie. don't delete the QA branch. 
+
+**Step 5:** Go to Pipelines -> Piplines and select the FILE-COPY-PROD-CI pipeline. 
+Verify that the pipeline is building. If it wasn't triggered you will need to
+trigger it manually. 
+
+**Step 6:** Go to Pipelines -> Releases and select the FILE-COPY-QA-CD release. 
+Wait for ITS to approve the request, and then verify that the build completes. 
+
 
 
 ## Poverty Calculator Docker image {#azure-pc-docker}
@@ -81,7 +100,7 @@ Before you start with the application deployment process you will need to clone 
 After that you can follow the step by step guide below. 
 
 Please note that it is important that data changes are pushed through and released before deploying the Docker image. This is because the Docker container will need to restart in order 
-to pick up changes in the mounted folder or volume. The best way to do this is to deploy the data, and then re-deploy the Docker image since a re-deployment includes a container restart. 
+to pick up changes in the mounted folder or volume. The best way to do this is to deploy the data, and then use the API restart pipeline to ensure a restart of the Docker container. 
 
 ### Deploying image on DEV 
 
@@ -91,7 +110,7 @@ to pick up changes in the mounted folder or volume. The best way to do this is t
 or before major releases. But in a continous workflow where you know that Dockerfile hasn't changed, it migth be sufficent to verify that the R packages in question are working. 
 
 **Step 3:** Navigate to the [Azure DevOps Docker repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources). 
-Go Pipelines -> Pipelines. Trigger the ACR-DEV-CI pipeline, either by a) Pushing an updated Dockerfile to the remote repo or b) Running the Pipeline manually. 
+Go Pipelines -> Pipelines. Trigger the CONTAINER-DEV-CI pipeline, either by a) Pushing an updated Dockerfile to the remote repo or b) Running the Pipeline manually. 
 
 **Step 4:** Go to the Pipelines -> Releases and select "Create release" in order to run a new deployment. View the logs to see results from the image build and security scan. 
 
@@ -109,12 +128,21 @@ Please make sure that the "Delete source branch" box is unchecked, ie. don't del
 
 **Step 4:** Go to the Release pipline to see results from the image build and security scan.
 
-**Step 5:**  Vist the [QA API website](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources) for further testing.
-
+**Step 5:**  Visit the [QA API website](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources) for further testing.
 
 
 ### Deploying image to Production
 
-TBD.
+**Step 1:** Check that the QA deployment is working correctly. 
+
+**Step 2:** Make sure the data on PROD is up-to-date (in sync with QA). If it isn't you will need to create a PR and merge the data first. 
+
+**Step 3:** Create a pull request from QA to PRDO. Go through the steps to commit and approve the pull request.
+Please make sure that the "Delete source branch" box is unchecked, ie. don't delete the QA branch. 
+
+**Step 4:** Go to the Release pipline to see results from the image build and security scan.
+
+**Step 5:**  Visit the [PROD API website](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources) for further testing.
+
 
 
