@@ -120,3 +120,7 @@ code-coverage
 create-setup-files-1
 integrate-with-codecov.io
 other-workflows
+sync-data-to-remote-repo-on-tfs
+run-ci-pipeline
+run-cd-pipeline
+move-data-to-vm
