@@ -32,7 +32,7 @@ After that you can follow the step by step guide below.
 
 ### Deploying data on DEV
 
-Deploying the data to DEV consists in four main stages:
+Deploying the data to DEV consists of four main stages:
 
 -   Sync local data to remote Git repository on TFS
 
@@ -42,14 +42,18 @@ Deploying the data to DEV consists in four main stages:
 
 -   Data is moved to the Virtual Machine (VM) running the API This stage is completed automatically every 30 minutes (as of 11/02/2021)
 
-1.  Sync data to remote repo on TFS
 
-    **Step 1:** Sync you local DEV branch with the remote.
+You can deploy data to DEV by following the steps below:
 
-    **Step 2:** Commit and push any data changes to the remote.
+#### Sync data to remote repo on TFS
 
-2.  Run CI pipeline\
-    **Step 3:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
+**Step 1:** Sync you local DEV branch with the remote.
+
+**Step 2:** Commit and push any data changes to the remote.
+
+#### Run CI pipeline
+
+**Step 3:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
     Click on Pipelines.
 
 ![](img/azure_pc_data_pipeline_step2.png)
@@ -80,8 +84,9 @@ Deploying the data to DEV consists in four main stages:
 
 ![](img/azure_pc_data_pipeline_step7.png)
 
-3.  Run CD pipeline\
-    **Step 9:** Click on Releases and select the FILE-COPY-DEV-CD release. Approve the pending request.
+####  Run CD pipeline
+
+**Step 9:** Click on Releases and select the FILE-COPY-DEV-CD release. Approve the pending request.
 
 ![](img/azure_pc_data_pipeline_step8-1.png)
 
@@ -93,8 +98,9 @@ Deploying the data to DEV consists in four main stages:
 
 ![](img/azure_pc_data_pipeline_step9.png)
 
-4.  Move data to VM\
-    **Step 11:** Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 10 (?) minutes.
+#### Move data to VM
+
+**Step 11:** Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 10 (?) minutes.
 
 ### Deploying data on QA
 
@@ -173,7 +179,7 @@ If it isn't you will need to create a PR and merge the data first.
 
 **Step 3:** Create a pull request from DEV to QA.
 Go through the steps to commit and approve the pull request.
-Please make sure that the **"Delete source branch" box is NOTchecked**, ie.
+Please make sure that the **"Delete source branch" box is NOT checked**, ie.
 don't delete the DEV branch.
 
 **Step 4:** Go to the Release pipeline to see results from the image build and security scan.

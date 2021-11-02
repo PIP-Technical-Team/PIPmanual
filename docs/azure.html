@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Deploying to Azure | PIP Manual</title>
   <meta name="description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Deploying to Azure | PIP Manual" />
   <meta property="og:type" content="book" />
@@ -34,9 +34,8 @@
   
 <link rel="prev" href="pc-docker.html"/>
 <link rel="next" href="gh-workflows.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,6 +43,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -342,21 +342,23 @@ You will only need to do this once.
 After that you can follow the step by step guide below.</p>
 <div id="deploying-data-on-dev" class="section level3" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Deploying data on DEV</h3>
-<p>Deploying the data to DEV consists in four main stages:</p>
+<p>Deploying the data to DEV consists of four main stages:</p>
 <ul>
 <li><p>Sync local data to remote Git repository on TFS</p></li>
 <li><p>Run the Continuous Integration pipeline (CI)</p></li>
 <li><p>Run the Continuous Deployment pipeline (CD) to move the data to Azure blob storage</p></li>
 <li><p>Data is moved to the Virtual Machine (VM) running the API This stage is completed automatically every 30 minutes (as of 11/02/2021)</p></li>
 </ul>
-<ol style="list-style-type: decimal">
-<li><p>Sync data to remote repo on TFS</p>
+<p>You can deploy data to DEV by following the steps below:</p>
+<div id="sync-data-to-remote-repo-on-tfs" class="section level4" number="9.1.1.1">
+<h4><span class="header-section-number">9.1.1.1</span> Sync data to remote repo on TFS</h4>
 <p><strong>Step 1:</strong> Sync you local DEV branch with the remote.</p>
-<p><strong>Step 2:</strong> Commit and push any data changes to the remote.</p></li>
-<li><p>Run CI pipeline<br />
-<strong>Step 3:</strong> Nagivate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a>.
-Click on Pipelines.</p></li>
-</ol>
+<p><strong>Step 2:</strong> Commit and push any data changes to the remote.</p>
+</div>
+<div id="run-ci-pipeline" class="section level4" number="9.1.1.2">
+<h4><span class="header-section-number">9.1.1.2</span> Run CI pipeline</h4>
+<p><strong>Step 3:</strong> Nagivate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a>.
+Click on Pipelines.</p>
 <p><img src="img/azure_pc_data_pipeline_step2.png" /></p>
 <p><strong>Step 4:</strong> Select the FILE-COPY-DEV-CI pipeline.</p>
 <p><img src="img/azure_pc_data_pipeline_step3.png" /></p>
@@ -371,19 +373,20 @@ Click on Pipelines.</p></li>
 <p><img src="img/azure_pc_data_pipeline_step6.png" /></p>
 <p><strong>Step 8:</strong> View the new build.</p>
 <p><img src="img/azure_pc_data_pipeline_step7.png" /></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Run CD pipeline<br />
-<strong>Step 9:</strong> Click on Releases and select the FILE-COPY-DEV-CD release. Approve the pending request.</li>
-</ol>
+</div>
+<div id="run-cd-pipeline" class="section level4" number="9.1.1.3">
+<h4><span class="header-section-number">9.1.1.3</span> Run CD pipeline</h4>
+<p><strong>Step 9:</strong> Click on Releases and select the FILE-COPY-DEV-CD release. Approve the pending request.</p>
 <p><img src="img/azure_pc_data_pipeline_step8-1.png" /></p>
 <p><img src="img/azure_pc_data_pipeline_step8-2.png" /></p>
 <p><img src="img/azure_pc_data_pipeline_step8-3.png" /></p>
 <p><strong>Step 10:</strong> Verify that the build completed.</p>
 <p><img src="img/azure_pc_data_pipeline_step9.png" /></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Move data to VM<br />
-<strong>Step 11:</strong> Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 10 (?) minutes.</li>
-</ol>
+</div>
+<div id="move-data-to-vm" class="section level4" number="9.1.1.4">
+<h4><span class="header-section-number">9.1.1.4</span>Move data to VM</h4>
+<p><strong>Step 11:</strong> Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 10 (?) minutes.</p>
+</div>
 </div>
 <div id="deploying-data-on-qa" class="section level3" number="9.1.2">
 <h3><span class="header-section-number">9.1.2</span> Deploying data on QA</h3>
@@ -447,7 +450,7 @@ Visit the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/R
 If it isn’t you will need to create a PR and merge the data first.</p>
 <p><strong>Step 3:</strong> Create a pull request from DEV to QA.
 Go through the steps to commit and approve the pull request.
-Please make sure that the <strong>“Delete source branch” box is NOTchecked</strong>, ie.
+Please make sure that the <strong>“Delete source branch” box is NOT checked</strong>, ie.
 don’t delete the DEV branch.</p>
 <p><strong>Step 4:</strong> Go to the Release pipeline to see results from the image build and security scan.</p>
 <p><strong>Step 5:</strong> Visit the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">QA API website</a> for further testing.</p>
@@ -477,6 +480,7 @@ don’t delete the QA branch.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -506,16 +510,15 @@ gitbook.start({
 "text": null
 },
 "download": ["PIPmanual.pdf", "PIPmanual.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
 },
 "toolbar": {
 "position": "fixed"
+},
+"search": {
+"engine": "fuse"
 },
 "info": true
 });
