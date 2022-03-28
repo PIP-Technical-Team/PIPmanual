@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Deploying to Azure | PIP Manual</title>
   <meta name="description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Deploying to Azure | PIP Manual" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Poverty GP" />
 
 
-<meta name="date" content="2021-11-02" />
+<meta name="date" content="2022-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -35,7 +35,8 @@
 <link rel="prev" href="pc-docker.html"/>
 <link rel="next" href="gh-workflows.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,7 +44,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -336,10 +336,7 @@
 <p>The PIP Technical Team will handle deployments to DEV and QA, while ITS needs to approve deployments to Production.</p>
 <div id="azure-pc-data" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Poverty Calculator Data</h2>
-<p><span style="color:red">Note: These are <strong>temporary instructions</strong>. In the (near) future the Azure Data repo will be directly synced with pipeline outputs folder on the PIP network drive. There will then be no need to clone the repo to your local computer.</span></p>
-<p>Before you start with the data deployment process you will need to clone the Azure DevOps Data repo (DEV branch) to your local machine.
-You will only need to do this once.
-After that you can follow the step by step guide below.</p>
+<p><span style="color:red">Note: The Azure Data repo has now been directly synced with pipeline outputs folder on the PIP network drive. There is thus no longer any need to push changes from your local computer.</span></p>
 <div id="deploying-data-on-dev" class="section level3" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Deploying data on DEV</h3>
 <p>Deploying the data to DEV consists of four main stages:</p>
@@ -384,8 +381,21 @@ Click on Pipelines.</p>
 <p><img src="img/azure_pc_data_pipeline_step9.png" /></p>
 </div>
 <div id="move-data-to-vm" class="section level4" number="9.1.1.4">
-<h4><span class="header-section-number">9.1.1.4</span>Move data to VM</h4>
-<p><strong>Step 11:</strong> Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 10 (?) minutes.</p>
+<h4><span class="header-section-number">9.1.1.4</span> Move data to VM</h4>
+<p><strong>Step 11:</strong> Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the
+scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 30 (?) minutes.
+You can use the <code>/data-timestamp</code> endpoint to verify that the transfer has completed. For additional information
+you can also use the <code>/dir-info</code> endpoint.</p>
+</div>
+<div id="restart-the-docker-container" class="section level4" number="9.1.1.5">
+<h4><span class="header-section-number">9.1.1.5</span> Restart the Docker container</h4>
+<p><strong>Step 12:</strong> Restart the Docker container by running the <code>RESTARTCONTAINER-DEV-CD</code> release pipeline.</p>
+</div>
+<div id="clear-the-vm-cache" class="section level4" number="9.1.1.6">
+<h4><span class="header-section-number">9.1.1.6</span> Clear the VM cache</h4>
+<p><strong>Step 13:</strong> If you conducted a data update that includes changes to survey data or the estimation tables for an already
+existing version folder you will need to clear the cache on the VM. Use the specific API endpoints for cache handling to do this.
+<span style="color:red">Note: If in doubt always clear the cache.</span></p>
 </div>
 </div>
 <div id="deploying-data-on-qa" class="section level3" number="9.1.2">
@@ -402,6 +412,8 @@ Verify that the pipeline is building.
 If it wasn’t triggered you will need to trigger it manually.</p>
 <p><strong>Step 6:</strong> Go to Pipelines -&gt; Releases and select the FILE-COPY-QA-CD release.
 Approve the request, and verify that the build completes.</p>
+<p><strong>Step 7:</strong> Run the <code>RESTARTCONTAINER-QA-CD</code> release pipeline after the data transfer to the VMs has completed.</p>
+<p><strong>Step 8:</strong> Clear the cache on the VMs if needed. <span style="color:red">Note: If in doubt always clear the cache.</span></p>
 </div>
 <div id="deploying-data-to-production" class="section level3" number="9.1.3">
 <h3><span class="header-section-number">9.1.3</span> Deploying data to Production</h3>
@@ -416,6 +428,8 @@ Verify that the pipeline is building.
 If it wasn’t triggered you will need to trigger it manually.</p>
 <p><strong>Step 6:</strong> Go to Pipelines -&gt; Releases and select the FILE-COPY-QA-CD release.
 Wait for ITS to approve the request, and then verify that the build completes.</p>
+<p><strong>Step 7:</strong> Run the <code>RESTARTCONTAINER-PROD-CD</code> release pipeline after the data transfer to the VMs has completed.</p>
+<p><strong>Step 8:</strong> Clear the cache on the VMs.</p>
 </div>
 </div>
 <div id="azure-pc-docker" class="section level2" number="9.2">
@@ -480,7 +494,6 @@ don’t delete the QA branch.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -510,15 +523,16 @@ gitbook.start({
 "text": null
 },
 "download": ["PIPmanual.pdf", "PIPmanual.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
 },
 "toolbar": {
 "position": "fixed"
-},
-"search": {
-"engine": "fuse"
 },
 "info": true
 });
