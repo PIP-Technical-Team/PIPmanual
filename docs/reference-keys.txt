@@ -104,6 +104,12 @@ resources
 azure
 azure-pc-data
 deploying-data-on-dev
+sync-data-to-remote-repo-on-tfs
+run-ci-pipeline
+run-cd-pipeline
+move-data-to-vm
+restart-the-docker-container
+clear-the-vm-cache
 deploying-data-on-qa
 deploying-data-to-production
 azure-pc-docker
@@ -120,9 +126,3 @@ code-coverage
 create-setup-files-1
 integrate-with-codecov.io
 other-workflows
-sync-data-to-remote-repo-on-tfs
-run-ci-pipeline
-run-cd-pipeline
-move-data-to-vm
-restart-the-docker-container
-clear-the-vm-cache

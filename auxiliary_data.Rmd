@@ -302,7 +302,6 @@ version of the release, and *vY* refers to the adaptation of the release. So, v1
 will be the original data, whereas v2 would be the first adaptation or estimates
 of the release.
 
-
 -   YYYY: refers to the ICP round.
 
 -   vX: refers to the version of the release.

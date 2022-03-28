@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Deploying to Azure | PIP Manual</title>
+  <title>Chapter 13 Deploying to Azure | PIP Manual</title>
   <meta name="description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Deploying to Azure | PIP Manual" />
+  <meta property="og:title" content="Chapter 13 Deploying to Azure | PIP Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Deploying to Azure | PIP Manual" />
+  <meta name="twitter:title" content="Chapter 13 Deploying to Azure | PIP Manual" />
   
   <meta name="twitter:description" content="These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow." />
   
@@ -34,7 +34,7 @@
   
 <link rel="prev" href="pc-docker.html"/>
 <link rel="next" href="gh-workflows.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,11 +52,105 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.21/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -77,227 +171,231 @@
 <li><strong><a href="./">PIP Internal Guidelines</a></strong></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome!</a>
+<li><a href="index.html#welcome">Welcome!<span></span></a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#team"><i class="fa fa-check"></i>Team</a></li>
+<li><a href="index.html#team">Team<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-introduction"><i class="fa fa-check"></i>(PART) Introduction</a>
+<li class="part"><span><b>I Introduction<span></span></b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction<span></span></a>
 <ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#ojectives"><i class="fa fa-check"></i><b>0.1</b> Ojectives</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#technical-requirements"><i class="fa fa-check"></i><b>0.2</b> Technical requirements</a></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#ojectives"><i class="fa fa-check"></i><b>1.1</b> Ojectives<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#technical-requirements"><i class="fa fa-check"></i><b>1.2</b> Technical requirements<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="internal-workflow.html"><a href="internal-workflow.html"><i class="fa fa-check"></i><b>1</b> Internal Workflow</a>
+<li class="chapter" data-level="2" data-path="internal-workflow.html"><a href="internal-workflow.html"><i class="fa fa-check"></i><b>2</b> Internal Workflow<span></span></a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="internal-workflow.html"><a href="internal-workflow.html#the-github-group"><i class="fa fa-check"></i><b>1.1</b> The Github group</a></li>
-<li class="chapter" data-level="1.2" data-path="internal-workflow.html"><a href="internal-workflow.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
-<li class="chapter" data-level="1.3" data-path="internal-workflow.html"><a href="internal-workflow.html#data-acquisition"><i class="fa fa-check"></i><b>1.3</b> Data acquisition</a></li>
-<li class="chapter" data-level="1.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>1.4</b> Data preparation</a></li>
-<li class="chapter" data-level="1.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-computed-indicators"><i class="fa fa-check"></i><b>1.5</b> Pre-computed indicators</a></li>
-<li class="chapter" data-level="1.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>1.6</b> API feeding</a></li>
-<li class="chapter" data-level="1.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>1.7</b> Packages interaction</a></li>
+<li class="chapter" data-level="2.1" data-path="internal-workflow.html"><a href="internal-workflow.html#the-github-group"><i class="fa fa-check"></i><b>2.1</b> The Github group<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="internal-workflow.html"><a href="internal-workflow.html#overview"><i class="fa fa-check"></i><b>2.2</b> Overview<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="internal-workflow.html"><a href="internal-workflow.html#data-acquisition"><i class="fa fa-check"></i><b>2.3</b> Data acquisition<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="internal-workflow.html"><a href="internal-workflow.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> Data preparation<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="internal-workflow.html"><a href="internal-workflow.html#pre-computed-indicators"><i class="fa fa-check"></i><b>2.5</b> Pre-computed indicators<span></span></a></li>
+<li class="chapter" data-level="2.6" data-path="internal-workflow.html"><a href="internal-workflow.html#api-feeding"><i class="fa fa-check"></i><b>2.6</b> API feeding<span></span></a></li>
+<li class="chapter" data-level="2.7" data-path="internal-workflow.html"><a href="internal-workflow.html#packages-interaction"><i class="fa fa-check"></i><b>2.7</b> Packages interaction<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>2</b> Folder Structure</a>
+<li class="chapter" data-level="3" data-path="folder-structure.html"><a href="folder-structure.html"><i class="fa fa-check"></i><b>3</b> Folder Structure<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="folder-structure.html"><a href="folder-structure.html#pip-data"><i class="fa fa-check"></i><b>2.1</b> PIP-Data</a></li>
-<li class="chapter" data-level="2.2" data-path="folder-structure.html"><a href="folder-structure.html#pip-data_qa"><i class="fa fa-check"></i><b>2.2</b> PIP-Data_QA</a>
+<li class="chapter" data-level="3.1" data-path="folder-structure.html"><a href="folder-structure.html#pip-data"><i class="fa fa-check"></i><b>3.1</b> PIP-Data<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="folder-structure.html"><a href="folder-structure.html#pip-data_qa"><i class="fa fa-check"></i><b>3.2</b> PIP-Data_QA<span></span></a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="folder-structure.html"><a href="folder-structure.html#aux"><i class="fa fa-check"></i><b>2.2.1</b> _aux</a></li>
-<li class="chapter" data-level="2.2.2" data-path="folder-structure.html"><a href="folder-structure.html#inventory"><i class="fa fa-check"></i><b>2.2.2</b> _inventory</a></li>
-<li class="chapter" data-level="2.2.3" data-path="folder-structure.html"><a href="folder-structure.html#country-data"><i class="fa fa-check"></i><b>2.2.3</b> Country data</a></li>
+<li class="chapter" data-level="3.2.1" data-path="folder-structure.html"><a href="folder-structure.html#aux"><i class="fa fa-check"></i><b>3.2.1</b> _aux<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="folder-structure.html"><a href="folder-structure.html#inventory"><i class="fa fa-check"></i><b>3.2.2</b> _inventory<span></span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="folder-structure.html"><a href="folder-structure.html#country-data"><i class="fa fa-check"></i><b>3.2.3</b> Country data<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="folder-structure.html"><a href="folder-structure.html#pip-data_extsol"><i class="fa fa-check"></i><b>2.3</b> PIP-Data_ExtSOL</a></li>
-<li class="chapter" data-level="2.4" data-path="folder-structure.html"><a href="folder-structure.html#pip_data_testing"><i class="fa fa-check"></i><b>2.4</b> PIP_Data_Testing</a></li>
-<li class="chapter" data-level="2.5" data-path="folder-structure.html"><a href="folder-structure.html#pip_data_vintage"><i class="fa fa-check"></i><b>2.5</b> PIP_Data_Vintage</a></li>
-<li class="chapter" data-level="2.6" data-path="folder-structure.html"><a href="folder-structure.html#pip_ingestion_pipeline"><i class="fa fa-check"></i><b>2.6</b> pip_ingestion_pipeline</a>
+<li class="chapter" data-level="3.3" data-path="folder-structure.html"><a href="folder-structure.html#pip-data_extsol"><i class="fa fa-check"></i><b>3.3</b> PIP-Data_ExtSOL<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="folder-structure.html"><a href="folder-structure.html#pip_data_testing"><i class="fa fa-check"></i><b>3.4</b> PIP_Data_Testing<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="folder-structure.html"><a href="folder-structure.html#pip_data_vintage"><i class="fa fa-check"></i><b>3.5</b> PIP_Data_Vintage<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="folder-structure.html"><a href="folder-structure.html#pip_ingestion_pipeline"><i class="fa fa-check"></i><b>3.6</b> pip_ingestion_pipeline<span></span></a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="folder-structure.html"><a href="folder-structure.html#pc_data"><i class="fa fa-check"></i><b>2.6.1</b> pc_data</a></li>
-<li class="chapter" data-level="2.6.2" data-path="folder-structure.html"><a href="folder-structure.html#tb_data"><i class="fa fa-check"></i><b>2.6.2</b> tb_data</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>3</b> Joining Data</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="joining-data.html"><a href="joining-data.html#pfw-join"><i class="fa fa-check"></i><b>3.1</b> The Price FrameWork (pfw) data</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="joining-data.html"><a href="joining-data.html#joining-data-example"><i class="fa fa-check"></i><b>3.1.1</b> Joining data example</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>3.2</b> Special data cases</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-pip-data"><i class="fa fa-check"></i>(PART) PIP data</a>
-<ul>
-<li class="chapter" data-level="3.3" data-path="joining-data.html"><a href="joining-data.html#variables"><i class="fa fa-check"></i><b>3.3</b> Variables</a></li>
-<li class="chapter" data-level="3.4" data-path="joining-data.html"><a href="joining-data.html#additional-explanation"><i class="fa fa-check"></i><b>3.4</b> Additional explanation</a>
-<ul>
-<li class="chapter" data-level="" data-path="joining-data.html"><a href="joining-data.html#id-vars"><i class="fa fa-check"></i>ID vars</a></li>
-<li><a href="joining-data.html#altname"><code>altname</code></a></li>
-<li><a href="joining-data.html#survey_coverage"><code>survey_coverage</code></a></li>
-<li><a href="joining-data.html#welfare_type"><code>welfare_type</code></a></li>
-<li><a href="joining-data.html#use_imputed"><code>use_imputed</code></a></li>
-<li><a href="joining-data.html#use_microdata"><code>use_microdata</code></a></li>
-<li><a href="joining-data.html#use_bin"><code>use_bin</code></a></li>
-<li><a href="joining-data.html#use_groupdata"><code>use_groupdata</code></a></li>
+<li class="chapter" data-level="3.6.1" data-path="folder-structure.html"><a href="folder-structure.html#pc_data"><i class="fa fa-check"></i><b>3.6.1</b> pc_data<span></span></a></li>
+<li class="chapter" data-level="3.6.2" data-path="folder-structure.html"><a href="folder-structure.html#tb_data"><i class="fa fa-check"></i><b>3.6.2</b> tb_data<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>4</b> PRIMUS</a>
+<li class="chapter" data-level="4" data-path="joining-data.html"><a href="joining-data.html"><i class="fa fa-check"></i><b>4</b> Joining Data<span></span></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>4.1</b> Interacting with PRIMUS</a>
+<li class="chapter" data-level="4.1" data-path="joining-data.html"><a href="joining-data.html#pfw-join"><i class="fa fa-check"></i><b>4.1</b> The Price FrameWork (pfw) data<span></span></a>
 <ul>
-<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
-<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
-<li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
+<li class="chapter" data-level="4.1.1" data-path="joining-data.html"><a href="joining-data.html#joining-data-example"><i class="fa fa-check"></i><b>4.1.1</b> Joining data example<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>4.2</b> Understanding PRIMUS</a></li>
-<li class="chapter" data-level="4.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>4.3</b> Checking PRIMUS estimates</a></li>
-<li class="chapter" data-level="4.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>4.4</b> Confirming and approving data in PRIMUS</a></li>
+<li class="chapter" data-level="4.2" data-path="joining-data.html"><a href="joining-data.html#special-data-cases"><i class="fa fa-check"></i><b>4.2</b> Special data cases<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>5</b> Welfare data</a>
+<li class="part"><span><b>II PIP data<span></span></b></span></li>
+<li class="chapter" data-level="5" data-path="pfw-chapter.html"><a href="pfw-chapter.html"><i class="fa fa-check"></i><b>5</b> Price FrameWork (pfw) data frame<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="welfare-data.html"><a href="welfare-data.html#welfare-origin-of-data"><i class="fa fa-check"></i><b>5.1</b> From Raw to GMD</a>
+<li class="chapter" data-level="5.1" data-path="pfw-chapter.html"><a href="pfw-chapter.html#variables"><i class="fa fa-check"></i><b>5.1</b> Variables<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="pfw-chapter.html"><a href="pfw-chapter.html#additional-explanation"><i class="fa fa-check"></i><b>5.2</b> Additional explanation<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="welfare-data.html"><a href="welfare-data.html#microdata"><i class="fa fa-check"></i><b>5.1.1</b> Microdata</a></li>
-<li class="chapter" data-level="5.1.2" data-path="welfare-data.html"><a href="welfare-data.html#group-data"><i class="fa fa-check"></i><b>5.1.2</b> Group Data</a></li>
-<li class="chapter" data-level="5.1.3" data-path="welfare-data.html"><a href="welfare-data.html#bin-data"><i class="fa fa-check"></i><b>5.1.3</b> Bin Data</a></li>
-<li class="chapter" data-level="5.1.4" data-path="welfare-data.html"><a href="welfare-data.html#synthetic-data"><i class="fa fa-check"></i><b>5.1.4</b> Synthetic Data</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>5.2</b> From GMD to PIP ({pipdp} package)</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="welfare-data.html"><a href="welfare-data.html#requirements"><i class="fa fa-check"></i><b>5.2.1</b> Requirements</a></li>
-<li class="chapter" data-level="5.2.2" data-path="welfare-data.html"><a href="welfare-data.html#installation"><i class="fa fa-check"></i><b>5.2.2</b> Installation</a></li>
-<li class="chapter" data-level="5.2.3" data-path="welfare-data.html"><a href="welfare-data.html#remote-server"><i class="fa fa-check"></i><b>5.2.3</b> Remote server</a></li>
-<li class="chapter" data-level="5.2.4" data-path="welfare-data.html"><a href="welfare-data.html#usage"><i class="fa fa-check"></i><b>5.2.4</b> Usage</a></li>
-<li class="chapter" data-level="5.2.5" data-path="welfare-data.html"><a href="welfare-data.html#preparing-survey-data-for-poverty-calculator-pipeline"><i class="fa fa-check"></i><b>5.2.5</b> Preparing survey data for Poverty Calculator Pipeline</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id"><i class="fa fa-check"></i><b>5.3</b> Survey ID nomenclature</a></li>
-<li class="chapter" data-level="5.4" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-cache"><i class="fa fa-check"></i><b>5.4</b> Survey CACHE ID nomenclature</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>6</b> Auxiliary data</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>6.1.1</b> Original data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>6.1.2</b> Data structure</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts"><i class="fa fa-check"></i><b>6.2</b> National Accounts</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>6.2.1</b> GDP</a></li>
-<li class="chapter" data-level="6.2.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>6.2.2</b> Consumption (PCE)</a></li>
-<li class="chapter" data-level="6.2.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts-special-cases"><i class="fa fa-check"></i><b>6.2.3</b> National Accounts, Special Cases</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>6.3</b> CPI</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data"><i class="fa fa-check"></i><b>6.3.1</b> Raw data</a></li>
-<li class="chapter" data-level="6.3.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#vintage-control"><i class="fa fa-check"></i><b>6.3.2</b> Vintage control</a></li>
-<li class="chapter" data-level="6.3.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-1"><i class="fa fa-check"></i><b>6.3.3</b> Data structure</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>6.4</b> PPP</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data-1"><i class="fa fa-check"></i><b>6.4.1</b> Raw data</a></li>
-<li class="chapter" data-level="6.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>6.4.2</b> Data structure</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>6.5</b> Price FrameWork (PFW)</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>6.5.1</b> Original data</a></li>
-</ul></li>
-<li class="chapter" data-level="6.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#abbreviations"><i class="fa fa-check"></i><b>6.6</b> Abbreviations</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-pip-procedures"><i class="fa fa-check"></i>(PART) PIP Procedures</a>
-<ul>
-<li class="chapter" data-level="6.7" data-path="auxiliary-data.html"><a href="auxiliary-data.html#folder-structure-1"><i class="fa fa-check"></i><b>6.7</b> Folder structure</a>
-<ul>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#folders"><i class="fa fa-check"></i>Folders</a></li>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#files"><i class="fa fa-check"></i>Files</a></li>
-</ul></li>
-<li class="chapter" data-level="6.8" data-path="auxiliary-data.html"><a href="auxiliary-data.html#prerequisites"><i class="fa fa-check"></i><b>6.8</b> Prerequisites</a></li>
-<li class="chapter" data-level="6.9" data-path="auxiliary-data.html"><a href="auxiliary-data.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>6.9</b> Structure of the <code>_targets.R</code> file</a>
-<ul>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#start-up"><i class="fa fa-check"></i>Start up</a></li>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#step-1-small-functions"><i class="fa fa-check"></i>Step 1: small functions</a></li>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#step-2-preparing-the-data"><i class="fa fa-check"></i>Step 2: preparing the data</a></li>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#step-3-the-actual-pipeline"><i class="fa fa-check"></i>Step 3: The actual pipeline</a></li>
-</ul></li>
-<li class="chapter" data-level="6.10" data-path="auxiliary-data.html"><a href="auxiliary-data.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>6.10</b> Understanding the pipeline</a>
-<ul>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#stem-targets"><i class="fa fa-check"></i>Stem targets</a></li>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#branches-targets"><i class="fa fa-check"></i>Branches targets</a></li>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#creating-the-cache-files"><i class="fa fa-check"></i>Creating the cache files</a></li>
-</ul></li>
-<li class="chapter" data-level="6.11" data-path="auxiliary-data.html"><a href="auxiliary-data.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>6.11</b> Understanding <code>{pipdm}</code> functions</a>
-<ul>
-<li class="chapter" data-level="6.11.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>6.11.1</b> Internal structure of <code>{pipdm}</code> functions</a></li>
-<li class="chapter" data-level="6.11.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>6.11.2</b> Updating <code>{pipdm}</code> (or any other PIP package)</a></li>
-</ul></li>
-<li class="chapter" data-level="6.12" data-path="auxiliary-data.html"><a href="auxiliary-data.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>6.12</b> Executing the <code>_targets.R</code> file</a></li>
-<li class="chapter" data-level="6.13" data-path="auxiliary-data.html"><a href="auxiliary-data.html#debugging"><i class="fa fa-check"></i><b>6.13</b> Debugging</a>
-<ul>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#debugging-stem-targets"><i class="fa fa-check"></i>Debugging stem targets</a></li>
-<li class="chapter" data-level="" data-path="auxiliary-data.html"><a href="auxiliary-data.html#debugging-branch-targets"><i class="fa fa-check"></i>Debugging branch targets</a></li>
+<li><a href="pfw-chapter.html#id-vars">ID vars<span></span></a></li>
+<li><a href="pfw-chapter.html#altname"><code>altname</code><span></span></a></li>
+<li><a href="pfw-chapter.html#survey_coverage"><code>survey_coverage</code><span></span></a></li>
+<li><a href="pfw-chapter.html#welfare_type"><code>welfare_type</code><span></span></a></li>
+<li><a href="pfw-chapter.html#use_imputed"><code>use_imputed</code><span></span></a></li>
+<li><a href="pfw-chapter.html#use_microdata"><code>use_microdata</code><span></span></a></li>
+<li><a href="pfw-chapter.html#use_bin"><code>use_bin</code><span></span></a></li>
+<li><a href="pfw-chapter.html#use_groupdata"><code>use_groupdata</code><span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="tmpipelilne.html"><a href="tmpipelilne.html"><i class="fa fa-check"></i><b>7</b> Table Maker Pipeline</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-standalone-technical-considerations"><i class="fa fa-check"></i>(PART) Standalone Technical Considerations</a>
+<li class="chapter" data-level="6" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>6</b> PRIMUS<span></span></a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tmpipelilne.html"><a href="tmpipelilne.html#auxiilary-data"><i class="fa fa-check"></i><b>7.1</b> Auxiilary data</a>
+<li class="chapter" data-level="6.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>6.1</b> Interacting with PRIMUS<span></span></a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="tmpipelilne.html"><a href="tmpipelilne.html#udpate-data"><i class="fa fa-check"></i><b>7.1.1</b> udpate data</a></li>
-<li class="chapter" data-level="7.1.2" data-path="tmpipelilne.html"><a href="tmpipelilne.html#load-data"><i class="fa fa-check"></i><b>7.1.2</b> Load data</a></li>
+<li><a href="primus.html#website-platform">Website platform<span></span></a></li>
+<li><a href="primus.html#stata-command">Stata command<span></span></a></li>
+<li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="tmpipelilne.html"><a href="tmpipelilne.html#microdata-1"><i class="fa fa-check"></i><b>7.2</b> Microdata</a>
+<li class="chapter" data-level="6.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>6.2</b> Understanding PRIMUS<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>6.3</b> Checking PRIMUS estimates<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>6.4</b> Confirming and approving data in PRIMUS<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="welfare-data.html"><a href="welfare-data.html"><i class="fa fa-check"></i><b>7</b> Welfare data<span></span></a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="tmpipelilne.html"><a href="tmpipelilne.html#inventory-file"><i class="fa fa-check"></i><b>7.2.1</b> Inventory file</a></li>
-<li class="chapter" data-level="7.2.2" data-path="tmpipelilne.html"><a href="tmpipelilne.html#finding-data"><i class="fa fa-check"></i><b>7.2.2</b> Finding data</a></li>
-<li class="chapter" data-level="7.2.3" data-path="tmpipelilne.html"><a href="tmpipelilne.html#loading-data"><i class="fa fa-check"></i><b>7.2.3</b> Loading data</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="pc-docker.html"><a href="pc-docker.html"><i class="fa fa-check"></i><b>8</b> Docker Container</a>
+<li class="chapter" data-level="7.1" data-path="welfare-data.html"><a href="welfare-data.html#welfare-origin-of-data"><i class="fa fa-check"></i><b>7.1</b> From Raw to GMD<span></span></a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="pc-docker.html"><a href="pc-docker.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#prerequisites"><i class="fa fa-check"></i><b>8.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="8.3" data-path="pc-docker.html"><a href="pc-docker.html#docker-on-world-bank-laptops"><i class="fa fa-check"></i><b>8.3</b> Docker on World Bank laptops</a>
+<li class="chapter" data-level="7.1.1" data-path="welfare-data.html"><a href="welfare-data.html#microdata"><i class="fa fa-check"></i><b>7.1.1</b> Microdata<span></span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="welfare-data.html"><a href="welfare-data.html#group-data"><i class="fa fa-check"></i><b>7.1.2</b> Group Data<span></span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="welfare-data.html"><a href="welfare-data.html#bin-data"><i class="fa fa-check"></i><b>7.1.3</b> Bin Data<span></span></a></li>
+<li class="chapter" data-level="7.1.4" data-path="welfare-data.html"><a href="welfare-data.html#synthetic-data"><i class="fa fa-check"></i><b>7.1.4</b> Synthetic Data<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="welfare-data.html"><a href="welfare-data.html#from-gmd-to-pip"><i class="fa fa-check"></i><b>7.2</b> From GMD to PIP ({pipdp} package)<span></span></a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="pc-docker.html"><a href="pc-docker.html#wb-docker-install"><i class="fa fa-check"></i><b>8.3.1</b> Install Docker</a></li>
-<li class="chapter" data-level="8.3.2" data-path="pc-docker.html"><a href="pc-docker.html#known-problems-and-solutions"><i class="fa fa-check"></i><b>8.3.2</b> Known problems and solutions</a></li>
-<li class="chapter" data-level="8.3.3" data-path="pc-docker.html"><a href="pc-docker.html#tips-and-tricks"><i class="fa fa-check"></i><b>8.3.3</b> Tips and tricks</a></li>
+<li class="chapter" data-level="7.2.1" data-path="welfare-data.html"><a href="welfare-data.html#requirements"><i class="fa fa-check"></i><b>7.2.1</b> Requirements<span></span></a></li>
+<li class="chapter" data-level="7.2.2" data-path="welfare-data.html"><a href="welfare-data.html#installation"><i class="fa fa-check"></i><b>7.2.2</b> Installation<span></span></a></li>
+<li class="chapter" data-level="7.2.3" data-path="welfare-data.html"><a href="welfare-data.html#remote-server"><i class="fa fa-check"></i><b>7.2.3</b> Remote server<span></span></a></li>
+<li class="chapter" data-level="7.2.4" data-path="welfare-data.html"><a href="welfare-data.html#usage"><i class="fa fa-check"></i><b>7.2.4</b> Usage<span></span></a></li>
+<li class="chapter" data-level="7.2.5" data-path="welfare-data.html"><a href="welfare-data.html#preparing-survey-data-for-poverty-calculator-pipeline"><i class="fa fa-check"></i><b>7.2.5</b> Preparing survey data for Poverty Calculator Pipeline<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="pc-docker.html"><a href="pc-docker.html#create-volume"><i class="fa fa-check"></i><b>8.4</b> Create volume</a></li>
-<li class="chapter" data-level="8.5" data-path="pc-docker.html"><a href="pc-docker.html#build-image"><i class="fa fa-check"></i><b>8.5</b> Build image</a></li>
-<li class="chapter" data-level="8.6" data-path="pc-docker.html"><a href="pc-docker.html#run-container"><i class="fa fa-check"></i><b>8.6</b> Run container</a></li>
-<li class="chapter" data-level="8.7" data-path="auxiliary-data.html"><a href="auxiliary-data.html#debugging"><i class="fa fa-check"></i><b>8.7</b> Debugging</a></li>
-<li class="chapter" data-level="8.8" data-path="pc-docker.html"><a href="pc-docker.html#security"><i class="fa fa-check"></i><b>8.8</b> Security</a></li>
-<li class="chapter" data-level="8.9" data-path="pc-docker.html"><a href="pc-docker.html#base-image-options"><i class="fa fa-check"></i><b>8.9</b> Base image options</a></li>
-<li class="chapter" data-level="8.10" data-path="pc-docker.html"><a href="pc-docker.html#using-r-on-linux"><i class="fa fa-check"></i><b>8.10</b> Using R on Linux</a></li>
-<li class="chapter" data-level="8.11" data-path="pc-docker.html"><a href="pc-docker.html#resources"><i class="fa fa-check"></i><b>8.11</b> Resources</a></li>
+<li class="chapter" data-level="7.3" data-path="welfare-data.html"><a href="welfare-data.html#survey-id"><i class="fa fa-check"></i><b>7.3</b> Survey ID nomenclature<span></span></a></li>
+<li class="chapter" data-level="7.4" data-path="welfare-data.html"><a href="welfare-data.html#survey-id-cache"><i class="fa fa-check"></i><b>7.4</b> Survey CACHE ID nomenclature<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="azure.html"><a href="azure.html"><i class="fa fa-check"></i><b>9</b> Deploying to Azure</a>
+<li class="chapter" data-level="8" data-path="auxiliary-data.html"><a href="auxiliary-data.html"><i class="fa fa-check"></i><b>8</b> Auxiliary data<span></span></a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="azure.html"><a href="azure.html#azure-pc-data"><i class="fa fa-check"></i><b>9.1</b> Poverty Calculator Data</a>
+<li class="chapter" data-level="8.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#population"><i class="fa fa-check"></i><b>8.1</b> Population<span></span></a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="azure.html"><a href="azure.html#deploying-data-on-dev"><i class="fa fa-check"></i><b>9.1.1</b> Deploying data on DEV</a></li>
-<li class="chapter" data-level="9.1.2" data-path="azure.html"><a href="azure.html#deploying-data-on-qa"><i class="fa fa-check"></i><b>9.1.2</b> Deploying data on QA</a></li>
-<li class="chapter" data-level="9.1.3" data-path="azure.html"><a href="azure.html#deploying-data-to-production"><i class="fa fa-check"></i><b>9.1.3</b> Deploying data to Production</a></li>
+<li class="chapter" data-level="8.1.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data"><i class="fa fa-check"></i><b>8.1.1</b> Original data<span></span></a></li>
+<li class="chapter" data-level="8.1.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure"><i class="fa fa-check"></i><b>8.1.2</b> Data structure<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="azure.html"><a href="azure.html#azure-pc-docker"><i class="fa fa-check"></i><b>9.2</b> Poverty Calculator Docker image</a>
+<li class="chapter" data-level="8.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts"><i class="fa fa-check"></i><b>8.2</b> National Accounts<span></span></a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="azure.html"><a href="azure.html#deploying-image-on-dev"><i class="fa fa-check"></i><b>9.2.1</b> Deploying image on DEV</a></li>
-<li class="chapter" data-level="9.2.2" data-path="azure.html"><a href="azure.html#deploying-image-on-qa"><i class="fa fa-check"></i><b>9.2.2</b> Deploying image on QA</a></li>
-<li class="chapter" data-level="9.2.3" data-path="azure.html"><a href="azure.html#deploying-image-to-production"><i class="fa fa-check"></i><b>9.2.3</b> Deploying image to Production</a></li>
+<li class="chapter" data-level="8.2.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#gdp"><i class="fa fa-check"></i><b>8.2.1</b> GDP<span></span></a></li>
+<li class="chapter" data-level="8.2.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#consumption-pce"><i class="fa fa-check"></i><b>8.2.2</b> Consumption (PCE)<span></span></a></li>
+<li class="chapter" data-level="8.2.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#national-accounts-special-cases"><i class="fa fa-check"></i><b>8.2.3</b> National Accounts, Special Cases<span></span></a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="gh-workflows.html"><a href="gh-workflows.html"><i class="fa fa-check"></i><b>10</b> Github Workflows</a>
+<li class="chapter" data-level="8.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#cpi"><i class="fa fa-check"></i><b>8.3</b> CPI<span></span></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="gh-workflows.html"><a href="gh-workflows.html#package-webpage-using-pkgdown"><i class="fa fa-check"></i><b>10.1</b> Package webpage using <code>{pkgdown}</code></a>
+<li class="chapter" data-level="8.3.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data"><i class="fa fa-check"></i><b>8.3.1</b> Raw data<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#vintage-control"><i class="fa fa-check"></i><b>8.3.2</b> Vintage control<span></span></a></li>
+<li class="chapter" data-level="8.3.3" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-1"><i class="fa fa-check"></i><b>8.3.3</b> Data structure<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="auxiliary-data.html"><a href="auxiliary-data.html#ppp"><i class="fa fa-check"></i><b>8.4</b> PPP<span></span></a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="gh-workflows.html"><a href="gh-workflows.html#create-gh-pages-branch"><i class="fa fa-check"></i><b>10.1.1</b> Create <code>gh-pages</code> branch</a></li>
-<li class="chapter" data-level="10.1.2" data-path="gh-workflows.html"><a href="gh-workflows.html#create-setup-files"><i class="fa fa-check"></i><b>10.1.2</b> Create “setup” files</a></li>
-<li class="chapter" data-level="10.1.3" data-path="gh-workflows.html"><a href="gh-workflows.html#activate-github-pages"><i class="fa fa-check"></i><b>10.1.3</b> Activate Github Pages</a></li>
+<li class="chapter" data-level="8.4.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#raw-data-1"><i class="fa fa-check"></i><b>8.4.1</b> Raw data<span></span></a></li>
+<li class="chapter" data-level="8.4.2" data-path="auxiliary-data.html"><a href="auxiliary-data.html#data-structure-2"><i class="fa fa-check"></i><b>8.4.2</b> Data structure<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="gh-workflows.html"><a href="gh-workflows.html#package-build-checks"><i class="fa fa-check"></i><b>10.2</b> Package build checks</a></li>
-<li class="chapter" data-level="10.3" data-path="gh-workflows.html"><a href="gh-workflows.html#code-coverage"><i class="fa fa-check"></i><b>10.3</b> Code coverage</a>
+<li class="chapter" data-level="8.5" data-path="auxiliary-data.html"><a href="auxiliary-data.html#price-framework-pfw"><i class="fa fa-check"></i><b>8.5</b> Price FrameWork (PFW)<span></span></a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="gh-workflows.html"><a href="gh-workflows.html#create-setup-files-1"><i class="fa fa-check"></i><b>10.3.1</b> Create “setup” files</a></li>
-<li class="chapter" data-level="10.3.2" data-path="gh-workflows.html"><a href="gh-workflows.html#integrate-with-codecov.io"><i class="fa fa-check"></i><b>10.3.2</b> Integrate with codecov.io</a></li>
+<li class="chapter" data-level="8.5.1" data-path="auxiliary-data.html"><a href="auxiliary-data.html#original-data-1"><i class="fa fa-check"></i><b>8.5.1</b> Original data<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="gh-workflows.html"><a href="gh-workflows.html#other-workflows"><i class="fa fa-check"></i><b>10.4</b> Other workflows</a></li>
+<li class="chapter" data-level="8.6" data-path="auxiliary-data.html"><a href="auxiliary-data.html#abbreviations"><i class="fa fa-check"></i><b>8.6</b> Abbreviations<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="part"><span><b>III PIP Procedures<span></span></b></span></li>
+<li class="chapter" data-level="9" data-path="pcpipeline.html"><a href="pcpipeline.html"><i class="fa fa-check"></i><b>9</b> Poverty Calculator Pipeline (pre-computed estimations)<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="pcpipeline.html"><a href="pcpipeline.html#folder-structure-1"><i class="fa fa-check"></i><b>9.1</b> Folder structure<span></span></a>
+<ul>
+<li><a href="pcpipeline.html#folders">Folders<span></span></a></li>
+<li><a href="pcpipeline.html#files">Files<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites"><i class="fa fa-check"></i><b>9.2</b> Prerequisites<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="pcpipeline.html"><a href="pcpipeline.html#structure-of-the-_targets.r-file"><i class="fa fa-check"></i><b>9.3</b> Structure of the <code>_targets.R</code> file<span></span></a>
+<ul>
+<li><a href="pcpipeline.html#start-up">Start up<span></span></a></li>
+<li><a href="pcpipeline.html#step-1-small-functions">Step 1: small functions<span></span></a></li>
+<li><a href="pcpipeline.html#step-2-preparing-the-data">Step 2: preparing the data<span></span></a></li>
+<li><a href="pcpipeline.html#step-3-the-actual-pipeline">Step 3: The actual pipeline<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-the-pipeline"><i class="fa fa-check"></i><b>9.4</b> Understanding the pipeline<span></span></a>
+<ul>
+<li><a href="pcpipeline.html#stem-targets">Stem targets<span></span></a></li>
+<li><a href="pcpipeline.html#branches-targets">Branches targets<span></span></a></li>
+<li><a href="pcpipeline.html#creating-the-cache-files">Creating the cache files<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="pcpipeline.html"><a href="pcpipeline.html#understanding-pipdm-functions"><i class="fa fa-check"></i><b>9.5</b> Understanding <code>{pipdm}</code> functions<span></span></a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="pcpipeline.html"><a href="pcpipeline.html#internal-structure-of-pipdm-functions"><i class="fa fa-check"></i><b>9.5.1</b> Internal structure of <code>{pipdm}</code> functions<span></span></a></li>
+<li class="chapter" data-level="9.5.2" data-path="pcpipeline.html"><a href="pcpipeline.html#updating-pipdm-or-any-other-pip-package"><i class="fa fa-check"></i><b>9.5.2</b> Updating <code>{pipdm}</code> (or any other PIP package)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="pcpipeline.html"><a href="pcpipeline.html#executing-the-_targets.r-file"><i class="fa fa-check"></i><b>9.6</b> Executing the <code>_targets.R</code> file<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>9.7</b> Debugging<span></span></a>
+<ul>
+<li><a href="pcpipeline.html#debugging-stem-targets">Debugging stem targets<span></span></a></li>
+<li><a href="pcpipeline.html#debugging-branch-targets">Debugging branch targets<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tmpipelilne.html"><a href="tmpipelilne.html"><i class="fa fa-check"></i><b>10</b> Table Maker Pipeline<span></span></a></li>
+<li class="part"><span><b>IV Standalone Technical Considerations<span></span></b></span></li>
+<li class="chapter" data-level="11" data-path="load.html"><a href="load.html"><i class="fa fa-check"></i><b>11</b> Load microdata and Auxiliary data<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="load.html"><a href="load.html#auxiilary-data"><i class="fa fa-check"></i><b>11.1</b> Auxiilary data<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="load.html"><a href="load.html#udpate-data"><i class="fa fa-check"></i><b>11.1.1</b> udpate data<span></span></a></li>
+<li class="chapter" data-level="11.1.2" data-path="load.html"><a href="load.html#load-data"><i class="fa fa-check"></i><b>11.1.2</b> Load data<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="load.html"><a href="load.html#microdata-1"><i class="fa fa-check"></i><b>11.2</b> Microdata<span></span></a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="load.html"><a href="load.html#inventory-file"><i class="fa fa-check"></i><b>11.2.1</b> Inventory file<span></span></a></li>
+<li class="chapter" data-level="11.2.2" data-path="load.html"><a href="load.html#finding-data"><i class="fa fa-check"></i><b>11.2.2</b> Finding data<span></span></a></li>
+<li class="chapter" data-level="11.2.3" data-path="load.html"><a href="load.html#loading-data"><i class="fa fa-check"></i><b>11.2.3</b> Loading data<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="pc-docker.html"><a href="pc-docker.html"><i class="fa fa-check"></i><b>12</b> Docker Container<span></span></a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="pc-docker.html"><a href="pc-docker.html#introduction"><i class="fa fa-check"></i><b>12.1</b> Introduction<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="pcpipeline.html"><a href="pcpipeline.html#prerequisites"><i class="fa fa-check"></i><b>12.2</b> Prerequisites<span></span></a></li>
+<li class="chapter" data-level="12.3" data-path="pc-docker.html"><a href="pc-docker.html#docker-on-world-bank-laptops"><i class="fa fa-check"></i><b>12.3</b> Docker on World Bank laptops<span></span></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="pc-docker.html"><a href="pc-docker.html#wb-docker-install"><i class="fa fa-check"></i><b>12.3.1</b> Install Docker<span></span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="pc-docker.html"><a href="pc-docker.html#known-problems-and-solutions"><i class="fa fa-check"></i><b>12.3.2</b> Known problems and solutions<span></span></a></li>
+<li class="chapter" data-level="12.3.3" data-path="pc-docker.html"><a href="pc-docker.html#tips-and-tricks"><i class="fa fa-check"></i><b>12.3.3</b> Tips and tricks<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="pc-docker.html"><a href="pc-docker.html#create-volume"><i class="fa fa-check"></i><b>12.4</b> Create volume<span></span></a></li>
+<li class="chapter" data-level="12.5" data-path="pc-docker.html"><a href="pc-docker.html#build-image"><i class="fa fa-check"></i><b>12.5</b> Build image<span></span></a></li>
+<li class="chapter" data-level="12.6" data-path="pc-docker.html"><a href="pc-docker.html#run-container"><i class="fa fa-check"></i><b>12.6</b> Run container<span></span></a></li>
+<li class="chapter" data-level="12.7" data-path="pcpipeline.html"><a href="pcpipeline.html#debugging"><i class="fa fa-check"></i><b>12.7</b> Debugging<span></span></a></li>
+<li class="chapter" data-level="12.8" data-path="pc-docker.html"><a href="pc-docker.html#security"><i class="fa fa-check"></i><b>12.8</b> Security<span></span></a></li>
+<li class="chapter" data-level="12.9" data-path="pc-docker.html"><a href="pc-docker.html#base-image-options"><i class="fa fa-check"></i><b>12.9</b> Base image options<span></span></a></li>
+<li class="chapter" data-level="12.10" data-path="pc-docker.html"><a href="pc-docker.html#using-r-on-linux"><i class="fa fa-check"></i><b>12.10</b> Using R on Linux<span></span></a></li>
+<li class="chapter" data-level="12.11" data-path="pc-docker.html"><a href="pc-docker.html#resources"><i class="fa fa-check"></i><b>12.11</b> Resources<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="azure.html"><a href="azure.html"><i class="fa fa-check"></i><b>13</b> Deploying to Azure<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="azure.html"><a href="azure.html#azure-pc-data"><i class="fa fa-check"></i><b>13.1</b> Poverty Calculator Data<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="azure.html"><a href="azure.html#deploying-data-on-dev"><i class="fa fa-check"></i><b>13.1.1</b> Deploying data on DEV<span></span></a></li>
+<li class="chapter" data-level="13.1.2" data-path="azure.html"><a href="azure.html#deploying-data-on-qa"><i class="fa fa-check"></i><b>13.1.2</b> Deploying data on QA<span></span></a></li>
+<li class="chapter" data-level="13.1.3" data-path="azure.html"><a href="azure.html#deploying-data-to-production"><i class="fa fa-check"></i><b>13.1.3</b> Deploying data to Production<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="azure.html"><a href="azure.html#azure-pc-docker"><i class="fa fa-check"></i><b>13.2</b> Poverty Calculator Docker image<span></span></a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="azure.html"><a href="azure.html#deploying-image-on-dev"><i class="fa fa-check"></i><b>13.2.1</b> Deploying image on DEV<span></span></a></li>
+<li class="chapter" data-level="13.2.2" data-path="azure.html"><a href="azure.html#deploying-image-on-qa"><i class="fa fa-check"></i><b>13.2.2</b> Deploying image on QA<span></span></a></li>
+<li class="chapter" data-level="13.2.3" data-path="azure.html"><a href="azure.html#deploying-image-to-production"><i class="fa fa-check"></i><b>13.2.3</b> Deploying image to Production<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="gh-workflows.html"><a href="gh-workflows.html"><i class="fa fa-check"></i><b>14</b> Github Workflows<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="gh-workflows.html"><a href="gh-workflows.html#package-webpage-using-pkgdown"><i class="fa fa-check"></i><b>14.1</b> Package webpage using <code>{pkgdown}</code><span></span></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="gh-workflows.html"><a href="gh-workflows.html#create-gh-pages-branch"><i class="fa fa-check"></i><b>14.1.1</b> Create <code>gh-pages</code> branch<span></span></a></li>
+<li class="chapter" data-level="14.1.2" data-path="gh-workflows.html"><a href="gh-workflows.html#create-setup-files"><i class="fa fa-check"></i><b>14.1.2</b> Create “setup” files<span></span></a></li>
+<li class="chapter" data-level="14.1.3" data-path="gh-workflows.html"><a href="gh-workflows.html#activate-github-pages"><i class="fa fa-check"></i><b>14.1.3</b> Activate Github Pages<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="gh-workflows.html"><a href="gh-workflows.html#package-build-checks"><i class="fa fa-check"></i><b>14.2</b> Package build checks<span></span></a></li>
+<li class="chapter" data-level="14.3" data-path="gh-workflows.html"><a href="gh-workflows.html#code-coverage"><i class="fa fa-check"></i><b>14.3</b> Code coverage<span></span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="gh-workflows.html"><a href="gh-workflows.html#create-setup-files-1"><i class="fa fa-check"></i><b>14.3.1</b> Create “setup” files<span></span></a></li>
+<li class="chapter" data-level="14.3.2" data-path="gh-workflows.html"><a href="gh-workflows.html#integrate-with-codecov.io"><i class="fa fa-check"></i><b>14.3.2</b> Integrate with codecov.io<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="gh-workflows.html"><a href="gh-workflows.html#other-workflows"><i class="fa fa-check"></i><b>14.4</b> Other workflows<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/PIP-Technical-Team/PIPmanual" target="blank">Published with bookdown</a></li>
 
@@ -320,8 +418,8 @@
             <section class="normal" id="section-">
 <div class="rmdbox rmdwarning"><strong>DISCLAIMER:</strong> This book contains relevant only for the internal Technical team of the PIP project. It has been made available to the public for the sake of transparency, but its information has no use outside the internal team.
  </div>
-<div id="azure" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Deploying to Azure</h1>
+<div id="azure" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Deploying to Azure<a href="azure.html#azure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The Azure DevOps site for PIP currently consists of two repos:</p>
 <ul>
 <li><p>ITSES-POVERTYSCORE (docker file repo)</p></li>
@@ -334,11 +432,11 @@
 <li><p>PROD</p></li>
 </ul>
 <p>The PIP Technical Team will handle deployments to DEV and QA, while ITS needs to approve deployments to Production.</p>
-<div id="azure-pc-data" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Poverty Calculator Data</h2>
+<div id="azure-pc-data" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Poverty Calculator Data<a href="azure.html#azure-pc-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span style="color:red">Note: The Azure Data repo has now been directly synced with pipeline outputs folder on the PIP network drive. There is thus no longer any need to push changes from your local computer.</span></p>
-<div id="deploying-data-on-dev" class="section level3" number="9.1.1">
-<h3><span class="header-section-number">9.1.1</span> Deploying data on DEV</h3>
+<div id="deploying-data-on-dev" class="section level3 hasAnchor" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> Deploying data on DEV<a href="azure.html#deploying-data-on-dev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Deploying the data to DEV consists of four main stages:</p>
 <ul>
 <li><p>Sync local data to remote Git repository on TFS</p></li>
@@ -347,13 +445,13 @@
 <li><p>Data is moved to the Virtual Machine (VM) running the API This stage is completed automatically every 30 minutes (as of 11/02/2021)</p></li>
 </ul>
 <p>You can deploy data to DEV by following the steps below:</p>
-<div id="sync-data-to-remote-repo-on-tfs" class="section level4" number="9.1.1.1">
-<h4><span class="header-section-number">9.1.1.1</span> Sync data to remote repo on TFS</h4>
+<div id="sync-data-to-remote-repo-on-tfs" class="section level4 hasAnchor" number="13.1.1.1">
+<h4><span class="header-section-number">13.1.1.1</span> Sync data to remote repo on TFS<a href="azure.html#sync-data-to-remote-repo-on-tfs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Step 1:</strong> Sync you local DEV branch with the remote.</p>
 <p><strong>Step 2:</strong> Commit and push any data changes to the remote.</p>
 </div>
-<div id="run-ci-pipeline" class="section level4" number="9.1.1.2">
-<h4><span class="header-section-number">9.1.1.2</span> Run CI pipeline</h4>
+<div id="run-ci-pipeline" class="section level4 hasAnchor" number="13.1.1.2">
+<h4><span class="header-section-number">13.1.1.2</span> Run CI pipeline<a href="azure.html#run-ci-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Step 3:</strong> Nagivate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a>.
 Click on Pipelines.</p>
 <p><img src="img/azure_pc_data_pipeline_step2.png" /></p>
@@ -371,8 +469,8 @@ Click on Pipelines.</p>
 <p><strong>Step 8:</strong> View the new build.</p>
 <p><img src="img/azure_pc_data_pipeline_step7.png" /></p>
 </div>
-<div id="run-cd-pipeline" class="section level4" number="9.1.1.3">
-<h4><span class="header-section-number">9.1.1.3</span> Run CD pipeline</h4>
+<div id="run-cd-pipeline" class="section level4 hasAnchor" number="13.1.1.3">
+<h4><span class="header-section-number">13.1.1.3</span> Run CD pipeline<a href="azure.html#run-cd-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Step 9:</strong> Click on Releases and select the FILE-COPY-DEV-CD release. Approve the pending request.</p>
 <p><img src="img/azure_pc_data_pipeline_step8-1.png" /></p>
 <p><img src="img/azure_pc_data_pipeline_step8-2.png" /></p>
@@ -380,26 +478,26 @@ Click on Pipelines.</p>
 <p><strong>Step 10:</strong> Verify that the build completed.</p>
 <p><img src="img/azure_pc_data_pipeline_step9.png" /></p>
 </div>
-<div id="move-data-to-vm" class="section level4" number="9.1.1.4">
-<h4><span class="header-section-number">9.1.1.4</span> Move data to VM</h4>
+<div id="move-data-to-vm" class="section level4 hasAnchor" number="13.1.1.4">
+<h4><span class="header-section-number">13.1.1.4</span> Move data to VM<a href="azure.html#move-data-to-vm" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Step 11:</strong> Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the
 scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 30 (?) minutes.
 You can use the <code>/data-timestamp</code> endpoint to verify that the transfer has completed. For additional information
 you can also use the <code>/dir-info</code> endpoint.</p>
 </div>
-<div id="restart-the-docker-container" class="section level4" number="9.1.1.5">
-<h4><span class="header-section-number">9.1.1.5</span> Restart the Docker container</h4>
+<div id="restart-the-docker-container" class="section level4 hasAnchor" number="13.1.1.5">
+<h4><span class="header-section-number">13.1.1.5</span> Restart the Docker container<a href="azure.html#restart-the-docker-container" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Step 12:</strong> Restart the Docker container by running the <code>RESTARTCONTAINER-DEV-CD</code> release pipeline.</p>
 </div>
-<div id="clear-the-vm-cache" class="section level4" number="9.1.1.6">
-<h4><span class="header-section-number">9.1.1.6</span> Clear the VM cache</h4>
+<div id="clear-the-vm-cache" class="section level4 hasAnchor" number="13.1.1.6">
+<h4><span class="header-section-number">13.1.1.6</span> Clear the VM cache<a href="azure.html#clear-the-vm-cache" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Step 13:</strong> If you conducted a data update that includes changes to survey data or the estimation tables for an already
 existing version folder you will need to clear the cache on the VM. Use the specific API endpoints for cache handling to do this.
 <span style="color:red">Note: If in doubt always clear the cache.</span></p>
 </div>
 </div>
-<div id="deploying-data-on-qa" class="section level3" number="9.1.2">
-<h3><span class="header-section-number">9.1.2</span> Deploying data on QA</h3>
+<div id="deploying-data-on-qa" class="section level3 hasAnchor" number="13.1.2">
+<h3><span class="header-section-number">13.1.2</span> Deploying data on QA<a href="azure.html#deploying-data-on-qa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Step 1:</strong> Nagivate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a>.</p>
 <p><strong>Step 2:</strong> Click on Create pull request.
 Select from DEV to QA.</p>
@@ -415,8 +513,8 @@ Approve the request, and verify that the build completes.</p>
 <p><strong>Step 7:</strong> Run the <code>RESTARTCONTAINER-QA-CD</code> release pipeline after the data transfer to the VMs has completed.</p>
 <p><strong>Step 8:</strong> Clear the cache on the VMs if needed. <span style="color:red">Note: If in doubt always clear the cache.</span></p>
 </div>
-<div id="deploying-data-to-production" class="section level3" number="9.1.3">
-<h3><span class="header-section-number">9.1.3</span> Deploying data to Production</h3>
+<div id="deploying-data-to-production" class="section level3 hasAnchor" number="13.1.3">
+<h3><span class="header-section-number">13.1.3</span> Deploying data to Production<a href="azure.html#deploying-data-to-production" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Step 1:</strong> Nagivate to the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a>.</p>
 <p><strong>Step 2:</strong> Click on Create pull request.
 Select from QA to PROD.</p>
@@ -432,16 +530,16 @@ Wait for ITS to approve the request, and then verify that the build completes.</
 <p><strong>Step 8:</strong> Clear the cache on the VMs.</p>
 </div>
 </div>
-<div id="azure-pc-docker" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Poverty Calculator Docker image</h2>
+<div id="azure-pc-docker" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Poverty Calculator Docker image<a href="azure.html#azure-pc-docker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before you start with the application deployment process you will need to clone the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Docker</a> repo (DEV branch) to your local machine.
 You will only need to do this once.
 After that you can follow the step by step guide below.</p>
 <p>Please note that it is important that data changes are pushed through and released before deploying the Docker image.
 This is because the Docker container will need to restart in order to pick up changes in the mounted folder or volume.
 The best way to do this is to deploy the data, and then use the API restart pipeline to ensure a restart of the Docker container.</p>
-<div id="deploying-image-on-dev" class="section level3" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> Deploying image on DEV</h3>
+<div id="deploying-image-on-dev" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Deploying image on DEV<a href="azure.html#deploying-image-on-dev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Step 1:</strong> Verify that the latest code in the master branches of {wbpip} and {pipapi} works with the latest data on DEV.
 This can be done by running the {pipapi} package in a local RStudio session.</p>
 <p><strong>Step 2:</strong> <span class="math display">\[Optional\]</span> Verify that the most recent Dockerfile builds on your local machine.
@@ -457,8 +555,8 @@ View the logs to see results from the image build and security scan.</p>
 <p><strong>Step 5:</strong>.
 Visit the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">DEV API website</a> for further testing.</p>
 </div>
-<div id="deploying-image-on-qa" class="section level3" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> Deploying image on QA</h3>
+<div id="deploying-image-on-qa" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Deploying image on QA<a href="azure.html#deploying-image-on-qa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Step 1:</strong> Check that the DEV deployment is working correctly.</p>
 <p><strong>Step 2:</strong> Make sure the data on QA is up-to-date (in sync with DEV).
 If it isn’t you will need to create a PR and merge the data first.</p>
@@ -469,8 +567,8 @@ don’t delete the DEV branch.</p>
 <p><strong>Step 4:</strong> Go to the Release pipeline to see results from the image build and security scan.</p>
 <p><strong>Step 5:</strong> Visit the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">QA API website</a> for further testing.</p>
 </div>
-<div id="deploying-image-to-production" class="section level3" number="9.2.3">
-<h3><span class="header-section-number">9.2.3</span> Deploying image to Production</h3>
+<div id="deploying-image-to-production" class="section level3 hasAnchor" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> Deploying image to Production<a href="azure.html#deploying-image-to-production" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Step 1:</strong> Check that the QA deployment is working correctly.</p>
 <p><strong>Step 2:</strong> Make sure the data on PROD is up-to-date (in sync with QA).
 If it isn’t you will need to create a PR and merge the data first.</p>

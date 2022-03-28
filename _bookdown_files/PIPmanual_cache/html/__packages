@@ -1,4 +1,3 @@
-base
 data.table
 pipaux
 pipload
@@ -6,3 +5,4 @@ knitr
 here
 DT
 usethis
+fstcore
