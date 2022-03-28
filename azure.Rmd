@@ -24,11 +24,7 @@ The PIP Technical Team will handle deployments to DEV and QA, while ITS needs to
 
 ## Poverty Calculator Data {#azure-pc-data}
 
-[Note: These are **temporary instructions**. In the (near) future the Azure Data repo will be directly synced with pipeline outputs folder on the PIP network drive. There will then be no need to clone the repo to your local computer.]{style="color:red"}
-
-Before you start with the data deployment process you will need to clone the Azure DevOps Data repo (DEV branch) to your local machine.
-You will only need to do this once.
-After that you can follow the step by step guide below.
+[Note: The Azure Data repo has now been directly synced with pipeline outputs folder on the PIP network drive. There is thus no longer any need to push changes from your local computer.]{style="color:red"}
 
 ### Deploying data on DEV
 
@@ -100,7 +96,20 @@ You can deploy data to DEV by following the steps below:
 
 #### Move data to VM
 
-**Step 11:** Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 10 (?) minutes.
+**Step 11:** Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the 
+scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 30 (?) minutes.
+You can use the `/data-timestamp` endpoint to verify that the transfer has completed. For additional information
+you can also use the `/dir-info` endpoint.  
+
+#### Restart the Docker container
+
+**Step 12:** Restart the Docker container by running the `RESTARTCONTAINER-DEV-CD` release pipeline. 
+
+#### Clear the VM cache
+
+**Step 13:** If you conducted a data update that includes changes to survey data or the estimation tables for an already
+existing version folder you will need to clear the cache on the VM. Use the specific API endpoints for cache handling to do this. 
+[Note: If in doubt always clear the cache.]{style="color:red"}
 
 ### Deploying data on QA
 
@@ -121,6 +130,10 @@ If it wasn't triggered you will need to trigger it manually.
 **Step 6:** Go to Pipelines -> Releases and select the FILE-COPY-QA-CD release.
 Approve the request, and verify that the build completes.
 
+**Step 7:** Run the `RESTARTCONTAINER-QA-CD` release pipeline after the data transfer to the VMs has completed. 
+
+**Step 8:** Clear the cache on the VMs if needed. [Note: If in doubt always clear the cache.]{style="color:red"}
+
 ### Deploying data to Production
 
 **Step 1:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
@@ -138,6 +151,10 @@ If it wasn't triggered you will need to trigger it manually.
 
 **Step 6:** Go to Pipelines -> Releases and select the FILE-COPY-QA-CD release.
 Wait for ITS to approve the request, and then verify that the build completes.
+
+**Step 7:** Run the `RESTARTCONTAINER-PROD-CD` release pipeline after the data transfer to the VMs has completed. 
+
+**Step 8:** Clear the cache on the VMs. 
 
 ## Poverty Calculator Docker image {#azure-pc-docker}
 

@@ -124,3 +124,5 @@ sync-data-to-remote-repo-on-tfs
 run-ci-pipeline
 run-cd-pipeline
 move-data-to-vm
+restart-the-docker-container
+clear-the-vm-cache
