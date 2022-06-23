@@ -126,3 +126,12 @@ code-coverage
 create-setup-files-1
 integrate-with-codecov.io
 other-workflows
+subtrees
+note
+subtrees-in-the-ui
+basic-subtree-operations
+note-1
+synchronizing-changes-back-to-the-subtree-repository
+using-push
+using-split
+information

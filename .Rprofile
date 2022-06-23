@@ -39,7 +39,9 @@ if (requireNamespace("pushoverr", quietly = TRUE)) {
     file <- fs::path(rmd, ext = "Rmd")
     s     <- Sys.time()
     start <-  format(s, "%H:%M")
-    try({
+
+
+    rs <- try({
       bookdown::render_book(file, "bookdown::gitbook")
     })
 
@@ -59,7 +61,9 @@ if (requireNamespace("pushoverr", quietly = TRUE)) {
                   "\nDifference ", d)
     cli::cli_alert(msg)
 
-    browseURL("docs/index.html")
+    if (isFALSE(inherits(rs, "try-error"))) {
+      browseURL("docs/index.html")
+    }
     return(invisible(TRUE))
   }
 
