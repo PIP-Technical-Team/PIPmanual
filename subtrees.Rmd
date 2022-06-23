@@ -10,24 +10,24 @@ repository.
 Refs belonging to subtrees will be denoted in the **Branches** view by a
 *folder*-symbol.
 
-![](img/subtree_branch.png)
+![subtree_brach](img/subtree_branch.png)
 
 Local subtrees will show up in the **Subtrees** category. The root commits of a
 subtree will be denoted by a *folder*-symbol in the Log **Graph**.
 
-![subtree_folder](img/subtree_folder.png)
+![subtree_graph](img/subtree_folder.png)
 
 ## **Basic Subtree operations**
 
 To add a new subtree, select the root directory of the repository in the
 **Repositories** view and invoke **Remote -\> Subtree -\>Add**.
 
-![]()
+![add_subtree](img/add_subtree.png)
 
 If you're adding several subtrees to the main repo, rename the remote subtree
 when you're adding a new subtree
 
-![]()
+![change_name](img/change_name_of_remote_subtree.png)
 
 To fetch new (remote) changes from the subtree repository, select the subtree
 remote in the **Branches** view and invoke **Pull** from the context menu.
@@ -98,4 +98,3 @@ subtree repository using the **Split** command:
 -   [Smartgit](https://docs.syntevo.com/SmartGit/Latest/Subtrees.html#:~:text=SmartGit%20will%20understand%20whether%20the,invoke%20Remote%7CSubtree%7CPush.)
 
 -   [viz](https://opensource.com/article/20/5/git-submodules-subtrees)
-
