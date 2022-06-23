@@ -38,7 +38,6 @@ Deploying the data to DEV consists of four main stages:
 
 -   Data is moved to the Virtual Machine (VM) running the API This stage is completed automatically every 30 minutes (as of 11/02/2021)
 
-
 You can deploy data to DEV by following the steps below:
 
 #### Sync data to remote repo on TFS
@@ -50,7 +49,7 @@ You can deploy data to DEV by following the steps below:
 #### Run CI pipeline
 
 **Step 3:** Nagivate to the [Azure DevOps Data repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
-    Click on Pipelines.
+Click on Pipelines.
 
 ![](img/azure_pc_data_pipeline_step2.png)
 
@@ -62,7 +61,7 @@ You can deploy data to DEV by following the steps below:
 
 ![](img/azure_pc_data_pipeline_step4.png)
 
-**Step 6:** Click on Variables -> FolderName, and add the name of the folder which should be copied to the Cloud Blob Store.
+**Step 6:** Click on Variables -\> FolderName, and add the name of the folder which should be copied to the Cloud Blob Store.
 
 [Note: This step is likely to change when the Data pipeline is re-written to handle mulitiple data version folders.]{style="color:red"}
 
@@ -80,9 +79,10 @@ You can deploy data to DEV by following the steps below:
 
 ![](img/azure_pc_data_pipeline_step7.png)
 
-####  Run CD pipeline
+#### Run CD pipeline
 
-**Step 9:** Click on Releases and select the FILE-COPY-DEV-CD release. Approve the pending request.
+**Step 9:** Click on Releases and select the FILE-COPY-DEV-CD release.
+Approve the pending request.
 
 ![](img/azure_pc_data_pipeline_step8-1.png)
 
@@ -96,19 +96,20 @@ You can deploy data to DEV by following the steps below:
 
 #### Move data to VM
 
-**Step 11:** Wait for the data on the VM to be updated. There is an automatic cron job that runs behind the 
-scenes to copy the data from the blob storage to the VM. This runs at regular intervals, every 30 (?) minutes.
-You can use the `/data-timestamp` endpoint to verify that the transfer has completed. For additional information
-you can also use the `/dir-info` endpoint.  
+**Step 11:** Wait for the data on the VM to be updated.
+There is an automatic cron job that runs behind the scenes to copy the data from the blob storage to the VM.
+This runs at regular intervals, every 30 (?) minutes.
+You can use the `/data-timestamp` endpoint to verify that the transfer has completed.
+For additional information you can also use the `/dir-info` endpoint.
 
 #### Restart the Docker container
 
-**Step 12:** Restart the Docker container by running the `RESTARTCONTAINER-DEV-CD` release pipeline. 
+**Step 12:** Restart the Docker container by running the `RESTARTCONTAINER-DEV-CD` release pipeline.
 
 #### Clear the VM cache
 
-**Step 13:** If you conducted a data update that includes changes to survey data or the estimation tables for an already
-existing version folder you will need to clear the cache on the VM. Use the specific API endpoints for cache handling to do this. 
+**Step 13:** If you conducted a data update that includes changes to survey data or the estimation tables for an already existing version folder you will need to clear the cache on the VM.
+Use the specific API endpoints for cache handling to do this.
 [Note: If in doubt always clear the cache.]{style="color:red"}
 
 ### Deploying data on QA
@@ -123,16 +124,17 @@ Please make sure that the **"Delete source branch" box is NOT checked**, ie.
 don't delete the DEV branch.
 (This default should be modified going forward)
 
-**Step 5:** Go to Pipelines -> Pipelines and select the FILE-COPY-QA-CI pipeline.
+**Step 5:** Go to Pipelines -\> Pipelines and select the FILE-COPY-QA-CI pipeline.
 Verify that the pipeline is building.
 If it wasn't triggered you will need to trigger it manually.
 
-**Step 6:** Go to Pipelines -> Releases and select the FILE-COPY-QA-CD release.
+**Step 6:** Go to Pipelines -\> Releases and select the FILE-COPY-QA-CD release.
 Approve the request, and verify that the build completes.
 
-**Step 7:** Run the `RESTARTCONTAINER-QA-CD` release pipeline after the data transfer to the VMs has completed. 
+**Step 7:** Run the `RESTARTCONTAINER-QA-CD` release pipeline after the data transfer to the VMs has completed.
 
-**Step 8:** Clear the cache on the VMs if needed. [Note: If in doubt always clear the cache.]{style="color:red"}
+**Step 8:** Clear the cache on the VMs if needed.
+[Note: If in doubt always clear the cache.]{style="color:red"}
 
 ### Deploying data to Production
 
@@ -145,16 +147,16 @@ Select from QA to PROD.
 Please make sure that the "Delete source branch" box is unchecked, ie.
 don't delete the QA branch.
 
-**Step 5:** Go to Pipelines -> Pipelines and select the FILE-COPY-PROD-CI pipeline.
+**Step 5:** Go to Pipelines -\> Pipelines and select the FILE-COPY-PROD-CI pipeline.
 Verify that the pipeline is building.
 If it wasn't triggered you will need to trigger it manually.
 
-**Step 6:** Go to Pipelines -> Releases and select the FILE-COPY-QA-CD release.
+**Step 6:** Go to Pipelines -\> Releases and select the FILE-COPY-QA-CD release.
 Wait for ITS to approve the request, and then verify that the build completes.
 
-**Step 7:** Run the `RESTARTCONTAINER-PROD-CD` release pipeline after the data transfer to the VMs has completed. 
+**Step 7:** Run the `RESTARTCONTAINER-PROD-CD` release pipeline after the data transfer to the VMs has completed.
 
-**Step 8:** Clear the cache on the VMs. 
+**Step 8:** Clear the cache on the VMs.
 
 ## Poverty Calculator Docker image {#azure-pc-docker}
 
@@ -171,17 +173,17 @@ The best way to do this is to deploy the data, and then use the API restart pipe
 **Step 1:** Verify that the latest code in the master branches of {wbpip} and {pipapi} works with the latest data on DEV.
 This can be done by running the {pipapi} package in a local RStudio session.
 
-**Step 2:** \[Optional\] Verify that the most recent Dockerfile builds on your local machine.
+**Step 2:** $$Optional$$ Verify that the most recent Dockerfile builds on your local machine.
 This is certainly something that should be done if the contents of the Dockerfile has changed, or before major releases.
 But in a continuous workflow where you know that Dockerfile hasn't changed, it might be sufficient to verify that the R packages in question are working.
 
 **Step 3:** Navigate to the [Azure DevOps Docker repo](https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources).
-Go Pipelines -> Pipelines.
+Go Pipelines -\> Pipelines.
 Trigger the CONTAINER-DEV-CI pipeline, either by\
 a) Pushing an updated Dockerfile to the remote repo or\
 b) Running the Pipeline manually.
 
-**Step 4:** Go to the Pipelines -> Releases, and select "Create release" in order to run a new deployment.
+**Step 4:** Go to the Pipelines -\> Releases, and select "Create release" in order to run a new deployment.
 View the logs to see results from the image build and security scan.
 
 **Step 5:**.
