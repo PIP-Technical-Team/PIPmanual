@@ -55,19 +55,54 @@ branch to which your main repository should be reset to and invoke
 
 ## **Synchronizing changes back to the subtree repository**
 
+There are two ways of pushing changes to the remote.
+
+### Using Push
+
+1.  **Check Out** the the repository's branch which will be pushed to a specific
+    subtree branch.
+
+2.  Make sure your changes are staged and commited in the branch of your choice
+    in the **main** repository
+
+3.  In the **Branches** view, select the subtree branch to which the changes
+    should be pushed and invoke **Subtree-\>Push**from the context menu.
+
+    ![](img/subtree_push1.png)Use the prefix to specify that this change is
+    coming from a repo that is using the modifying repo as a subtree
+
+    ![](img/subtree_push.png)
+
+4.  The commits created by the *Split*-command will be written to the
+    **Subtree-Branch to update**. If you have selected a remote subtree branch,
+    you will have to select **Subtree-Branch to update** or enter the name of a
+    new branch there; in either case the selected branch will then be
+    updated/created. In this case I decided to implement the changes in the
+    *dev* branch of the subtree. Since that branch does not exist it won't be
+    created
+
+### Using Split
+
 After having applied changes to files in your main repository which actually
 belong to a subtree repository, you can "synchronize" these changes back to the
 subtree repository using the **Split** command:
 
 1.  **Check Out** the main repository's branch which should be split back.
 
-2.  In the **Branches** view, select the subtree branch to which the changes
+2.  Make sure your changes are staged and commited in the branch of your choice
+    in the **main** repository
+
+3.  In the **Branches** view, select the subtree branch to which the changes
     should be split back and invoke **Subtree\|Split** from the context menu.
     The commits created by the *Split*-command will be written to the
     **Subtree-Branch to update**. If you have selected a remote subtree branch,
     you will have to select **Subtree-Branch to update** or enter the name of a
     new branch there; in either case the selected branch will then be
-    updated/created
+    updated/created. In this case I decided to implement the changes in the
+    *dev* branch of the subtree. Since that branch does not exist it won't be
+    created
+
+    ![subtree_split](img/subtree_split.png)
 
     #### **Note**
 
@@ -77,7 +112,7 @@ subtree repository using the **Split** command:
     > detect the appropriate subtree commits onto which the new commits will be
     > split back.
 
-3.  To push changes back to your remote subtree repository, tracking between the
+4.  To push changes back to your remote subtree repository, tracking between the
     local subtree branch which has just been updated/created in step 2 and the
     remote subtree branch has to be set up. This can optionally be done as part
     of the **Add** wizard or you can do it manually:
