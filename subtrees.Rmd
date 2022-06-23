@@ -1,5 +1,10 @@
 # Subtrees using Smartgit {#subtrees}
 
+## NOTE:
+
+This chapter is basically a "copy and paste" document from the original Smartgit
+page. The value added is the images that illustrate what is written.
+
 Subtrees is a way to integrate other repositories into a, more general
 repository. Each repository that is added to the main repository is a "subtree"
 and will be stored as a sub-folder into the root directory of the main
@@ -31,12 +36,14 @@ when you're adding a new subtree
 
 To fetch new (remote) changes from the subtree repository, select the subtree
 remote in the **Branches** view and invoke **Pull** from the context menu.
-Alternatively, you can invoke **Remote\|Pull** from the main menu and for
-**Fetch From** select the subtree remote there.
+
+![subtree_pull1](img/subtree_pull1.png)
 
 To merge (or cherry-pick) a subtree use the **Merge** (or **Cherry-Pick**)
 command. SmartGit will understand whether the source commit is a subtree and in
 this case perform a subtree merge (or cherry-pick).
+
+![subtree_merge](img/subtree_merge.png)
 
 To push commits back to a subtree, select the (remote) subtree branch in the
 **Branches** view and invoke **Remote\|Subtree\|Push**. Pushing a subtree
@@ -71,7 +78,7 @@ There are two ways of pushing changes to the remote.
     ![](img/subtree_push1.png)Use the prefix to specify that this change is
     coming from a repo that is using the modifying repo as a subtree
 
-    ![](img/subtree_push.png)
+    ![](img/subtree_push2.png)
 
 4.  The commits created by the *Split*-command will be written to the
     **Subtree-Branch to update**. If you have selected a remote subtree branch,
@@ -133,3 +140,4 @@ subtree repository using the **Split** command:
 -   [Smartgit](https://docs.syntevo.com/SmartGit/Latest/Subtrees.html#:~:text=SmartGit%20will%20understand%20whether%20the,invoke%20Remote%7CSubtree%7CPush.)
 
 -   [viz](https://opensource.com/article/20/5/git-submodules-subtrees)
+
