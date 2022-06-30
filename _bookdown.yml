@@ -29,6 +29,7 @@ rmd_files: [
   "docker.Rmd",
   "azure.Rmd",
   "workflows.Rmd",
+  "subtrees.Rmd",
 
   "references.Rmd",
 ]
