@@ -86,7 +86,8 @@ to let yourself and others more easily keep track of the test coverage of your p
 Create a new local branch in your repository, and then take advantage of the helper functions in the `{usethis}` package.
 Run this from the working directory of your local branch: 
 
-```r 
+```r
+usethis::use_coverage("codecov")
 usethis::use_github_action("test-coverage")
 ```
 
@@ -97,7 +98,8 @@ Create a pull request and merge the changes to the master branch.
 
 ### Integrate with codecov.io 
 
-TBD. 
+All the repositories are already synced with codecov.io, so you only need to make sure all your test are passing and push to GH to activate your test
+coverage. 
 
 ## Other workflows 
 
