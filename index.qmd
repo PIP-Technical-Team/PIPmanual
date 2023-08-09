@@ -1,13 +1,8 @@
 ---
-title: "PIP Manual"
-author: ["DECIS", "Poverty GP"]
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [PIP_internal_Guidelines.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
-description: "These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow."
+description-meta: |
+  These are the guidelines to all the technical decisions
+   taken during the creation of packges for the PIP
+   workflow.
 ---
 
 ```{r setup, include=FALSE}
