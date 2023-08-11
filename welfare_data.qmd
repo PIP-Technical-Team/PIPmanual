@@ -160,10 +160,10 @@ process.
 update the locals in lines 23-24 with the LIS 2-letter acronyms of the
 group of 5-6 countries in each round.
 
-```{stata, eval = FALSE}
-local silc   "at be cz"
-local nosilc "au br"
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- local silc   "at be cz" -->
+<!-- local nosilc "au br" -->
+<!-- ``` -->
 
 ::: {.rmdbox .rmdtip}
 Remember to update the subject with each round (Ex: "Bins \#2 - Dec
@@ -209,38 +209,38 @@ install it for you in case it is not. However, you can run the lines
 below to make sure everything is working fine. Also, you can take a look
 at the help file of `rcall` to get familiar with it.
 
-```{stata, eval = FALSE}
-cap which rcall
-if (_rc) {
-	cap which github
-	if (_rc) {
-		net install github, from("https://haghish.github.io/github/")
-	}
-	github install haghish/rcall, stable
-}
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- cap which rcall -->
+<!-- if (_rc) { -->
+<!-- 	cap which github -->
+<!-- 	if (_rc) { -->
+<!-- 		net install github, from("https://haghish.github.io/github/") -->
+<!-- 	} -->
+<!-- 	github install haghish/rcall, stable -->
+<!-- } -->
+<!-- ``` -->
 
 **2. Personal Drive**
 
 Make sure to add your UPI to the appropriate sections it appears by
 typing `` disp lower("`c(username)'") `` , following the example below,
 
-```{stata, eval = FALSE}
-if (lower("`c(username)'") == "wbxxxxx") {
-	local dir "c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data"
-}
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- if (lower("`c(username)'") == "wbxxxxx") { -->
+<!-- 	local dir "c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data" -->
+<!-- } -->
+<!-- ``` -->
 
 **3. Directives of the code**
 
 This do-file works like an ado-file in the sense that the output depends
 on the value of some local macros,
 
-```{stata, eval = FALSE}
-global update_surveynames = 1 // 1 to update survey names.
-global replace            = 0 // 1 to replace data in memory even if it has not changed
-global p_drive_output_dir = 0 // 1 to use default Vintage_control folder
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- global update_surveynames = 1 // 1 to update survey names. -->
+<!-- global replace            = 0 // 1 to replace data in memory even if it has not changed -->
+<!-- global p_drive_output_dir = 0 // 1 to use default Vintage_control folder -->
+<!-- ``` -->
 
 If local `update_surveynames` is set to 1, the code will load the sheet
 `LIS_survname` from the the file `02.data/_aux/LIS datasets.xlsx` and
@@ -373,23 +373,23 @@ Pipeline](#pcpipeline) and [Table Maker Pipeline](#tmpipelilne)).
 
 `{pipdp}` depends on the following Stata packages.
 
-``` {.stata}
-ssc install moremata
-ssc install missings
-```
+<!-- ``` {.stata} -->
+<!-- ssc install moremata -->
+<!-- ssc install missings -->
+<!-- ``` -->
 
 You will also need to have the World Bank `{datalibweb}` module and the
 PovcalNet internal `{pcn}` command installed.
 
 ### Installation
 
-``` {.powershell}
-# Clone repo
-git clone "https://github.com/PIP-Technical-Team/pipdp"
-# Edit profile.do
-notepad.exe C:\ado\personal\profile.do
-# Add adopath ++ "<mypath>\pipdp"
-```
+<!-- ``` {.powershell} -->
+<!-- # Clone repo -->
+<!-- git clone "https://github.com/PIP-Technical-Team/pipdp" -->
+<!-- # Edit profile.do -->
+<!-- notepad.exe C:\ado\personal\profile.do -->
+<!-- # Add adopath ++ "<mypath>\pipdp" -->
+<!-- ``` -->
 
 ### Remote server
 
@@ -417,10 +417,10 @@ behavior of Datalibweb for users that have direct access to the file
 storage. It will not affect other users. You could either check and copy
 the files manually or run the following from the command line.
 
-```{cmd, eval = FALSE}
-copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado
-copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do
-```
+<!-- ```{cmd, eval = FALSE} -->
+<!-- copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado -->
+<!-- copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do -->
+<!-- ``` -->
 
 For details on how to connect to WBGMSDDG001 see the [Remote server
 connection](https://povcalnet-team.github.io/Povcalnet_internal_guidelines/folder-structures.html#server)
@@ -443,12 +443,12 @@ Calculator Pipeline](#pcpipeline)
 1.  Make sure the Price Framework file is up to date in the directory
     you are using.
 
-```{r, eval = FALSE}
-# Update PFW file
-PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR
-# pipaux::pip_country_list('update', maindir = PIP_DATA_DIR)
-pipaux::pip_pfw('update', maindir = PIP_DATA_DIR)
-```
+<!-- ```{r, eval = FALSE} -->
+<!-- # Update PFW file -->
+<!-- PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR -->
+<!-- # pipaux::pip_country_list('update', maindir = PIP_DATA_DIR) -->
+<!-- pipaux::pip_pfw('update', maindir = PIP_DATA_DIR) -->
+<!-- ``` -->
 
 2.  Make sure the Datalibweb repository file is up to date in directory
     you are using. Note that if you are running this code on the
@@ -459,36 +459,36 @@ pipaux::pip_pfw('update', maindir = PIP_DATA_DIR)
     requirement you can conduct this specific step from your local
     machine.
 
-```{stata, eval = FALSE}
-// Update DLW repo
-pipdp dlw maindir("$PIP_DATA_DIR>")
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- // Update DLW repo -->
+<!-- pipdp dlw maindir("$PIP_DATA_DIR>") -->
+<!-- ``` -->
 
 3.  Make sure DLW setup files are up-to-date (needed for `files`
     option).
 
-```{bat, eval = FALSE}
-::Copy setup files
-copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado
-copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do
-```
+<!-- ```{bat, eval = FALSE} -->
+<!-- ::Copy setup files -->
+<!-- copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado -->
+<!-- copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do -->
+<!-- ``` -->
 
 4.  Update surveys
 
-```{stata, eval = FALSE}
-// Update grouped data surveys (from PCN-drive)
-pipdp group, countries(all) maindir("$PIP_DATA_DIR>")
-// Download new surveys from DLW 
-pipdp micro, countries(all) files new maindir("$PIP_DATA_DIR>")
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- // Update grouped data surveys (from PCN-drive) -->
+<!-- pipdp group, countries(all) maindir("$PIP_DATA_DIR>") -->
+<!-- // Download new surveys from DLW  -->
+<!-- pipdp micro, countries(all) files new maindir("$PIP_DATA_DIR>") -->
+<!-- ``` -->
 
 5.  Update the PIP inventory
 
-```{r, eval = FALSE}
-# Update PIP inventory
-PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR
-pipload::pip_update_inventory(maindir = PIP_DATA_DIR)
-```
+<!-- ```{r, eval = FALSE} -->
+<!-- # Update PIP inventory -->
+<!-- PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR -->
+<!-- pipload::pip_update_inventory(maindir = PIP_DATA_DIR) -->
+<!-- ``` -->
 
 ## Survey ID nomenclature {#survey-id}
 

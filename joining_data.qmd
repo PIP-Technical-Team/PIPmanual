@@ -1,10 +1,6 @@
 # Joining Data
 
-Since the PIP project is comprised of several databases at very different domain
-levels, this chapter provides all the guidelines to join data frames correctly.
-The first thing to understand is that the reporting measures in PIP (e.g.,
-poverty and inequality) are uniquely identified by four variables: *Country*,
-*year*, *domain*, and *welfare type*.
+Since the PIP project is comprised of several databases at very different domain levels, this chapter provides all the guidelines to join data frames correctly. The first thing to understand is that the reporting measures in PIP (e.g. poverty and inequality) are uniquely identified by four variables: *Country*, *year*, *domain*, and *welfare type*.
 
 -   *Country* refers to independent economies that conduct independent household
     surveys. For instance, China and Taiwan are treated as **two different
@@ -34,13 +30,7 @@ poverty and inequality) are uniquely identified by four variables: *Country*,
     surveys capture expenditure instead, they are still considered
     consumption-based surveys.
 
-The challenge of joining different data frames in PIP is that these four
-variables that uniquely identify the reporting measures [**are
-not**]{style="color:red"} available on any of the PIP data files---with the
-exception of the cache files that we discuss below. This challenge is easily
-addressed by having a clear understanding of the Price FrameWork (pfw) data
-frame. This file does not only contain valuable metadata, but it could also be
-considered as the anchor among all PIP data.
+The challenge of joining different data frames in PIP is that these four variables that uniquely identify the reporting measures [**are not**]{style="color:red"} available on any of the PIP data files---with the exception of the cache files that we discuss below. This challenge is easily addressed by having a clear understanding of the Price FrameWork (pfw) data frame. This file does not only contain valuable metadata, but it could also be considered as the anchor among all PIP data.
 
 ## The Price FrameWork (pfw) data {#pfw-join}
 
@@ -48,8 +38,8 @@ As always, this file can be loaded by typing,
 
 ```{r}
 library(data.table)
-pfw <- pipload::pip_load_aux("pfw")
-joyn::is_id(pfw, by = c("country_code", "surveyid_year", "survey_acronym"))
+#pfw <- pipload::pip_load_aux("pfw")
+#joyn::is_id(pfw, by = c("country_code", "surveyid_year", "survey_acronym"))
 ```
 
 First of all, notice that `pfw` is uniquely identified by country code, survey
@@ -75,10 +65,10 @@ that correspond to the survey ID formed by concatenating variables
 ***COL_2018_GEIH**\_V01_M\_V03_A\_GMD* is income.
 
 ```{r}
-pfw[ country_code    == "COL"
-    & surveyid_year  == 2018
-    & survey_acronym == "GEIH", # Not necessary since it is the only one
-    unique(welfare_type)]
+# pfw[ country_code    == "COL"
+#     & surveyid_year  == 2018
+#     & survey_acronym == "GEIH", # Not necessary since it is the only one
+#     unique(welfare_type)]
 ```
 
 The prefix `aaa` in variables `aaa_domain` and `aaa_domain_var` refers to the
@@ -89,15 +79,15 @@ corresponding `aaa` auxiliary data. There are only three possible levels of
 disaagregation,
 
 ```{r, echo=FALSE}
-dd <- tibble::tribble(
-        ~domain.value,      ~meaning,
-                   1L,    "national",
-                   2L, "urban/rural",
-                   3L, "subnational"
-        )
-knitr::kable(dd, 
-             format =  "html", 
-             col.names = gsub("[.]", " ", names(dd)))
+# dd <- tibble::tribble(
+#         ~domain.value,      ~meaning,
+#                    1L,    "national",
+#                    2L, "urban/rural",
+#                    3L, "subnational"
+#         )
+# knitr::kable(dd, 
+#              format =  "html", 
+#              col.names = gsub("[.]", " ", names(dd)))
 ```
 
 As of now, no survey or auxiliary data is broken down at level 3 (i.e.,
@@ -109,9 +99,9 @@ different. In Indonesia, for instance, the CPI domain is national, whereas the
 PPP domain is "urban/rural."
 
 ```{r}
-pfw[ country_code == "IDN" & surveyid_year == 2018, 
-    .(cpi = unique(cpi_domain), 
-      ppp = unique(ppp_domain))]
+# pfw[ country_code == "IDN" & surveyid_year == 2018, 
+#     .(cpi = unique(cpi_domain), 
+#       ppp = unique(ppp_domain))]
 ```
 
 Finally, [and this is really important]{style="color:red"}, variables
@@ -142,10 +132,10 @@ Let's see the case of Indonesia above. The pfw says that the CPI domain is
 join to each of these auxiliary data with two different variables,
 
 ```{r}
-domains <- 
-  pfw[ country_code == "IDN" & surveyid_year == 2018, 
-     .(cpi = unique(cpi_domain_var), 
-       ppp = unique(ppp_domain_var))][]
+# domains <- 
+#   pfw[ country_code == "IDN" & surveyid_year == 2018, 
+#      .(cpi = unique(cpi_domain_var), 
+#        ppp = unique(ppp_domain_var))][]
 ```
 
 This says that the name of the variable in the welfare data to join PPP data is
@@ -155,18 +145,18 @@ welfare data is not split by any variable to merge CPI data. That is, it is at
 the national level.
 
 ```{r}
-ccode  <- "CHN"
-cpi <- pipload::pip_load_aux("cpi")
-ppp <- pipload::pip_load_aux("ppp")
-
-CHN <-  pipload::pip_load_data(country = ccode, 
-                              year    = 2015)
-
-dt <- joyn::merge(CHN, cpi,
-                  by = c("country_code", "survey_year",
-                         "survey_acronym", "cpi_data_level"),
-                  match_type = "m:1", 
-                  keep = "left")
+# ccode  <- "CHN"
+# cpi <- pipload::pip_load_aux("cpi")
+# ppp <- pipload::pip_load_aux("ppp")
+# 
+# CHN <-  pipload::pip_load_data(country = ccode, 
+#                               year    = 2015)
+# 
+# dt <- joyn::merge(CHN, cpi,
+#                   by = c("country_code", "survey_year",
+#                          "survey_acronym", "cpi_data_level"),
+#                   match_type = "m:1", 
+#                   keep = "left")
 ```
 
 ## Special data cases

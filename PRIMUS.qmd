@@ -48,15 +48,18 @@ the instruction section \@ref(stata-github). Basically, you need to install
 first the [github](https://github.com/haghish/github) Stata command by [E. F.
 Haghish](https://github.com/haghish)
 
-```{stata, eval = FALSE}
-net install github, from("https://haghish.github.io/github/")
-```
+
+<!-- ```{stata, eval = FALSE} -->
+<!--  net install github, from("https://haghish.github.io/github/") -->
+<!-- ``` -->
+
 
 Now, you can install `primus` by just typing the following in Stata
 
-```{stata, eval = FALSE}
-github install worldbank/primus
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- github install worldbank/primus -->
+<!-- ``` -->
+
 
 In case this does not work, follow instructions in section \@ref(stata-github)
 for alternative methods.
@@ -92,40 +95,41 @@ DECRG, or the Poverty GP) has not approved it in the system. You can click on
 the check box *PENDING* in the PRIMUS website to see which surveys have such a
 status, or you can use the `primus` command list this,
 
-```{stata, eval= FALSE}
-qui primus query, overallstatus(PENDING)
-list transaction_id country year date_modified in 1/`=min(10, _N)'
-     +----------------------------------------------+
-     |              transaction_id   country   year |
-     |----------------------------------------------|
-  1. | TRN-000327173-EAP-IDN-QR48Q       IDN   2017 |
-  2. | TRN-000327173-ECA-DEU-YJYVZ       DEU   1995 |
-  3. | TRN-000327173-ECA-DEU-2P4DR       DEU   2002 |
-  4. | TRN-000327173-ECA-DEU-LJN8R       DEU   2003 |
-  5. | TRN-000327173-ECA-DEU-ZSN9J       DEU   2005 |
-     |----------------------------------------------|
-  6. | TRN-000327173-ECA-DEU-UBS7M       DEU   2008 |
-  7. | TRN-000327173-ECA-DEU-41TOU       DEU   2009 |
-  8. | TRN-000327173-EAP-AUS-KKZ2E       AUS   2004 |
-     +----------------------------------------------+
-```
+
+<!-- ```{stata, eval= FALSE} -->
+<!-- qui primus query, overallstatus(PENDING) -->
+<!-- list transaction_id country year date_modified in 1/`=min(10, _N)' -->
+<!--      +----------------------------------------------+ -->
+<!--      |              transaction_id   country   year | -->
+<!--      |----------------------------------------------| -->
+<!--   1. | TRN-000327173-EAP-IDN-QR48Q       IDN   2017 | -->
+<!--   2. | TRN-000327173-ECA-DEU-YJYVZ       DEU   1995 | -->
+<!--   3. | TRN-000327173-ECA-DEU-2P4DR       DEU   2002 | -->
+<!--   4. | TRN-000327173-ECA-DEU-LJN8R       DEU   2003 | -->
+<!--   5. | TRN-000327173-ECA-DEU-ZSN9J       DEU   2005 | -->
+<!--      |----------------------------------------------| -->
+<!--   6. | TRN-000327173-ECA-DEU-UBS7M       DEU   2008 | -->
+<!--   7. | TRN-000327173-ECA-DEU-41TOU       DEU   2009 | -->
+<!--   8. | TRN-000327173-EAP-AUS-KKZ2E       AUS   2004 | -->
+<!--      +----------------------------------------------+ -->
+<!-- ``` -->
 
 Notice that the overall status of a transaction is independent from survey ID.
 Thus, it is possible to find several transactions for the same country and year.
 Indonesia 2017, for instance, has three transactions, two of them rejected and
-one of them pending.
+<!-- one of them pending. -->
 
-```{stata, eval = FALSE}
-qui primus query, country(IDN) year(2017)
-list transaction_id overall_status date_modified in 1/`=min(10, _N)'
-     +--------------------------------------------------+
-     |              transaction_id        date_modified |
-     |--------------------------------------------------|
-  1. | TRN-000104674-EAP-IDN-8R9IF   23may2018 15:28:47 |
-  2. | TRN-000327173-EAP-IDN-TYA1A   23may2018 23:57:27 |
-  3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 |
-     +--------------------------------------------------+
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- qui primus query, country(IDN) year(2017) -->
+<!-- list transaction_id overall_status date_modified in 1/`=min(10, _N)' -->
+<!--      +--------------------------------------------------+ -->
+<!--      |              transaction_id        date_modified | -->
+<!--      |--------------------------------------------------| -->
+<!--   1. | TRN-000104674-EAP-IDN-8R9IF   23may2018 15:28:47 | -->
+<!--   2. | TRN-000327173-EAP-IDN-TYA1A   23may2018 23:57:27 | -->
+<!--   3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 | -->
+<!--      +--------------------------------------------------+ -->
+<!-- ``` -->
 
 A transaction is *rejected* when at least one of the three parties rejected the
 database. Finally, a transaction is *approved* only when all three parties have
@@ -149,9 +153,9 @@ the estimates of pending transactions for us and properly stores them in the
 folder `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\` `r emo::ji("tada")`
 `r emo::ji("tada")` . You only need to type,
 
-```{stata, eval = FALSE}
-pcn primus pending, down(estimates)
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- pcn primus pending, down(estimates) -->
+<!-- ``` -->
 
 In addition, `pcn` checks the date for which you're downloading the estimates
 and keeps only those transactions that have been uploaded for the next spring or
@@ -167,9 +171,9 @@ July. Thus, it is likely that you will find and error saying
 
 You can load the recently-downloaded estimates by typing,
 
-```{stata, eval = FALSE}
-pcn primus pending, load(estimates)
-```
+<!-- ```{stata, eval = FALSE} -->
+<!-- pcn primus pending, load(estimates) -->
+<!-- ``` -->
 
 Now, you have to check whether the new estimates make sense. Once way to that is
 to follow this do-file,
@@ -192,65 +196,65 @@ the responsibility to approve on behalf or two of them, DECDG and DECRG. This
 process can easily done with the code below, which can be found in this file,
 `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\approve\primus_approve.do`.
 
-```{stata, eval = FALSE}
-/*==================================================
-0: Program set up
-==================================================*/
-version 14
-drop _all
+<!-- ```{stata, eval = FALSE} -->
+<!-- /*================================================== -->
+<!-- 0: Program set up -->
+<!-- ==================================================*/ -->
+<!-- version 14 -->
+<!-- drop _all -->
 
-*---------- Modify this
-local excl = "BRA SOM SSD" // countries to exclude 
-local excl = "" // countries to exclude 
+<!-- *---------- Modify this -->
+<!-- local excl = "BRA SOM SSD" // countries to exclude -->
+<!-- local excl = "" // countries to exclude -->
 
-/*==================================================
-Load data
-==================================================*/
+<!-- /*================================================== -->
+<!-- Load data -->
+<!-- ==================================================*/ -->
 
-primus query, overalls(pending)
-//------------Cut off date
-local filtdate = "2019-12-01" // filter date (december last year)
-local filtdate = "2020-02-18" // filter date (surveys uploaded by Minh)
-keep if  date_modified >= clock("`filtdate'", "YMD")
+<!-- primus query, overalls(pending) -->
+<!-- //------------Cut off date -->
+<!-- local filtdate = "2019-12-01" // filter date (december last year) -->
+<!-- local filtdate = "2020-02-18" // filter date (surveys uploaded by Minh) -->
+<!-- keep if  date_modified >= clock("`filtdate'", "YMD") -->
 
-//------------Select username
-if (lower("`c(username)'") == "wb424681") {
-  local dep = "povcalnet"
-}
-else if (lower("`c(username)'") == "wb384996") {
-  local dep = "decdg"
-}
-else {
-  noi disp in red "you don't have rights to run this code"
-  break
-}
+<!-- //------------Select username -->
+<!-- if (lower("`c(username)'") == "wb424681") { -->
+<!--   local dep = "povcalnet" -->
+<!-- } -->
+<!-- else if (lower("`c(username)'") == "wb384996") { -->
+<!--   local dep = "decdg" -->
+<!-- } -->
+<!-- else { -->
+<!--   noi disp in red "you don't have rights to run this code" -->
+<!--   break -->
+<!-- } -->
 
-tab `dep'
-keep if `dep' == "PENDING"
+<!-- tab `dep' -->
+<!-- keep if `dep' == "PENDING" -->
 
-if ("`excl'" != "") {
-  local excl: subinstr local excl " " "|", all
-  drop if regexm("`country'", "`excl'") 
-}
+<!-- if ("`excl'" != "") { -->
+<!--   local excl: subinstr local excl " " "|", all -->
+<!--   drop if regexm("`country'", "`excl'") -->
+<!-- } -->
 
-/*=================================================
-Approve (Do NOT modify)
-==================================================*/
+<!-- /*================================================= -->
+<!-- Approve (Do NOT modify) -->
+<!-- ==================================================*/ -->
 
-local n = _N
-preserve 
-qui foreach i of numlist 1/`n' {
-  restore, preserve
-  local country = country[`i']
-  local year    = year[`i']
-  local id      = transaction_id[`i']
-  
-  noi disp in y "primus action, tranxid(`id') decision(approved)"
-  cap noi primus action, tranxid(`id') decision(approved)
-  if (_rc) noi disp "problem with `id'"
-}
+<!-- local n = _N -->
+<!-- preserve -->
+<!-- qui foreach i of numlist 1/`n' { -->
+<!--   restore, preserve -->
+<!--   local country = country[`i'] -->
+<!--   local year    = year[`i'] -->
+<!--   local id      = transaction_id[`i'] -->
 
-```
+<!--   noi disp in y "primus action, tranxid(`id') decision(approved)" -->
+<!--   cap noi primus action, tranxid(`id') decision(approved) -->
+<!--   if (_rc) noi disp "problem with `id'" -->
+<!-- } -->
+
+<!-- ``` -->
 
 Basically, this is what you need to do with this file.
 

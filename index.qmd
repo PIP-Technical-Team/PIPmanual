@@ -8,7 +8,7 @@ description-meta: |
 ```{r setup, include=FALSE}
 library(knitr)
 
-here::i_am("index.Rmd")
+here::i_am("index.qmd")
 library(here)
 ```
 

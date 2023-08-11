@@ -1,5 +1,3 @@
-# (PART) Standalone Technical Considerations {.unnumbered}
-
 # Load microdata and Auxiliary data {#load}
 
 Make sure you have all the packages installed and loaded into memory. Given that they are hosted in Github, the code below makes sure that any package in the PIP workflow can be installed correctly. 
@@ -34,52 +32,52 @@ last_item <- function(x, word = "and") {
 ```
 
 ```{r load}
-## First specify the packages of interest
-packages = c("pipaux", "pipload")
-
-## Now load or install&load all
-package.check <- lapply(
-  packages,
-  FUN = function(x) {
-    if (!require(x, character.only = TRUE)) {
-      pck_name <- paste0("PIP-Technical-Team/", x)
-      devtools::install_github(pck_name)
-      library(x, character.only = TRUE)
-    }
-  }
-)
+# ## First specify the packages of interest
+# packages = c("pipaux", "pipload")
+# 
+# ## Now load or install&load all
+# package.check <- lapply(
+#   packages,
+#   FUN = function(x) {
+#     if (!require(x, character.only = TRUE)) {
+#       pck_name <- paste0("PIP-Technical-Team/", x)
+#       devtools::install_github(pck_name)
+#       library(x, character.only = TRUE)
+#     }
+#   }
+# )
 
 ```
 
 ## Auxiilary data
 
 ```{r numb-func, include = FALSE}
-lf <- lsf.str("package:pipaux", pattern = "^pip_")
-  lf <- as.character(lf)
-  num_functions <- length(lf)
+# lf <- lsf.str("package:pipaux", pattern = "^pip_")
+#   lf <- as.character(lf)
+#   num_functions <- length(lf)
 ```
-Even though `pipaux` has more than `r num_functions` functions, most of its features 
+Even though `pipaux` has more than `r #num_functions` functions, most of its features 
 can be executed by using only the `pipaux::load_aux` and `pipaux::update_aux` functions. 
 
 
 ### udpate data
 ```{r functions-av, include = FALSE}
-  lf <- lsf.str("package:pipaux", pattern = "^pip_[a-z]{3}$")
-  lf <- as.character(lf)
-  lf <- gsub("pip_", "", lf)
+  # lf <- lsf.str("package:pipaux", pattern = "^pip_[a-z]{3}$")
+  # lf <- as.character(lf)
+  # lf <- gsub("pip_", "", lf)
 ```
 
-the main function of the `pipaux` package is `udpate_aux`. The first argument of this function is `measure` and it refers to the measure data to be loaded. The measures available are **`r last_item(lf)`**.
+the main function of the `pipaux` package is `udpate_aux`. The first argument of this function is `measure` and it refers to the measure data to be loaded. The measures available are **`r #last_item(lf)`**.
 ```{r update-aux}
-pipaux::update_aux(measure = "cpi")
+# pipaux::update_aux(measure = "cpi")
 ```
 
 ### Load data
 Loading auxiliary data is the job of the package `pipload` through the function `pipload::pip_load_aux()`, though `pipaux` also provides `pipaux::load_aux()` for the same purpose. Notice that, though both function do exactly the same, the loading function from `pipload` has the prefix `pip_` to distinguish it from the one in `pipaux`. However, we are going to limit the work of `pipaux` to update auxiliary data and the work of `pipload` to load data. Thus, all the examples below use `pipload` for loading either microdata or auxiliary data. 
 
 ```{r load-aux}
-df <- pipload::pip_load_aux(measure = "cpi")
-head(df)
+# df <- pipload::pip_load_aux(measure = "cpi")
+# head(df)
 ```
 
 
@@ -104,12 +102,12 @@ The inventory file is used to speed up the file searching process in `pipload`. 
 To update the inventory file, you need to use the function `pip_update_inventory`. If you don't provide any argument, it will update the whole inventory, which may take around 10 to 15 min--the function will warn you about it. By provide the country/ies you want to update, the process is way faster. 
 
 ```{r update-inventory}
-# update one country
-pip_update_inventory("MEX")
-
-# Load inventory file
-df <- pip_load_inventory()
-head(df[, "filename"])
+# # update one country
+# pip_update_inventory("MEX")
+# 
+# # Load inventory file
+# df <- pip_load_inventory()
+# head(df[, "filename"])
 
 ```
 
@@ -119,14 +117,14 @@ head(df[, "filename"])
 Every dataset in the PIP microdata repository is identified by seven variables! Country code, survey year, survey acronym, master version, alternative version, tool, and source. So giving the user the responsibility to know all the different combinations of each file is a heavy burden. Thus, the data finder, `pip_find_data()`, will provide the names of all the files available that meet the criteria in the arguments provided by the user. For instance, if the use wants to know the all the file available for Paraguay, we could type, 
 
 ```{r inventory-pry}
-pip_find_data(country = "PRY")[["filename"]]
+# pip_find_data(country = "PRY")[["filename"]]
 ```
 
 Yet, if the user need to be more precise in its request, she can add information to the different arguments of the function. For example, this is data available in 2012, 
 
 ```{r inventory-pry2012}
-pip_find_data(country = "PRY", 
-              year = 2012)[["filename"]]
+# pip_find_data(country = "PRY", 
+#               year = 2012)[["filename"]]
 ```
 
 ### Loading data
@@ -135,11 +133,11 @@ Function `pip_load_data` takes care of loading the data. The very first instruct
 
 ```{r load-data, cache=TRUE}
 
-df <- pip_load_data(country = "PRY",
-                    year    = c(2014, 2015), 
-                    tool    = "PC")
-
-janitor::tabyl(df, survey_id)
+# df <- pip_load_data(country = "PRY",
+#                     year    = c(2014, 2015), 
+#                     tool    = "PC")
+# 
+# janitor::tabyl(df, survey_id)
 ```
 
 

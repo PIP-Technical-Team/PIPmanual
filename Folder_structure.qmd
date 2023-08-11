@@ -22,11 +22,9 @@ This was the original PIP_Data folder. It was used for testing and development o
 
 ## PIP-Data_QA
 
-This is the main output directory for the `{pipdp}` and `{pipaux}` packages. It contains all the survey and auxiliary data 
-needed to run the [Poverty Calculator](#pcpipeline) and [Table Maker](#tmpipeline) pipelines. 
+This is the main output directory for the `{pipdp}` and `{pipaux}` packages. It contains all the survey and auxiliary data needed to run the [Poverty Calculator](#pcpipeline) and [Table Maker](#tmpipeline) pipelines. 
 
-Note that the contents of this folder is for QA and production purposes. Please use the `PIP_Data_Testing` directory, 
-or your own personal testing directory, if you intend to test code changes in `{pipdp}` or `{pipaux}`. 
+Note that the contents of this folder is for QA and production purposes. Please use the `PIP_Data_Testing` directory, or your own personal testing directory, if you intend to test code changes in `{pipdp}` or `{pipaux}`. 
 
 ### _aux
 
@@ -61,27 +59,20 @@ An explanation of each subfolder is given below.
 |sna         | Special National Account cases | pipaux       | Manual |
 |weo         | World Economic Outlook (GDP)   | pipaux       | IMF, pipaux |
 
-The data in the folders `countries`, `regions`, `pl`, `cp` and `indicators` are loaded into the Poverty Calculator pipeline, 
-but that they are not used for any calculations or modified in any way, when being parsed through the pipeline.
-They are thus only listed with `{pipapi}` as their usage. 
+The data in the folders `countries`, `regions`, `pl`, `cp` and `indicators` are loaded into the Poverty Calculator pipeline, but that they are not used for any calculations or modified in any way, when being parsed through the pipeline. They are thus only listed with `{pipapi}` as their usage. 
 
-In contrast the measures CPI, GDP, PCE, POP and PPP are both used in the pre-calculations and transformed before 
-being saved as pipeline outputs. So even though these measures are also available in the PIP PC API, the files at this stage 
-only have the Poverty Calculator pipeline as their use case. 
+In contrast the measures CPI, GDP, PCE, POP and PPP are both used in the pre-calculations and transformed before being saved as pipeline outputs. So even though these measures are also available in the PIP PC API, the files at this stage only have the Poverty Calculator pipeline as their use case. 
 
 ### _inventory 
 
-The `_inventory` folder contains the PIP inventory file created by `pipload::pip_update_inventory()`. It is important to update this file if the survey data 
-has been updated. 
+The `_inventory` folder contains the PIP inventory file created by `pipload::pip_update_inventory()`. It is important to update this file if the survey data has been updated. 
 
 ### Country data
 
-The folders with country codes as names, e.g `AGO`, contain survey data for each country. This is created by `{pipdp}`.
-The folder structure within each country folder follows roughly the same convention as used by DLW. 
+The folders with country codes as names, e.g `AGO`, contain survey data for each country. This is created by `{pipdp}`. The folder structure within each country folder follows roughly the same convention as used by DLW. 
 
 There will be one data file for each survey, based on DLW's `GMD` module and the grouped data in the PovcalNet-drive. These are labelled with PC in 
-their filenames. Additionally, if there is survey data available from DLW's `ALL` module there will also be a dataset for the Table Maker, 
-labelled with TB. 
+their filenames. Additionally, if there is survey data available from DLW's `ALL` module there will also be a dataset for the Table Maker, labelled with TB. 
 
 ## PIP-Data_ExtSOL
 
@@ -105,7 +96,7 @@ Please do not touch or change any content in this folder without permission
 
 ## PIP_Data_Testing 
 
-This folder is used as a testing directory for development of the `{pipdp}` and `{pipaux}` packges. 
+This folder is used as a testing directory for development of the `{pipdp}` and `{pipaux}` packages. 
 
 ## PIP_Data_Vintage 
 
@@ -126,29 +117,22 @@ This is the main output directory for the both the [Poverty Calculator](#pcpipel
 
 #### _targets
 
-This folder contains the objects that are cached by `{targets}` when the [Poverty Calculator Pipeline](#pcpipeline) is run. It is located on the 
-shared network drive so that the latest cached objects are available to all team members. Please note however that a shared `_targets` folder
-does entail some risks. **It is very important that only one person runs the pipeline at a time.** Concurrent runs against the same `_targets` store will
-wreak havoc. And needless to say; if you are developing new features or customising the pipeline use a different `_targets` store. 
+This folder contains the objects that are cached by `{targets}` when the [Poverty Calculator Pipeline](#pcpipeline) is run. It is located on the shared network drive so that the latest cached objects are available to all team members. Please note however that a shared `_targets` folder does entail some risks. **It is very important that only one person runs the pipeline at a time.** Concurrent runs against the same `_targets` store will wreak havoc. And needless to say; if you are developing new features or customising the pipeline use a different `_targets` store. 
 ([We should probably have a custom DEV or testing folder for this, similar to PIP_Data_Testing]{style="color:red"}.) 
 
 #### cache
 
-The survey data output of `{pipdp}` cannot be directly used as input to the [Poverty Calculator Pipeline](#pcpipeline). This is because the data needs to be cleaned 
-before running the necessary pre-calculations for the PIP database. The cleaning currently includes removal of rows with missing welfare and weight values,
-standardising of grouped data, and restructuring of datasets with both income and consumption based welfare values in the same survey. 
+The survey data output of `{pipdp}` cannot be directly used as input to the [Poverty Calculator Pipeline](#pcpipeline). This is because the data needs to be cleaned  before running the necessary pre-calculations for the PIP database. The cleaning currently includes removal of rows with missing welfare and weight values, standardising of grouped data, and restructuring of datasets with both income and consumption based welfare values in the same survey. 
 Please refer to `{wbpip}` and `{pipdm}` for the latest cleaning procedures.  
 
 In order to avoid doing this cleaning every time the pipeline runs an intermediate version of the survey data is stored in the `cache/clean_survey_data/` folder. 
 Please make sure this folder is up-to-date before running the `_targets.R` pipeline. 
 
-[Note: This is not exactly true. We need to solve the issue with the double caching of survey data. But the essence of what we want to accomplish is to avoid 
-cleaning and checking the survey data in every pipeline run.]{style="color:red"}.
+[Note: This is not exactly true. We need to solve the issue with the double caching of survey data. But the essence of what we want to accomplish is to avoid cleaning and checking the survey data in every pipeline run.]{style="color:red"}.
 
 #### output 
     
-This folder contains the outputs of the [Poverty Calculator Pipeline](#pcpipeline). This is seperated into three subfolders; `aux` containing the
-auxiliary data, `estimations` containing the survey, interpolated and distributional pre-calculated estimates, and `survey_data` containing
+This folder contains the outputs of the [Poverty Calculator Pipeline](#pcpipeline). This is seperated into three subfolders; `aux` containing the auxiliary data, `estimations` containing the survey, interpolated and distributional pre-calculated estimates, and `survey_data` containing
 the cleaned survey data. 
 
 #### validation

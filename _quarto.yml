@@ -1,3 +1,36 @@
+project:
+  type: book
+
+book:
+  title: "PIP Manual"
+  author: "PIP Technical Team"
+  chapters:
+    - index.qmd
+    - part: "Introduction"
+      chapters:
+        - intro.qmd
+        - internal_workflow.qmd
+        - Folder_structure.qmd
+        - joining_data.qmd
+    - part: "PIP data"
+      chapters:
+      - price_framework.qmd
+      - PRIMUS.qmd
+      - welfare_data.qmd
+      - auxiliary_data.qmd
+    - part: "PIP Procedures"
+      chapters:
+        - pc_pipeline.qmd
+        - tm_pipeline.qmd
+    - part: "Standalone Technical Considerations"
+      chapters:
+        - load_md_aux.qmd
+        - docker.qmd
+        - azure.qmd
+        - workflows.qmd
+        - subtrees.qmd
+        - references.qmd
+
 book_filename: "PIPmanual"
 repo: https://github.com/PIP-Technical-Team/PIPmanual/
 output_dir: "docs"
@@ -10,7 +43,7 @@ language:
     edit: "Edit"
     chapter_name: "Chapter "
 
-rmd_files: [
+qmd_files: [
   "index.qmd",
   "intro.qmd",
   "internal_workflow.qmd",

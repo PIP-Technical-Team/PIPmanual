@@ -1,17 +1,16 @@
-# (PART) Introduction {.unnumbered}
-
 # Introduction {#intro}
 
 [NOTE:Andres, finish chapter]{style="color:red"}
 
 ## Ojectives
+
 This book explains several things,
 
-1. An overview of the project from a technical perspective.
-2. The interaction between R packages developed to manage the data and do the calculations.
-3. The different types of data in the PIP project and the interaction between them.
-4. How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated. 
-5. Technical standalone procedure necessary for the execution of some parts of the project. 
+1.  An overview of the project from a technical perspective.
+2.  The interaction between R packages developed to manage the data and do the calculations.
+3.  The different types of data in the PIP project and the interaction between them.
+4.  How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.
+5.  Technical standalone procedure necessary for the execution of some parts of the project.
 
 ## Technical requirements
 
@@ -48,12 +47,16 @@ if (!("emo"  %in% ipkg)){
 ```
 
 <!-- ::: {.rmdbox .rmdwarning} -->
-<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->
-<!-- Technical team of the PIP project. It has been made available to the public for -->
-<!-- the sake of transparency, but its information has no use outside the internal -->
-<!-- team. -->
-<!-- ::: -->
 
+<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->
+
+<!-- Technical team of the PIP project. It has been made available to the public for -->
+
+<!-- the sake of transparency, but its information has no use outside the internal -->
+
+<!-- team. -->
+
+<!-- ::: -->
 
 You need to make sure the `bookdown` package is installed in your computer
 
@@ -64,11 +67,9 @@ install.packages("bookdown")
  devtools::install_github("rstudio/bookdown")
 ```
 
-Remember each Rmd file contains one and only one chapter, and a chapter is
-defined by the first-level heading `#`.
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
 
-Make sure to install the latest version of PIP R packages by typing the
-following
+Make sure to install the latest version of PIP R packages by typing the following
 
 ```{r, eval=FALSE}
 ipkg <- utils::installed.packages()[,1]
@@ -89,4 +90,3 @@ pkgs <- c("pipload", "pipaux", "wbpip", "piptb", "pipdm", "pipapi")
 purrr::walk(pkgs, pip_install, ipkg = ipkg)
 
 ```
-

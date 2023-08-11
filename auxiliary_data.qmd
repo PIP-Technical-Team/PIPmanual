@@ -2,7 +2,7 @@
 
 ```{r, echo=FALSE, include=FALSE}
 library(data.table)
-library(pipaux)
+#library(pipaux)
 ```
 
 As it was said in Section \@ref(data-acquisition), auxiliary data is the data
@@ -19,10 +19,10 @@ As explain in Chapter \@ref(folder-structure), all auxiliary data is stored in
 `"y:/PIP-Data/_aux/"`.
 
 ```{r aux-dir, echo=FALSE}
-fs::dir_tree("y:/PIP-Data/_aux/", 
-             recurse = FALSE, 
-             regex = ".*(?<!\\.txt)$", 
-             perl = TRUE)
+# fs::dir_tree("y:/PIP-Data/_aux/", 
+#              recurse = FALSE, 
+#              regex = ".*(?<!\\.txt)$", 
+#              perl = TRUE)
 ```
 
 The naming convention of subfolders inside the \_aux directory is useful because
@@ -89,8 +89,8 @@ Population data is loaded by typing either `pipload::pip_load_aux("pop")` or
 intended R package for loading any PIP data.
 
 ```{r}
-pop <- pipload::pip_load_aux("pop")
-head(pop)
+# pop <- pipload::pip_load_aux("pop")
+# head(pop)
 ```
 
 ## National Accounts
@@ -238,8 +238,8 @@ datalibweb. The following files will be added to the system each round:
 ### Vintage control
 
 ```{r, echo=FALSE, include=FALSE}
-cpi <- pipload::pip_load_aux("cpi")
-cpi_id <- cpi[, unique(cpi_id)]
+# cpi <- pipload::pip_load_aux("cpi")
+# cpi_id <- cpi[, unique(cpi_id)]
 ```
 
 Vintage control of the CPI data comes in a similar fashion as welfare data,
@@ -250,13 +250,13 @@ Every year, around November-December, PIP CPI data is updated with the most
 recent version of the IMF CPI data, which comes with information for the most
 recent year available and with changes/fixes/additions of previous years for
 each country. When this happens, the master version of the CPI ID is increased
-in one unit before the data is saved. As of today, the current ID is `r cpi_id`.
+in one unit before the data is saved. As of today, the current ID is `r #cpi_id`.
 If data is modified during the rolling of the year, then the alternative version
 of the CPI ID is increased in one unit.
 
 ### Data structure
 
-When you load CPI data using `pipload::pip_load_aux("cpi")`, the data you get
+When you load CPI data using `#pipload::pip_load_aux("cpi")`, the data you get
 has already been cleaned for being use in the PIP workflow, and it is slightly
 different from the original CPI data stored in datalibweb servers. That is, the
 way CPI data is used and referred to datalibweb is different from the way it is
@@ -310,7 +310,7 @@ of the release.
     data, whereas v2 would be the first adaptation or estimates of the release.
 
 ```{r, echo=FALSE, include=FALSE}
-ppp <- pipload::pip_load_aux("ppp")
+# ppp <- pipload::pip_load_aux("ppp")
 ```
 
 ### Data structure

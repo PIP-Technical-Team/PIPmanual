@@ -4,7 +4,6 @@ editor_options:
     wrap: 72
 ---
 
-# (PART) PIP data {.unnumbered}
 
 # Price FrameWork (pfw) data frame {#pfw-chapter}
 
@@ -12,11 +11,11 @@ The price framework data frame (pfw) is the most important source of
 technical metadata of the PIP project, which makes pertinent the have of
 a separate chapter for it. The general explanation of the structure of
 the pfw can be found in Section \@ref(pfw-join). This chapter focuses
-more on the use of each of the variables. Yet, it is worh repeating a
+more on the use of each of the variables. Yet, it is worth repeating a
 few things already mentioned in Section \@ref(pfw-join).
 
 ```{r}
-pfw <- pipload::pip_load_aux("pfw")
+# pfw <- pipload::pip_load_aux("pfw")
 ```
 
 ## Variables
@@ -25,8 +24,8 @@ The table provides a short description of each variable of the Price
 FrameWork data frame. We provide additional information for variable.
 
 ```{r, echo=FALSE}
-pfwd <- readxl::read_xlsx(here::here("files/pfw_descriptions.xlsx"))
-DT::datatable(pfwd)
+# pfwd <- readxl::read_xlsx(here::here("files/pfw_descriptions.xlsx"))
+# DT::datatable(pfwd)
 ```
 
 ## Additional explanation
@@ -42,7 +41,7 @@ world bank, whereas the latter has an additional category, "OHI," for
 Other High Income countries.
 
 ```{r}
-janitor::tabyl(pfw, wb_region_code, pcn_region_code)
+# janitor::tabyl(pfw, wb_region_code, pcn_region_code)
 ```
 
 For most of the data points, there should be no difference in between
@@ -56,7 +55,7 @@ system for integer ones, and `ref_year` for decimal reporting purpose
 Alternative survey name for some surveys.
 
 ```{r}
-head(pfw[altname != "", c("altname", "survey_acronym")])
+# head(pfw[altname != "", c("altname", "survey_acronym")])
 ```
 
 ### `survey_coverage` {.unnumbered}
@@ -65,7 +64,7 @@ This variable represent the househol survey coverage. This is different
 from the disaggregation data level.
 
 ```{r}
-janitor::tabyl(pfw, survey_coverage)
+# janitor::tabyl(pfw, survey_coverage)
 ```
 
 ### `welfare_type` {.unnumbered}
@@ -75,7 +74,7 @@ variable in a survey in case it has more than one. The welfare type of
 alternative welfare aggregates is found in variable `oth_welfare1_type`.
 
 ```{r}
-janitor::tabyl(pfw, welfare_type)
+# janitor::tabyl(pfw, welfare_type)
 ```
 
 ### `use_imputed` {.unnumbered}
@@ -83,9 +82,9 @@ janitor::tabyl(pfw, welfare_type)
 Whether the welfare aggregate has been imputed. There are just few
 countries with this kind of data.
 
-```{r}
-pfw[use_imputed == 1, unique(country_code)]
-```
+<!-- ```{r} -->
+<!-- # pfw[use_imputed == 1, unique(country_code)] -->
+<!-- ``` -->
 
 ### `use_microdata` {.unnumbered}
 
@@ -94,7 +93,7 @@ from microdata without any sort of aggregation. Mos of the countries
 have this kind of data. Below you can see those that do not.
 
 ```{r}
-pfw[use_microdata != 1, unique(country_code)]
+# pfw[use_microdata != 1, unique(country_code)]
 ```
 
 ### `use_bin` {.unnumbered}
@@ -106,7 +105,7 @@ houshold surveys only available in the Luxembourg Data Center
 considered micro data for technical purposes.
 
 ```{r}
-pfw[use_bin == 1, unique(country_code)]
+# pfw[use_bin == 1, unique(country_code)]
 ```
 
 ### `use_groupdata` {.unnumbered}
@@ -118,5 +117,5 @@ this type of data is available in [@dattComputationalToolsPoverty1998;
 this kind of data.
 
 ```{r}
-pfw[use_groupdata == 1, unique(country_code)]
+# pfw[use_groupdata == 1, unique(country_code)]
 ```
