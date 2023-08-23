@@ -21,10 +21,11 @@ jobs: # This block defines the jobs to be run
         with:
           r-version: '4.1' # R version used
 
-      - name: Install Quarto # This step installs Quarto
+      - name: Install Quarto
         run: |
-          install.packages('remotes')
-          remotes::install_github('quarto-dev/quarto-cli')
+         Rscript -e "install.packages('remotes')"
+         Rscript -e "remotes::install_github('quarto-dev/quarto-cli')"
+
 
       - name: Render Quarto Book # This step renders the Quarto book
         run: quarto render . # all quarto files in root directory
