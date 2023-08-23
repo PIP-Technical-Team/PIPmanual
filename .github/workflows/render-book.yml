@@ -23,8 +23,7 @@ jobs: # This block defines the jobs to be run
 
       - name: Install Quarto
         run: |
-         Rscript -e "install.packages('remotes', repos='https://cloud.r-project.org/')"
-         Rscript -e "remotes::install_github('quarto-dev/quarto-cli')"
+         curl -s https://install.quarto.org | bash
 
       - name: Render Quarto Book # This step renders the Quarto book
         run: quarto render . # all quarto files in root directory
