@@ -58,7 +58,7 @@ if (!("emo"  %in% ipkg)){
 
 <!-- ::: -->
 
-You need to make sure that the `bookdown` package is installed in your local computer
+You need to make sure that  `bookdown` package is installed in your local computer
 
 ```{r eval=FALSE}
 install.packages("bookdown")
