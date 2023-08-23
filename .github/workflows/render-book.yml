@@ -1,0 +1,33 @@
+name: Render and Deploy Quarto Book # This line names the workflow; you can leave it as is
+
+on:
+  push:
+    paths:
+      - '**/*.qmd' # Workflow is triggered on push events when any .qmd file is modified
+
+jobs: # This block defines the jobs to be run
+  render-and-deploy: # Name of the job; you can leave it as is
+    runs-on: ubuntu-latest # Define jobs to be run, Specifies the runner type
+
+    steps: # These are the individual steps that make up the job
+
+      - name: Checkout Repository # Steps of job: checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup R # This step sets up R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Install Quarto # This step installs Quarto
+        run: |
+          install.packages('remotes')
+          remotes::install_github('quarto-dev/quarto-cli')
+
+      - name: Render Quarto Book # This step renders the Quarto book
+        run: quarto render . # all quarto files in root directory
+
+      - name: Deploy to GitHub Pages # This step deploys the HTML files to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Authentication; leave as is
+          publish_dir: ./_book # Replace with the relative path to the output folder of your Quarto book
+

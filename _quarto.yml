@@ -47,23 +47,19 @@ qmd_files: [
   "index.qmd",
   "intro.qmd",
   "internal_workflow.qmd",
-  "Folder_structure.qmd",
+  "folder_structure.qmd",
   "joining_data.qmd",
-
   "price_framework.qmd",
   "PRIMUS.qmd",
   "welfare_data.qmd",
   "auxiliary_data.qmd",
-
   "pc_pipeline.qmd",
   "tm_pipeline.qmd",
-
   "load_md_aux.qmd",
   "docker.qmd",
   "azure.qmd",
   "workflows.qmd",
   "subtrees.qmd",
-
   "references.qmd",
 ]
 
