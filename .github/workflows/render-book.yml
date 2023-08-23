@@ -25,6 +25,9 @@ jobs: # This block defines the jobs to be run
         run: |
          curl -s https://install.quarto.org | bash
 
+      - name: Add Quarto to path
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: Render Quarto Book # This step renders the Quarto book
         run: quarto render . # all quarto files in root directory
 
