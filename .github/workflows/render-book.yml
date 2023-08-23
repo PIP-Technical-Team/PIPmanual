@@ -2,6 +2,8 @@ name: Render and Deploy Quarto Book # This line names the workflow; you can leav
 
 on:
   push:
+    branches:
+      - dev # on the dev branch
     paths:
       - '**/*.qmd' # Workflow is triggered on push events when any .qmd file is modified
 
