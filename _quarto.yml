@@ -35,6 +35,8 @@ book_filename: "PIPmanual"
 repo: https://github.com/PIP-Technical-Team/PIPmanual/
 output_dir: "docs"
 delete_merged_file: true
+execute:
+  freeze: auto
 language:
   label:
     fig: "Figure "
