@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PIP Manual - 12&nbsp; Docker Container</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./azure.html" rel="next">
+<link href="./load_md_aux.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./load_md_aux.html">Standalone Technical Considerations</a></li><li class="breadcrumb-item"><a href="./docker.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Docker Container</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PIP Manual</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./internal_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Folder_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./joining_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">PIP data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./price_framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Price FrameWork (pfw) data frame</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PRIMUS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PRIMUS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./welfare_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Welfare data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./auxiliary_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Auxiliary data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">PIP Procedures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pc_pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Poverty Calculator Pipeline (pre-computed estimations)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tm_pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Table Maker Pipeline</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Standalone Technical Considerations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./load_md_aux.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Load microdata and Auxiliary data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./docker.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Docker Container</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./azure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Deploying to Azure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Github Workflows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subtrees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Subtrees using Smartgit</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">12.1</span> Introduction</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">12.2</span> Prerequisites</a></li>
+  <li><a href="#docker-on-world-bank-laptops" id="toc-docker-on-world-bank-laptops" class="nav-link" data-scroll-target="#docker-on-world-bank-laptops"><span class="header-section-number">12.3</span> Docker on World Bank laptops</a>
+  <ul class="collapse">
+  <li><a href="#wb-docker-install" id="toc-wb-docker-install" class="nav-link" data-scroll-target="#wb-docker-install"><span class="header-section-number">12.3.1</span> Install Docker</a></li>
+  <li><a href="#known-problems-and-solutions" id="toc-known-problems-and-solutions" class="nav-link" data-scroll-target="#known-problems-and-solutions"><span class="header-section-number">12.3.2</span> Known problems and solutions</a></li>
+  <li><a href="#tips-and-tricks" id="toc-tips-and-tricks" class="nav-link" data-scroll-target="#tips-and-tricks"><span class="header-section-number">12.3.3</span> Tips and tricks</a></li>
+  </ul></li>
+  <li><a href="#create-volume" id="toc-create-volume" class="nav-link" data-scroll-target="#create-volume"><span class="header-section-number">12.4</span> Create volume</a></li>
+  <li><a href="#build-image" id="toc-build-image" class="nav-link" data-scroll-target="#build-image"><span class="header-section-number">12.5</span> Build image</a></li>
+  <li><a href="#run-container" id="toc-run-container" class="nav-link" data-scroll-target="#run-container"><span class="header-section-number">12.6</span> Run container</a></li>
+  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging"><span class="header-section-number">12.7</span> Debugging</a></li>
+  <li><a href="#security" id="toc-security" class="nav-link" data-scroll-target="#security"><span class="header-section-number">12.8</span> Security</a></li>
+  <li><a href="#base-image-options" id="toc-base-image-options" class="nav-link" data-scroll-target="#base-image-options"><span class="header-section-number">12.9</span> Base image options</a></li>
+  <li><a href="#using-r-on-linux" id="toc-using-r-on-linux" class="nav-link" data-scroll-target="#using-r-on-linux"><span class="header-section-number">12.10</span> Using R on Linux</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">12.11</span> Resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="pc-docker" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Docker Container</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">12.1</span> Introduction</h2>
+<p>This chapter explains how to develop and run the Docker container for the Poverty Calculator API on local World Bank laptops. For DEV, QA and Production deployments please see the chapter on <a href="azure.html">Deploying to Azure</a>. For the Table Maker API please refer to <span style="color:red">TBD</span>.</p>
+</section>
+<section id="prerequisites" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">12.2</span> Prerequisites</h2>
+<ul>
+<li>Local admin account</li>
+<li>Docker Desktop for Windows</li>
+<li>WSL 2 (recommended)</li>
+<li>Visual Studio Code (recommended)</li>
+</ul>
+<p>See below for recommendations on how to install Docker Desktop and WSL 2.</p>
+<p>Visual Code is not strictly needed, but the <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">VS Docker plugin</a> is one of the best tools to interact with Docker.</p>
+</section>
+<section id="docker-on-world-bank-laptops" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="docker-on-world-bank-laptops"><span class="header-section-number">12.3</span> Docker on World Bank laptops</h2>
+<section id="wb-docker-install" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="wb-docker-install"><span class="header-section-number">12.3.1</span> Install Docker</h3>
+<ol type="1">
+<li>Install <a href="https://docs.docker.com/docker-for-windows/release-notes/">Docker Dekstop</a> (v. 3.6.0 or later)
+<ul>
+<li>Remember to check the box to enable WSL integration.</li>
+</ul></li>
+<li>Activate WSL
+<ul>
+<li>Check if the WSL feature on Windows is activated (e.g.&nbsp;run <code>wsl --help</code> from Powershell). If it is then proceed to step 3. Note: If you get a message saying “service cannot be started” try restarting WSL like suggested below under <a href="#known-problems-and-solutions">Known problems and solutions</a>.</li>
+<li>Go to Control Panel -&gt; Programs -&gt; Turn Windows features on or off and check the box <em>Windows Subsystem for Linux</em>, or follow <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">these steps</a> if you prefer to activate WSL from the command line.</li>
+<li>Reboot system.</li>
+</ul></li>
+<li>Install WSL 2
+<ul>
+<li>Download and install the <a href="https://docs.microsoft.com/windows/wsl/wsl2-kernel">Linux kernel update package</a>.</li>
+<li>Set WSL 2 as your default version (run <code>wsl --set-default-version 2</code> from Powershell).</li>
+</ul></li>
+<li>Configure Docker access privileges
+<ul>
+<li>In order to run Docker wo/ admin privileges you need to add yourself to the “docker-users” group.</li>
+<li>Open Computer Management. Go to Local User and Groups -&gt; Groups -&gt; docker-users and add your regular account (<code>WB/wb&lt;UPI&gt;</code>) to the list of users.</li>
+<li>Reboot system.</li>
+</ul></li>
+<li>Start Docker Desktop and enjoy your hard work :-)</li>
+</ol>
+</section>
+<section id="known-problems-and-solutions" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="known-problems-and-solutions"><span class="header-section-number">12.3.2</span> Known problems and solutions</h3>
+<p>Docker Dekstop sometimes fails with the following error.</p>
+<pre><code>System.InvalidOperationException:
+Failed to deploy distro docker-desktop to C:\Users\&lt;User&gt;\AppData\Local\Docker\wsl\distro: exit code: -1
+stdout: Error: 0xffffffff</code></pre>
+<p>The root cause of this problem is likely that the World Bank VPN connection modifies the same network configuration as the <code>wsl</code> VM. Turning off your VPN when working with Docker locally is thus a good idea.</p>
+<p>A temporary solution to the issue is to open a CMD shell in Admin mode, and then run the following code to restart <code>LxssManager</code> .</p>
+<pre class="cmd"><code>&gt; sc config LxssManager start=auto
+[SC] ChangeServiceConfig SUCCESS</code></pre>
+<p>After this you will also need to restart Docker Desktop.</p>
+</section>
+<section id="tips-and-tricks" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="tips-and-tricks"><span class="header-section-number">12.3.3</span> Tips and tricks</h3>
+<ol type="1">
+<li>Start your Docker working day by opening a CMD shell in admin-mode and run <code>sc config LxssManager start=auto</code>. Keep the shell open because you might need to re-run the command if WSL crashes.</li>
+<li>Turn off your VPN when using Docker. This avoids the issue with WSL crashing from time to time. It still might happen though if the VPN switces on automatically or if you for other reasons switch back and forth.</li>
+<li>It is possible that solutions like <a href="https://github.com/sakai135/wsl-vpnkit">wsl-vpnkit</a> and <a href="https://github.com/moby/vpnkit">vpnkit</a> will help with the WSL issues, but these have not been tested yet. Feel free to give it a try yourself.</li>
+<li>If WSL causes too much pain, try switching to the legacy Hyper-V backend. (Go to Docker Desktop -&gt; General Setting -&gt; Use the WSL 2 based engine).</li>
+<li>Re-build an image from a partial cache by adding a <code>ARG</code> or <code>ENV</code> variable right before the layer you want to invalidate (yes, this is hacky but it works). E.g. do something like:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install PIP specific R packages </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> test=test06302021</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"remotes::install_github('PIP-Technical-Team/wbpip@master', repos = '</span><span class="va">${CRAN}</span><span class="st">')"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"remotes::install_github('PIP-Technical-Team/pipapi@master', repos = '</span><span class="va">${CRAN}</span><span class="st">')"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="create-volume" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="create-volume"><span class="header-section-number">12.4</span> Create volume</h2>
+<p>The data that is used in the poverty calculations is stored outside the Docker container. We therefore need to link a data source on our local machine to the container when we run it. This could be accomplished with a <a href="https://docs.docker.com/storage/bind-mounts/">bind mount</a>, but the preferred way is to use a <a href="https://docs.docker.com/storage/volumes/">named volume</a>.</p>
+<p>You can create and populate a volume by following the steps below. First we create an empty volume, then we link this to a temporay container, before using <code>docker cp</code> to copy the files to the container and volume. After the data has been copied you can discard the temporary container. The choice of Ubuntu 20.04 for the <em>temporary</em> container is arbitrary. You could use another image if you want.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create volume </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create pip-vol</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Mount volume to tmp container  </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">--name</span> pip-data <span class="at">--mount</span> type=volume,source=pip-vol,target=/data ubuntu:20.04</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy data to container (and volume)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> cp <span class="op">&lt;</span>data-folder<span class="op">&gt;</span>/. pip-data:data</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop and remove tmp container </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop pip-data </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm pip-data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For some purposes you will only need to create this volume once, but remember to update the contents of the volume in case the data structure changes or you want to make sure the container is running against the latest available data. See the <a href="https://github.com/PIP-Technical-Team/PIP_private/blob/main/README.md#resources">Azure DevOps Data repo</a> (DEV branch) for the latest updates.</p>
+<p>The volume can be inspected with the <code>docker inspect</code> and <code>docker system</code> commands. If you are running Docker Desktop on Windows with WSL 2.0 then then the physical location of Docker volumes is usually found under <code>\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes</code>. For more information on volumes see the <a href="https://docs.docker.com/storage/volumes/">Use volumes</a> section in Docker’s reference manual.</p>
+</section>
+<section id="build-image" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="build-image"><span class="header-section-number">12.5</span> Build image</h2>
+<p>Docker images are built using the <code>docker build</code> command. Here we build the image and set the image name to <code>pip-api</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> pip-api .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also set a specific tag for the image. For example you can specify the version number or the base image used as source. How you decide to tag your images is up to you. Often a tag of <code>latest</code> (the default) will suffice, but in other instances keeping track of different versions of your development image will be useful.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag when building</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> pip-api:0.0.4</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag after build (version number) </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image tag pip-api:latest pip-api:0.0.4</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set tag after build (base image)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image tag pip-api:latest pip-api:ubi8 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that each layer in a Dockerfile is cached when built. These layers won’t be re-run unless the code to produce that specific layer or a previous layer in the Dockerfile changes. This is handy for fast iterations, but can also cause the image to be outdated.</p>
+<p>If needed you can use the <code>--no-cache</code> flag to force a re-build. This is useful when you want to make sure that the latest Linux updates are installed or for updating the <code>{wbpip}</code> and <code>{pipapi}</code> R packages. See also the <a href="#tips-and-tricks">Tips and Tricks</a> section on how to do partial re-builds.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">--no-cache</span> <span class="at">-t</span> pip-api .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="run-container" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="run-container"><span class="header-section-number">12.6</span> Run container</h2>
+<p>Run the container by exposing port 80 and mounting a volume with the survey and auxiliary data. The data structure in the attached volume must correspond to the sub-folder specifications in <code>R/main.R</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">-p</span> 80:80/tcp <span class="at">--mount</span> src=pip-vol,target=/ipp,type=volume,readonly <span class="at">--name</span> pip-api pip-api</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also run the container with a bind mount if you prefer, but note that reading the files inside mount folder will be slower then with a volumne setup.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-d</span> <span class="at">-p</span> 80:80/tcp <span class="at">--mount</span> src=<span class="st">"&lt;data-folder&gt;"</span>,target=/data,type=bind <span class="at">--name</span> pip-api pip-api</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Navigate to <a href="localhost/__docs__/"><code>http://localhost/__docs__/</code></a> to see the running API.</p>
+<p>For details on the <code>docker run</code> command and its options see the <a href="https://docs.docker.com/engine/reference/commandline/run/">Docker Docs</a>.</p>
+</section>
+<section id="debugging" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="debugging"><span class="header-section-number">12.7</span> Debugging</h2>
+<p><strong>Run container interactively:</strong></p>
+<p>Run the container in interactive mode, using the <code>-it</code> flag, to see output messages.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-p</span> 80:80/tcp <span class="at">--mount</span> src=pip-vol,target=/ipp,type=volume,readonly <span class="at">--name</span> pip-api pip-api</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> plumber API at http://0.0.0.0:80</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> swagger Docs at http://127.0.0.1:80/__docs__/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Inspect container:</strong></p>
+<p>For development purposes it can be useful to inspect the Docker container. Luckily it is very easy to enter a running container with the <code>docker exec</code> command.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the container as default user </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> pip-api /bin/bash</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">plumber@bd8ea77299ca:/$</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter the container as root user</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> <span class="at">-u</span> 0 pip-api /bin/bash</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">root@bd8ea77299ca:/$</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="security" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="security"><span class="header-section-number">12.8</span> Security</h2>
+<p>Since the PIP Techincal Team is developing both the API and the Docker container, we also have a larger responsibility for security. When deploying to Azure the image will need to go through a security scan, provided by <a href="https://blog.aquasec.com/">Aquasec</a>, that is generally quite strict. Any high level vulnerability found by the Aquasec scan will result in a failed deployment. It is not possible to leverage Aquasec on local machines, but we can get an indication of potential vulnerabilites by taking advantage of the built in security scan that comes with Docker. Additionally it is also possible to scan the contents of the R packages used in the image.</p>
+<p>Note that neither the Snyk or Oyster scans described below are requirements from OIS. They are only included here as additional and preliminary tools.</p>
+<p><strong>Run image security scan:</strong></p>
+<p>Before deploying to Azure you can run preliminary security scans with Snyk. See <a href="https://docs.docker.com/engine/scan/">Vulnerability scanning for Docker local images</a> and <a href="https://snyk.io/learn/docker-security-scanning/">Docker Security Scanning Guide 2021</a> for details.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> scan <span class="at">--file</span> .<span class="dt">\D</span>ockerfile pip-api</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It is important to note that the Aquasec scan that runs on Azure is different that the Snyk scan, and can detect different vulnerabilites. Even though few or zero vulnerabilites are found by Snyk, further issues might still be detected by Aquasec.</p>
+<p><strong>Run security scan for R packages:</strong></p>
+<p>You can scan the R packages inside the container with the <code>{oysteR}</code> package, which scans R projects against insecure dependencies using the <a href="https://ossindex.sonatype.org/">OSS Index</a>.</p>
+<p>First log into a running container as root, and start R.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker exec <span class="at">-it</span> <span class="at">-u</span> 0 pip-api /bin/bash</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">root@ab54fbf1eb36:/#</span> R </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then install the <code>{oyster}</code> package, and run an audit.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"oysteR"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"oysteR"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>audit <span class="ot">&lt;-</span> <span class="fu">audit_installed_r_pkgs</span>()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_vulnerabilities</span>(audit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that finding zero vulnerabilities is no guarantee against threats. For example is scanning of C++ code inside R packages not yet implemented. For more details and latest developments on the <code>{oyster}</code> package see the <a href="https://github.com/sonatype-nexus-community/oysteR">README</a> on Github.</p>
+</section>
+<section id="base-image-options" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="base-image-options"><span class="header-section-number">12.9</span> Base image options</h2>
+<p>In the development process of the Dockerfile there have been used different base images.</p>
+<p>The current image in the main branch is based on <code>ubi8</code>, but other options (<code>rocker</code>, <code>centos8</code>) are available in seperate branches. These seperate branches will not be actively maintained, but should be kept in case there is a need to switch to another base image in the future.</p>
+<p>The main need to switch base image is likely to stem from the Azure DevOps security scan. For example do images based on <code>rocker</code> or <code>centos8</code> work well locally, but neither will pass deployment. CentOS images are unfortunately not on the list of approved images by OIS, while <a href="https://github.com/rocker-org/rocker-versioned2/">Rocker</a> images (which are based on Ubuntu 20.04 LTS) currently has a vulnerability (<a href="https://ubuntu.com/security/CVE-2019-18276">CVE-2019-18276</a>) that is classified as a high level threat by Aqua Scan.</p>
+<p>In fact one of the Linux dependencies for R on UBI 8, <code>libX11</code>, also currently trigger a high level vulnerability (<a href="https://access.redhat.com/security/cve/CVE-2020-14363">CVE-2020-14363</a>) in Aqua Scan. Even though this issue has been solved in the offical RHEL 8 release, the issue still persist for UBI 8. It can however be solved by manually downloading a newer version of libX11 (1.6.12 or later), and removing the problematic version (1.6.8).</p>
+<p>In case there is any need to develop with other base images in the future it is <strong>strongly recommended</strong> to start with one of the Linux distributions where <a href="https://docs.rstudio.com/resources/install-r/">RStudio provides precompiled binaries for R</a>. This avoids the need to install R from source.</p>
+</section>
+<section id="using-r-on-linux" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="using-r-on-linux"><span class="header-section-number">12.10</span> Using R on Linux</h2>
+<p>Docker images are usually based on Linux containers. Some familiarity with Linux is thus necessary in order to develop and work with Docker.</p>
+<p>R users in particular should familiarize themselves with the difference between installing R and R packages from source vs binary, as well as potential Linux dependencies that might be nessecary to make a specific package work.</p>
+<p><strong>Installing R:</strong></p>
+<p><a href="https://docs.rstudio.com/resources/install-r-source/">Installing R from source</a> is possible on most Linux distributions, but this not always an easy endavour. It will often require you to maintain a list of the nessecary Linux dependencies for R. Installing from source is also much slower than installing from a binary version.</p>
+<p>Another way to install R on Linux is to use the available pre-compiled binary in your Linux distro’s repository (e.g <code>sudo apt install r-base</code> on Ubuntu). The problem with this approach is that the latest version of R might not yet be available, and for some Linux distro’s there will also only be a limited number of R versions available. This impedes the flexilibility needed for a production grade project.</p>
+<p>The recommended approach is thus to rely on <a href="https://docs.rstudio.com/resources/install-r/">RStudio’s precompiled binaries</a>. These binaries are available for the most common Linux distributions, including Ubuntu, Debian and CentOS / RHEL. Relying on these binaries will limited the number of base image options avaiable, e.g.&nbsp;a ligth-weight distro like <a href="https://www.alpinelinux.org/">Alpine</a> is not supported, nor is the newest release of Ubuntu (Hirsute Hippo). But it will make much easier to maintain, upgrade and change the R version used in the project.</p>
+<p><strong>Installing R packages:</strong></p>
+<p>As a contrast to Windows and macOS, CRAN only supports source versions of the R packages available for Linux. This will significantly slow down the installation process of each pacakge.</p>
+<p>Luckily RStudio provides binary versions of all packages on CRAN for a series of different Linux distro’s through their <a href="https://packagemanager.rstudio.com/">Public Pacakge Manager</a>. It is therefore strongly recommended that you rely on RSPM as your installation repo.</p>
+<p>An additional benefit of RSPM is that you can also select a specific date for the package versions to use.</p>
+<p>On the RSPM website go the <a href="https://packagemanager.rstudio.com/client/#/repos/1/overview">Setup</a> page on the main menu and select the appropiate client OS and date. You should then see a URL similar too <code>https://packagemanager.rstudio.com/all/__linux__/centos8/4743918</code>, where <code>centos8</code> represents the distro and <code>4743918</code> the date.</p>
+<p>For a more detailed introduction to the difference between binary and source packages, see <a href="https://r-pkgs.org/package-structure-state.html">Package structure and state</a> in the book R Packages.</p>
+<p><strong>Installing R package dependencies:</strong></p>
+<p>Linux distro’s doesn’t come with the dependencies needed to work with all R packages. This includes common packages like <code>{data.table}</code> and <code>{plumber}</code>. It is important that such dependencies are installed prior to the installation of your R packages.</p>
+<p>The best way to look for dependencies is to use the RSPM website and search for the specific package in question. Remeber to also select the correct Linux distribution.</p>
+</section>
+<section id="resources" class="level2" data-number="12.11">
+<h2 data-number="12.11" class="anchored" data-anchor-id="resources"><span class="header-section-number">12.11</span> Resources</h2>
+<p>For a further introduction to Docker take a look at this <a href="https://raw.githack.com/uo-ec607/lectures/master/13-docker/13-docker.html#1">Data Science for Economists lecture on Docker</a> by Grant McDermott.</p>
+<p>See <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a> for advice on how to build Docker images.</p>
+<p>Follow the <a href="https://docs.docker.com/docker-for-windows/release-notes/">Docker for Windows release notes</a> for information on new releases and bug fixes.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./load_md_aux.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Load microdata and Auxiliary data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./azure.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Deploying to Azure</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
