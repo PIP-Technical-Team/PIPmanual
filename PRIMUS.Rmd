@@ -183,6 +183,25 @@ same. The best you can do at this stage is to make sure the estimates in PRIMUS
 make sense at the country level.
 :::
 
+### Comparing PRIMUS pending (new) cases vs PIP current estimates
+
+Go to folder `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\` and create a new folder for the update you are about to conduct with the format YYYY_#M (where # can be "S" for Spring, and "A" for Annual Meetings). 
+
+Look inside the previous update folder. You will find a do.file named `Compare PRIMUS PENDING vs PIP estimates.do` Create a copy of this file into your newly created folder. This do.file conducts the comparison exercise in 3 overall steps:
+
+1. Stacks all PRIMUS pending cases (individual transationIDs), cleans & reshapes estimates (`primus_estimates_[DATE].dta`)
+2. Loads current PIP estimates (`pip_estimates_[DATE].dta`)
+3. Merges both data sets, takes differences & saves (`Comparison_primus_vs_pip.dta`)
+
+::: {.rmdbox .rmdimportant}
+ PRIMUS **does not** have a clear variable to signal **welfare type** (I/C)!
+:::
+
+As you know, several countries in PIP (i.e. Poland, Hungry, Philippines, etc) have **dual welfare** in the same year. Because PRIMUS lacks a clear variable to flag whether the new estimate is based income or consumption, this needs to be **checked "manually", case by case** after merge. For this, it is advisable to save a copy of the final file into **Excel** to finalize the comparison.
+
+Note that the new PRIMUS cases can either be 1) an update of an existing estimate or 2) a newly added year in the series. Use the variable `_merge` to flag either case. Finally, flag (color code) the differences that are unusually large, and make sure that countries with dual welfare (if any), didn't get merged erroneously.
+
+
 ## Confirming and approving data in PRIMUS {#approve-primus}
 
 Once you have checked that the estimates of pending transactions make sense, you
