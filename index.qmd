@@ -1,0 +1,22 @@
+---
+description-meta: |
+  These are the guidelines to all the technical decisions
+   taken during the creation of packges for the PIP
+   workflow.
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+
+here::i_am("index.qmd")
+library(here)
+```
+
+
+# Welcome! {.unnumbered}
+
+These are the internal guidelines for the technical process of the PIP project. Visit the [Github repository for this book](https://github.com/PIP-Technical-Team/PIPmanual). 
+
+## Team {-}
+
+The PIP technical team is composed of .... 

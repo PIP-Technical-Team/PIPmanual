@@ -1,0 +1,14 @@
+{
+  "hash": "50c95cc9c1c27a6c760d0bf8007e0cba",
+  "result": {
+    "markdown": "# Introduction {#intro}\n\n[NOTE:Andres, finish chapter]{style=\"color:red\"}\n\n## Ojectives\n\nThis book explains several things,\n\n1.  An overview of the project from a technical perspective.\n2.  The interaction between R packages developed to manage the data and do the calculations.\n3.  The different types of data in the PIP project and the interaction between them.\n4.  How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.\n5.  Technical standalone procedure necessary for the execution of some parts of the project.\n\n## Technical requirements\n\n\n\n\n\n<!-- ::: {.rmdbox .rmdwarning} -->\n\n<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->\n\n<!-- Technical team of the PIP project. It has been made available to the public for -->\n\n<!-- the sake of transparency, but its information has no use outside the internal -->\n\n<!-- team. -->\n\n<!-- ::: -->\n\nYou need to make sure that the  `bookdown` package is installed in your local computer\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"bookdown\")\n\n# or the development version\n devtools::install_github(\"rstudio/bookdown\")\n```\n:::\n\n\nRemember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.\n\nMake sure to install the latest version of PIP R packages by typing the following\n\n\n::: {.cell}\n\n```{.r .cell-code}\nipkg <- utils::installed.packages()[,1]\n\npip_install <- function(pkg, ipkg) {\n  if (isFALSE(pkg %in% ipkg)) {\n    gitcall <- paste0(\"PIP-Technical-Team/\", pkg)\n    remotes::install_github(gitcall, dependencies = TRUE)\n    TRUE\n  } else {\n    FALSE\n  }\n}\n\npkgs <- c(\"pipload\", \"pipaux\", \"wbpip\", \"piptb\", \"pipdm\", \"pipapi\")\n\n\npurrr::walk(pkgs, pip_install, ipkg = ipkg)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
