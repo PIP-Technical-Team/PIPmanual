@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PIP Manual - 8&nbsp; Auxiliary data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./pc_pipeline.html" rel="next">
+<link href="./welfare_data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./price_framework.html">PIP data</a></li><li class="breadcrumb-item"><a href="./auxiliary_data.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Auxiliary data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PIP Manual</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./internal_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Folder_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./joining_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">PIP data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./price_framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Price FrameWork (pfw) data frame</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PRIMUS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PRIMUS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./welfare_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Welfare data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./auxiliary_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Auxiliary data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">PIP Procedures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pc_pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Poverty Calculator Pipeline (pre-computed estimations)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tm_pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Table Maker Pipeline</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Standalone Technical Considerations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./load_md_aux.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Load microdata and Auxiliary data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Docker Container</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./azure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Deploying to Azure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Github Workflows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subtrees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Subtrees using Smartgit</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#population" id="toc-population" class="nav-link active" data-scroll-target="#population"><span class="header-section-number">8.1</span> Population</a>
+  <ul class="collapse">
+  <li><a href="#original-data" id="toc-original-data" class="nav-link" data-scroll-target="#original-data"><span class="header-section-number">8.1.1</span> Original data</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure"><span class="header-section-number">8.1.2</span> Data structure</a></li>
+  </ul></li>
+  <li><a href="#national-accounts" id="toc-national-accounts" class="nav-link" data-scroll-target="#national-accounts"><span class="header-section-number">8.2</span> National Accounts</a>
+  <ul class="collapse">
+  <li><a href="#gdp" id="toc-gdp" class="nav-link" data-scroll-target="#gdp"><span class="header-section-number">8.2.1</span> GDP</a></li>
+  <li><a href="#consumption-pce" id="toc-consumption-pce" class="nav-link" data-scroll-target="#consumption-pce"><span class="header-section-number">8.2.2</span> Consumption (PCE)</a></li>
+  <li><a href="#national-accounts-special-cases" id="toc-national-accounts-special-cases" class="nav-link" data-scroll-target="#national-accounts-special-cases"><span class="header-section-number">8.2.3</span> National Accounts, Special Cases</a></li>
+  </ul></li>
+  <li><a href="#cpi" id="toc-cpi" class="nav-link" data-scroll-target="#cpi"><span class="header-section-number">8.3</span> CPI</a>
+  <ul class="collapse">
+  <li><a href="#raw-data" id="toc-raw-data" class="nav-link" data-scroll-target="#raw-data"><span class="header-section-number">8.3.1</span> Raw data</a></li>
+  <li><a href="#vintage-control" id="toc-vintage-control" class="nav-link" data-scroll-target="#vintage-control"><span class="header-section-number">8.3.2</span> Vintage control</a></li>
+  <li><a href="#data-structure-1" id="toc-data-structure-1" class="nav-link" data-scroll-target="#data-structure-1"><span class="header-section-number">8.3.3</span> Data structure</a></li>
+  </ul></li>
+  <li><a href="#ppp" id="toc-ppp" class="nav-link" data-scroll-target="#ppp"><span class="header-section-number">8.4</span> PPP</a>
+  <ul class="collapse">
+  <li><a href="#raw-data-1" id="toc-raw-data-1" class="nav-link" data-scroll-target="#raw-data-1"><span class="header-section-number">8.4.1</span> Raw data</a></li>
+  <li><a href="#data-structure-2" id="toc-data-structure-2" class="nav-link" data-scroll-target="#data-structure-2"><span class="header-section-number">8.4.2</span> Data structure</a></li>
+  </ul></li>
+  <li><a href="#price-framework-pfw" id="toc-price-framework-pfw" class="nav-link" data-scroll-target="#price-framework-pfw"><span class="header-section-number">8.5</span> Price FrameWork (PFW)</a>
+  <ul class="collapse">
+  <li><a href="#original-data-1" id="toc-original-data-1" class="nav-link" data-scroll-target="#original-data-1"><span class="header-section-number">8.5.1</span> Original data</a></li>
+  </ul></li>
+  <li><a href="#abbreviations" id="toc-abbreviations" class="nav-link" data-scroll-target="#abbreviations"><span class="header-section-number">8.6</span> Abbreviations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Auxiliary data</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>As it was said in Section @ref(data-acquisition), auxiliary data is the data used to temporally deflate and line up welfare data, with the objective of getting poverty estimates comparable over time, across countries, and, more importantly, being able to estimate regional and global estimates. Yet, auxiliary data also refers to metadata with functional and qualitative information. Functional information is such that is used in internal calculations such as time comparability or surveys availability. Qualitative information is just useful information that does not affect, neither depend on, quantitative data. It is primary collected and made available for the end user.</p>
+<p>As explain in Chapter @ref(folder-structure), all auxiliary data is stored in <code>"y:/PIP-Data/_aux/"</code>.</p>
+<p>The naming convention of subfolders inside the _aux directory is useful because auxiliary data is commonly referred to in all technical processes by its convention rather than by it actual name. For instance Gross Domestic Product or Purchasing Power Parity are better known as gdp and ppp, respectively. Yet, other measures such as national population or consumption also make use of conventions.</p>
+<p>In this chapter you will learn everything related to each of the files that store auxiliary data. Notice that the chapter is structured by files rather than by measures or types of auxiliary data because you may find more than one measure in one file.</p>
+<p>The R package that manages auxiliary data is <code>{pipaux}</code>.</p>
+<p>As explained in Chapter @ref(folder-structure), within the folder of each auxiliary file, you will find, at a minimum, a <code>_vintage</code> folder, one <code>xxx.fst</code>, one <code>xxx.dta</code> file, and one <code>xxx_datasignature.txt</code> , where <code>xxx</code> stands for the name of the file.</p>
+<section id="population" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="population"><span class="header-section-number">8.1</span> Population</h2>
+<section id="original-data" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="original-data"><span class="header-section-number">8.1.1</span> Original data</h3>
+<p>Everything related to population data should be placed in the folder <code>y:\PIP-Data\_aux\pop\</code>. hereafter (<code>./</code>).</p>
+<p>The population data come from one of two different sources. WDI or an internal file provided by a member of the DECDG team. Ideally, population data should be downloaded from WDI, but sometimes the most recent data available has not been uploaded yet, so it needs to be collected internally in DECDG. As of now (August 24, 2023), the DECDG focal point to provide the population data is <a href="mailto:esuzuki1@worldbank.org">Emi Suzuki</a>. You just need to send her an email, and she will provide the data to you.</p>
+<p>If the data is provided by DECDG, it should be stored in the folder <code>./raw_data</code>. The original excel file must be placed without modification in the folder <code>./raw_data/original</code>. Then, the file is copied again one level up into the folder <code>./raw_data</code> with the name <code>population_country_yyyy-mm-dd.xlsx</code> where <code>yyyy-mm-dd</code> refers to the official release date of the population data. Notice that for countries PSE, KWT and SXM, some years of population data are missing in the DECDG main file and hence in WDI. Here we complement the main file with an additional file shared by Emi to assure complete coverage. This file contains historical data and will not need to be updated every year. This additional file has the name convention <code>population_missing_yyyy-mm-dd.xlsx</code> and should follow the same process as the <code>population_country</code> file. Once all the files and their corresponding place, you can update the <code>./pop.fst</code> file by typing <code>pipaux::pip_pop_update(src = "decdg")</code>.</p>
+<p>If the data comes directly from WDI, you just need to update the file <code>./pop.fst</code> by typing <code>pipaux::pip_pop_update(src = "wdi")</code>. It is worth mentioning that the population codes used in WDI are “SP.POP.TOTL”, “SP.RUR.TOTL”, and “SP.URB.TOTL”, which are total population, rural population, and urban population, respectively. If it is the case that PIP begins using subnational population, a new set of WDI codes should be added to the R script in <a href="https://github.com/PIP-Technical-Team/pipaux/blob/cd7738f98ec5373db8333c3573700b4991776c8d/R/pip_pop_update.R#L17">pipaux::pip_pop_update()</a>.</p>
+</section>
+<section id="data-structure" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="data-structure"><span class="header-section-number">8.1.2</span> Data structure</h3>
+<p>Population data is loaded by typing either <code>pipload::pip_load_aux("pop")</code> or <code>pipaux::pip_pop("load")</code>. We highly recommend the former, as <code>{pipload}</code> is the intended R package for loading any PIP data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pop &lt;- pipload::pip_load_aux("pop")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># head(pop)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="national-accounts" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="national-accounts"><span class="header-section-number">8.2</span> National Accounts</h2>
+<p>National accounts account for the economic development of a country at an aggregate or macroeconomic level. These measure are thus useful to interpolate or extrapolate microeconomic measures mean welfare aggregate or poverty headcount when household surveys are not available. National accounts work as a proxy of the economic development that would have been present if household surveys were available.</p>
+<p>There are two main types of national accounts, Household Final Consumption Expenditure (HFCE) and Gross Domestic Product (GDP)—both in real per capita terms. Please refer to <a href="https://povcalnet-team.github.io/Methodology/lineupestimates.html#nationalaccounts">Section 5.3</a> of <span class="citation" data-cites="worldbankPovertyInequalityPlatform2021">[@worldbankPovertyInequalityPlatform2021]</span> to understand the usage of national accounts data.</p>
+<section id="gdp" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="gdp"><span class="header-section-number">8.2.1</span> GDP</h3>
+<p>As explained in <a href="https://povcalnet-team.github.io/Methodology/lineupestimates.html#nationalaccounts">Section 5.3</a> of <span class="citation" data-cites="worldbankPovertyInequalityPlatform2021">[@worldbankPovertyInequalityPlatform2021]</span>, there are three sources of GDP data, and one more for a few particular cases. The integration of all the sources of GDP data is performed by <code>pipaux::pip_gdp_update()</code>, you’ll need to manually download and store the data from WEO and the data for the special cases. The national accounts series from WDI are GDP per capita &nbsp;[series code: <strong>NY.GDP.PCAP.KD</strong>]. These series are in constant 2010 US$.</p>
+<p>The most recent version of the WEO data most be downloaded from the <a href="https://www.imf.org/en/Publications/SPROLLS/world-economic-outlook-databases">World Economic Outlook Databases</a> of the IMF.org website and saved as an .xls file in <code>&lt;maindir&gt;/_aux/weo/</code>. The filename should be in the following structure <code>WEO_&lt;YYYY-DD-MM&gt;.xls</code>. Due to potential file corruption the file must be opened and re-saved before it can be updated with <code>pip_gdp_weo()</code>, which is an internal function fo <code>pipaux::pip_gdp_update()</code>. Hopefully in the future IMF will stop using an `.xls` file that’s not really xls.</p>
+</section>
+<section id="consumption-pce" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="consumption-pce"><span class="header-section-number">8.2.2</span> Consumption (PCE)</h3>
+<p>Private Consumption Expenditure (pce) is gathered from WDI, with the exception of a few special cases. As in the case of GDP, the special cases are treated in the same way with PCE. You only need to execute the function <code>pipaux::pip_pce_update()</code> to update the PCE data. HFCE per capita [series code: <strong>NE.CON.PRVT.PC.KD</strong>] <span class="citation" data-cites="prydzNationalAccountsData2019">[@prydzNationalAccountsData2019]</span>. These series are in constant 2010 US$.</p>
+</section>
+<section id="national-accounts-special-cases" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="national-accounts-special-cases"><span class="header-section-number">8.2.3</span> National Accounts, Special Cases</h3>
+<p>Special national accounts are used for lining up poverty estimates in the following cases<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<ol type="1">
+<li><p>National accounts data are <em>unavailable</em> in the latest version of WDI.</p>
+<p>In such cases, national accounts data are obtained, in order of preference, from the latest version of WEO, or the latest version of MPD. For example, the entire series of GDP per capita for Taiwan, China and Somalia are missing in WDI, so WEO series are used instead.</p></li>
+<li><p>National accounts data are <em>incomplete</em> in the latest version of WDI.</p>
+<p>These are the cases where national accounts data are not available in WDI for some historical or recent years. In such cases, national accounts data in WDI are chained on backward or forward using growth rates from WEO or MPD, in that order. For example, GDP per capita for South Sudan (2016-2019) are based on the growth rate of GDP per capita from WEO. GDP per capita data for Liberia up to 1999 are based on the growth rate in GDP per capita from MPD.</p></li>
+<li><p>The available national accounts data from official sources (e.g.&nbsp;WDI, WEO, MPD) are considered to have quality issues.</p>
+<p>This is the case for Syria. Supplementary national accounts data are obtained from other sources, including research papers or national statistical offices. GDP per capita series for Syria (for 2010 through 2019) are from research <a href="mailto:papers---@kostialSyriaConflictEconomy2016Gobat" class="email">papers—@kostialSyriaConflictEconomy2016Gobat</a> (for 2011-2015) and <span class="citation" data-cites="devadasGrowthWarSyria2019">@devadasGrowthWarSyria2019</span> (for 2016-2019)—and are chained on backward with growth rates in GDP per capita from WEO. See *y:/PIP-Data/_aux/sna/* for more details on how this is implemented.</p></li>
+<li><p>National accounts data need to be adjusted for the purposes of global poverty monitoring.</p>
+<p>This is the case for India. Growth rates in national accounts data for rural and urban India after 2014, precisely HFCE (or formerly PCE) per capita from WDI, are adjusted with a pass-through rate of 67%, as described in Section 5 of <span class="citation" data-cites="castanedaaguilarSeptember2020PovcalNet2020">@castanedaaguilarSeptember2020PovcalNet2020</span>. See *y:/PIP-Data/_aux/sna/NAS special_2021-01-14.csv* for more details on how this is implemented.</p></li>
+</ol>
+</section>
+</section>
+<section id="cpi" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="cpi"><span class="header-section-number">8.3</span> CPI</h2>
+<section id="raw-data" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="raw-data"><span class="header-section-number">8.3.1</span> Raw data</h3>
+<p>General documents on the CPI source and the CPI frameworks are posted here. Yet, for more details, please refer to <span class="citation" data-cites="laknerConsumerPriceIndices2018b azevedoPricesUsedGlobal2018a">[@laknerConsumerPriceIndices2018b; @azevedoPricesUsedGlobal2018a]</span>.</p>
+<p>There are three sources of CPI: IFS, WEO, and country team.</p>
+<p>In general, the CPI data will be taken from the IMF International Financial Statistics (IFS). For the incoming update, about 2-3 months to the upload we initial the request to DECDG CPI team for the three series: annually, quarterly, monthly from IFS CPI database. The purpose of requesting DECDG CPI team is to ensure the same vintage will be updated in WDI later in the next update cycle. We would need the three series as for some countries we only have annually, and for other countries we could have up to monthly. This is also a check for us in checking the consistency of annual and monthly series. The monthly series will be used to construct annual and quarterly series, as that there are some inconsistences between the annual and monthly series in the IFS. For the exceptional countries, Poverty GP replaces data series based on previous consultations when there is no update or better information.</p>
+<p>Some countries also use National series which are not available from IFS – in this case we check with country poverty TTLs to provide the updated information, especially when we have a new survey for that country.</p>
+<p>In some cases where the CPI value are missing for some sources but not other sources. This is especially true for the very old year where the data is available for one source, or very recent year where WEO has a projection on the CPI while it is not available in IFS. In those cases, we will follow the logic and method described in the “CPI source document” to ensure we have all CPI values for all data points.</p>
+<p>Global D4G team will prepare and send the CPI raw series as well as the weighted numbers for the current data points in the system. The data will be query by datalibweb. The following files will be added to the system each round:</p>
+<table class="table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File ane</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Final_CPI_PPP_to_be_used.dta</td>
+<td>final weighted CPI for poverty calculation</td>
+</tr>
+<tr class="even">
+<td>Yearly_CPI_Final.dta</td>
+<td>annual CPI – combined from different sources using chained</td>
+</tr>
+<tr class="odd">
+<td>methods Yearly_CPI.dta</td>
+<td>annual CPI constructed from the monthly CPI</td>
+</tr>
+<tr class="even">
+<td>Yearly_CPI_Annual.dta</td>
+<td>annual CPI from the annual series</td>
+</tr>
+<tr class="odd">
+<td>Quarterly_CPI.dta</td>
+<td>quarterly CPI</td>
+</tr>
+<tr class="even">
+<td>Monthly_CPI.dta</td>
+<td>monthly CPI series</td>
+</tr>
+<tr class="odd">
+<td>WEO_Yearly_CPI.dta</td>
+<td>annual CPI from WEO</td>
+</tr>
+<tr class="even">
+<td>Special_CPI_series.dta</td>
+<td>Special case of CPI (national source, imputation)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vintage-control" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="vintage-control"><span class="header-section-number">8.3.2</span> Vintage control</h3>
+<p>Vintage control of the CPI data comes in a similar fashion as welfare data, <code>CPI_vXX_M_vXX_A</code>, where <code>vXX_M</code> refers to the version of the master or raw data, and <code>vXX_A</code> refers to the alternative version.</p>
+<p>Every year, around November-December, PIP CPI data is updated with the most recent version of the IMF CPI data, which comes with information for the most recent year available and with changes/fixes/additions of previous years for each country. When this happens, the master version of the CPI ID is increased in one unit before the data is saved. As of today, the current ID is . If data is modified during the rolling of the year, then the alternative version of the CPI ID is increased in one unit.</p>
+</section>
+<section id="data-structure-1" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="data-structure-1"><span class="header-section-number">8.3.3</span> Data structure</h3>
+<p>When you load CPI data using <code>#pipload::pip_load_aux("cpi")</code>, the data you get has already been cleaned for being use in the PIP workflow, and it is slightly different from the original CPI data stored in datalibweb servers. That is, the way CPI data is used and referred to datalibweb is different from the way it is used in PIP even though they both achive the same purpose.</p>
+<p>The most important variable in CPI data is, no surprisingly, <code>cpi</code>. This variable however, is not available in the original CPI data from dlw. The original name of this variable comes in the form <code>cpiYYYY</code>, where <code>YYYY</code> refers to the base year of the CPI, which in turn depends on the collection year of the PPP. Today, this variable is thus “.” The name of this variable is stored in the <code>pipaux.cpivar</code> object in the <code>zzz.R</code> file of the <code>{pipaux}</code> package. This will supdate the option <code>getOption("pipaux.cpivar")</code>, guaranteing that <code>pipaux::pip_cpi_update()</code> uses the right variable when updating the CPI data.</p>
+<p>Another important variable in CPI dataframe is <code>change_cpiYYYY</code>, where <code>YYYY</code> stands for the base year of the CPI. Since it version control of the CPI data does not depend on the individual changes in the CPI series of each country but on the release of new data by the IMF or by additional modifications by the Poverty GP, variable <code>change_cpiYYYY</code> tracks changes in the CPI at the country/year/survey with respect to the previous version. This is very useful when you need to identify changes in output measures like poverty rates that depend on deflation. One possible source of difference is the CPI and this variable will help you identify whether the number of interest has change because the CPI has changed.</p>
+</section>
+</section>
+<section id="ppp" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="ppp"><span class="header-section-number">8.4</span> PPP</h2>
+<section id="raw-data-1" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="raw-data-1"><span class="header-section-number">8.4.1</span> Raw data</h3>
+<p>The PPP data is downloaded from ICP website for most of the countries (Ask ICP team for the link, outlier, countries with changes in currency). Often there is a GPWG working group to assess the PPP and its impacts on poverty. In this case, the team would determine the countries for which there is a need to impute the PPP value, either from the ICP model or the team model.</p>
+<p>After the validation and adjustment process, the PPP values are stored in the data file for all PPP rounds with vintage controls for each round.</p>
+<p>The name of the variables in the wide-format file will follow the structure <strong>ppp_YYYY_vX_vY</strong>. Where, <em>YYYY</em> refers to the ICP round. <em>vX</em> refers to the version of the release, and <em>vY</em> refers to the adaptation of the release. So, v1 will be the original data, whereas v2 would be the first adaptation or estimates of the release.</p>
+<ul>
+<li><p>YYYY: refers to the ICP round.</p></li>
+<li><p>vX: refers to the version of the release.</p></li>
+<li><p>vY: refers to the adaptation of the release. So, v1 will be the original data, whereas v2 would be the first adaptation or estimates of the release.</p></li>
+</ul>
+</section>
+<section id="data-structure-2" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="data-structure-2"><span class="header-section-number">8.4.2</span> Data structure</h3>
+<p>PPP data is available by typing, <code>pipload::pip_load_aux("ppp")</code>. As expected, the data you get has already been cleaned for being use in the PIP workflow, and it is slightly different from the original PPP data stored in datalibweb servers. The most important difference between the PIP data frame and the datalibweb data frame is its rectangular structure. PIP data is in long format, whereas datalibweb data in wide format.</p>
+<p>The reason for having PPP data in long format in PIP is that some countries, very few, use a different PPP year than the rest of the countries. Instead of using a different variable for the calculations of those specific countries, we use the same variable for all the countries but filter the corresponding observations for each country using metadata from the Price Framework database.</p>
+<p>The PPP data is at the country/ppp year/data_level/release version/adapation version level. Yet, several filters most always be applied before this data can be used. Ultimately, the data frame should be at the country/data_level level to used properly. As a general rule, the filter must be done by selecting the most recent <code>release_version</code> and the most recent <code>adaptation_version</code> in each year. Then you can just filter by the PPP year you want to work with. In order to make this process even easier we have created variables <code>ppp_default</code> and <code>ppp_default_by_year</code>, which dummy variables to filter data. If you keep all observations that <code>ppp_default == 1</code> you will get the current PPP used for all PIP calculations. If you use <code>ppp_default_by_year == 1</code>, you get the default version used in each PPP year. This is useful in case you want to make comparisons between PPP releases. This two variables are created in function <code>pipaux::pip_ppp_clean()</code> , in particular in <a href="https://github.com/PIP-Technical-Team/pipaux/blob/cd7738f98ec5373db8333c3573700b4991776c8d/R/pip_ppp_clean.R#L44-L66">these lines</a>.</p>
+</section>
+</section>
+<section id="price-framework-pfw" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="price-framework-pfw"><span class="header-section-number">8.5</span> Price FrameWork (PFW)</h2>
+<p>blah</p>
+<section id="original-data-1" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="original-data-1"><span class="header-section-number">8.5.1</span> Original data</h3>
+<p>asds</p>
+</section>
+</section>
+<section id="abbreviations" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="abbreviations"><span class="header-section-number">8.6</span> Abbreviations</h2>
+<p><strong>HFCE</strong> – final consumption expenditure</p>
+<p><strong>MDP</strong> – Maddison Project Database</p>
+<p><strong>PCE</strong> – private consumption expenditure</p>
+<p><strong>WDI</strong> – World Development Indicators</p>
+<p><strong>WEO</strong> – World Economic Outlook</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The examples of special cases mentioned in this document are based on the March 2021 PovcalNet update.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./welfare_data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Welfare data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./pc_pipeline.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Poverty Calculator Pipeline (pre-computed estimations)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

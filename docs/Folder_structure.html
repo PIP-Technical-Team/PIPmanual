@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PIP Manual - 1&nbsp; Introduction</title>
+<title>PIP Manual - 3&nbsp; Folder Structure</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./internal_workflow.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./joining_data.html" rel="next">
+<link href="./internal_workflow.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./Folder_structure.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -162,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Folder_structure.html" class="sidebar-item-text sidebar-link">
+  <a href="./Folder_structure.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></span></a>
   </div>
 </li>
@@ -289,8 +255,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ojectives" id="toc-ojectives" class="nav-link active" data-scroll-target="#ojectives"><span class="header-section-number">1.1</span> Ojectives</a></li>
-  <li><a href="#technical-requirements" id="toc-technical-requirements" class="nav-link" data-scroll-target="#technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</a></li>
+  <li><a href="#pip-data" id="toc-pip-data" class="nav-link active" data-scroll-target="#pip-data"><span class="header-section-number">3.1</span> PIP-Data</a></li>
+  <li><a href="#pip-data_qa" id="toc-pip-data_qa" class="nav-link" data-scroll-target="#pip-data_qa"><span class="header-section-number">3.2</span> PIP-Data_QA</a>
+  <ul class="collapse">
+  <li><a href="#aux" id="toc-aux" class="nav-link" data-scroll-target="#aux"><span class="header-section-number">3.2.1</span> _aux</a></li>
+  <li><a href="#inventory" id="toc-inventory" class="nav-link" data-scroll-target="#inventory"><span class="header-section-number">3.2.2</span> _inventory</a></li>
+  <li><a href="#country-data" id="toc-country-data" class="nav-link" data-scroll-target="#country-data"><span class="header-section-number">3.2.3</span> Country data</a></li>
+  </ul></li>
+  <li><a href="#pip-data_extsol" id="toc-pip-data_extsol" class="nav-link" data-scroll-target="#pip-data_extsol"><span class="header-section-number">3.3</span> PIP-Data_ExtSOL</a></li>
+  <li><a href="#pip_data_testing" id="toc-pip_data_testing" class="nav-link" data-scroll-target="#pip_data_testing"><span class="header-section-number">3.4</span> PIP_Data_Testing</a></li>
+  <li><a href="#pip_data_vintage" id="toc-pip_data_vintage" class="nav-link" data-scroll-target="#pip_data_vintage"><span class="header-section-number">3.5</span> PIP_Data_Vintage</a></li>
+  <li><a href="#pip_ingestion_pipeline" id="toc-pip_ingestion_pipeline" class="nav-link" data-scroll-target="#pip_ingestion_pipeline"><span class="header-section-number">3.6</span> pip_ingestion_pipeline</a>
+  <ul class="collapse">
+  <li><a href="#pc_data" id="toc-pc_data" class="nav-link" data-scroll-target="#pc_data"><span class="header-section-number">3.6.1</span> pc_data</a></li>
+  <li><a href="#tb_data" id="toc-tb_data" class="nav-link" data-scroll-target="#tb_data"><span class="header-section-number">3.6.2</span> tb_data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -299,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span id="folder-structure" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></span></h1>
 </div>
 
 
@@ -314,55 +293,274 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><span style="color:red">NOTE:Andres, finish chapter</span></p>
-<section id="ojectives" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="ojectives"><span class="header-section-number">1.1</span> Ojectives</h2>
-<p>This book explains several things,</p>
-<ol type="1">
-<li>An overview of the project from a technical perspective.</li>
-<li>The interaction between R packages developed to manage the data and do the calculations.</li>
-<li>The different types of data in the PIP project and the interaction between them.</li>
-<li>How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.</li>
-<li>Technical standalone procedure necessary for the execution of some parts of the project.</li>
-</ol>
+<p>The PIP root directory (<code>Sys.getenv("PIP_ROOT_DIR")</code>) contains the following main folders.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Folder</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PIP-Data</td>
+<td style="text-align: left;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PIP-Data_QA</td>
+<td style="text-align: left;">QA directory for survey and AUX data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PIP-Data_ExtSOL</td>
+<td style="text-align: left;">SOL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PIP-PIP_Data_Testing</td>
+<td style="text-align: left;">Testing directory for pipaux and pipdp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PIP-PIP_Data_Vintage</td>
+<td style="text-align: left;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pip_ingestion_pipeline</td>
+<td style="text-align: left;">Pipeline directory</td>
+</tr>
+</tbody>
+</table>
+<p>Details on each folder and their subfolders are given below.</p>
+<section id="pip-data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="pip-data"><span class="header-section-number">3.1</span> PIP-Data</h2>
+<p><span style="color:red">This folder is no longer in use</span>.</p>
+<p>This was the original PIP_Data folder. It was used for testing and development of <code>{pipdp}</code> and <code>{pipaux</code>}, but has since been replaced by <code>PIP-Data_QA</code> and <code>PIP_Data_Testing</code>.</p>
 </section>
-<section id="technical-requirements" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</h2>
-<!-- ::: {.rmdbox .rmdwarning} -->
-<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->
-<!-- Technical team of the PIP project. It has been made available to the public for -->
-<!-- the sake of transparency, but its information has no use outside the internal -->
-<!-- team. -->
-<!-- ::: -->
-<p>You need to make sure that the <code>bookdown</code> package is installed in your local computer</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"bookdown"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or the development version</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/bookdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="pip-data_qa" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="pip-data_qa"><span class="header-section-number">3.2</span> PIP-Data_QA</h2>
+<p>This is the main output directory for the <code>{pipdp}</code> and <code>{pipaux}</code> packages. It contains all the survey and auxiliary data needed to run the <a href="pc_pipeline.html">Poverty Calculator</a> and <a href="#tmpipeline">Table Maker</a> pipelines.</p>
+<p>Note that the contents of this folder is for QA and production purposes. Please use the <code>PIP_Data_Testing</code> directory, or your own personal testing directory, if you intend to test code changes in <code>{pipdp}</code> or <code>{pipaux}</code>.</p>
+<section id="aux" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="aux"><span class="header-section-number">3.2.1</span> _aux</h3>
+<p>The <code>_aux</code> folder contains the auxiliary data used by the <a href="pc_pipeline.html">Poverty Calculator Pipeline</a> and the <code>{pipdp}</code> and <code>{pipapi}</code> packages.</p>
+<p>Please note the following:</p>
+<ol type="1">
+<li>The file <code>sna/NAS special_2021-01-14.xlsx</code> is currently hardcoded in <code>{pipaux}</code>. If the contents of the file changes this package might need to be updated.</li>
+<li>Some other National Accounts special cases (e.g.&nbsp;BLZ, VEN) are manually hardcoded in pipaux. Beware of this when updating GDP/PCE.</li>
+<li>The file <code>weo/weo_&lt;YYYY-MM-DD&gt;.xls</code> needs to be manually downloaded from IMF, opened and then re-saved as <code>weo_&lt;YYYY-MM-DD&gt;.xls</code>.</li>
+<li>The grouped data means currently come from the PovcalNet Masterfile. This should be changed when PovcalNet goes out of production.</li>
+</ol>
+<p>An explanation of each subfolder is given below.</p>
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 37%">
+<col style="width: 31%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Folder</th>
+<th style="text-align: left;">Measure</th>
+<th style="text-align: left;">Usage</th>
+<th style="text-align: left;">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">countries</td>
+<td style="text-align: left;">PIP country list</td>
+<td style="text-align: left;">pipapi</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">country_list</td>
+<td style="text-align: left;">WDI country list</td>
+<td style="text-align: left;">pipaux, PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cp</td>
+<td style="text-align: left;">Country profiles</td>
+<td style="text-align: left;">pipai</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cpi</td>
+<td style="text-align: left;">CPI</td>
+<td style="text-align: left;">PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dlw</td>
+<td style="text-align: left;">DLW repository</td>
+<td style="text-align: left;">pipdp</td>
+<td style="text-align: left;">pipdp</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">gdm</td>
+<td style="text-align: left;">Grouped data means</td>
+<td style="text-align: left;">PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">gdp</td>
+<td style="text-align: left;">Gross Domestic Product</td>
+<td style="text-align: left;">PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">maddison</td>
+<td style="text-align: left;">Maddison Project Data</td>
+<td style="text-align: left;">pipaux</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">indicators</td>
+<td style="text-align: left;">Indicators master</td>
+<td style="text-align: left;">pipapi, PC pipeline</td>
+<td style="text-align: left;">Manual, pipaux</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pce</td>
+<td style="text-align: left;">Private consumption</td>
+<td style="text-align: left;">PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pfw</td>
+<td style="text-align: left;">Price Framework</td>
+<td style="text-align: left;">pipdp, PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pl</td>
+<td style="text-align: left;">Poverty Lines</td>
+<td style="text-align: left;">pipapi</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pop</td>
+<td style="text-align: left;">Population</td>
+<td style="text-align: left;">PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ppp</td>
+<td style="text-align: left;">Purchasing Power Parity</td>
+<td style="text-align: left;">PC pipeline</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">regions</td>
+<td style="text-align: left;">Regions</td>
+<td style="text-align: left;">pipapi</td>
+<td style="text-align: left;">pipaux</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sna</td>
+<td style="text-align: left;">Special National Account cases</td>
+<td style="text-align: left;">pipaux</td>
+<td style="text-align: left;">Manual</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">weo</td>
+<td style="text-align: left;">World Economic Outlook (GDP)</td>
+<td style="text-align: left;">pipaux</td>
+<td style="text-align: left;">IMF, pipaux</td>
+</tr>
+</tbody>
+</table>
+<p>The data in the folders <code>countries</code>, <code>regions</code>, <code>pl</code>, <code>cp</code> and <code>indicators</code> are loaded into the Poverty Calculator pipeline, but that they are not used for any calculations or modified in any way, when being parsed through the pipeline. They are thus only listed with <code>{pipapi}</code> as their usage.</p>
+<p>In contrast the measures CPI, GDP, PCE, POP and PPP are both used in the pre-calculations and transformed before being saved as pipeline outputs. So even though these measures are also available in the PIP PC API, the files at this stage only have the Poverty Calculator pipeline as their use case.</p>
+</section>
+<section id="inventory" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="inventory"><span class="header-section-number">3.2.2</span> _inventory</h3>
+<p>The <code>_inventory</code> folder contains the PIP inventory file created by <code>pipload::pip_update_inventory()</code>. It is important to update this file if the survey data has been updated.</p>
+</section>
+<section id="country-data" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="country-data"><span class="header-section-number">3.2.3</span> Country data</h3>
+<p>The folders with country codes as names, e.g <code>AGO</code>, contain survey data for each country. This is created by <code>{pipdp}</code>. The folder structure within each country folder follows roughly the same convention as used by DLW.</p>
+<p>There will be one data file for each survey, based on DLW’s <code>GMD</code> module and the grouped data in the PovcalNet-drive. These are labelled with PC in their filenames. Additionally, if there is survey data available from DLW’s <code>ALL</code> module there will also be a dataset for the Table Maker, labelled with TB.</p>
+</section>
+</section>
+<section id="pip-data_extsol" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="pip-data_extsol"><span class="header-section-number">3.3</span> PIP-Data_ExtSOL</h2>
+<p>This folder is for external SOL application. This is the folder where the data for the externa SOL will be synced between the network drive and the storage in Azure. The synchronization will be done daily from the ITS side. There are two subfolders GMD-DLW and HFPS-COVID19.</p>
+<ul>
+<li>GMD-DLW: it is the folder for GMD data for both raw and harmonized GMD data.</li>
+<li>HFPS-COVID19: it is the folder for High Frequent Phone Survey data for both raw and harmonized data.</li>
+</ul>
+<p>The structured folders for these two catalogs are standard likes the ones used in DLW system.</p>
+<p>There are dofiles on the synchronization between GMD in DLW and GMD in SOL. Those files are “Data in SOL.xlsx” and “Convert GMD to GMD SOL.do”. Only data with clear and explicit data license will be uploaded in this folder.</p>
+<p>For now, only “public data” is in this application. Public means any users can download and redistribute the data, and there is no login in the country NSO website or any condition/terms when downloading the data. Otherwise, there is an explicit agreement with NSO on the usage of the data for SOL – email: Microdata for an external Statistics Online (SOL) platform.</p>
+<p>At the moment, we are working with Legal on the Custom license for the data license template where SOL will be mentioned explicitly. Once the Custom license is developed (after the launch of SOL) we can reach out to all countries to ask for permission to use and “limited redistribute” in the data in our secured platform.</p>
+<div class="rmdbox rmdwarning">
+<p>Please do not touch or change any content in this folder without permission</p>
 </div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>Make sure to install the latest version of PIP R packages by typing the following</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ipkg <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">installed.packages</span>()[,<span class="dv">1</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pip_install <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg, ipkg) {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">isFALSE</span>(pkg <span class="sc">%in%</span> ipkg)) {</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    gitcall <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"PIP-Technical-Team/"</span>, pkg)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    remotes<span class="sc">::</span><span class="fu">install_github</span>(gitcall, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cn">FALSE</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pipload"</span>, <span class="st">"pipaux"</span>, <span class="st">"wbpip"</span>, <span class="st">"piptb"</span>, <span class="st">"pipdm"</span>, <span class="st">"pipapi"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(pkgs, pip_install, <span class="at">ipkg =</span> ipkg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="pip_data_testing" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="pip_data_testing"><span class="header-section-number">3.4</span> PIP_Data_Testing</h2>
+<p>This folder is used as a testing directory for development of the <code>{pipdp}</code> and <code>{pipaux}</code> packages.</p>
+</section>
+<section id="pip_data_vintage" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="pip_data_vintage"><span class="header-section-number">3.5</span> PIP_Data_Vintage</h2>
+<p><span style="color:red">This folder is currently not in use</span>.</p>
+</section>
+<section id="pip_ingestion_pipeline" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="pip_ingestion_pipeline"><span class="header-section-number">3.6</span> pip_ingestion_pipeline</h2>
+<p>This is the main output directory for the both the <a href="pc_pipeline.html">Poverty Calculator</a> and <a href="#tmpipeline">Table Maker</a> pipelines.</p>
+<section id="pc_data" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="pc_data"><span class="header-section-number">3.6.1</span> pc_data</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Folder</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">_targets</td>
+<td style="text-align: left;">Targets storage</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cache</td>
+<td style="text-align: left;">Cleaned survey data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">output</td>
+<td style="text-align: left;">PC pipline output directory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">validation</td>
+<td style="text-align: left;">Validation directory</td>
+</tr>
+</tbody>
+</table>
+<section id="targets" class="level4" data-number="3.6.1.1">
+<h4 data-number="3.6.1.1" class="anchored" data-anchor-id="targets"><span class="header-section-number">3.6.1.1</span> _targets</h4>
+<p>This folder contains the objects that are cached by <code>{targets}</code> when the <a href="pc_pipeline.html">Poverty Calculator Pipeline</a> is run. It is located on the shared network drive so that the latest cached objects are available to all team members. Please note however that a shared <code>_targets</code> folder does entail some risks. <strong>It is very important that only one person runs the pipeline at a time.</strong> Concurrent runs against the same <code>_targets</code> store will wreak havoc. And needless to say; if you are developing new features or customising the pipeline use a different <code>_targets</code> store. (<span style="color:red">We should probably have a custom DEV or testing folder for this, similar to PIP_Data_Testing</span>.)</p>
+</section>
+<section id="cache" class="level4" data-number="3.6.1.2">
+<h4 data-number="3.6.1.2" class="anchored" data-anchor-id="cache"><span class="header-section-number">3.6.1.2</span> cache</h4>
+<p>The survey data output of <code>{pipdp}</code> cannot be directly used as input to the <a href="pc_pipeline.html">Poverty Calculator Pipeline</a>. This is because the data needs to be cleaned before running the necessary pre-calculations for the PIP database. The cleaning currently includes removal of rows with missing welfare and weight values, standardising of grouped data, and restructuring of datasets with both income and consumption based welfare values in the same survey. Please refer to <code>{wbpip}</code> and <code>{pipdm}</code> for the latest cleaning procedures.</p>
+<p>In order to avoid doing this cleaning every time the pipeline runs an intermediate version of the survey data is stored in the <code>cache/clean_survey_data/</code> folder. Please make sure this folder is up-to-date before running the <code>_targets.R</code> pipeline.</p>
+<p><span style="color:red">Note: This is not exactly true. We need to solve the issue with the double caching of survey data. But the essence of what we want to accomplish is to avoid cleaning and checking the survey data in every pipeline run.</span>.</p>
+</section>
+<section id="output" class="level4" data-number="3.6.1.3">
+<h4 data-number="3.6.1.3" class="anchored" data-anchor-id="output"><span class="header-section-number">3.6.1.3</span> output</h4>
+<p>This folder contains the outputs of the <a href="pc_pipeline.html">Poverty Calculator Pipeline</a>. This is seperated into three subfolders; <code>aux</code> containing the auxiliary data, <code>estimations</code> containing the survey, interpolated and distributional pre-calculated estimates, and <code>survey_data</code> containing the cleaned survey data.</p>
+</section>
+<section id="validation" class="level4" data-number="3.6.1.4">
+<h4 data-number="3.6.1.4" class="anchored" data-anchor-id="validation"><span class="header-section-number">3.6.1.4</span> validation</h4>
+<p>TBD <span style="color:red">Andres: Could you write this section?</span>.</p>
+</section>
+</section>
+<section id="tb_data" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="tb_data"><span class="header-section-number">3.6.2</span> tb_data</h3>
+<p>TBD <span style="color:red">Andres: Could you write this section?</span>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -601,13 +799,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
+      <a href="./internal_workflow.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./internal_workflow.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./joining_data.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

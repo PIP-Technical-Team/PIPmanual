@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PIP Manual - 1&nbsp; Introduction</title>
+<title>PIP Manual - 2&nbsp; Internal Workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./internal_workflow.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./Folder_structure.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./internal_workflow.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,13 +116,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./internal_workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="./internal_workflow.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span></a>
   </div>
 </li>
@@ -289,8 +255,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ojectives" id="toc-ojectives" class="nav-link active" data-scroll-target="#ojectives"><span class="header-section-number">1.1</span> Ojectives</a></li>
-  <li><a href="#technical-requirements" id="toc-technical-requirements" class="nav-link" data-scroll-target="#technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</a></li>
+  <li><a href="#the-github-group" id="toc-the-github-group" class="nav-link active" data-scroll-target="#the-github-group"><span class="header-section-number">2.1</span> The Github group</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">2.2</span> Overview</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition"><span class="header-section-number">2.3</span> Data acquisition</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span class="header-section-number">2.4</span> Data preparation</a></li>
+  <li><a href="#pre-computed-indicators" id="toc-pre-computed-indicators" class="nav-link" data-scroll-target="#pre-computed-indicators"><span class="header-section-number">2.5</span> Pre-computed indicators</a></li>
+  <li><a href="#api-feeding" id="toc-api-feeding" class="nav-link" data-scroll-target="#api-feeding"><span class="header-section-number">2.6</span> API feeding</a></li>
+  <li><a href="#packages-interaction" id="toc-packages-interaction" class="nav-link" data-scroll-target="#packages-interaction"><span class="header-section-number">2.7</span> Packages interaction</a></li>
   </ul>
 </nav>
     </div>
@@ -299,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></h1>
 </div>
 
 
@@ -314,55 +285,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><span style="color:red">NOTE:Andres, finish chapter</span></p>
-<section id="ojectives" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="ojectives"><span class="header-section-number">1.1</span> Ojectives</h2>
-<p>This book explains several things,</p>
-<ol type="1">
-<li>An overview of the project from a technical perspective.</li>
-<li>The interaction between R packages developed to manage the data and do the calculations.</li>
-<li>The different types of data in the PIP project and the interaction between them.</li>
-<li>How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.</li>
-<li>Technical standalone procedure necessary for the execution of some parts of the project.</li>
-</ol>
+<p>This chapter explains the internal technical workflow of the PIP project. Many of the different steps of the workflow are explained in more detail in other chapters of this book. This chapter, however, presents an overview of the workflow and its components.</p>
+<section id="the-github-group" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="the-github-group"><span class="header-section-number">2.1</span> The Github group</h2>
+<p>The technical code of the PIP project is organized in Git repositories in the Github group <a href="https://github.com/PIP-Technical-Team">/PIP-Technical-Team</a>. You need to be granted collaborator status in order to contribute to any of the repositories in the group. Also, many of the repositories do not play a direct role in the PIP technical workflow. Some of them are intended for documenting parts of the workflow or for testing purposes. For example, the repository of this book–<a href="https://github.com/PIP-Technical-Team/PIPmanual">/PIPmanual</a>–is not part of the workflow of PIP, since it is not necessary for any estimation. Yet, you need get familiar with all the repositories in case you need to make a contribution in any of them. In this chapter, however, we will focus on understanding the repositories that affect directly the PIP workflow.</p>
+<p>First, we will see the overview of the workflow. It is an overview because each bucket of its buckets is a workflow in itself. Yet, it is important to have the overview clear in order to understand how and where all the pieces fall together. Then, we will unpack each of the workflow buckets to understand them in more detail.</p>
 </section>
-<section id="technical-requirements" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</h2>
-<!-- ::: {.rmdbox .rmdwarning} -->
-<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->
-<!-- Technical team of the PIP project. It has been made available to the public for -->
-<!-- the sake of transparency, but its information has no use outside the internal -->
-<!-- team. -->
-<!-- ::: -->
-<p>You need to make sure that the <code>bookdown</code> package is installed in your local computer</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"bookdown"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or the development version</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/bookdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>Make sure to install the latest version of PIP R packages by typing the following</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ipkg <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">installed.packages</span>()[,<span class="dv">1</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pip_install <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg, ipkg) {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">isFALSE</span>(pkg <span class="sc">%in%</span> ipkg)) {</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    gitcall <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"PIP-Technical-Team/"</span>, pkg)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    remotes<span class="sc">::</span><span class="fu">install_github</span>(gitcall, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cn">FALSE</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pipload"</span>, <span class="st">"pipaux"</span>, <span class="st">"wbpip"</span>, <span class="st">"piptb"</span>, <span class="st">"pipdm"</span>, <span class="st">"pipapi"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(pkgs, pip_install, <span class="at">ipkg =</span> ipkg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="overview" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="overview"><span class="header-section-number">2.2</span> Overview</h2>
+<p>The workflow overview is mainly composed of four steps.</p>
+<ol type="1">
+<li>Data acquisition</li>
+<li>Data preparation</li>
+<li>pre-computed indicators</li>
+<li>API feeding</li>
+</ol>
+<p><img src="img/PIP_workflow_overview.png" title="PIP workflow overview" class="img-fluid"></p>
+<p>Each of the steps (or buckets) is prerequisite of the next one, so if something changes in one of the them, it is necessary to execute the subsequent steps.</p>
+</section>
+<section id="data-acquisition" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="data-acquisition"><span class="header-section-number">2.3</span> Data acquisition</h2>
+<p>Before understanding how the input data of PIP is acquired, we need to understand PIP data itself. The PIP is fed by two kinds of data: welfare data and auxiliary data.</p>
+<p><strong>Welfare data</strong> refers to the data files that contain at least one welfare vector and one population expansion factor (i.e., weights) vector. These two variables are the minimum data necessary to estimate poverty and inequality measures.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> These files come in four varieties; microdata, group data, bin data, and synthetic data. The details of welfare can be found in Section @ref(welfare-data). Regardless of the variety of the data, all welfare data in PIP are gathered from the Global Monitoring Database, GMD. For a comprehensive explanation of how the household data are selected and obtained, you may check chapter <a href="https://povcalnet-team.github.io/Methodology/acquiring.html"><em>Acquiring household survey data</em></a>of the <a href="https://povcalnet-team.github.io/Methodology/index.html">methodological PIP manual</a>.</p>
+<p><em>Microdata</em> is uploaded into the PRIMUS system by the regional teams of the Poverty Global Practice. To do so, each regional team has to follow the GMD guidelines, which are verified by the Stata command <code>{primus}</code>. Rarely. the <code>{primus}</code> command does NOT capture some potential errors in the data. More details in Section @ref(primus)</p>
+<p>As of now (<code>r format(Sys.Date(), "%B %d, %Y")</code>), <em>Group data</em> is divided two: historical group data and new group data. Historical group data is organized and provided by the PovcalNet team, who sends it to the Poverty GP to be included in the datalibweb system. New group data is collected by the poverty economist of the corresponding country, who shares it with her regional focal team, who shares it with PovcalNet team. This new group data is organized and tested by the PovcalNet team and then send back to the poverty GP to be included in the datalibweb system.</p>
+<p><em>Bin data</em> refers to welfare data from countries for which there is no poverty economist. Most of these countries are developed countries such as Canada or Japan. The main characteristic of this data is that it is only available through the <a href="https://www.lisdatacenter.org/data-access/lissy/">LISSY system</a> of the <a href="https://www.lisdatacenter.org/">LIS data center</a>, which does not allow access to the entire microdata. Thus, we need to contract the microdata into 400 bins or quantiles. The code that gathers LIS data is available in the Github repository <a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>.</p>
+<p>Finally, <em>synthetic data</em>, refers to simulated microdata from an statistical procedure. As of now (<code>r format(Sys.Date(), "%B %d, %Y")</code>), the these data are estimated using multiple imputation techniques, so that any calculation must take into account the imputation-id variable. The data is calculated by the poverty economist of the country and the organizes by the global team in the Poverty GP.</p>
+<p><strong>Auxiliary data</strong> refers to all data necessary to temporally deflate and line up welfare data, with the objective of getting poverty estimates comparable over time, across countries, and, more importantly, being able to estimate regional and global estimates. Some of these data are national population, GDP, consumer price index, purchasing parity power, etc. Auxiliary data also include metadata such as time comparability or type of welfare aggregate. Since each measure of auxiliary data is acquired differently, all the details are explain in Section @ref(auxiliary-data).</p>
+</section>
+<section id="data-preparation" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">2.4</span> Data preparation</h2>
+<p>This step assumes that all welfare data is properly organized in the datalibweb system and vetted in PRIMUS. In contrast to the previous global-poverty calculator system, PovcalNet, the PIP system only gathers welfare from the datalibweb server.</p>
+<p>The welfare data preparation is done using the repository <a href="https://github.com/PIP-Technical-Team/pipdp">/pipdp</a>. As of now (<code>r format(Sys.Date(), "%B %d, %Y")</code>), this part of the process has been coded in Stata, given that the there is no an R version of <code>{dataliweb}</code>. As for the auxiliary data preparation, it is done with package <code>{pipaux}</code>, available in the repository <a href="https://github.com/PIP-Technical-Team/pipaux">/pipaux</a>. Right now the automation of updating the auxiliary has not been implemented. Thus, it has to be done manually by typing <code>pipaux::pip_update_all_aux()</code> to update all measures, or use function <code>pipaux::update_aux()</code> to update a particular measure.</p>
+</section>
+<section id="pre-computed-indicators" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="pre-computed-indicators"><span class="header-section-number">2.5</span> Pre-computed indicators</h2>
+<p>All measures in PIP that do not depend on the value of the poverty line are pre-computed in order to make the API more efficient and responsive. Some other indicators that not depend on the poverty lines but do depend on other parameters, like the societal poverty, are not included as part of the pre-computed indicators.</p>
+<p>This step is executed in the repository <a href="https://github.com/PIP-Technical-Team/pip_ingestion_pipeline">/pip_ingestion_pipeline</a>, which is a pipeline powered by the <code>{targets}</code> package. The process to estimate the pre-computed indicators is explained in detail in Chapter @ref(pcpipeline). The pipeline makes use of two R packages, <code>{wbpip}</code> and <code>{pipdm}</code>. The former is publicly available and contains all the technical and methodological procedures to estimate poverty and inequality measures at the country, regional, and global level. The latter, makes use of <code>{wbpip}</code> to execute the calculations and put the resulting data in order, ready to be ingested by the PIP API.</p>
+</section>
+<section id="api-feeding" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="api-feeding"><span class="header-section-number">2.6</span> API feeding</h2>
+<p><span style="color:red">NOTE: Tony, please finish this section.</span></p>
+</section>
+<section id="packages-interaction" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="packages-interaction"><span class="header-section-number">2.7</span> Packages interaction</h2>
+<p><span style="color:red">NOTE: Andres, finished this section</span>.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Population data is also necessary when working with group data.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -601,13 +576,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./internal_workflow.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Folder_structure.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

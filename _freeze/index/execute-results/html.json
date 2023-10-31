@@ -1,0 +1,14 @@
+{
+  "hash": "ff2c37c4574981983ec8f602dae77924",
+  "result": {
+    "markdown": "---\ndescription-meta: |\n  These are the guidelines to all the technical decisions\n   taken during the creation of packges for the PIP\n   workflow.\n---\n\n\n\n\n\n# Welcome! {.unnumbered}\n\nThese are the internal guidelines for the technical process of the PIP project. Visit the [Github repository for this book](https://github.com/PIP-Technical-Team/PIPmanual). \n\n## Team {-}\n\nThe PIP technical team is composed of .... \n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

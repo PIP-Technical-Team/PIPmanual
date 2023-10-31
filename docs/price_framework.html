@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PIP Manual - 1&nbsp; Introduction</title>
+<title>PIP Manual - 5&nbsp; Price FrameWork (pfw) data frame</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./internal_workflow.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./PRIMUS.html" rel="next">
+<link href="./joining_data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./price_framework.html">PIP data</a></li><li class="breadcrumb-item"><a href="./price_framework.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Price FrameWork (pfw) data frame</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./price_framework.html" class="sidebar-item-text sidebar-link">
+  <a href="./price_framework.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Price FrameWork (pfw) data frame</span></span></a>
   </div>
 </li>
@@ -289,8 +289,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ojectives" id="toc-ojectives" class="nav-link active" data-scroll-target="#ojectives"><span class="header-section-number">1.1</span> Ojectives</a></li>
-  <li><a href="#technical-requirements" id="toc-technical-requirements" class="nav-link" data-scroll-target="#technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link active" data-scroll-target="#variables"><span class="header-section-number">5.1</span> Variables</a></li>
+  <li><a href="#additional-explanation" id="toc-additional-explanation" class="nav-link" data-scroll-target="#additional-explanation"><span class="header-section-number">5.2</span> Additional explanation</a>
+  <ul class="collapse">
+  <li><a href="#id-vars" id="toc-id-vars" class="nav-link" data-scroll-target="#id-vars">ID vars</a></li>
+  <li><a href="#altname" id="toc-altname" class="nav-link" data-scroll-target="#altname"><code>altname</code></a></li>
+  <li><a href="#survey_coverage" id="toc-survey_coverage" class="nav-link" data-scroll-target="#survey_coverage"><code>survey_coverage</code></a></li>
+  <li><a href="#welfare_type" id="toc-welfare_type" class="nav-link" data-scroll-target="#welfare_type"><code>welfare_type</code></a></li>
+  <li><a href="#use_imputed" id="toc-use_imputed" class="nav-link" data-scroll-target="#use_imputed"><code>use_imputed</code></a></li>
+  <li><a href="#use_microdata" id="toc-use_microdata" class="nav-link" data-scroll-target="#use_microdata"><code>use_microdata</code></a></li>
+  <li><a href="#use_bin" id="toc-use_bin" class="nav-link" data-scroll-target="#use_bin"><code>use_bin</code></a></li>
+  <li><a href="#use_groupdata" id="toc-use_groupdata" class="nav-link" data-scroll-target="#use_groupdata"><code>use_groupdata</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -299,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span id="pfw-chapter" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Price FrameWork (pfw) data frame</span></span></h1>
 </div>
 
 
@@ -314,55 +324,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><span style="color:red">NOTE:Andres, finish chapter</span></p>
-<section id="ojectives" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="ojectives"><span class="header-section-number">1.1</span> Ojectives</h2>
-<p>This book explains several things,</p>
-<ol type="1">
-<li>An overview of the project from a technical perspective.</li>
-<li>The interaction between R packages developed to manage the data and do the calculations.</li>
-<li>The different types of data in the PIP project and the interaction between them.</li>
-<li>How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.</li>
-<li>Technical standalone procedure necessary for the execution of some parts of the project.</li>
-</ol>
+<p>The price framework data frame (pfw) is the most important source of technical metadata of the PIP project, which makes pertinent the have of a separate chapter for it. The general explanation of the structure of the pfw can be found in Section @ref(pfw-join). This chapter focuses more on the use of each of the variables. Yet, it is worth repeating a few things already mentioned in Section @ref(pfw-join).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pfw &lt;- pipload::pip_load_aux("pfw")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="variables" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="variables"><span class="header-section-number">5.1</span> Variables</h2>
+<p>The table provides a short description of each variable of the Price FrameWork data frame. We provide additional information for variable.</p>
 </section>
-<section id="technical-requirements" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</h2>
-<!-- ::: {.rmdbox .rmdwarning} -->
-<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->
-<!-- Technical team of the PIP project. It has been made available to the public for -->
-<!-- the sake of transparency, but its information has no use outside the internal -->
-<!-- team. -->
-<!-- ::: -->
-<p>You need to make sure that the <code>bookdown</code> package is installed in your local computer</p>
+<section id="additional-explanation" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="additional-explanation"><span class="header-section-number">5.2</span> Additional explanation</h2>
+<section id="id-vars" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="id-vars">ID vars</h3>
+<p>Variables of identification are <code>wb_region_code</code>, <code>pcn_region_code</code>, <code>country_code</code>, <code>ctryname</code>, <code>year</code>, <code>surveyid_year</code>, <code>survey_acronym</code>.</p>
+<p>The main difference between <code>wb_region_code</code> and <code>pcn_region_code</code> is that the former only include geographical regions internally used by the world bank, whereas the latter has an additional category, “OHI,” for Other High Income countries.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"bookdown"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or the development version</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/bookdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># janitor::tabyl(pfw, wb_region_code, pcn_region_code)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>Make sure to install the latest version of PIP R packages by typing the following</p>
+<p>For most of the data points, there should be no difference in between <code>year</code> and <code>surveyid_year</code>. In some extreme cases (not available at the moment), <code>year</code> could be different due to the reporting criteria from the NSO. For our purpose, we use <code>rep_year</code> as the reporting year in our system for integer ones, and <code>ref_year</code> for decimal reporting purpose</p>
+</section>
+<section id="altname" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="altname"><code>altname</code></h3>
+<p>Alternative survey name for some surveys.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ipkg <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">installed.packages</span>()[,<span class="dv">1</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pip_install <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg, ipkg) {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">isFALSE</span>(pkg <span class="sc">%in%</span> ipkg)) {</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    gitcall <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"PIP-Technical-Team/"</span>, pkg)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    remotes<span class="sc">::</span><span class="fu">install_github</span>(gitcall, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cn">FALSE</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pipload"</span>, <span class="st">"pipaux"</span>, <span class="st">"wbpip"</span>, <span class="st">"piptb"</span>, <span class="st">"pipdm"</span>, <span class="st">"pipapi"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(pkgs, pip_install, <span class="at">ipkg =</span> ipkg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># head(pfw[altname != "", c("altname", "survey_acronym")])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="survey_coverage" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="survey_coverage"><code>survey_coverage</code></h3>
+<p>This variable represent the househol survey coverage. This is different from the disaggregation data level.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># janitor::tabyl(pfw, survey_coverage)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="welfare_type" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="welfare_type"><code>welfare_type</code></h3>
+<p>This variable contains the welfare type of the main welfare aggregate variable in a survey in case it has more than one. The welfare type of alternative welfare aggregates is found in variable <code>oth_welfare1_type</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># janitor::tabyl(pfw, welfare_type)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use_imputed" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="use_imputed"><code>use_imputed</code></h3>
+<p>Whether the welfare aggregate has been imputed. There are just few countries with this kind of data.</p>
+<!-- ```{r} -->
+<!-- # pfw[use_imputed == 1, unique(country_code)] -->
+<!-- ``` -->
+</section>
+<section id="use_microdata" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="use_microdata"><code>use_microdata</code></h3>
+<p>Whether the welfare aggregate <em>vector</em> used in PIP is directly extracted from microdata without any sort of aggregation. Mos of the countries have this kind of data. Below you can see those that do not.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pfw[use_microdata != 1, unique(country_code)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use_bin" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="use_bin"><code>use_bin</code></h3>
+<p>Whether the welfare aggregate was aggregated to 400 bins from microdata before being incorporated to the PIP repository. This is the case of houshold surveys only available in the Luxembourg Data Center (<a href="https://www.lisdatacenter.org/">LIS</a>). Countries with bin data is considered micro data for technical purposes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pfw[use_bin == 1, unique(country_code)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use_groupdata" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="use_groupdata"><code>use_groupdata</code></h3>
+<p>Whether welfare aggregate comes from grouped data. Information about this type of data is available in <span class="citation" data-cites="dattComputationalToolsPoverty1998 krauseCorrigendumEllipticalLorenz2013 villasenorEllipticalLorenzCurves1989">[@dattComputationalToolsPoverty1998; @krauseCorrigendumEllipticalLorenz2013; @villasenorEllipticalLorenzCurves1989]</span>. The following countries have this kind of data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pfw[use_groupdata == 1, unique(country_code)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -601,13 +632,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
+      <a href="./joining_data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./internal_workflow.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./PRIMUS.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PRIMUS</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PIP Manual - 1&nbsp; Introduction</title>
+<title>PIP Manual - 4&nbsp; Joining Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./internal_workflow.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./price_framework.html" rel="next">
+<link href="./Folder_structure.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./joining_data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./joining_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./joining_data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></span></a>
   </div>
 </li>
@@ -289,8 +289,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ojectives" id="toc-ojectives" class="nav-link active" data-scroll-target="#ojectives"><span class="header-section-number">1.1</span> Ojectives</a></li>
-  <li><a href="#technical-requirements" id="toc-technical-requirements" class="nav-link" data-scroll-target="#technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</a></li>
+  <li><a href="#pfw-join" id="toc-pfw-join" class="nav-link active" data-scroll-target="#pfw-join"><span class="header-section-number">4.1</span> The Price FrameWork (pfw) data</a>
+  <ul class="collapse">
+  <li><a href="#joining-data-example" id="toc-joining-data-example" class="nav-link" data-scroll-target="#joining-data-example"><span class="header-section-number">4.1.1</span> Joining data example</a></li>
+  </ul></li>
+  <li><a href="#special-data-cases" id="toc-special-data-cases" class="nav-link" data-scroll-target="#special-data-cases"><span class="header-section-number">4.2</span> Special data cases</a></li>
   </ul>
 </nav>
     </div>
@@ -299,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></h1>
 </div>
 
 
@@ -314,55 +317,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><span style="color:red">NOTE:Andres, finish chapter</span></p>
-<section id="ojectives" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="ojectives"><span class="header-section-number">1.1</span> Ojectives</h2>
-<p>This book explains several things,</p>
-<ol type="1">
-<li>An overview of the project from a technical perspective.</li>
-<li>The interaction between R packages developed to manage the data and do the calculations.</li>
-<li>The different types of data in the PIP project and the interaction between them.</li>
-<li>How the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.</li>
-<li>Technical standalone procedure necessary for the execution of some parts of the project.</li>
-</ol>
+<p>Since the PIP project is comprised of several databases at very different domain levels, this chapter provides all the guidelines to join data frames correctly. The first thing to understand is that the reporting measures in PIP (e.g.&nbsp;poverty and inequality) are uniquely identified by four variables: <em>Country</em>, <em>year</em>, <em>domain</em>, and <em>welfare type</em>.</p>
+<ul>
+<li><p><em>Country</em> refers to independent economies that conduct independent household surveys. For instance, China and Taiwan are treated as <strong>two different economies</strong> by the World Bank, and hence by PIP, even though under some criteria some people think that Taiwan is part of China.</p></li>
+<li><p><em>Year</em> refers to reporting year rather than the actual calendar years over which the survey was conducted. Some household surveys like India 2011/2012 are conducted over the of two calendar year, but the welfare aggregate is deflated to the reporting year, 2011.</p></li>
+<li><p><em>Domain</em> refers to the smallest geographical disaggregation for which it is possible to deflate and line up to PPP values the welfare aggregate of a household survey. The criteria to determine the reporting domain of a household survey is still under consideration, but ideally it such for which there is CPI, PPP, and population auxiliary data, as well as a household survey representative at that level. There are some exceptions to this criterion like China or the Philippines, but this cases explained in detailed in Section @ref(special-data-cases). As of today (August 24, 2023), most country/years are reported at the national domain and few are reported at the urban/rural domain. However, the PIP technical infrastructure has been designed to incorporate other domain levels if, at some point in time, it is the case.</p></li>
+<li><p>Finally, the <em>welfare type</em> specifies whether the welfare aggregate is based on income or in consumption. For the latter case, though some households surveys capture expenditure instead, they are still considered consumption-based surveys.</p></li>
+</ul>
+<p>The challenge of joining different data frames in PIP is that these four variables that uniquely identify the reporting measures <span style="color:red"><strong>are not</strong></span> available on any of the PIP data files—with the exception of the cache files that we discuss below. This challenge is easily addressed by having a clear understanding of the Price FrameWork (pfw) data frame. This file does not only contain valuable metadata, but it could also be considered as the anchor among all PIP data.</p>
+<section id="pfw-join" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="pfw-join"><span class="header-section-number">4.1</span> The Price FrameWork (pfw) data</h2>
+<p>As always, this file can be loaded by typing,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#pfw &lt;- pipload::pip_load_aux("pfw")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#joyn::is_id(pfw, by = c("country_code", "surveyid_year", "survey_acronym"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>First of all, notice that <code>pfw</code> is uniquely identified by country code, survey year, and survey acronym. The reason for this is that pfw aims at providing a link between every single household survey and all the other auxiliary data. Since welfare data is stored following the naming convention of the <a href="http://ihsn.org/">International Household Survey Network (IHSN)</a>, data is stored according to country, survey year, acronym of the survey, and vintage control of master and alternative versions. The vintage control of the master and alternative version of the data is not relevant for joining data because PIP uses, by default, the most recent version.</p>
+<p>Keep in mind that PIP estimates are reported at the country, year, domain, and welfare type level, but the last two of these are not found either in the survey ID nor as unique identifiers of the pfw. To solve this problem, the pfw data makes use of the variables <code>welfare_type,</code> <code>aaa_domain</code>, and <code>aaa_domain_var</code>.</p>
+<p>As the name suggests, <code>welfare_type</code> indicates the <strong>main</strong> welfare aggregate type (i.e, income or consumption ) of the variable <code>welfare</code> in the GMD datasets that correspond to the survey ID formed by concatenating variables <code>country_code</code>, <code>surveyid_year</code>, and <code>survey_acronym</code>. For example, the <code>welfare_type</code> of the <code>welfare</code> variable in the datasets of <em><strong>COL_2018_GEIH</strong>_V01_M_V03_A_GMD</em> is income.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pfw[ country_code    == "COL"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     &amp; surveyid_year  == 2018</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     &amp; survey_acronym == "GEIH", # Not necessary since it is the only one</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     unique(welfare_type)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The prefix <code>aaa</code> in variables <code>aaa_domain</code> and <code>aaa_domain_var</code> refers to the identification code of any of the auxiliary data. Thus, you will find a <code>gdp_domain</code>, <code>cpi_domain</code>, <code>ppp_domain</code> and several others. All <code>aaa_domain</code> variables contain the <em>lower</em> level of geographical disaggregation of the corresponding <code>aaa</code> auxiliary data. There are only three possible levels of disaagregation,</p>
+<p>As of now, no survey or auxiliary data is broken down at level 3 (i.e., subnational), but it is important to know that the PIP internal code takes that possibility into account for future cases.</p>
+<p>Depending on the country, the domain level of each auxiliary data might be different. In Indonesia, for instance, the CPI domain is national, whereas the PPP domain is “urban/rural.”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pfw[ country_code == "IDN" &amp; surveyid_year == 2018, </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     .(cpi = unique(cpi_domain), </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#       ppp = unique(ppp_domain))]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, <span style="color:red">and this is really important</span>, variables <code>aaa_domain_var</code> contains the name of variable in the GMD dataset that uniquely identify the household survey <em>in the corresponding <code>aaa</code></em> <em>auxiliary data</em>. In other words, <code>aaa_domain_var</code> contains <em>the name</em> of the variable in GMD that must be used as <em>key</em> <em>to join</em> GMD to <code>aaa</code>. You may ask, does the name of the variable in the <code>aaa</code> auxiliary data have the same variable name in the GMD data specified in <code>aaa_domain_var</code>? No, it does not. Since the domain level to identify observations in the <code>aaa</code> auxiliary data is unique, there is only one variable in auxiliary data used to merge any welfare data, <code>aaa_data_level</code>. Since all this process is a little cumbersome, the {<a href="https://github.com/PIP-Technical-Team/pipdp">pipdp</a>} Stata package, during the process of cleaning GMD databases to PIP databases, creates as many <code>aaa_data_level</code> variables as needed in order to make the join of welfare data and auxiliary data simpler. You can see the lines of code that create these variables in <a href="https://github.com/PIP-Technical-Team/pipdp/blob/9c4e32636dd1c71954816f8a7c8ad743349959a6/pipdp_md_clean.ado#L225-L294">this section</a> of the file “pipdp_md_clean.ado.”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<section id="joining-data-example" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="joining-data-example"><span class="header-section-number">4.1.1</span> Joining data example</h3>
+<p>Let’s see the case of Indonesia above. The pfw says that the CPI domain is “national” and the PPP domain is “urban/rural.” That means that the welfare data join to each of these auxiliary data with two different variables,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># domains &lt;- </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   pfw[ country_code == "IDN" &amp; surveyid_year == 2018, </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#      .(cpi = unique(cpi_domain_var), </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#        ppp = unique(ppp_domain_var))][]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This says that the name of the variable in the welfare data to join PPP data is called <code>uban</code>, but there is not seem to be a variable name in GMD to join the CPI data. When the name of the variable is missing, it indicates that the welfare data is not split by any variable to merge CPI data. That is, it is at the national level.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ccode  &lt;- "CHN"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cpi &lt;- pipload::pip_load_aux("cpi")</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ppp &lt;- pipload::pip_load_aux("ppp")</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># CHN &lt;-  pipload::pip_load_data(country = ccode, </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                               year    = 2015)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># dt &lt;- joyn::merge(CHN, cpi,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                   by = c("country_code", "survey_year",</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                          "survey_acronym", "cpi_data_level"),</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                   match_type = "m:1", </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                   keep = "left")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="technical-requirements" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="technical-requirements"><span class="header-section-number">1.2</span> Technical requirements</h2>
-<!-- ::: {.rmdbox .rmdwarning} -->
-<!-- DISCLAIMER: This book contains information relevant exclusively for the internal -->
-<!-- Technical team of the PIP project. It has been made available to the public for -->
-<!-- the sake of transparency, but its information has no use outside the internal -->
-<!-- team. -->
-<!-- ::: -->
-<p>You need to make sure that the <code>bookdown</code> package is installed in your local computer</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"bookdown"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or the development version</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/bookdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>Make sure to install the latest version of PIP R packages by typing the following</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ipkg <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">installed.packages</span>()[,<span class="dv">1</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pip_install <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg, ipkg) {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">isFALSE</span>(pkg <span class="sc">%in%</span> ipkg)) {</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    gitcall <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"PIP-Technical-Team/"</span>, pkg)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    remotes<span class="sc">::</span><span class="fu">install_github</span>(gitcall, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cn">FALSE</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pipload"</span>, <span class="st">"pipaux"</span>, <span class="st">"wbpip"</span>, <span class="st">"piptb"</span>, <span class="st">"pipdm"</span>, <span class="st">"pipapi"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(pkgs, pip_install, <span class="at">ipkg =</span> ipkg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="special-data-cases" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="special-data-cases"><span class="header-section-number">4.2</span> Special data cases</h2>
+<p><span style="color:red">NOTE: Andres. Add this section</span></p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>You can find more information about the conversion from GMD to PIP databases in Section @ref(welfare-data)<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -601,13 +626,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome!</span>
+      <a href="./Folder_structure.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./internal_workflow.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./price_framework.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Price FrameWork (pfw) data frame</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
