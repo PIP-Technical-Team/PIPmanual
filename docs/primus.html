@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -57,7 +91,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -77,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./price_framework.html">PIP data</a></li><li class="breadcrumb-item"><a href="./PRIMUS.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PRIMUS</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -262,7 +297,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#corrections-to-primus-stata-command" id="toc-corrections-to-primus-stata-command" class="nav-link" data-scroll-target="#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
   </ul></li>
   <li><a href="#understand-primus" id="toc-understand-primus" class="nav-link" data-scroll-target="#understand-primus"><span class="header-section-number">6.2</span> Understanding PRIMUS</a></li>
-  <li><a href="#checking-primus-estimates" id="toc-checking-primus-estimates" class="nav-link" data-scroll-target="#checking-primus-estimates"><span class="header-section-number">6.3</span> Checking PRIMUS estimates</a></li>
+  <li><a href="#checking-primus-estimates" id="toc-checking-primus-estimates" class="nav-link" data-scroll-target="#checking-primus-estimates"><span class="header-section-number">6.3</span> Checking PRIMUS estimates</a>
+  <ul class="collapse">
+  <li><a href="#comparing-primus-pending-new-cases-vs-pip-current-estimates" id="toc-comparing-primus-pending-new-cases-vs-pip-current-estimates" class="nav-link" data-scroll-target="#comparing-primus-pending-new-cases-vs-pip-current-estimates"><span class="header-section-number">6.3.1</span> Comparing PRIMUS pending (new) cases vs PIP current estimates</a></li>
+  </ul></li>
   <li><a href="#approve-primus" id="toc-approve-primus" class="nav-link" data-scroll-target="#approve-primus"><span class="header-section-number">6.4</span> Confirming and approving data in PRIMUS</a></li>
   </ul>
 </nav>
@@ -291,26 +329,22 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>The <strong>PRIMUS</strong> system is designed to facilitate this process of generating internal estimates of the World Bank’s poverty indicators and reduce the time needed for resolving discrepancies. It is a workflow management platform for the submission, review and approval of poverty estimates and a tracking facility to capture the inputs and results of the estimation process for future reference and audits.</p>
 </blockquote>
-<p>As such, <strong>PRIMUS</strong> is the platform used by the PovcalNet team to approve the adoption of new survey data into the PovcalNet system.</p>
+<p>As such, <strong>PRIMUS</strong> is the platform used by the GPID team to approve the adoption of new survey data into the PIP system.</p>
 <section id="interacting-with-primus" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="interacting-with-primus"><span class="header-section-number">6.1</span> Interacting with PRIMUS</h2>
 <p>The interaction with <strong>PRIMUS</strong> is done through different systems, so it is best to begin by clarifying terms.</p>
 <section id="website-platform" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="website-platform">Website platform</h3>
 <p>PRIMUS can be accessed by typing <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx">primus/</a> in your browser. As long as you’re connected to the intranet it should work fine. However, if you have any issues connecting to the platform, please send an email to <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguyen</a>, requesting access.</p>
-<p>Each database uploaded into PRIMUS gets a unique transaction ID. This ID is important because it is not unique to a dataset but unique to the transaction (or vintage of the data). That is, if one particular dataset is uploaded more than once, it will get two different transaction IDs. When talking to the Poverty GP, you better refer to the transaction ID rather than the survey (or at least both) because, though you may be talking about the same country/year, you are actually talking about two different transactions. See for instance <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx#tab=tab3&amp;country=BRA&amp;year=2013">Brazil 2013</a>.</p>
+<p>Each database uploaded into PRIMUS gets a unique <strong>transaction ID</strong>. This ID is important because it is not unique to a dataset but unique to the transaction (or vintage of the data). That is, if one particular dataset is uploaded more than once, it will get two different transaction IDs. When communicating with the Poverty GP, you should refer to the transaction ID rather than the survey (or at least both) because the same country/year, you might have two different transactions.</p>
 </section>
 <section id="stata-command" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="stata-command">Stata command</h3>
 <p>The Poverty GP maintains the Stata repository <a href="https://github.com/worldbank/primus">worldbank/primus</a> from which you can download the command <code>primus</code>. Right now, this is the official place from which you can access this command. From now on, each time we refer to the command, we use <code>primus</code>, whereas when we refer to the website, we use PRIMUS.</p>
 <p>Please, make sure you have it properly installed in your computer, by following the instruction section @ref(stata-github). Basically, you need to install first the <a href="https://github.com/haghish/github">github</a> Stata command by <a href="https://github.com/haghish">E. F. Haghish</a></p>
-<!-- ```{stata, eval = FALSE} -->
-<!--  net install github, from("https://haghish.github.io/github/") -->
-<!-- ``` -->
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>net install github, from(<span class="st">"https://haghish.github.io/github/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, you can install <code>primus</code> by just typing the following in Stata</p>
-<!-- ```{stata, eval = FALSE} -->
-<!-- github install worldbank/primus -->
-<!-- ``` -->
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>github install worldbank/primus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In case this does not work, follow instructions in section @ref(stata-github) for alternative methods.</p>
 </section>
 <section id="corrections-to-primus-stata-command" class="level3 unnumbered">
@@ -321,113 +355,170 @@ ul.task-list li input[type="checkbox"] {
 <section id="understand-primus" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="understand-primus"><span class="header-section-number">6.2</span> Understanding PRIMUS</h2>
 <p>Each time a database is uploaded into PRIMUS, it is assigned a transaction ID. During the uploading process (or right after it has finished), the three parties–DECDG, DECRG, or the Poverty GP–evaluate the quality of the new or corrected data and approve them or reject them in the system. Depending on the decision of all the parties, each transaction will take one of three possible status, <em>pending</em>, <em>approved,</em> or <em>rejected</em>.</p>
-<div class="rmdbox rmdwarning">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>As of today (2020-11-20), there is no one who represents DECRG. So, the approving process might be different and it will need to be changed in the PRIMUS system. Please check.</p>
 </div>
-<p>The transaction ID is <em>pending</em> when at least one of the three parties (DECDG, DECRG, or the Poverty GP) has not approved it in the system. You can click on the check box <em>PENDING</em> in the PRIMUS website to see which surveys have such a status, or you can use the <code>primus</code> command list this,</p>
-<!-- ```{stata, eval= FALSE} -->
-<!-- qui primus query, overallstatus(PENDING) -->
-<!-- list transaction_id country year date_modified in 1/`=min(10, _N)' -->
-<!--      +----------------------------------------------+ -->
-<!--      |              transaction_id   country   year | -->
-<!--      |----------------------------------------------| -->
-<!--   1. | TRN-000327173-EAP-IDN-QR48Q       IDN   2017 | -->
-<!--   2. | TRN-000327173-ECA-DEU-YJYVZ       DEU   1995 | -->
-<!--   3. | TRN-000327173-ECA-DEU-2P4DR       DEU   2002 | -->
-<!--   4. | TRN-000327173-ECA-DEU-LJN8R       DEU   2003 | -->
-<!--   5. | TRN-000327173-ECA-DEU-ZSN9J       DEU   2005 | -->
-<!--      |----------------------------------------------| -->
-<!--   6. | TRN-000327173-ECA-DEU-UBS7M       DEU   2008 | -->
-<!--   7. | TRN-000327173-ECA-DEU-41TOU       DEU   2009 | -->
-<!--   8. | TRN-000327173-EAP-AUS-KKZ2E       AUS   2004 | -->
-<!--      +----------------------------------------------+ -->
-<!-- ``` -->
-<p>Notice that the overall status of a transaction is independent from survey ID. Thus, it is possible to find several transactions for the same country and year. Indonesia 2017, for instance, has three transactions, two of them rejected and <!-- one of them pending. --></p>
-<!-- ```{stata, eval = FALSE} -->
-<!-- qui primus query, country(IDN) year(2017) -->
-<!-- list transaction_id overall_status date_modified in 1/`=min(10, _N)' -->
-<!--      +--------------------------------------------------+ -->
-<!--      |              transaction_id        date_modified | -->
-<!--      |--------------------------------------------------| -->
-<!--   1. | TRN-000104674-EAP-IDN-8R9IF   23may2018 15:28:47 | -->
-<!--   2. | TRN-000327173-EAP-IDN-TYA1A   23may2018 23:57:27 | -->
-<!--   3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 | -->
-<!--      +--------------------------------------------------+ -->
-<!-- ``` -->
+</div>
+<p>The transaction ID is <em>pending</em> when at least one of the three parties (DECDG, DECRG, or the Poverty GP) has not approved it in the system. You can click on the check box <em>PENDING</em> in the PRIMUS website to see which surveys have such a status, or you can use the <code>primus</code> command list this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, overallstatus(PENDING)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> transaction_id country <span class="fu">year</span> date_modified <span class="kw">in</span> 1/\<span class="ot">`=min(10, \_N)'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   +----------------------------------------------+</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   |         transaction_id     country  <span class="fu">year</span>     |</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   |----------------------------------------------|</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>1. | TRN-000327173-EAP-IDN-QR48Q  IDN    2017     |</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>2. | TRN-000327173-ECA-DEU-YJYVZ  DEU    1995     |</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>3. | TRN-000327173-ECA-DEU-2P4DR  DEU    2002     |</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>4. | TRN-000327173-ECA-DEU-LJN8R  DEU    2003     |</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>5. | TRN-000327173-ECA-DEU-ZSN9J  DEU    2005     |</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>   |----------------------------------------------|</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>6. | TRN-000327173-ECA-DEU-UBS7M  DEU    2008     |</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>7. | TRN-000327173-ECA-DEU-41TOU  DEU    2009     |</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>8. | TRN-000327173-EAP-AUS-KKZ2E  AUS    2004     |</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>   +----------------------------------------------+</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice that the overall status of a transaction is independent from survey ID. Thus, it is possible to find several transactions for the same country and year. Indonesia 2017, for instance, has three transactions, two of them rejected and one of them pending.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, country(IDN) <span class="fu">year</span>(2017)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> transaction_id overall_status date_modified <span class="kw">in</span> 1/<span class="ot">`=min(10, _N)'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      +--------------------------------------------------+</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      |              transaction_id        date_modified |</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      |--------------------------------------------------|</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>   1. | TRN-000104674-EAP-IDN-8R9IF   23may2018 15:28:47 |</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>   2. | TRN-000327173-EAP-IDN-TYA1A   23may2018 23:57:27 |</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>   3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 |</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      +--------------------------------------------------+</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>A transaction is <em>rejected</em> when at least one of the three parties rejected the database. Finally, a transaction is <em>approved</em> only when all three parties have approved it into the system.</p>
-<div class="rmdbox rmdtip">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>We recommend you understand the basic functionality of the <code>primus</code> command by reading the help file (type <code>help primus</code> in Stata).</p>
+</div>
 </div>
 </section>
 <section id="checking-primus-estimates" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="checking-primus-estimates"><span class="header-section-number">6.3</span> Checking PRIMUS estimates</h2>
 <p>The real first step to check the quality of the recently uploaded data into PRIMUS is to download the basic estimates of each data and compare them with our own. There is no need to calculate and compare all the estimates available in PRIMUS but the mean in PPP, the poverty headcount, and the Gini index.</p>
 <p>The <code>primus</code> command allows us to download the estimates of each transaction, but it has to be done one by one. Fortunately, the <code>pcn</code> command downloads all the estimates of pending transactions for us and properly stores them in the folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code> <code>r emo::ji("tada")</code> <code>r emo::ji("tada")</code> . You only need to type,</p>
-<!-- ```{stata, eval = FALSE} -->
-<!-- pcn primus pending, down(estimates) -->
-<!-- ``` -->
+<div class="sourceCode" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pcn primus pending, down(<span class="kw">estimates</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In addition, <code>pcn</code> checks the date for which you’re downloading the estimates and keeps only those transactions that have been uploaded for the next spring or annual-meetings release. For instance, assume that today, 2020-11-20, you want to see the estimates of pending transactions in PRIMUS. Since annual meetings take place around September, <code>pcn</code> assumes you are interested in the estimates for the Spring-meetings release, around March next year. Thus, it will filter the results from <code>primus</code>, keeping only those transactions that were uploaded from November 2020. Now it is likely that the PRIMUS system has not been opened for uploading new data in November, as it usually opens around December and July. Thus, it is likely that you will find and error saying <code>There is no pending data in PRIMUS for the combination of country/years selected</code>.</p>
-<p>You can load the recently-downloaded estimates by typing,</p>
-<!-- ```{stata, eval = FALSE} -->
-<!-- pcn primus pending, load(estimates) -->
-<!-- ``` -->
+<p>You can load the recently-downloaded estimates by typing</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pcn primus pending, <span class="kw">load</span>(<span class="kw">estimates</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, you have to check whether the new estimates make sense. Once way to that is to follow this do-file, <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\estimates\checks\comparisons_wrk_data.do</code>.</p>
-<div class="rmdbox rmdimportant">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You do NOT need to check the estimates with the working data (wrk) as it is suggested in the do-file above. The PovcalNet System is now fully integrated with the <code>datalibweb</code> system, so the CPI, PPP, and microdata will be always the same. The best you can do at this stage is to make sure the estimates in PRIMUS make sense at the country level.</p>
 </div>
+</div>
+<section id="comparing-primus-pending-new-cases-vs-pip-current-estimates" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="comparing-primus-pending-new-cases-vs-pip-current-estimates"><span class="header-section-number">6.3.1</span> Comparing PRIMUS pending (new) cases vs PIP current estimates</h3>
+<p>Go to folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code> and create a new folder for the update you are about to conduct with the format YYYY_#M (where # can be “S” for Spring, and “A” for Annual Meetings).</p>
+<p>Look inside the previous update folder. You will find a do.file named <code>Compare PRIMUS PENDING vs PIP estimates.do</code> Create a copy of this file into your newly created folder. This do.file conducts the comparison exercise in 3 overall steps:</p>
+<ol type="1">
+<li>Stacks all PRIMUS pending cases (individual transationIDs), cleans &amp; reshapes estimates (<code>primus_estimates_[DATE].dta</code>)</li>
+<li>Loads current PIP estimates (<code>pip_estimates_[DATE].dta</code>)</li>
+<li>Merges both data sets, takes differences &amp; saves (<code>Comparison_primus_vs_pip.dta</code>)</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>PRIMUS <strong>does not</strong> have a clear variable to signal <strong>welfare type</strong> (I/C)!</p>
+</div>
+</div>
+<p>As you know, several countries in PIP (i.e.&nbsp;Poland, Hungry, Philippines, etc) have <strong>dual welfare</strong> in the same year. Because PRIMUS lacks a clear variable to flag whether the new estimate is based income or consumption, this needs to be <strong>checked “manually”, case by case</strong> after merge. For this, it is advisable to save a copy of the final file into <strong>Excel</strong> to finalize the comparison.</p>
+<p>Note that the new PRIMUS cases can either be 1) an update of an existing estimate or 2) a newly added year in the series. Use the variable <code>_merge</code> to flag either case. Finally, flag (color code) the differences that are unusually large, and make sure that countries with dual welfare (if any), didn’t get merged erroneously.</p>
+</section>
 </section>
 <section id="approve-primus" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="approve-primus"><span class="header-section-number">6.4</span> Confirming and approving data in PRIMUS</h2>
 <p>Once you have checked that the estimates of pending transactions make sense, you need to approve them. As explained in section @ref(understand-primus), the approval on PRIMUS requires the consent of three parties. The PovcalNet team had the responsibility to approve on behalf or two of them, DECDG and DECRG. This process can easily done with the code below, which can be found in this file, <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\approve\primus_approve.do</code>.</p>
-<!-- ```{stata, eval = FALSE} -->
-<!-- /*================================================== -->
-<!-- 0: Program set up -->
-<!-- ==================================================*/ -->
-<!-- version 14 -->
-<!-- drop _all -->
-<!-- *---------- Modify this -->
-<!-- local excl = "BRA SOM SSD" // countries to exclude -->
-<!-- local excl = "" // countries to exclude -->
-<!-- /*================================================== -->
-<!-- Load data -->
-<!-- ==================================================*/ -->
-<!-- primus query, overalls(pending) -->
-<!-- //------------Cut off date -->
-<!-- local filtdate = "2019-12-01" // filter date (december last year) -->
-<!-- local filtdate = "2020-02-18" // filter date (surveys uploaded by Minh) -->
-<!-- keep if  date_modified >= clock("`filtdate'", "YMD") -->
-<!-- //------------Select username -->
-<!-- if (lower("`c(username)'") == "wb424681") { -->
-<!--   local dep = "povcalnet" -->
-<!-- } -->
-<!-- else if (lower("`c(username)'") == "wb384996") { -->
-<!--   local dep = "decdg" -->
-<!-- } -->
-<!-- else { -->
-<!--   noi disp in red "you don't have rights to run this code" -->
-<!--   break -->
-<!-- } -->
-<!-- tab `dep' -->
-<!-- keep if `dep' == "PENDING" -->
-<!-- if ("`excl'" != "") { -->
-<!--   local excl: subinstr local excl " " "|", all -->
-<!--   drop if regexm("`country'", "`excl'") -->
-<!-- } -->
-<!-- /*================================================= -->
-<!-- Approve (Do NOT modify) -->
-<!-- ==================================================*/ -->
-<!-- local n = _N -->
-<!-- preserve -->
-<!-- qui foreach i of numlist 1/`n' { -->
-<!--   restore, preserve -->
-<!--   local country = country[`i'] -->
-<!--   local year    = year[`i'] -->
-<!--   local id      = transaction_id[`i'] -->
-<!--   noi disp in y "primus action, tranxid(`id') decision(approved)" -->
-<!--   cap noi primus action, tranxid(`id') decision(approved) -->
-<!--   if (_rc) noi disp "problem with `id'" -->
-<!-- } -->
-<!-- ``` -->
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*==================================================</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">                0: Program set up</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">version</span> 14</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_all</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>*---------- Modify <span class="kw">this</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> excl = <span class="st">"BRA SOM SSD"</span> <span class="co">// countries to exclude</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> excl = <span class="st">""</span> <span class="co">// countries to exclude</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">/*==================================================</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">                    Load data</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>primus <span class="kw">query</span>, overalls(pending)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">//------------Cut off date</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> filtdate = <span class="st">"2019-12-01"</span> <span class="co">// filter date (december last year)</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> filtdate = <span class="st">"2020-02-18"</span> <span class="co">// filter date (surveys uploaded by Minh)</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">"`filtdate'"</span>, <span class="st">"YMD"</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">//------------Select username</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">"`c(username)'"</span>) == <span class="st">"wb424681"</span>) {</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> dep = <span class="st">"povcalnet"</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span> <span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">"`c(username)'"</span>) == <span class="st">"wb384996"</span>) {</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> dep = <span class="st">"decdg"</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="kw">else</span> {</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="kw">red</span> <span class="st">"you don't have rights to run this code"</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="kw">break</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="ot">`dep'</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="ot">`dep'</span> == <span class="st">"PENDING"</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="st">"`excl'"</span> != <span class="st">""</span>) {</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> excl: <span class="fu">subinstr</span> <span class="kw">local</span> excl <span class="st">" "</span> <span class="st">"|"</span>, <span class="ot">all</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">drop</span> <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">"`country'"</span>, <span class="st">"`excl'"</span>)</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co">/*=================================================</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">              Approve (Do NOT modify)</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">==================================================*/</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> n = _N</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="kw">preserve</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="kw">qui</span> <span class="kw">foreach</span> i <span class="kw">of</span> numlist 1/<span class="ot">`n'</span> {</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">restore</span>, <span class="kw">preserve</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> country = country[<span class="ot">`i'</span>]</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> <span class="fu">year</span>    = <span class="fu">year</span>[<span class="ot">`i'</span>]</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> id      = transaction_id[<span class="ot">`i'</span>]</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="fu">y</span> <span class="st">"primus action, tranxid(`id') decision(approved)"</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  cap <span class="kw">noi</span> primus action, tranxid(<span class="ot">`id'</span>) decision(approved)</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> (</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="dt">_rc</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>) <span class="kw">noi</span> disp <span class="st">"problem with `id'"</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Basically, this is what you need to do with this file.</p>
 <ol type="1">
 <li>Modify <code>local excl</code> in case you do <strong>not</strong> want to approve one or several countries.</li>
