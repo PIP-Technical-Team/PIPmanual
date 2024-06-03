@@ -12,11 +12,24 @@ here::i_am("index.qmd")
 library(here)
 ```
 
+## About PIP {.unnumbered}
 
-# Welcome! {.unnumbered}
+The [Poverty and Inequality Platform (PIP)](https://pip.worldbank.org/home) is an interactive computational tool that offers users quick access to the World Bank’s estimates of poverty, inequality, and shared prosperity. While the main entry point for PIP is the website, users can also access the poverty and inequality estimates directly through the R ([pipR](https://github.com/worldbank/pipr)) and Stata ([pip.ado](https://github.com/worldbank/pip)) packages. 
 
-These are the internal guidelines for the technical process of the PIP project. Visit the [Github repository for this book](https://github.com/PIP-Technical-Team/PIPmanual). 
+PIP is managed by the Global Poverty and Inequality Data Group (GPID). This manual has been produced by GPID members and intends to explain all procedures comprised in the PIP project.
 
-## Team {-}
+## Objectives
 
-The PIP technical team is composed of .... 
+1.  Provide an overview of the project from a technical perspective.
+
+2.  Explain the interaction between R packages developed to manage the data and do the calculations.
+
+3.  Identify the different types of data in the PIP project and the interaction between them.
+
+4.  Explain how the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.
+
+5.  Provide Technical standalone procedure necessary for the execution of some parts of the project.
+
+## This book
+
+For contributions to this Manual, visit the [Github repository for this book](https://github.com/PIP-Technical-Team/PIPmanual) and clone the dev branch. This book is written in Quarto. Each .qmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.

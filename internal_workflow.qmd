@@ -1,29 +1,14 @@
 # Internal Workflow
 
-This chapter explains the internal technical workflow of the PIP project. Many
-of the different steps of the workflow are explained in more detail in other
-chapters of this book. This chapter, however, presents an overview of the
-workflow and its components.
+This chapter explains the internal technical workflow of the PIP project. Many of the different steps of the workflow are explained in more detail in other chapters of this book. This chapter, however, presents an overview of the workflow and its components.
 
 ## The Github group
 
-The technical code of the PIP project is organized in Git repositories in the
-Github group [/PIP-Technical-Team](https://github.com/PIP-Technical-Team). You
-need to be granted collaborator status in order to contribute to any of the
-repositories in the group. Also, many of the repositories do not play a direct
-role in the PIP technical workflow. Some of them are intended for documenting
-parts of the workflow or for testing purposes. For example, the repository of
-this book--[/PIPmanual](https://github.com/PIP-Technical-Team/PIPmanual)--is not
-part of the workflow of PIP, since it is not necessary for any estimation. Yet,
-you need get familiar with all the repositories in case you need to make a
-contribution in any of them. In this chapter, however, we will focus on
-understanding the repositories that affect directly the PIP workflow.
+The technical code of the PIP project is organized in Git repositories in the Github group [/PIP-Technical-Team](https://github.com/PIP-Technical-Team). You need to be granted collaborator status in order to contribute to any of the repositories in the group.
 
-First, we will see the overview of the workflow. It is an overview because each
-bucket of its buckets is a workflow in itself. Yet, it is important to have the
-overview clear in order to understand how and where all the pieces fall
-together. Then, we will unpack each of the workflow buckets to understand them
-in more detail.
+Many of the repositories do not play a direct role in the PIP technical workflow. Some of them are intended for documenting parts of the workflow or for testing purposes. For example, the repository for this book--[/PIPmanual](https://github.com/PIP-Technical-Team/PIPmanual)--is not part of the workflow of PIP, since it is not necessary for any estimation. Yet, you need get familiar with all the repositories in case you need to make a contribution in any of them. In this chapter, however, we will focus on understanding the repositories that affect directly the PIP workflow.
+
+First, we will see the overview of the workflow. It is an overview because each bucket of its buckets is a workflow in itself. Yet, it is important to have the overview clear in order to understand how and where all the pieces fall together. Then, we will unpack each of the workflow buckets to understand them in more detail.
 
 ## Overview
 
@@ -31,110 +16,42 @@ The workflow overview is mainly composed of four steps.
 
 1.  Data acquisition
 2.  Data preparation
-3.  pre-computed indicators
+3.  Pre-computed indicators
 4.  API feeding
 
 ![](img/PIP_workflow_overview.png "PIP workflow overview")
 
-Each of the steps (or buckets) is prerequisite of the next one, so if something
-changes in one of the them, it is necessary to execute the subsequent steps.
+Each of the steps (or buckets) is a prerequisite of the next one. Hence, if something changes in one of the them, it is necessary to execute the subsequent steps.
 
 ## Data acquisition
 
-Before understanding how the input data of PIP is acquired, we need to
-understand PIP data itself. The PIP is fed by two kinds of data: welfare data
-and auxiliary data.
+Before understanding how the input data of PIP is acquired, we need to understand PIP data itself. The PIP is fed by two kinds of data: [welfare data]{.underline} and [auxiliary data]{.underline}.
 
-**Welfare data** refers to the data files that contain at least one welfare
-vector and one population expansion factor (i.e., weights) vector. These two
-variables are the minimum data necessary to estimate poverty and inequality
-measures.[^internal_workflow-1] These files come in four varieties; microdata,
-group data, bin data, and synthetic data. The details of welfare can be found in
-Section \@ref(welfare-data). Regardless of the variety of the data, all welfare
-data in PIP are gathered from the Global Monitoring Database, GMD. For a
-comprehensive explanation of how the household data are selected and obtained,
-you may check chapter [*Acquiring household survey
-data*](https://povcalnet-team.github.io/Methodology/acquiring.html)of the
-[methodological PIP
-manual](https://povcalnet-team.github.io/Methodology/index.html).
+**Welfare data** refers to the data files that contain at least one welfare vector and one population expansion factor (i.e., weights) vector. These two variables are the minimum data necessary to estimate poverty and inequality measures.[^internal_workflow-1] These files come in four varieties; microdata, group data, bin data, and synthetic data. The details of welfare can be found in Section \@ref(welfare-data). Regardless of the variety of the data, all welfare data in PIP are gathered from the Global Monitoring Database, GMD. For a comprehensive explanation of how the household data are selected and obtained, you may check chapter [*Acquiring household survey data*](https://povcalnet-team.github.io/Methodology/acquiring.html)of the [methodological PIP manual](https://povcalnet-team.github.io/Methodology/index.html).
 
-[^internal_workflow-1]: Population data is also necessary when working with
-    group data.
+[^internal_workflow-1]: Population data is also necessary when working with group data.
 
-*Microdata* is uploaded into the PRIMUS system by the regional teams of the
-Poverty Global Practice. To do so, each regional team has to follow the GMD
-guidelines, which are verified by the Stata command `{primus}`. Rarely. the
-`{primus}` command does NOT capture some potential errors in the data. More
-details in Section \@ref(primus)
+*Microdata* is uploaded into the PRIMUS system by the regional teams of the Poverty Global Practice. To do so, each regional team has to follow the GMD guidelines, which are verified by the Stata command `{primus}`. Rarely. the `{primus}` command does NOT capture some potential errors in the data. More details in Section \@ref(primus)
 
-As of now (`r format(Sys.Date(), "%B %d, %Y")`), *Group data* is divided two:
-historical group data and new group data. Historical group data is organized and
-provided by the PovcalNet team, who sends it to the Poverty GP to be included in
-the datalibweb system. New group data is collected by the poverty economist of
-the corresponding country, who shares it with her regional focal team, who
-shares it with PovcalNet team. This new group data is organized and tested by
-the PovcalNet team and then send back to the poverty GP to be included in the
-datalibweb system.
+As of now (`r format(Sys.Date(), "%B %d, %Y")`), *Group data* is divided two: historical group data and new group data. Historical group data is organized and provided by the PovcalNet team, who sends it to the Poverty GP to be included in the datalibweb system. New group data is collected by the poverty economist of the corresponding country, who shares it with her regional focal team, who shares it with PovcalNet team. This new group data is organized and tested by the PovcalNet team and then send back to the poverty GP to be included in the datalibweb system.
 
-*Bin data* refers to welfare data from countries for which there is no poverty
-economist. Most of these countries are developed countries such as Canada or
-Japan. The main characteristic of this data is that it is only available through
-the [LISSY system](https://www.lisdatacenter.org/data-access/lissy/) of the [LIS
-data center](https://www.lisdatacenter.org/), which does not allow access to the
-entire microdata. Thus, we need to contract the microdata into 400 bins or
-quantiles. The code that gathers LIS data is available in the Github repository
-[PovcalNet-Team/LIS_data](https://github.com/PovcalNet-Team/LIS_data).
+*Bin data* refers to welfare data from countries for which there is no poverty economist. Most of these countries are developed countries such as Canada or Japan. The main characteristic of this data is that it is only available through the [LISSY system](https://www.lisdatacenter.org/data-access/lissy/) of the [LIS data center](https://www.lisdatacenter.org/), which does not allow access to the entire microdata. Thus, we need to contract the microdata into 400 bins or quantiles. The code that gathers LIS data is available in the Github repository [GPID-WB/LIS_data](https://github.com/GPID-WB/LIS_data) and the explanation in @sec-lis.
 
-Finally, *synthetic data*, refers to simulated microdata from an statistical
-procedure. As of now (`r format(Sys.Date(), "%B %d, %Y")`), the these data are
-estimated using multiple imputation techniques, so that any calculation must
-take into account the imputation-id variable. The data is calculated by the
-poverty economist of the country and the organizes by the global team in the
-Poverty GP.
+Finally, *synthetic data*, refers to simulated microdata from an statistical procedure. As of now (`r format(Sys.Date(), "%B %d, %Y")`), the these data are estimated using multiple imputation techniques, so that any calculation must take into account the imputation-id variable. The data is calculated by the poverty economist of the country and the organizes by the global team in the Poverty GP.
 
-**Auxiliary data** refers to all data necessary to temporally deflate and line
-up welfare data, with the objective of getting poverty estimates comparable over
-time, across countries, and, more importantly, being able to estimate regional
-and global estimates. Some of these data are national population, GDP, consumer
-price index, purchasing parity power, etc. Auxiliary data also include metadata
-such as time comparability or type of welfare aggregate. Since each measure of
-auxiliary data is acquired differently, all the details are explain in Section
-\@ref(auxiliary-data).
+**Auxiliary data** refers to all data necessary to temporally deflate and line up welfare data, with the objective of getting poverty estimates comparable over time, across countries, and, more importantly, being able to estimate regional and global estimates. Some of these data are national population, GDP, consumer price index, purchasing parity power, etc. Auxiliary data also include metadata such as time comparability or type of welfare aggregate. Since each measure of auxiliary data is acquired differently, all the details are explain in Section \@ref(auxiliary-data).
 
 ## Data preparation
 
-This step assumes that all welfare data is properly organized in the datalibweb
-system and vetted in PRIMUS. In contrast to the previous global-poverty
-calculator system, PovcalNet, the PIP system only gathers welfare from the
-datalibweb server.
+This step assumes that all welfare data is properly organized in the datalibweb system and vetted in PRIMUS. In contrast to the previous global-poverty calculator system, PovcalNet, the PIP system only gathers welfare from the datalibweb server.
 
-The welfare data preparation is done using the repository
-[/pipdp](https://github.com/PIP-Technical-Team/pipdp). As of now
-(`r format(Sys.Date(), "%B %d, %Y")`), this part of the process has been coded
-in Stata, given that the there is no an R version of `{dataliweb}`. As for the
-auxiliary data preparation, it is done with package `{pipaux}`, available in the
-repository [/pipaux](https://github.com/PIP-Technical-Team/pipaux). Right now
-the automation of updating the auxiliary has not been implemented. Thus, it has
-to be done manually by typing `pipaux::pip_update_all_aux()` to update all
-measures, or use function `pipaux::update_aux()` to update a particular measure.
+The welfare data preparation is done using the repository [/pipdp](https://github.com/PIP-Technical-Team/pipdp). As of now (`r format(Sys.Date(), "%B %d, %Y")`), this part of the process has been coded in Stata, given that the there is no an R version of `{dataliweb}`. As for the auxiliary data preparation, it is done with package `{pipaux}`, available in the repository [/pipaux](https://github.com/PIP-Technical-Team/pipaux). Right now the automation of updating the auxiliary has not been implemented. Thus, it has to be done manually by typing `pipaux::pip_update_all_aux()` to update all measures, or use function `pipaux::update_aux()` to update a particular measure.
 
 ## Pre-computed indicators
 
-All measures in PIP that do not depend on the value of the poverty line are
-pre-computed in order to make the API more efficient and responsive. Some other
-indicators that not depend on the poverty lines but do depend on other
-parameters, like the societal poverty, are not included as part of the
-pre-computed indicators.
+All measures in PIP that do not depend on the value of the poverty line are pre-computed in order to make the API more efficient and responsive. Some other indicators that not depend on the poverty lines but do depend on other parameters, like the societal poverty, are not included as part of the pre-computed indicators.
 
-This step is executed in the repository
-[/pip_ingestion_pipeline](https://github.com/PIP-Technical-Team/pip_ingestion_pipeline),
-which is a pipeline powered by the `{targets}` package. The process to estimate
-the pre-computed indicators is explained in detail in Chapter \@ref(pcpipeline).
-The pipeline makes use of two R packages, `{wbpip}` and `{pipdm}`. The former is
-publicly available and contains all the technical and methodological procedures
-to estimate poverty and inequality measures at the country, regional, and global
-level. The latter, makes use of `{wbpip}` to execute the calculations and put
-the resulting data in order, ready to be ingested by the PIP API.
+This step is executed in the repository [/pip_ingestion_pipeline](https://github.com/PIP-Technical-Team/pip_ingestion_pipeline), which is a pipeline powered by the `{targets}` package. The process to estimate the pre-computed indicators is explained in detail in Chapter \@ref(pcpipeline). The pipeline makes use of two R packages, `{wbpip}` and `{pipdm}`. The former is publicly available and contains all the technical and methodological procedures to estimate poverty and inequality measures at the country, regional, and global level. The latter, makes use of `{wbpip}` to execute the calculations and put the resulting data in order, ready to be ingested by the PIP API.
 
 ## API feeding
 

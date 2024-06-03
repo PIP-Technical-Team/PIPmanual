@@ -1,0 +1,70 @@
+# For New Members
+
+We are thrilled to welcome you to our team!
+
+We firmly believe that collaboration and open communication are the cornerstones of success. We encourage our team members to share their ideas, challenge assumptions, and explore diverse perspectives. We also foster a culture of constructive feedback, where colleagues provide valuable insights to help each other grow and improve.
+
+We are committed to providing our team members with the resources and support they need to thrive, learn, and grow professionally. This welcome package will equip you with the necessary information to hit ground running.
+
+## Before you start
+
+Ideally, you should get familiar with all the resources and information below, but get familiar first with those that your Team Task Leader (TTL) requested.
+
+## Technical Resources
+
+1.  [R Packages (2e)](https://r-pkgs.org/) by Wickham and Bryan (Read the whole book)
+
+2.  [R for Data Science](https://r4ds.hadley.nz/) by Wikham (Read the whole book)
+
+3.  [Advanced R](https://adv-r.hadley.nz/)  by Wikham. Chapters 1-9, 12-13, 17-20.
+
+4.  Basic of Git. At least one of the following
+
+    4.1. [Getting Git right](https://www.atlassian.com/git) by Atlassian
+
+    4.2. [Happy Git and Github for the useR](https://happygitwithr.com/) by Bryan.
+
+Most of us use [SmartGit](https://www.syntevo.com/smartgit/) as our Git client. If you use something different, it is ok. What matters is that you clearly understand the most important Git concepts.
+
+5.  [PIP Manual](https://pip-technical-team.github.io/PIPmanual/)
+
+6.  [PovcalNet Internal Guidelines](https://povcalnet-team.github.io/Povcalnet_internal_guidelines/) (This source has some outdated information but most of it is still very useful).
+
+## Analytic Resources
+
+1.  Get familiar with our webpage, PIP: <https://pip.worldbank.org/>.
+
+2.  [PIP Methodology Handbook](https://datanalytics.worldbank.org/PIP-Methodology/) (read the whole book).
+
+3.  Poverty and Shared Prosperity Report 2022: Correcting Course ([PSPR](https://www.worldbank.org/en/publication/poverty-and-shared-prosperity)) (Read at least Part 1)
+
+4.  Access and use of poverty and inequality data [Cheat Sheet](https://worldbankgroup.sharepoint.com/:b:/r/sites/WBPoverty/SiteAssets/SitePages/D4G%20Overview-1652382371342/Cheat-Sheet-Internal.pdf?csf=1&web=1&e=W6z90C).
+
+## Github repos to get familiar
+
+1.  [pipapi](https://github.com/PIP-Technical-Team/pipapi/tree/dev) is the R package that controls and creates the [PIP API](https://pip.worldbank.org/api). Notice that I am redirecting you to the "dev" branch.
+
+2.  R client for the PIP API, [pipr](https://github.com/worldbank/pipr).
+
+3.  Stata client for the PIP API, [pip](https://github.com/worldbank/pip/tree/ongoing) ("ongoing" branch).
+
+4.  [wbpip](https://github.com/PIP-Technical-Team/wbpip)  is the package that contains the underlying estimations of the PIP API. Basically, pipapi makes use of wbpip.
+
+## Things to do
+
+1.  Make sure you have a Github account. Send the username to acastanedaa\@worldbank.org
+2.  Once you get your World Bank email account, Open a free account in [ClickUp.com](https://clickup.com/) and send your username to acastanedaa\@worldbank.org.
+3.  Get familiar with ClickUp. There are tons of information in YouTube, blogs or even [clickup help docs](https://help.clickup.com/hc/en-us).
+4.  Once you get your WB laptop, make sure to install the following software. Most of them are available in Software Center (which you can find installed in your PC) in the Microsoft Store. In case it is not available, You need to contact ITS to install this (MC Building IT Support \<mcbuildingitsupport\@worldbank.org\>).
+    -   Visual Studio Code
+
+        -   Install at least the extension **Git Graph.**
+
+        -   Make sure to link VScode with your Github account
+
+    -   R
+
+    -   Rstudio
+
+    -   [*Rtools 43*](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html).
+5.  Get familiar with the [STC information portal](https://worldbankgroup.sharepoint.com/:u:/r/sites/myhr/SitePages/PublishingPages/ST-Information-Portal-03302020-172202.aspx?csf=1&web=1&e=Cv1bFZ) (internal only).

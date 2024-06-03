@@ -12,7 +12,7 @@ The interaction with **PRIMUS** is done through different systems, so it is best
 
 ### Website platform {.unnumbered}
 
-PRIMUS can be accessed by typing [primus/](http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx) in your browser. As long as you're connected to the intranet it should work fine. However, if you have any issues connecting to the platform, please send an email to [Minh Cong Nguyen](mailto:mnguyen3@worldbank.org), requesting access.
+PRIMUS can be accessed through https://primusuiprod.ase.worldbank.org/. As long as you're connected to the intranet it should work fine. However, if you have any issues connecting to the platform, please send an email to [Minh Cong Nguyen](mailto:mnguyen3@worldbank.org), requesting access.
 
 Each database uploaded into PRIMUS gets a unique **transaction ID**. This ID is important because it is not unique to a dataset but unique to the transaction (or vintage of the data). That is, if one particular dataset is uploaded more than once, it will get two different transaction IDs. When communicating with the Poverty GP, you should refer to the transaction ID rather than the survey (or at least both) because the same country/year, you might have two different transactions.
 
@@ -48,7 +48,7 @@ As of today (2020-11-20), there is no one who represents DECRG. So, the approvin
 
 The transaction ID is *pending* when at least one of the three parties (DECDG, DECRG, or the Poverty GP) has not approved it in the system. You can click on the check box *PENDING* in the PRIMUS website to see which surveys have such a status, or you can use the `primus` command list this:
 
-```stata
+``` stata
 qui primus query, overallstatus(PENDING)
 list transaction_id country year date_modified in 1/\`=min(10, \_N)'
    +----------------------------------------------+
@@ -68,7 +68,7 @@ list transaction_id country year date_modified in 1/\`=min(10, \_N)'
 
 Notice that the overall status of a transaction is independent from survey ID. Thus, it is possible to find several transactions for the same country and year. Indonesia 2017, for instance, has three transactions, two of them rejected and one of them pending.
 
-```stata
+``` stata
 qui primus query, country(IDN) year(2017)
 list transaction_id overall_status date_modified in 1/`=min(10, _N)'
 
@@ -89,53 +89,51 @@ We recommend you understand the basic functionality of the `primus` command by r
 
 ## Checking PRIMUS estimates
 
-The real first step to check the quality of the recently uploaded data into PRIMUS is to download the basic estimates of each data and compare them with our own. There is no need to calculate and compare all the estimates available in PRIMUS but the mean in PPP, the poverty headcount, and the Gini index.
+The real first step to check the quality of the recently uploaded data into PRIMUS is to download the basic estimates for each data point and compare them with our own. New estimates are uploaded into `primus` mainly before the Annual Meetings (AM) in the **Fall** season, or the **Spring** Meetings (SM) in March/April. For the most recent rounds, we have created a repository called **Test-PIP-Data** in the GPID-WB GIT organization where we've been working and storing this comparison:
 
-The `primus` command allows us to download the estimates of each transaction, but it has to be done one by one. Fortunately, the `pcn` command downloads all the estimates of pending transactions for us and properly stores them in the folder `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\` `r emo::ji("tada")` `r emo::ji("tada")` . You only need to type,
+1.  Clone the repository [**h**ttps://github.com/GPID-WB/Test-PIP-Data](https://github.com/GPID-WB/Test-PIP-Data)
+2.  Go to the folder 📁 **Check_PRIMUS_Data**. Inside, you will notice that there are individual sub-folders for each data release period.
+3.  In your new branch, create a [new folder]{.underline} for data release on which you're working (i.e Spring 2025)
 
-```stata
+Note that the `primus` stata command allows to download the estimates for each transaction, but only one by one. There are *two ways* to download and stack all new estimates into one single file:
+
+**A). with `pcn` command:** the `pcn` command downloads all the estimates of pending transactions for us and properly stores them in the P drive, 📁 `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\....`. If you have previously installed `pcn`, type:
+
+``` stata
 pcn primus pending, down(estimates)
 ```
 
-In addition, `pcn` checks the date for which you're downloading the estimates and keeps only those transactions that have been uploaded for the next spring or annual-meetings release. For instance, assume that today, 2020-11-20, you want to see the estimates of pending transactions in PRIMUS. Since annual meetings take place around September, `pcn` assumes you are interested in the estimates for the Spring-meetings release, around March next year. Thus, it will filter the results from `primus`, keeping only those transactions that were uploaded from November 2020. Now it is likely that the PRIMUS system has not been opened for uploading new data in November, as it usually opens around December and July. Thus, it is likely that you will find and error saying `There is no pending data in PRIMUS for the combination of country/years selected`.
+In addition, `pcn` checks the date for which you're downloading the estimates and keeps only those transactions that have been uploaded for the next spring or annual-meetings release. For instance, assume that if today is 2023-11-20, you want to see the estimates of pending transactions in PRIMUS. Since annual meetings take place around September, `pcn` assumes you are interested in the estimates for the Spring-meetings release, around March next year. Thus, it will filter `primus` results keeping only those transactions that were uploaded starting November 2023. It is likely that the PRIMUS system has not been opened for uploading new data in November, as it usually opens around December and July. Thus, it is likely that you will find and error saying `There is no pending data in PRIMUS for the combination of country/years selected`. So consider the timing before running that command. You can load the recently-downloaded estimates by typing:
 
-You can load the recently-downloaded estimates by typing
-
-```stata
+``` stata
 pcn primus pending, load(estimates)
 ```
 
-Now, you have to check whether the new estimates make sense. Once way to that is to follow this do-file, `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\estimates\checks\comparisons_wrk_data.do`.
+Using `pcn` does the job but makes the process dependent on that command as well as the P drive. The following option (B) is what we've been using in most recent rounds, keeping all files in the cloned repository:
+
+**B). with available code in repository:**
+
+Going back to the repository you cloned (Test-PIP-Data/Check_PRIMUS_Data), look inside the folder for the previous update. You will find a do.file named **`Compare PRIMUS PENDING vs PIP estimates.do`** Create a copy of this file and paste it into your newly created folder. Update the necessary paths and dates. This do.file conducts the comparison exercise in 3 overall steps:
+
+1.  Stacks all **PRIMUS** pending cases (individual transationIDs), cleans & reshapes estimates and saves them in file (`primus_estimates_[DATE].dta`)
+2.  Loads current **PIP** estimates and saves them in file (`pip_estimates_[DATE].dta`)
+3.  Merges both data sets, takes differences & saves them in file (`Comparison_primus_vs_pip.dta`).
+
+Note that we don't have to compare all estimates, headcount, gini and mean will be enough.
 
 ::: callout-important
-You do NOT need to check the estimates with the working data (wrk) as it is suggested in the do-file above. The PovcalNet System is now fully integrated with the `datalibweb` system, so the CPI, PPP, and microdata will be always the same. The best you can do at this stage is to make sure the estimates in PRIMUS make sense at the country level.
-:::
-
-### Comparing PRIMUS pending (new) cases vs PIP current estimates
-
-Go to folder `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\` and create a new folder for the update you are about to conduct with the format YYYY_#M (where # can be "S" for Spring, and "A" for Annual Meetings). 
-
-Look inside the previous update folder. You will find a do.file named `Compare PRIMUS PENDING vs PIP estimates.do` Create a copy of this file into your newly created folder. This do.file conducts the comparison exercise in 3 overall steps:
-
-1. Stacks all PRIMUS pending cases (individual transationIDs), cleans & reshapes estimates (`primus_estimates_[DATE].dta`)
-2. Loads current PIP estimates (`pip_estimates_[DATE].dta`)
-3. Merges both data sets, takes differences & saves (`Comparison_primus_vs_pip.dta`)
-
-::: callout-important
- PRIMUS **does not** have a clear variable to signal **welfare type** (I/C)!
+PRIMUS **does not** have a clear variable to signal **welfare type** (I/C)!
 :::
 
 As you know, several countries in PIP (i.e. Poland, Hungry, Philippines, etc) have **dual welfare** in the same year. Because PRIMUS lacks a clear variable to flag whether the new estimate is based income or consumption, this needs to be **checked "manually", case by case** after merge. For this, it is advisable to save a copy of the final file into **Excel** to finalize the comparison.
 
 Note that the new PRIMUS cases can either be 1) an update of an existing estimate or 2) a newly added year in the series. Use the variable `_merge` to flag either case. Finally, flag (color code) the differences that are unusually large, and make sure that countries with dual welfare (if any), didn't get merged erroneously.
 
-
-
 ## Confirming and approving data in PRIMUS {#approve-primus}
 
 Once you have checked that the estimates of pending transactions make sense, you need to approve them. As explained in section \@ref(understand-primus), the approval on PRIMUS requires the consent of three parties. The PovcalNet team had the responsibility to approve on behalf or two of them, DECDG and DECRG. This process can easily done with the code below, which can be found in this file, `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\approve\primus_approve.do`.
 
-```stata
+``` stata
 /*==================================================
                 0: Program set up
 ==================================================*/

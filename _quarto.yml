@@ -4,8 +4,13 @@ project:
 book:
   title: "PIP Manual"
   author: "PIP Technical Team"
+  repo-url: https://github.com/PIP-Technical-Team/PIPmanual
   chapters:
-    - index.qmd
+    - part: "Welcome"
+      chapters:
+       - index.qmd
+       - team.qmd
+       - welcome.qmd
     - part: "Introduction"
       chapters:
         - intro.qmd
@@ -16,6 +21,7 @@ book:
       chapters:
       - price_framework.qmd
       - PRIMUS.qmd
+      - LIS.qmd
       - welfare_data.qmd
       - auxiliary_data.qmd
     - part: "PIP Procedures"
@@ -47,12 +53,15 @@ language:
 
 qmd_files: [
   "index.qmd",
+  "welcome.qmd",
+  "team.qmd",
   "intro.qmd",
   "internal_workflow.qmd",
   "folder_structure.qmd",
   "joining_data.qmd",
   "price_framework.qmd",
   "PRIMUS.qmd",
+  "LIS.qmd",
   "welfare_data.qmd",
   "auxiliary_data.qmd",
   "pc_pipeline.qmd",

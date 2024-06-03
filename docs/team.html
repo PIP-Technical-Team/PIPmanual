@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="PIP Technical Team">
-<meta name="description" content="<p>These are the guidelines to all the technical decisions taken during the creation of packges for the PIP workflow.</p>">
 
-<title>PIP Manual</title>
+<title>PIP Manual - 1&nbsp; The GPID Team</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./team.html" rel="next">
+<link href="./welcome.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li><li class="breadcrumb-item"><a href="./index.html">About PIP</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li><li class="breadcrumb-item"><a href="./team.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The GPID Team</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -115,13 +114,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About PIP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./team.html" class="sidebar-item-text sidebar-link">
+  <a href="./team.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The GPID Team</span></span></a>
   </div>
 </li>
@@ -285,34 +284,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#about-pip" id="toc-about-pip" class="nav-link active" data-scroll-target="#about-pip">About PIP</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#this-book" id="toc-this-book" class="nav-link" data-scroll-target="#this-book">This book</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PIP Manual</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The GPID Team</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>PIP Technical Team </p>
-          </div>
-  </div>
     
   
     
@@ -321,27 +306,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="about-pip" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="about-pip">About PIP</h2>
-<p>The <a href="https://pip.worldbank.org/home">Poverty and Inequality Platform (PIP)</a> is an interactive computational tool that offers users quick access to the World Bank’s estimates of poverty, inequality, and shared prosperity. While the main entry point for PIP is the website, users can also access the poverty and inequality estimates directly through the R (<a href="https://github.com/worldbank/pipr">pipR</a>) and Stata (<a href="https://github.com/worldbank/pip">pip.ado</a>) packages.&nbsp;</p>
-<p>PIP is managed by the Global Poverty and Inequality Data Group (GPID). This manual has been produced by GPID members and intends to explain all procedures comprised in the PIP project.</p>
-</section>
-<section id="objectives" class="level2">
-<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
-<ol type="1">
-<li><p>Provide an overview of the project from a technical perspective.</p></li>
-<li><p>Explain the interaction between R packages developed to manage the data and do the calculations.</p></li>
-<li><p>Identify the different types of data in the PIP project and the interaction between them.</p></li>
-<li><p>Explain how the poverty calculator, the table maker, and the Statistics Online (SOL) platform are updated.</p></li>
-<li><p>Provide Technical standalone procedure necessary for the execution of some parts of the project.</p></li>
-</ol>
-</section>
-<section id="this-book" class="level2">
-<h2 class="anchored" data-anchor-id="this-book">This book</h2>
-<p>For contributions to this Manual, visit the <a href="https://github.com/PIP-Technical-Team/PIPmanual">Github repository for this book</a> and clone the dev branch. This book is written in Quarto. Each .qmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
+<p>Our team comprises highly motivated and hardworking members who share a deep passion for making a positive impact on the world. We are driven by a collective commitment to excellence, striving to produce high-quality work that has a tangible impact on the lives of people around the globe.</p>
+<p>We are dedicated to tackling some of the most pressing global challenges of our time, including poverty, inequality, and shared prosperity. We believe that understanding and addressing these issues is crucial for creating a more just and equitable world for all.</p>
+<p>The Global Poverty and Inequality Data Group (GPID) is composed by <a href="https://www.worldbank.org/en/about/people/c/christoph-lakner">Christoph Lakner</a>, <a href="https://www.worldbank.org/en/about/people/r/raul-andres-castaneda-aguilar">R.Andrés Castaneda</a>, <a href="https://www.worldbank.org/en/about/people/d/dean-jolliffe">Dean Joliffe</a>, <a href="https://www.worldbank.org/en/about/people/d/daniel-gerszon-mahler">Daniel Mahler</a>, <a href="https://www.worldbank.org/en/about/people/s/samuel-kofi-tetteh-baah">Samuel Tetteh Baah</a>, <a href="https://www.worldbank.org/en/about/people/n/nishant-yonzan">Nishant Yonzan</a>, <a href="https://blogs.worldbank.org/en/team/m/martha-viveros">Martha Viveros</a>, <a href="https://blogs.worldbank.org/en/team/z/zander-prinsloo">Zander Prinsloo</a>, <a href="https://blogs.worldbank.org/en/team/r/rossana-tatulli">Rossana Tatulli</a>, <a href="https://blogs.worldbank.org/en/team/t/tefera-bekele-degefu">Tefera Bekele Degefu</a>, Diana Garcia Rojas, Giorgia Cecchinatto, and Ronak Sunil Shah.</p>
+<p><img src="img/Team.jpg" class="img-fluid"></p>
+<p>📸 GPID Team April 2024</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -579,10 +550,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">About PIP</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./team.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The GPID Team</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./welcome.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">For New Members</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

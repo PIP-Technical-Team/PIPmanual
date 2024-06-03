@@ -1,6 +1,6 @@
 # Folder Structure {#folder-structure}
 
-The PIP root directory (`Sys.getenv("PIP_ROOT_DIR")`) contains the following main folders. 
+The PIP root directory (`Sys.getenv("PIP_ROOT_DIR")`) contains the following main folders. Description of each of them and their subfolders are provided below.
 
 | Folder                | Explanation                            |
 |:----------------------|:---------------------------------------|
@@ -11,8 +11,7 @@ The PIP root directory (`Sys.getenv("PIP_ROOT_DIR")`) contains the following mai
 | PIP-PIP_Data_Vintage  | N/A                                    | 
 | pip_ingestion_pipeline| Pipeline directory                     |
 
-Details on each folder and their subfolders are given below. 
-
+ 
 ## PIP-Data
 
 [This folder is no longer in use]{style="color:red"}. 
@@ -37,7 +36,7 @@ Please note the following:
 3. The file `weo/weo_<YYYY-MM-DD>.xls` needs to be manually downloaded from IMF, opened and then re-saved as `weo_<YYYY-MM-DD>.xls`. 
 4. The grouped data means currently come from the PovcalNet Masterfile. This should be changed when PovcalNet goes out of production.
 
-An explanation of each subfolder is given below. 
+An explanation of each subfolder is given below: 
 
 | Folder     | Measure                 | Usage               | Source |
 |:-----------|:------------------------|:--------------------|:-------|
@@ -89,8 +88,8 @@ For now, only “public data” is in this application. Public means any users c
 
 At the moment, we are working with Legal on the Custom license for the data license template where SOL will be mentioned explicitly. Once the Custom license is developed (after the launch of SOL) we can reach out to all countries to ask for permission to use and “limited redistribute” in the data in our secured platform.
 
-::: {.rmdbox .rmdwarning}
-Please do not touch or change any content in this folder without permission
+::: callout-warning
+Please do not touch or change any content in this folder without permission.
 :::
 
 
