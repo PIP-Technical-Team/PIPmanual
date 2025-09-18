@@ -1,0 +1,121 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+
+# Price FrameWork (pfw) data frame {#pfw-chapter}
+
+The price framework data frame (pfw) is the most important source of
+technical metadata of the PIP project, which makes pertinent the have of
+a separate chapter for it. The general explanation of the structure of
+the pfw can be found in Section \@ref(pfw-join). This chapter focuses
+more on the use of each of the variables. Yet, it is worth repeating a
+few things already mentioned in Section \@ref(pfw-join).
+
+```{r}
+# pfw <- pipload::pip_load_aux("pfw")
+```
+
+## Variables
+
+The table provides a short description of each variable of the Price
+FrameWork data frame. We provide additional information for variable.
+
+```{r, echo=FALSE}
+# pfwd <- readxl::read_xlsx(here::here("files/pfw_descriptions.xlsx"))
+# DT::datatable(pfwd)
+```
+
+## Additional explanation
+
+### ID vars {.unnumbered}
+
+Variables of identification are `wb_region_code`, `pcn_region_code`,
+`country_code`, `ctryname`, `year`, `surveyid_year`, `survey_acronym`.
+
+The main difference between `wb_region_code` and `pcn_region_code` is
+that the former only include geographical regions internally used by the
+world bank, whereas the latter has an additional category, "OHI," for
+Other High Income countries.
+
+```{r}
+# janitor::tabyl(pfw, wb_region_code, pcn_region_code)
+```
+
+For most of the data points, there should be no difference in between
+`year` and `surveyid_year`. In some extreme cases (not available at the
+moment), `year` could be different due to the reporting criteria from
+the NSO. For our purpose, we use `rep_year` as the reporting year in our
+system for integer ones, and `ref_year` for decimal reporting purpose
+
+### `altname` {.unnumbered}
+
+Alternative survey name for some surveys.
+
+```{r}
+# head(pfw[altname != "", c("altname", "survey_acronym")])
+```
+
+### `survey_coverage` {.unnumbered}
+
+This variable represent the househol survey coverage. This is different
+from the disaggregation data level.
+
+```{r}
+# janitor::tabyl(pfw, survey_coverage)
+```
+
+### `welfare_type` {.unnumbered}
+
+This variable contains the welfare type of the main welfare aggregate
+variable in a survey in case it has more than one. The welfare type of
+alternative welfare aggregates is found in variable `oth_welfare1_type`.
+
+```{r}
+# janitor::tabyl(pfw, welfare_type)
+```
+
+### `use_imputed` {.unnumbered}
+
+Whether the welfare aggregate has been imputed. There are just few
+countries with this kind of data.
+
+<!-- ```{r} -->
+<!-- # pfw[use_imputed == 1, unique(country_code)] -->
+<!-- ``` -->
+
+### `use_microdata` {.unnumbered}
+
+Whether the welfare aggregate *vector* used in PIP is directly extracted
+from microdata without any sort of aggregation. Mos of the countries
+have this kind of data. Below you can see those that do not.
+
+```{r}
+# pfw[use_microdata != 1, unique(country_code)]
+```
+
+### `use_bin` {.unnumbered}
+
+Whether the welfare aggregate was aggregated to 400 bins from microdata
+before being incorporated to the PIP repository. This is the case of
+houshold surveys only available in the Luxembourg Data Center
+([LIS](https://www.lisdatacenter.org/)). Countries with bin data is
+considered micro data for technical purposes.
+
+```{r}
+# pfw[use_bin == 1, unique(country_code)]
+```
+
+### `use_groupdata` {.unnumbered}
+
+Whether welfare aggregate comes from grouped data. Information about
+this type of data is available in [@dattComputationalToolsPoverty1998;
+@krauseCorrigendumEllipticalLorenz2013;
+@villasenorEllipticalLorenzCurves1989]. The following countries have
+this kind of data.
+
+```{r}
+# pfw[use_groupdata == 1, unique(country_code)]
+```

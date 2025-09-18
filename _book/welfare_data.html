@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PIP Manual - 7&nbsp; Welfare data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./auxiliary_data.html" rel="next">
+<link href="./PRIMUS.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./price_framework.html">PIP data</a></li><li class="breadcrumb-item"><a href="./welfare_data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Welfare data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PIP Manual</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./internal_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Internal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Folder_structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Folder Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./joining_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Joining Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">PIP data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./price_framework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Price FrameWork (pfw) data frame</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PRIMUS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PRIMUS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./welfare_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Welfare data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./auxiliary_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Auxiliary data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">PIP Procedures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pc_pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Poverty Calculator Pipeline (pre-computed estimations)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tm_pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Table Maker Pipeline</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Standalone Technical Considerations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./load_md_aux.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Load microdata and Auxiliary data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Docker Container</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./azure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Deploying to Azure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Github Workflows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./subtrees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Subtrees using Smartgit</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#welfare-origin-of-data" id="toc-welfare-origin-of-data" class="nav-link active" data-scroll-target="#welfare-origin-of-data"><span class="header-section-number">7.1</span> From Raw to GMD</a>
+  <ul class="collapse">
+  <li><a href="#microdata" id="toc-microdata" class="nav-link" data-scroll-target="#microdata"><span class="header-section-number">7.1.1</span> Microdata</a></li>
+  <li><a href="#group-data" id="toc-group-data" class="nav-link" data-scroll-target="#group-data"><span class="header-section-number">7.1.2</span> Group Data</a></li>
+  <li><a href="#bin-data" id="toc-bin-data" class="nav-link" data-scroll-target="#bin-data"><span class="header-section-number">7.1.3</span> Bin Data</a></li>
+  <li><a href="#synthetic-data" id="toc-synthetic-data" class="nav-link" data-scroll-target="#synthetic-data"><span class="header-section-number">7.1.4</span> Synthetic Data</a></li>
+  </ul></li>
+  <li><a href="#from-gmd-to-pip" id="toc-from-gmd-to-pip" class="nav-link" data-scroll-target="#from-gmd-to-pip"><span class="header-section-number">7.2</span> From GMD to PIP ({pipdp} package)</a>
+  <ul class="collapse">
+  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements"><span class="header-section-number">7.2.1</span> Requirements</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">7.2.2</span> Installation</a></li>
+  <li><a href="#remote-server" id="toc-remote-server" class="nav-link" data-scroll-target="#remote-server"><span class="header-section-number">7.2.3</span> Remote server</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage"><span class="header-section-number">7.2.4</span> Usage</a></li>
+  <li><a href="#preparing-survey-data-for-poverty-calculator-pipeline" id="toc-preparing-survey-data-for-poverty-calculator-pipeline" class="nav-link" data-scroll-target="#preparing-survey-data-for-poverty-calculator-pipeline"><span class="header-section-number">7.2.5</span> Preparing survey data for Poverty Calculator Pipeline</a></li>
+  </ul></li>
+  <li><a href="#survey-id" id="toc-survey-id" class="nav-link" data-scroll-target="#survey-id"><span class="header-section-number">7.3</span> Survey ID nomenclature</a></li>
+  <li><a href="#survey-id-cache" id="toc-survey-id-cache" class="nav-link" data-scroll-target="#survey-id-cache"><span class="header-section-number">7.4</span> Survey CACHE ID nomenclature</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="welfare-data" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Welfare data</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Welfare data refers to any data file that contains the welfare vector that underlies the poverty and inequality measures in each country/year/welfare type. PIP makes use of four different data kinds to store the welfare vectors: microdata, bin data, group data, and synthetic data. Each of these is collected, formatted, and stored in a particular way.</p>
+<section id="welfare-origin-of-data" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="welfare-origin-of-data"><span class="header-section-number">7.1</span> From Raw to GMD</h2>
+<section id="microdata" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="microdata"><span class="header-section-number">7.1.1</span> Microdata</h3>
+<p>The Global Monitoring Database (GMD) is the World Bank’s repository of multitopic income and expenditure household surveys used to monitor global poverty and shared prosperity. The household survey data are typically collected by national statistical offices in each country, and then compiled, processed, and harmonized. The process of harmonization is done at the regional level by the regional statistical development teams. This is to ensure that the harmonization is done with best country knowledge from the country TTLs as well as to ensure consistency of country data overtime. Selected variables have been harmonized to the extent possible such that levels and trends in poverty and other key sociodemographic attributes can be reasonably compared across and within countries over time.</p>
+<p>The regional harmonization process also follows the global harmonization guidelines for most of the variables in GMD. PovcalNet also contributed historical data from before 1990, and recent survey data from Luxemburg Income Studies (LIS).</p>
+<p>The global update process is coordinated by the Data for Goals (D4G) team and supported by the six regional statistics teams in the Poverty and Equity Global Practice.</p>
+<p>The original data files used for the regional harmonization and GMD harmonization should be cataloged and stored in the regional shared drive and the central Microdata Library catalog (<a href="http://microdatalib/" class="uri">http://microdatalib/</a>). We assume that the depositing of the original microdata in the Microdata Library is a collective responsibility shared by all World Bank staff working in all the World Bank’s regions, irrespective of global practice, since the dialogue and data acquisition through the NSO and line ministries often take place in a decentralized manner.</p>
+</section>
+<section id="group-data" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="group-data"><span class="header-section-number">7.1.2</span> Group Data</h3>
+<p>Some countries have very restrictive and confidential data sharing conditions. In such cases, country economist, in collaboration with the regional team and PIP team, would send a request to the country NSO for the group or “collapsed” data for the purpose of monitoring international poverty (SDG 1.1.1). Historically, the group data can be exported from national statistics reports with either data format of type 2 or type 5. In recent years, country economists would request the group data from NSO directly. For example, we request the group data - ventile (20) for China by urban and rural, type 2. For other countries, like high income countries, such as UEA (Country code ARE), NSO directly reach out to us in order to update SDG 1.1.1, in this case the group data is shared to us and we validate the data.</p>
+</section>
+<section id="bin-data" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="bin-data"><span class="header-section-number">7.1.3</span> Bin Data</h3>
+<p>Some of the countries that are not available in DataLibWeb can be found in the repository of the <a href="https://www.lisdatacenter.org/">LIS Cross-National Data Center</a> (hereafter, LIS). Currently, PovcalNet uses LIS data for 8 high-income economies: AUS, CAN, DEU, ISR, JPN, KOR, TWN &amp; USA, plus the Pre-EUSILC years (generally before 2002) of European Economies.</p>
+<p>LIS datasets cannot be downloaded in full; however, they provide a remote-execution system, <a href="http://www.lisdatacenter.org/data-access/lissy/">LISSY,</a> that allows us interact with their microdata without having access to the individual records. We have developed a set of Stata do-files to interact with LISSY and aggregate the welfare distribution of our countries of interest to 400 bins. Then, these data is organized locally and shared with the Poverty GP to be included in DataLibWeb as a collection independent from GPWG.</p>
+<section id="the-lis_data-repository" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="the-lis_data-repository">The LIS_data repository</h4>
+<p>In order to work with the LIS data you need to clone the repository <a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS_data</a>. You will find in there three folders, <em>00.LIS_output</em>, <em>01.programs</em>, and <em>02.data</em>.</p>
+</section>
+<section id="interacting-with-lissy" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="interacting-with-lissy">Interacting with LISSY</h4>
+<p><strong>Opening an account in LISSY:</strong></p>
+<p>To interact with the LIS data you need to first register <a href="http://www.lisdatacenter.org/lis-luli-frontend-webapp/app/request-account-identification"><strong>here</strong></a>, by first completing the <a href="http://www.lisdatacenter.org/wp-content/uploads/our-microdata-user-registration-form.pdf">LIS microdata User Registration Form</a>, and then submitting it through the same website using your <strong>institutional e-mail</strong> account. Within a couple of days, you will receive an e-mail from LIS containing your username and password.</p>
+<div class="rmdbox rmdnote">
+<p><em>You do not get to choose your own username or password. LISdatacenter creates both for you and those won’t change in time. Make sure to save that e-mail and record that information for your future log-ins. Also, know that LISSY passwords expire each year on December 31st. While your password won’t change, it must be <strong>renewed</strong><a href="http://www.lisdatacenter.org/lis-luli-frontend-webapp/app/request-renew-identification">here</a> after January 1st.</em></p>
+</div>
+<p><strong>Interacting with LISSY:</strong></p>
+<p>To get acquainted with LISSY’s interface, coding structure, database naming and variables available, and learn how to compute estimates within LISSY we highly recommend taking some time to review the <a href="https://www.lisdatacenter.org/resources/"><strong>tutorials</strong></a> and <a href="https://www.lisdatacenter.org/resources/self-teaching/"><strong>self-teaching materials</strong></a>. However, in order to update the 400 bins twice a year, Stata codes have been previously written, so you simply need to follow the 5 steps in the next section.</p>
+</section>
+<section id="getting-the-400-bins-from-lissy" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="getting-the-400-bins-from-lissy">Getting the 400 bins from LISSY</h4>
+<p><strong>1. log in</strong> Go to <a href="https://www.lisdatacenter.org/">LIS main page</a>, scroll down and click on the lock icon <img src="images/LIS_login.JPG" class="img-fluid" width="113"></p>
+<p><strong>2. Provide info</strong> Feed the three drop-down menus on top of the platform with the following information:</p>
+<ul>
+<li><p>Project: <strong>LIS</strong></p></li>
+<li><p>Package: <strong>Stata</strong></p></li>
+<li><p>Subject: (<em>Choose a name</em> Ex: “<strong>Bins #1 - Dec 2020</strong>”)</p></li>
+</ul>
+<div class="rmdbox rmdimportant">
+<p>The LISSY platform cannot run the code for ALL surveys available at once. If you attempt to do so, your project will stop and you will receive an e-mail containing the text:</p>
+<pre><code>#####################################################
+  Your job has been killed and will be not executed  
+#####################################################</code></pre>
+<p>To avoid this, we need to run the code in groups of 5 to 6 countries, depending on the amount of years in each of them. Currently, LIS has data for <u>52 countries</u> (26 of them are in the EUSILC project, and 26 do not) which usually take approximately <u>10 rounds</u> of this process.</p>
+</div>
+<p><strong>3. Add do-file</strong> Copy and paste the entire content of <code>01.LIS_400bins.do</code> file into the the main large command window and update the locals in lines 23-24 with the LIS 2-letter acronyms of the group of 5-6 countries in each round.</p>
+<!-- ```{stata, eval = FALSE} -->
+<!-- local silc   "at be cz" -->
+<!-- local nosilc "au br" -->
+<!-- ``` -->
+<div class="rmdbox rmdtip">
+<p>Remember to update the subject with each round (Ex: “Bins #2 - Dec 2020”) so you keep track of the number of output files. Be careful not to leave out [or repeat] any country in the process.</p>
+</div>
+<p><strong>4 Submit</strong>. Click on the green arrow <img src="images/LIS_submit_job.JPG" width="18" height="15">icon to submit your project. You will get an e-mail within some minutes with your output. If the system kills your project, your group of countries was probably too large. Remove one country and try again.</p>
+<p><strong>5. Retrieve results</strong> Copy the entire text in the output e-mail you receive for each round, open your notepad and paste. Save each round in the <strong><em>\00.LIS_output</em></strong> folder. Save each text file with the name <strong>LISSY_Dec202@_#.txt</strong>, [where @ is the year and # the round]. Consistency with this naming format is important for the next step (<code>02.LIS_organize_output.do</code> file)</p>
+</section>
+<section id="from-text-file-to-datalibweb-structure" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="from-text-file-to-datalibweb-structure">From Text file to datalibweb structure</h4>
+<p>We now need to convert the the text files generated by the LISSY system to actual data suitable for datalibweb. This structure is suggested by the <a href="https://ihsn.org/">International Household Survey Network</a> (IHSN). Once the data is saved in folder <code>00.LIS_output</code> you need to execute the file <strong><code>02.LIS_organize_output.do</code></strong>. This file created to be executed in just one go. However, it could be ran in sections taking advantage of the different <a href="https://www.stata.com/new-in-stata/multiple-datasets-in-memory/">frames</a> along the code.</p>
+<p>Before you execute this code, you need to ensure a few things,</p>
+<p><strong>1. Get <code>rcall</code> working in your computer</strong></p>
+<p>The processing of the text files is not done anymore on Stata but in R. To avoid changing systems, we need to execute R code directly from Stata. In order to do this, you need to make sure to have install R in your computer and also the Stata command <code>rcall</code>. The do-file <code>02.LIS_organize_output.do</code> will check if you have it installed and will install it for you in case it is not. However, you can run the lines below to make sure everything is working fine. Also, you can take a look at the help file of <code>rcall</code> to get familiar with it.</p>
+<!-- ```{stata, eval = FALSE} -->
+<!-- cap which rcall -->
+<!-- if (_rc) { -->
+<!--    cap which github -->
+<!--    if (_rc) { -->
+<!--        net install github, from("https://haghish.github.io/github/") -->
+<!--    } -->
+
+<!--    github install haghish/rcall, stable -->
+<!-- } -->
+<!-- ``` -->
+<p><strong>2. Personal Drive</strong></p>
+<p>Make sure to add your UPI to the appropriate sections it appears by typing <code>disp lower("`c(username)'")</code> , following the example below,</p>
+<!-- ```{stata, eval = FALSE} -->
+<!-- if (lower("`c(username)'") == "wbxxxxx") { -->
+<!--    local dir "c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data" -->
+<!-- } -->
+<!-- ``` -->
+<p><strong>3. Directives of the code</strong></p>
+<p>This do-file works like an ado-file in the sense that the output depends on the value of some local macros,</p>
+<!-- ```{stata, eval = FALSE} -->
+<!-- global update_surveynames = 1 // 1 to update survey names. -->
+<!-- global replace            = 0 // 1 to replace data in memory even if it has not changed -->
+<!-- global p_drive_output_dir = 0 // 1 to use default Vintage_control folder -->
+<!-- ``` -->
+<p>If local <code>update_surveynames</code> is set to 1, the code will load the sheet <code>LIS_survname</code> from the the file <code>02.data/_aux/LIS datasets.xlsx</code> and updated the file <code>02.data/_aux/LIS_survname.dta</code>. If <code>replace</code> is set to 1, the code will replace any output with the same name. Otherwise, it will create a new vintage version <em>if the two files are different</em>. If they are not different, the code will do nothing. local <code>p_drive_output_dir</code> is deprecated, so you must leave it as <strong>0</strong>.</p>
+<p><strong>4. Pattern of the text files</strong></p>
+<p>When the text files with the information from LIS are stored in <code>00.LIS_output</code>, they should be stored in a systematic way so that they could be loaded and processed at the same time. This can be done by specifying in a matching regular expression in local <code>pattern</code>. For instance, all the files downloaded in December, 2020 could by loaded and processed using the directive, <code>local pattern = "LISSY_Dec2020.*txt"</code>.</p>
+<p><strong>5. Output</strong></p>
+<p>When the do-file is concluded, it saves the file <code>02.data/create_dta_status.dta</code> with the status of all the surveys processed.</p>
+</section>
+<section id="compare-new-lis-data-to-datalibweb-inventory" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="compare-new-lis-data-to-datalibweb-inventory">Compare new LIS data to Datalibweb inventory</h4>
+<p>To identify what data is new and what data has changed with respect to the one available in datalibweb, you need to execute do-file <code>03.LIS_compare_dlw.do</code>. Again, this do-file is intended to be executed in one run, but you can do it in parts taking advantage of the different frames. At the end of the execution the file <code>02.data/comparison_results.dta</code> is created. This file contains three important variables <code>wf</code>, <code>wt</code>, and <code>gn</code>, which correspond to the ration of welfare means, weight means, and Gini coefficient between the data in datalibweb and the data in the folder, <code>p:/01.PovcalNet/03.QA/06.LIS/03.Vintage_control</code>.</p>
+<p>You should only send to the Poverty GP those surveys for which at least one of these three variables is different to 1.</p>
+</section>
+<section id="the-excel-file-lis-datasets.xlsx" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="the-excel-file-lis-datasets.xlsx">The Excel file <code>LIS datasets.xlsx</code></h4>
+<p>With each LIS data update performed, we must first identify from LIS the new surveys (countries and/or years) they had recently added. LIS send users e-mails informing about new datasets added, and also releases <a href="https://www.lisdatacenter.org/news-and-events/highlights/">newsletters</a> with this information.</p>
+<p>Inside the <em>02.data</em> folder of your LIS_data GIT repository you will find a <em>_aux</em> sub folder, and the <code>LIS datasets.xlsx</code> file placed in there. We must <strong>manually</strong> update the tab <strong>LIS_survname tab</strong> adding new rows to the sheet. All necessary information to fill up this metadata (household size, currency, etc.) can be found in <a href="http://www.lisdatacenter.org/frontend#/home">METIS</a>.</p>
+<div class="rmdbox rmdtip">
+<p><strong>ACRONYMS:</strong> The column survey_acronym is created by us. If you come across a new survey for which an acronym has not been previously established, the rules applied in the past by the team were the following:</p>
+<ul>
+<li><p>Acronyms are created based on the ENGLISH name of the survey. (Ex: <em>German Transfer Survey (Germany)</em> is “GTS”, followed by the suffix -LIS; thus GTS-LIS.</p></li>
+<li><p>For the surveys that were Microcensus, we created the acronym “MC”, and for Denmark’s Law Model, “LM”.</p></li>
+<li><p>All acronyms are created in capital letters.</p></li>
+</ul>
+</div>
+<p>Finally, while the survey names in METIS are in English, some of the acronyms in parenthesis are still in the original language. In those cases we translated them to English. For instance, the survey name “<em>Household Budget Survey (BdF) (France)</em>” from METIS was changed to “<em>Household Budget Survey (<strong>HBS</strong>) (France)</em>” in the column <strong>surveyname</strong> of the excel.</p>
+</section>
+<section id="prepare-data-for-the-poverty-gp" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="prepare-data-for-the-poverty-gp">Prepare data for the Poverty GP</h4>
+<p>Finally, the do-file <code>04.Append_new_LIS_bases.do</code> prepares the data to be shared with the Poverty GP. Note that this do-file ONLY appends the 400 bins data of surveys that are <strong>new</strong> and those where <strong>welfare changed</strong>, which are identified in the previous step <code>/comparison_results.dta</code> as those <code>gn != 1</code>.</p>
+<p>Before running the code, make sure to <strong>change the output file name</strong> to the <strong>date</strong> of your update (last one saved was “LIS_bins_Dec_21_2020.dta”). The output is saved in <code>P:\01.PovcalNet\03.QA\06.LIS\04.Share_with_GP.</code></p>
+<p>Finally, quickly prepare a short .dta file importing the metadata already created in the LIS_survname tab from the Excel, keeping ONLY the surveys of the append output you just run and send both files to Minh Cong Nguyen &lt;mnguyen3@worldbank.org&gt; from the Poverty GP.</p>
+</section>
+</section>
+<section id="synthetic-data" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="synthetic-data"><span class="header-section-number">7.1.4</span> Synthetic Data</h3>
+<p>Synthetic (or imputed) data is used in particular instances where household surveys do not collect income or expenditure information; or collect partial expenditures (i.e.&nbsp;for a small list of items <span style="color:red">and rotate across different households</span>). In cases of that nature, country teams incur in efforts to impute the income or consumption welfare vectors. This exercise is based on the imputation of welfare from one survey to another. The imputation modeling is between the welfare, and household &amp; individual characteristics from a previous household survey, where data on both is available. This exercise consists of simulating welfare information for each household in the survey several times based on different simulated coefficients from the imputation models. The resulting data is stacked together from each simulated set. Final data should follow the same format as the regular GPWG module with the exception of the variable “sim” (which indicates the number of simulations in the stacked database).</p>
+<p>FGT indicators are estimated in the same way as any other data; however, for sensitive distributional indicators, calculations are run separately for each simulation, then averaged across results to get the final indicator. This data will get a value of 1 in the “imputed” variable of the price framework database.</p>
+</section>
+</section>
+<section id="from-gmd-to-pip" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="from-gmd-to-pip"><span class="header-section-number">7.2</span> From GMD to PIP ({pipdp} package)</h2>
+<p>The next step in the preperation of survey data for PIP is to leverage the <a href="https://github.com/PIP-Technical-Team/pipdp"><code>{pipdp}</code></a> package. This package retrives survey data from DLW and standardizes it into the format used by the PIP ingestion pipelines (<a href="pc_pipeline.html">Poverty Calculator Pipeline</a> and <a href="tm_pipeline.html">Table Maker Pipeline</a>).</p>
+<section id="requirements" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="requirements"><span class="header-section-number">7.2.1</span> Requirements</h3>
+<p><code>{pipdp}</code> depends on the following Stata packages.</p>
+<!-- ``` {.stata} -->
+<!-- ssc install moremata -->
+<!-- ssc install missings -->
+<!-- ``` -->
+<p>You will also need to have the World Bank <code>{datalibweb}</code> module and the PovcalNet internal <code>{pcn}</code> command installed.</p>
+</section>
+<section id="installation" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="installation"><span class="header-section-number">7.2.2</span> Installation</h3>
+<!-- ``` {.powershell} -->
+<!-- # Clone repo -->
+<!-- git clone "https://github.com/PIP-Technical-Team/pipdp" -->
+<!-- # Edit profile.do -->
+<!-- notepad.exe C:\ado\personal\profile.do -->
+<!-- # Add adopath ++ "<mypath>\pipdp" -->
+<!-- ``` -->
+</section>
+<section id="remote-server" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="remote-server"><span class="header-section-number">7.2.3</span> Remote server</h3>
+<p>It is recommended to both use <code>{pipdp}</code> on the PovcalNet remote server (WBGMSDDG001). The phyiscal location of this server is much closer to the data storage so queries to Datalibweb, as well as read/write operations to the PIP shared network drive, will be much faster.</p>
+<p>The only issue with using the server is that Datalibweb will require login credentials for each new Stata session. To avoid this it is highly recommended that users apply for direct access to Datalibweb. This will grant access to the Datalibweb file storage and enable the possiblity of using the <code>files</code> option in all <code>datalibweb</code> queries.</p>
+<p>In order to use the <code>files</code> option you will also need to make some minor adjustments to your Datalibweb setup files. In particular the global <code>root</code> variable in <code>C:/ado/personal/datalibweb/GMD.do</code> needs to be specified correctly. This can be achived by copying <code>datalibweb.ado</code> and <code>GMD.do</code> in the <code>_aux</code> directory to their respective locations.</p>
+<p>Since WBGMSDDG001 is a shared server and the DLW settings thus can be reset, you will need to make sure that these settings are correct every time you use <code>pipdp</code>. The modified setup files will <em>only</em> change the behavior of Datalibweb for users that have direct access to the file storage. It will not affect other users. You could either check and copy the files manually or run the following from the command line.</p>
+<!-- ```{cmd, eval = FALSE} -->
+<!-- copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado -->
+<!-- copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do -->
+<!-- ``` -->
+<p>For details on how to connect to WBGMSDDG001 see the <a href="https://povcalnet-team.github.io/Povcalnet_internal_guidelines/folder-structures.html#server">Remote server connection</a> section in the PovcalNet Internal Guidelines and Protocols.</p>
+</section>
+<section id="usage" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="usage"><span class="header-section-number">7.2.4</span> Usage</h3>
+<p><code>pipdp</code> has two main commands, <code>pipdp group</code> to copy and prepare grouped data files from the PocvalNet shared network drive and <code>pipdp micro</code> to download and prepare micro datasets from Datalibweb. For examples on how to use these commands see the <a href="https://github.com/PIP-Technical-Team/pipdp#usage">Usage section</a> in the <code>{pipdp}</code>README.</p>
+</section>
+<section id="preparing-survey-data-for-poverty-calculator-pipeline" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="preparing-survey-data-for-poverty-calculator-pipeline"><span class="header-section-number">7.2.5</span> Preparing survey data for Poverty Calculator Pipeline</h3>
+<p>Follow these steps when preparing survey data for the <a href="pc_pipeline.html">Poverty Calculator Pipeline</a></p>
+<ol type="1">
+<li>Make sure the Price Framework file is up to date in the directory you are using.</li>
+</ol>
+<!-- ```{r, eval = FALSE} -->
+<!-- # Update PFW file -->
+<!-- PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR -->
+<!-- # pipaux::pip_country_list('update', maindir = PIP_DATA_DIR) -->
+<!-- pipaux::pip_pfw('update', maindir = PIP_DATA_DIR) -->
+<!-- ``` -->
+<ol start="2" type="1">
+<li>Make sure the Datalibweb repository file is up to date in directory you are using. Note that if you are running this code on the PovcalNet remote server you will be required to log in to DLW, regardless if you have direct access or not. This is because the underlying <code>datalibweb, type(GMD) repo(create dlwrepo)</code> command always sends queries over web. If you want you to avoid the login requirement you can conduct this specific step from your local machine.</li>
+</ol>
+<!-- ```{stata, eval = FALSE} -->
+<!-- // Update DLW repo -->
+<!-- pipdp dlw maindir("$PIP_DATA_DIR>") -->
+<!-- ``` -->
+<ol start="3" type="1">
+<li>Make sure DLW setup files are up-to-date (needed for <code>files</code> option).</li>
+</ol>
+<!-- ```{bat, eval = FALSE} -->
+<!-- ::Copy setup files -->
+<!-- copy _aux/datalibweb.ado C:/ado/plus/d/datalibweb.ado -->
+<!-- copy _aux/GMD.do C:/ado/personal/datalibweb/GMD.do -->
+<!-- ``` -->
+<ol start="4" type="1">
+<li>Update surveys</li>
+</ol>
+<!-- ```{stata, eval = FALSE} -->
+<!-- // Update grouped data surveys (from PCN-drive) -->
+<!-- pipdp group, countries(all) maindir("$PIP_DATA_DIR>") -->
+<!-- // Download new surveys from DLW  -->
+<!-- pipdp micro, countries(all) files new maindir("$PIP_DATA_DIR>") -->
+<!-- ``` -->
+<ol start="5" type="1">
+<li>Update the PIP inventory</li>
+</ol>
+<!-- ```{r, eval = FALSE} -->
+<!-- # Update PIP inventory -->
+<!-- PIP_DATA_DIR <- pipload::create_globals(Sys.getenv("PIP_ROOT_DIR"))$PIP_DATA_DIR -->
+<!-- pipload::pip_update_inventory(maindir = PIP_DATA_DIR) -->
+<!-- ``` -->
+</section>
+</section>
+<section id="survey-id" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="survey-id"><span class="header-section-number">7.3</span> Survey ID nomenclature</h2>
+<p>All household surveys in the PIP repository are stored following the naming convention of the <a href="http://ihsn.org/">International Household Survey Network (IHSN)</a> for <a href="http://www.ihsn.org/archiving">archiving and managing data</a>. This structure can be generalized as follows:</p>
+<pre><code>CCC_YYYY_SSSS_ vNN_M_vNN_A_TYPE_MODULE</code></pre>
+<p>where,</p>
+<ul>
+<li><code>CCC</code> refers to 3 letter ISO country code</li>
+<li><code>YYYY</code> refers to survey year when data collection started</li>
+<li><code>SSSS</code> refers to survey acronym (e.g., LSMS, CWIQ, HBS, etc.)</li>
+<li><code>vNN</code> is the version vintage of the raw/master data if followed by an <code>M</code> or of the alternative/adapted data if followed by an <code>A</code>. The first version will always be v01, and when a newer version is available it should be named sequentially (e.g.&nbsp;v02, v03, etc.). Note that when a new version is available, the previous ones must still be kept.</li>
+<li><code>TYPE</code> refers to the collection name. In the case of PIP data, the type is precisely, <strong>PIP</strong>, but be aware that there are several other types in the datalibweb collection. For instance, the Global Monitoring Database uses <strong>GMD</strong>; the South Asia region uses <strong>SARMD</strong>; or the LAC region uses <strong>SEDLAC</strong>.</li>
+<li><code>MODULE</code> refers to the module of the collection. This part of the survey ID is only available at the <em>file level</em>, not at the folder (i.e, survey) level. Since the folder structure is created at the survey level, there is no place in the survey ID to include the module of the survey. However, within a single survey, you may find different modules, which are specified in the name of the file. In the case of PIP, the module of the survey is divided in two: the PIP tool and the GMD module. The <em>PIP tool</em> could be <em>PC</em>, <em>TB,</em> or <em>SOL</em> (forthcoming), which stand for one of the PIP systems, Poverty Calculator, Table Baker (or Maker), and Statistics OnLine. the <em>GMD module</em>, refers to the original module in the GMD collection, such as module <em>ALL</em>, or <em>GPWG, HIST,</em> or <em>BIN.</em></li>
+</ul>
+<p>For example, the most recent version of the harmonized Pakistani Household Survey of 2015, she would refer to the survey ID <code>PAK_2015_PSLM_v01_M_v02_A_PIP</code>. In this case, PSLM refers to the acronym of the Pakistan Social and Living Standards Measurement Survey. v01_M means that the version of the raw data has not changed since it was released and v02_A means that the most recent version of the alternative version is 02.2</p>
+</section>
+<section id="survey-id-cache" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="survey-id-cache"><span class="header-section-number">7.4</span> Survey CACHE ID nomenclature</h2>
+<p><span style="color:red">NOTE:Andres, add explanation here</span></p>
+<div class="light-purple">
+<p>Testing tachyons colors</p>
+</div>
+<p>This is a test <span style="color:royalblue">Royal blue</span> color in line</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./PRIMUS.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PRIMUS</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./auxiliary_data.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Auxiliary data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

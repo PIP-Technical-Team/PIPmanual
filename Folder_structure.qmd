@@ -1,0 +1,144 @@
+# Folder Structure {#folder-structure}
+
+The PIP root directory (`Sys.getenv("PIP_ROOT_DIR")`) contains the following main folders. 
+
+| Folder                | Explanation                            |
+|:----------------------|:---------------------------------------|
+| PIP-Data              | N/A                                    | 
+| PIP-Data_QA           | QA directory for survey and AUX data   | 
+| PIP-Data_ExtSOL       | SOL                                    | 
+| PIP-PIP_Data_Testing  | Testing directory for pipaux and pipdp | 
+| PIP-PIP_Data_Vintage  | N/A                                    | 
+| pip_ingestion_pipeline| Pipeline directory                     |
+
+Details on each folder and their subfolders are given below. 
+
+## PIP-Data
+
+[This folder is no longer in use]{style="color:red"}. 
+
+This was the original PIP_Data folder. It was used for testing and development of `{pipdp}` and `{pipaux`}, but has since been replaced by 
+`PIP-Data_QA` and `PIP_Data_Testing`. 
+
+## PIP-Data_QA
+
+This is the main output directory for the `{pipdp}` and `{pipaux}` packages. It contains all the survey and auxiliary data needed to run the [Poverty Calculator](#pcpipeline) and [Table Maker](#tmpipeline) pipelines. 
+
+Note that the contents of this folder is for QA and production purposes. Please use the `PIP_Data_Testing` directory, or your own personal testing directory, if you intend to test code changes in `{pipdp}` or `{pipaux}`. 
+
+### _aux
+
+The `_aux` folder contains the auxiliary data used by the [Poverty Calculator Pipeline](#pcpipeline) and the `{pipdp}` and `{pipapi}` packages. 
+
+Please note the following: 
+
+1. The file `sna/NAS special_2021-01-14.xlsx` is currently hardcoded in `{pipaux}`. If the contents of the file changes this package might need to be updated. 
+2. Some other National Accounts special cases (e.g. BLZ, VEN) are manually hardcoded in pipaux. Beware of this when updating GDP/PCE. 
+3. The file `weo/weo_<YYYY-MM-DD>.xls` needs to be manually downloaded from IMF, opened and then re-saved as `weo_<YYYY-MM-DD>.xls`. 
+4. The grouped data means currently come from the PovcalNet Masterfile. This should be changed when PovcalNet goes out of production.
+
+An explanation of each subfolder is given below. 
+
+| Folder     | Measure                 | Usage               | Source |
+|:-----------|:------------------------|:--------------------|:-------|
+|countries   | PIP country list        | pipapi              | pipaux |
+|country_list| WDI country list        | pipaux, PC pipeline | pipaux |
+|cp          | Country profiles        | pipai               | pipaux |
+|cpi         | CPI                     | PC pipeline         | pipaux |
+|dlw         | DLW repository          | pipdp               | pipdp  |
+|gdm         | Grouped data means      | PC pipeline         | pipaux |
+|gdp         | Gross Domestic Product  | PC pipeline         | pipaux |
+|maddison    | Maddison Project Data   | pipaux              | pipaux |
+|indicators  | Indicators master       | pipapi, PC pipeline | Manual, pipaux |
+|pce         | Private consumption     | PC pipeline         | pipaux |
+|pfw         | Price Framework         | pipdp, PC pipeline  | pipaux |
+|pl	         | Poverty Lines           | pipapi              | pipaux |
+|pop	       | Population              | PC pipeline         | pipaux |
+|ppp         | Purchasing Power Parity | PC pipeline         | pipaux |
+|regions     | Regions                 | pipapi              | pipaux |
+|sna         | Special National Account cases | pipaux       | Manual |
+|weo         | World Economic Outlook (GDP)   | pipaux       | IMF, pipaux |
+
+The data in the folders `countries`, `regions`, `pl`, `cp` and `indicators` are loaded into the Poverty Calculator pipeline, but that they are not used for any calculations or modified in any way, when being parsed through the pipeline. They are thus only listed with `{pipapi}` as their usage. 
+
+In contrast the measures CPI, GDP, PCE, POP and PPP are both used in the pre-calculations and transformed before being saved as pipeline outputs. So even though these measures are also available in the PIP PC API, the files at this stage only have the Poverty Calculator pipeline as their use case. 
+
+### _inventory 
+
+The `_inventory` folder contains the PIP inventory file created by `pipload::pip_update_inventory()`. It is important to update this file if the survey data has been updated. 
+
+### Country data
+
+The folders with country codes as names, e.g `AGO`, contain survey data for each country. This is created by `{pipdp}`. The folder structure within each country folder follows roughly the same convention as used by DLW. 
+
+There will be one data file for each survey, based on DLW's `GMD` module and the grouped data in the PovcalNet-drive. These are labelled with PC in 
+their filenames. Additionally, if there is survey data available from DLW's `ALL` module there will also be a dataset for the Table Maker, labelled with TB. 
+
+## PIP-Data_ExtSOL
+
+This folder is for external SOL application. This is the folder where the data for the externa SOL will be synced between the network drive and the storage in Azure. The synchronization will be done daily from the ITS side. There are two subfolders GMD-DLW and HFPS-COVID19.
+
+-	GMD-DLW: it is the folder for GMD data for both raw and harmonized GMD data.
+-	HFPS-COVID19: it is the folder for High Frequent Phone Survey data for both raw and harmonized data.
+
+The structured folders for these two catalogs are standard likes the ones used in DLW system.
+
+There are dofiles on the synchronization between GMD in DLW and GMD in SOL. Those files are “Data in SOL.xlsx” and “Convert GMD to GMD SOL.do”. Only data with clear and explicit data license will be uploaded in this folder. 
+
+For now, only “public data” is in this application. Public means any users can download and redistribute the data, and there is no login in the country NSO website or any condition/terms when downloading the data. Otherwise, there is an explicit agreement with NSO on the usage of the data for SOL – email: Microdata for an external Statistics Online (SOL) platform.
+
+At the moment, we are working with Legal on the Custom license for the data license template where SOL will be mentioned explicitly. Once the Custom license is developed (after the launch of SOL) we can reach out to all countries to ask for permission to use and “limited redistribute” in the data in our secured platform.
+
+::: {.rmdbox .rmdwarning}
+Please do not touch or change any content in this folder without permission
+:::
+
+
+## PIP_Data_Testing 
+
+This folder is used as a testing directory for development of the `{pipdp}` and `{pipaux}` packages. 
+
+## PIP_Data_Vintage 
+
+[This folder is currently not in use]{style="color:red"}. 
+
+## pip_ingestion_pipeline
+
+This is the main output directory for the both the [Poverty Calculator](#pcpipeline) and [Table Maker](#tmpipeline) pipelines.
+
+### pc_data 
+
+| Folder                | Explanation                            |
+|:----------------------|:---------------------------------------|
+| _targets              | Targets storage                        |
+| cache                 | Cleaned survey data                    |
+| output                | PC pipline output directory            | 
+| validation            | Validation directory                   | 
+
+#### _targets
+
+This folder contains the objects that are cached by `{targets}` when the [Poverty Calculator Pipeline](#pcpipeline) is run. It is located on the shared network drive so that the latest cached objects are available to all team members. Please note however that a shared `_targets` folder does entail some risks. **It is very important that only one person runs the pipeline at a time.** Concurrent runs against the same `_targets` store will wreak havoc. And needless to say; if you are developing new features or customising the pipeline use a different `_targets` store. 
+([We should probably have a custom DEV or testing folder for this, similar to PIP_Data_Testing]{style="color:red"}.) 
+
+#### cache
+
+The survey data output of `{pipdp}` cannot be directly used as input to the [Poverty Calculator Pipeline](#pcpipeline). This is because the data needs to be cleaned  before running the necessary pre-calculations for the PIP database. The cleaning currently includes removal of rows with missing welfare and weight values, standardising of grouped data, and restructuring of datasets with both income and consumption based welfare values in the same survey. 
+Please refer to `{wbpip}` and `{pipdm}` for the latest cleaning procedures.  
+
+In order to avoid doing this cleaning every time the pipeline runs an intermediate version of the survey data is stored in the `cache/clean_survey_data/` folder. 
+Please make sure this folder is up-to-date before running the `_targets.R` pipeline. 
+
+[Note: This is not exactly true. We need to solve the issue with the double caching of survey data. But the essence of what we want to accomplish is to avoid cleaning and checking the survey data in every pipeline run.]{style="color:red"}.
+
+#### output 
+    
+This folder contains the outputs of the [Poverty Calculator Pipeline](#pcpipeline). This is seperated into three subfolders; `aux` containing the auxiliary data, `estimations` containing the survey, interpolated and distributional pre-calculated estimates, and `survey_data` containing
+the cleaned survey data. 
+
+#### validation
+
+TBD [Andres: Could you write this section?]{style="color:red"}.
+
+### tb_data
+
+TBD [Andres: Could you write this section?]{style="color:red"}.
